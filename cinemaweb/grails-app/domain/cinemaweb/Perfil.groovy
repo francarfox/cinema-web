@@ -24,8 +24,8 @@ class Perfil {
 
     	foto nullable:true
 
-    	localidad blank:true
+    	localidad blank:true, nullable:true	//agregue nullable
 
-    	pais blank:true
+    	pais blank: true, nullable:true	//agregue nullable
     }
 }
