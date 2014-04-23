@@ -32,4 +32,21 @@ class Usuario {
 
 		
     }
+
+    static miUsuario() {
+    	return Usuario.get(1)	//probando
+    }
+
+    String toString() {
+    	return userId
+    }
+
+    def comentar(comentable, mensaje) {
+    	def comentario = new Comentario(autor:this, mensaje: mensaje)
+    	comentable.agregarComentario(comentario)
+    }
+
+    def puntuar(puntuable, puntos) {
+    	puntuable.agregarPuntos(puntos)
+    }
 }
