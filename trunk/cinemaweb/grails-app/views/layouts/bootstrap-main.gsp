@@ -16,7 +16,7 @@
 	<r:layoutResources />
 	<style type="text/css">
 	#bar-logo{
-		height:40px;
+		height:36px;
 		margin-top: 3px;
 	}
 	#bar-brand{
@@ -25,6 +25,10 @@
 		padding: 0px;
 		padding-left: 19px;
 		vertical-align: -webkit-baseline-middle;
+	}
+
+	h4{
+		margin-bottom: 25px;
 	}
 	</style>	
 </head>
