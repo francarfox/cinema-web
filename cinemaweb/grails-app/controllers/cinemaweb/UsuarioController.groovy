@@ -23,9 +23,8 @@ class UsuarioController {
 			flash.message = "Bienvenido ${usuario.perfil.nombre} ${usuario.perfil.apellido}"
 			redirect(action: "index")
 		} else {
-			//flash.message = "Error en la registracion del usuario"
-			return [usuario:usuario]
-			
+			flash.message = "Error en la registracion del usuario"
+			render(view: "create", model: [usuario:usuario])
 		}
 
 	}
