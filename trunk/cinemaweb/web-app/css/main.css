@@ -51,6 +51,10 @@ body {
 	background-color: #abbf78;
 }
 
+#cinemaLogo {
+	background-image: url('web-app/images/banner_cinemaweb.jpg');
+}
+
 /* replace with .no-boxshadow body if you have modernizr available */
 .ie6 body,
 .ie7 body,
@@ -74,9 +78,17 @@ a:hover, a:active {
 
 h1 {
 	color: #48802c;
+	font-weight: bold;
+	font-size: 20px;
+	margin: 20px 20px 0px 20px;
+}
+
+h2 {
+	color: #48802c;
 	font-weight: normal;
-	font-size: 1.25em;
-	margin: 0.8em 0 0.3em 0;
+	font-size: 18px;
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 
 ul {
@@ -403,6 +415,14 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin-bottom: 1em;
+}
+
+#tableUsuario {
+	border: none;
+	width: 50%;
+	margin-top: 10px;
+	margin-bottom: 1em;
+	margin: 0 auto;
 }
 
 tr {
