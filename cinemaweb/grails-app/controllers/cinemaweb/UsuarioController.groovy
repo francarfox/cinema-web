@@ -7,7 +7,10 @@ class UsuarioController {
 		String nombre = params.nombre
 		String apellido = params.apellido
 		String email = params.email
-		def perfil = new Perfil(nombre: nombre, apellido: apellido, email: email)
+		byte[] foto = params.foto  //ver dsp para cargar una foto
+		String localidad = params.localidad
+		String pais	= params.pais
+		def perfil = new Perfil(nombre: nombre, apellido: apellido, email: email, localidad: localidad, pais: pais)
 
 		String user = params.userId
 		String pass = params.password
