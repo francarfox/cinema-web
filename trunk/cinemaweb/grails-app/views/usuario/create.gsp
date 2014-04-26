@@ -6,52 +6,53 @@
 <body>
 	<h1>Crear Usuario</h1>
 
-	<g:hasErrors>
+	<g:hasErrors bean="${usuario}">
 		<div class="errors">
-		<g:renderErrors bean="${usuario}" as="list" />
+			<g:renderErrors bean="${usuario}" as="list" />
 		</div>
 	</g:hasErrors>
 
-	<g:form action="crearNuevo">
+	<g:form action="registrar">
 	<table id="tableUsuario">
+
 		<tr>
 			<td colspan="2"><h2>Datos Usuario</h2></td>
 		</tr>
 		<tr>
-			<td>Usuario:</td>
+			<td><label for="userId">Usuario *</label></td>
 			<td><g:field type="text" name="userId"/></td>
 		</tr>
 		<tr>
-			<td>Password: </td>
+			<td><label for="password">Password *</label></td>
 			<td><g:field type="text" name="password"/></td>
 		</tr>
 		<tr>
-			<td>Confirmar Password:</td>
+			<td><label for="passwordV">Confirmar Password *</label></td>
 			<td><g:field type="text" name="passwordV"/></td>
 		</tr>
-		
+
 		<tr>
 			<td colspan="2"><h2>Datos Personales</h2></td>
 		</tr>
 		<tr>
-			<td>Nombre:</td>
-			<td><g:field type="text" name="nombre"/></td>
+			<td><label for="nombre">Nombre *</label></td>
+			<td><g:field type="text" name="nombre" /></td>
 		</tr>
 		<tr>
-			<td>Apellido: </td>
-			<td><g:field type="text" name="apellido"/></td>
+			<td><label for="apellido">Apellido *</label></td>
+			<td><g:field type="text" name="apellido" /></td>
 		</tr>
 		<tr>
-			<td>Email:</td>
-			<td><g:field type="text" name="email"/></td>
+			<td><label for="email">Email *</label></td>
+			<td><g:field type="text" name="email" /></td>
 		</tr>
 		<tr>
-			<td>Localidad:</td>
-			<td><g:field type="text" name="localidad"/></td>
+			<td><label for="localidad">Localidad</label></td>
+			<td><g:field type="text" name="localidad" /></td>
 		</tr>
 		<tr>
-			<td>Pais: </td>
-			<td><g:field type="text" name="pais"/></td>
+			<td><label for="pais">Pais</label></td>
+			<td><g:field type="text" name="pais" /></td>
 		</tr>
 		<tr>
 			<td colspan="2"></td>

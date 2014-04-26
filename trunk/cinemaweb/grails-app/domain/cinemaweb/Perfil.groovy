@@ -5,7 +5,7 @@ class Perfil {
 	String nombre
 	String apellido
 	String email
-	byte[] foto
+	//byte[] foto
 	String localidad
 	String pais
 	//Inbox inbox
@@ -22,7 +22,7 @@ class Perfil {
     	
     	email email:true, blank:false, unique:true
 
-    	foto nullable:true
+    	//foto nullable:true
 
     	localidad blank:true, nullable:true	//agregue nullable
 
