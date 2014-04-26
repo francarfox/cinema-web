@@ -41,6 +41,9 @@ grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
 
+//PARA QUE FUNCIONEN LOS ICONS
+grails.resources.debug = true
+
 // The default scope for controllers. May be prototype, session or singleton.
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
