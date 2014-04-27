@@ -45,8 +45,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<g:img dir="images/cinema-web" file="LogoCinema-60x50.png" id="bar-logo"/>
-					<a href="#" class="navbar-brand" style="float:none" id="bar-brand">Cinema Web</a>
+					<!-- <g:img dir="images/cinema-web" file="LogoCinema-60x50.png" id="bar-logo"/>
+					<a href="#" class="navbar-brand" style="float:none" id="bar-brand">Cinema Web</a> -->
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">	
 					<ul class="nav navbar-nav navbar-right">

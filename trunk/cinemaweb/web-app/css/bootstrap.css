@@ -180,6 +180,13 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
 }
+#tableUsuario {
+  border: none;
+  width: 60%;
+  margin-top: 10px;
+  margin-bottom: 1em;
+  margin: 0 auto;
+}
 td,
 th {
   padding: 0;
@@ -4021,7 +4028,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #333;
 }
 .navbar-inverse {
-  background-color: #222;
+  background: url('../images/banner_cinemaweb.jpg') no-repeat;
+  height: 220px;
+  background-size: 100%;
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {

@@ -260,7 +260,7 @@ label {
 input, select, textarea {
 	background-color: #fcfcfc;
 	border: 1px solid #cccccc;
-	font-size: 1em;
+
 	padding: 0.2em 0.4em;
 }
 
@@ -419,7 +419,7 @@ table {
 
 #tableUsuario {
 	border: none;
-	width: 50%;
+	width: 60%;
 	margin-top: 10px;
 	margin-bottom: 1em;
 	margin: 0 auto;
