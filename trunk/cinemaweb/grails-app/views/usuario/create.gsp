@@ -5,6 +5,12 @@
 </head>
 <body>
 	<div class="container">
+
+		<g:form action="login" style="text-align:right">
+			<g:submitButton name="Login"/>
+		</g:form>
+
+
 		<div class="col-md-10">
 			<h1>Crear Usuario</h1>
 

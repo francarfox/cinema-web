@@ -5,6 +5,11 @@
 </head>
 <body>
 	<div class="container">
+
+		<g:form action="logout" style="text-align:right">
+			<g:submitButton name="Logout"/>
+		</g:form>
+		
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Usuario de ${usuario.userId}</h1>
 
