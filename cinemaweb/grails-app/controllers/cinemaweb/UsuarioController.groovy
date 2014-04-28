@@ -64,4 +64,34 @@ class UsuarioController {
 		usuario.delete()
 		
 	}
+
+	def login = {
+
+	}
+
+	def validar = {
+
+		def usuario = Usuario.findByUserId(params.userId)
+		
+		if (usuario && usuario.password == params.password){
+		session.usuario = usuario
+		render(view: "show", model: [usuario:usuario]) //redirect(controller:'' , action:'' )
+		} else {
+			flash.message = "Nombre de usuario y contraseña invalidos."
+			render(view:"login")
+		}
+
+	}
+
+	def logout = {
+
+		if (session.usuario != null) {
+			session.usuario = null
+			render(view:"login")
+			//redirect(url:resource(dir:'' ))
+		} else {
+			render "HOLA YA TE DESLOGUEASTE OK?"
+			return
+		}
+	}
 }
