@@ -4,6 +4,7 @@ class UsuarioController {
 	static scaffold = true
 
 	def registrar = {
+		
 		String nombre = params.nombre
 		String apellido = params.apellido
 		String email = params.email
@@ -27,5 +28,27 @@ class UsuarioController {
 			render(view: "create", model: [usuario:usuario])
 		}
 
+	}
+
+	def edit = {
+
+		def usuario = Usuario.get(params.id)	
+		[usuario:usuario]
+
+	}
+
+	def actualizar = {
+
+		def usuario = Usuario.get(params.id)
+
+		usuario.password = params.password
+		usuario.passwordV = params.passwordV
+				
+		if (usuario.validate()){
+			usuario.save()
+			redirect(action: "show") //solo muestra cuenta creada... arreglar esto
+		} else {
+			render(view: "edit", model: [usuario:usuario])
+		}
 	}
 }

@@ -20,6 +20,10 @@
 			<g:form style="margin-left:20px;" action="index">
 				<g:submitButton name="Volver"/>
 			</g:form>
+			<br />
+			<!-- <g:form style="margin-left:20px;" action="update">
+				<g:submitButton name="Editar"/>
+			</g:form> -->
 		</div>
 	</div>
 </body>
