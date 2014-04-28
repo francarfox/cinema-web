@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Editar Usuario</title>
+	<title>Editar Usuario - CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>

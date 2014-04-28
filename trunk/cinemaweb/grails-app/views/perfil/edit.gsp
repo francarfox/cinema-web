@@ -1,35 +1,70 @@
 <html>
 <head>
-	<title>Perfil</title>
+	<title>Editar Perfil - CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>
 	<div class="container">
-			<div class="col-md-8">
-				<h1 style="margin-left:20px;">EDITANDO PERFIL</h1>
+			<div class="col-md-8" style="margin-left:20px;">
+				<h1>Editando perfil </h1>
+				<br />
+
+				<g:hasErrors bean="${perfil}">
+					<div class="errors">
+						<g:renderErrors bean="${perfil}" as="list" />
+					</div>
+				</g:hasErrors>
 				
-				<g:form action="edit" class="form-horizontal">
-				<!-- <g:form url="[action:'registrar',controller:'usuario']"> </g:form>-->
-				
+				<g:form action="actualizar" id="${perfil.id}">
+			
 					<div class="form-group">
-						<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>
+						<label for="name" class="col-md-2 col-sm-2 control-label">Nombre *</label>
 						<div class="col-md-4">
 							<input name="nombre" class="form-control" id="name" value="${perfil.nombre}">
 						</div>
 					</div>
 
-					
-					<div class="col-sm-10 col-md-2">
-						<g:submitButton name="Editar" class="btn btn-primary btn-block" />
+					<div class="form-group">
+						<label for="name" class="col-md-2 col-sm-2 control-label">Apellido *</label>
+						<div class="col-md-4">
+							<input name="apellido" class="form-control" id="name" value="${perfil.apellido}">
+						</div>
 					</div>
+
+					<div class="form-group">
+						<label for="name" class="col-md-2 col-sm-2 control-label">Email *</label>
+						<div class="col-md-4">
+							<input name="email" class="form-control" id="name" value="${perfil.email}">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="name" class="col-md-2 col-sm-2 control-label">Localidad</label>
+						<div class="col-md-4">
+							<input name="localidad" class="form-control" id="name" value="${perfil.localidad}">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="name" class="col-md-2 col-sm-2 control-label">Pais</label>
+						<div class="col-md-4">
+							<input name="pais" class="form-control" id="name" value="${perfil.pais}">
+						</div>
+					</div>
+
+					<br />
+					<g:submitButton name="Editar" style="margin-left:20px;" />
 					
+				</g:form>
+
+				<br />
+				<br />
+				<g:form action="index"> <!-- Modificar esto para que vaya al show de usuario -->
+					<g:submitButton name="Volver"/>
 				</g:form>
 
 			</div>
 
-			<g:form style="margin-left:20px;" action="index">
-				<g:submitButton name="Volver"/>
-			</g:form>
 	</div>
 </body>
 </html>

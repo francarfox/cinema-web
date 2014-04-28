@@ -1,14 +1,14 @@
 <html>
 <head>
-	<title>Perfil</title>
+	<title>Ver Perfil - CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-8">
-			<h1 style="margin-left:20px;">Perfil de ${perfil.nombre}</h1>
-
-			<div style="margin-left:20px;">
+		<div class="col-md-8" style="margin-left:20px;">
+			<h1>Perfil de ${perfil.nombre}</h1>
+			<br />
+			<div>
 				<p>Nombre: ${perfil.nombre}</p>
 				<p>Apellido: ${perfil.apellido}</p>
 				<p>Email: ${perfil.email}</p>
@@ -17,13 +17,13 @@
 				<br />
 			</div>
 
-			<g:form style="margin-left:20px;" action="index">
-				<g:submitButton name="Volver"/>
+			<g:form action="edit" id="${perfil.id}">
+				<g:submitButton name="Editar"/>
 			</g:form>
 			<br />
-			<!-- <g:form style="margin-left:20px;" action="update">
-				<g:submitButton name="Editar"/>
-			</g:form> -->
+			<g:form action="index"> <!-- Modificar esto para que vaya al show de usuario -->
+				<g:submitButton name="Volver"/>
+			</g:form>
 		</div>
 	</div>
 </body>

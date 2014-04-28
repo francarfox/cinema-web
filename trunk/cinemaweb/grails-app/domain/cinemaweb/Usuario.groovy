@@ -6,7 +6,7 @@ class Usuario {
 	String password
 	String passwordV
 	Perfil perfil
-	Date cuentaCreada = new Date() //editar esto ya que cuando se editan los datos se modifica este dato
+	Date cuentaCreada = new Date()
 
 
     static constraints = {

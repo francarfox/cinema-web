@@ -46,9 +46,22 @@ class UsuarioController {
 				
 		if (usuario.validate()){
 			usuario.save()
-			redirect(action: "show") //solo muestra cuenta creada... arreglar esto
+			render(view: "show", model: [usuario:usuario])
 		} else {
 			render(view: "edit", model: [usuario:usuario])
 		}
+	}
+
+	def show = {
+
+		def usuario = Usuario.get(params.id)	
+		[usuario:usuario]
+	}
+
+	def eliminar = {
+
+		def usuario = Usuario.get(params.id)
+		usuario.delete()
+		
 	}
 }
