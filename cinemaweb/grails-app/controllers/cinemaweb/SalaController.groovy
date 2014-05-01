@@ -35,4 +35,31 @@ class SalaController {
 		[sala: sala]
 	}
 
+
+	def show = {
+		def sala = Sala.get(params.id)
+		def asientosOcupados = this.getAsientosOcupados(sala.asientos)
+
+		JSON.use('deep')
+        render asientosOcupados as JSON
+        return
+
+
+
+		[sala: Sala.get(params.id)]
+	}
+
+
+	//funciones de controlador
+
+	private def getAsientosOcupados(def asientos){
+		def asientosOcupados = []
+		if (asientos) {
+			
+		}
+
+		return asientosOcupados
+
+	}
+
 }
