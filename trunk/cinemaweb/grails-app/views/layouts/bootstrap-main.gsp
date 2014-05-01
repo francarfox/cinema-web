@@ -11,6 +11,7 @@
 	<title><g:layoutTitle default="Grails"/></title>
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'font-awesome.min.css')}" type="stylesheet">
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'cinema-web.css')}" type="text/css">
 	<r:require module="jquery"/>
 	<g:layoutHead/>
 	<r:layoutResources />
@@ -25,10 +26,6 @@
 		padding: 0px;
 		padding-left: 19px;
 		vertical-align: -webkit-baseline-middle;
-	}
-
-	h4{
-		margin-bottom: 25px;
 	}
 	</style>	
 </head>
