@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h4>Sala #${sala.id} - ${sala.nombre}</h4>
-				<g:form action="create" class="form-horizontal">
+				<g:form action="edit" id="${sala.id}" class="form-horizontal">
 				<div class="form-group">
 					<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>
 					<div class="col-md-4">
@@ -33,7 +33,7 @@
 						<g:link controller="sala" action="show" id="${sala.id}" class="btn btn-default btn-block">Volver</g:link>
 					</div>
 					<div class="col-sm-10 col-md-2">
-						<button type="submit" class="btn btn-primary btn-block">Crear</button>
+						<button type="submit" class="btn btn-primary btn-block">Editar</button>
 					</div>
 				</div>
 			</g:form>

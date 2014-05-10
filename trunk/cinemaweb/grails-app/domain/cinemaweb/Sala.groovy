@@ -10,4 +10,12 @@ class Sala {
 
     static constraints = {
     }
+
+    public def getAsiento(def fila, def columna){
+    	for(asiento in this.asientos) {
+    		if(asiento.fila == fila && asiento.columna == columna){
+    			return asiento
+    		}	
+    	}
+    }
 }
