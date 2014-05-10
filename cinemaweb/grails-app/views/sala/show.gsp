@@ -36,8 +36,18 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-12">
+				<g:link action="index" class="btn btn-warning"><i class="fa fa-list"></i> Lista</g:link>
+				<g:link action="edit" id="${sala.id}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</g:link>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
 				<h3>Sala: #${sala.id} - ${sala.nombre}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
 				<table class="data">
 					<tbody>
 						<tr>
@@ -76,7 +86,7 @@
 						<g:each in="${1..sala.columnas}" var="columna">
 
 						<g:if test="${asientosOcupados.contains(fila+','+columna)}">
-						<td class="toDelete" data-fila="${fila}" data-columna="${columna}"></td>
+						<td class="toDelete text-center" data-fila="${fila}" data-columna="${columna}"><i class="fa fa-user"></i></td>
 					</g:if>
 					<g:else>
 					<td class="toAdd" data-fila="${fila}" data-columna="${columna}"></td>
@@ -94,25 +104,25 @@
 		</div>
 	</div>
 	<div class="row">
-    	<div class="col-md-4">
-    		<a href="#" id="remove-start" class="btn btn-danger btn-block">Remover asientos</a>		
-    	</div>
-    </div>
+		<div class="col-md-4">
+			<a href="#" id="remove-start" class="btn btn-danger btn-block">Remover asientos</a>		
+		</div>
+	</div>
 </div>
 <!--- formulario para cargar asientos ---->
 <div class="col-md-5 actions" id="seats-form" style="display:none">
 	<g:form action="updateSeats" id="${sala.id}" class="form-horizontal">
-		<div class="form-group">
-			<div class="col-md-4">
-				<a href="#" id="action-save" class="btn btn-primary btn-block">Guardar</a>
-			</div>
+	<div class="form-group">
+		<div class="col-md-4">
+			<a href="#" id="action-save" class="btn btn-primary btn-block">Guardar</a>
 		</div>
-		<div class="form-group">
-			<div class="col-md-4">
-				<a href="#" id="action-cancel" class="btn btn-default btn-block">Cancelar</a>
-			</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-4">
+			<a href="#" id="action-cancel" class="btn btn-default btn-block">Cancelar</a>
 		</div>
-	</g:form>	
+	</div>
+</g:form>	
 </div>
 </div>
 <!---- cargo el archivo que maneja la creacion de asientos ---->
