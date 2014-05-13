@@ -62,6 +62,21 @@
 
 			</div><!-- /.container-fluid -->
 		</nav>
+
+		<!--- Barra de logueo -->
+		<div style="float:right;">
+			<g:if test="${session.usuario!=null}">
+		      Bienvenido <b><g:link controller="perfil" action="show" id="${session.usuario.id}">
+								${session.usuario?.userId}<!-- &nbsp;${session.usuario?.userId} --></b> |
+							</g:link>
+		      <g:link controller="usuario" action="logout">Logout</g:link>
+		    </g:if>
+		    <g:else>
+		    ¿No has iniciado sesion todavia?
+		      <g:link controller="usuario" action="login">Login</g:link>
+		    </g:else>
+		</div>
+		<!--- !Barra de logueo -->
 	</div>
 	<!--- !barra superior ---->
 
