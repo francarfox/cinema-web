@@ -87,7 +87,7 @@ class UsuarioController {
 
 		if (session.usuario != null) {
 			session.usuario = null
-			render(view:"login")
+			render(view:"logout")
 			//redirect(url:resource(dir:'' ))
 		} else {
 			render "HOLA YA TE DESLOGUEASTE OK?"
