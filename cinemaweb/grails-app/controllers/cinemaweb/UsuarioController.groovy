@@ -3,6 +3,25 @@ package cinemaweb
 class UsuarioController {
 	static scaffold = true
 
+	//Verificacion de diferentes usuarios y denegacion de acciones
+	def beforeInterceptor = [action:this.&verifUser, 
+								except:["create", "list", "index", "login", "registrar", "logout", "validar", "actualizar", 
+								"eliminar", "show"]]  //Dejo como ejemplo el edit que siendo usuario no puede entrar
+
+	private verifUser() {
+
+		if (session.usuario == null){
+			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
+			return
+		}
+	   	else {
+	   		if (session.usuario.rol == "USER"){
+		     	render(view:"denegado")
+	     	}
+	   	}
+	}
+	//!Verificacion de diferentes usuarios y denegacion de acciones
+
 	def registrar = {
 		
 		String nombre = params.nombre
@@ -16,13 +35,14 @@ class UsuarioController {
 		String user = params.userId
 		String pass = params.password
 		String passV = params.passwordV
-		def usuario = new Usuario(userId: user, password: pass, passwordV: passV, perfil: perfil)
+		String rol = "USER"
+		def usuario = new Usuario(userId: user, password: pass, passwordV: passV, rol: rol, perfil: perfil)
 
 
 		if (usuario.validate()) {
 			usuario.save()
 			flash.message = "Bienvenido ${usuario.perfil.nombre} ${usuario.perfil.apellido}"
-			redirect(action: "index")
+			render(view: "show", model: [usuario:usuario])
 		} else {
 			flash.message = "Error en la registracion del usuario"
 			render(view: "create", model: [usuario:usuario])
@@ -32,9 +52,14 @@ class UsuarioController {
 
 	def edit = {
 
-		def usuario = Usuario.get(params.id)	
-		[usuario:usuario]
-
+		if (session.usuario == null){
+			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
+			return
+		}
+		else {
+			def usuario = Usuario.get(params.id)	
+			[usuario:usuario]
+		}
 	}
 
 	def actualizar = {
@@ -54,14 +79,26 @@ class UsuarioController {
 
 	def show = {
 
-		def usuario = Usuario.get(params.id)	
-		[usuario:usuario]
+		if (session.usuario == null){
+			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
+			return
+		}
+		else {
+			def usuario = Usuario.get(params.id)	
+			[usuario:usuario]
+		}
 	}
 
 	def eliminar = {
 
-		def usuario = Usuario.get(params.id)
-		usuario.delete()
+		if (session.usuario == null){
+			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
+			return
+		}
+		else {
+			def usuario = Usuario.get(params.id)
+			usuario.delete()
+		}
 		
 	}
 
@@ -89,9 +126,7 @@ class UsuarioController {
 			session.usuario = null
 			render(view:"logout")
 			//redirect(url:resource(dir:'' ))
-		} else {
-			render "HOLA YA TE DESLOGUEASTE OK?"
-			return
 		}
 	}
+
 }
