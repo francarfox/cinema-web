@@ -7,7 +7,7 @@ class Usuario {
 	String passwordV
 	Perfil perfil
 	Date cuentaCreada = new Date()
-
+	String rol
 
     static constraints = {
 
@@ -29,6 +29,8 @@ class Usuario {
 		passwordV(nullable:false, validator: { pass2, usuario ->
 					return pass2 == usuario.password
 		})
+
+		rol inList:["ADMIN", "SUPERADMIN", "USER"]
 
 		
     }

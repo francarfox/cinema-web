@@ -67,8 +67,9 @@
 		<div style="float:right;">
 			<g:if test="${session.usuario!=null}">
 		      Bienvenido <b><g:link controller="perfil" action="show" id="${session.usuario.id}">
-								${session.usuario?.userId}<!-- &nbsp;${session.usuario?.userId} --></b> |
+								${session.usuario?.userId}<!-- &nbsp;${session.usuario?.userId} -->
 							</g:link>
+						</b> |
 		      <g:link controller="usuario" action="logout">Logout</g:link>
 		    </g:if>
 		    <g:else>
