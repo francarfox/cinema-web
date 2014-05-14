@@ -5,12 +5,20 @@
 </head>
 <body>
 	<div class="container">
+
+			<g:if test="${messageV}">
+			   	<div id="message_val">${messageV}</div>
+			</g:if>
+
 			<div class="col-md-8" style="margin-left:20px;">
 				<h1>Editando perfil </h1>
 				<br />
 
+				<g:if test="${message}">
+		    		<div id="message_error">${message}</div>
+		        </g:if>
 				<g:hasErrors bean="${perfil}">
-					<div class="errors">
+					<div id="message_error">
 						<g:renderErrors bean="${perfil}" as="list" />
 					</div>
 				</g:hasErrors>

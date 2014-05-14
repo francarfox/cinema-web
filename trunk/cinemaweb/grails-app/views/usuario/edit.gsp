@@ -8,11 +8,9 @@
 		<div class="col-md-10">
 			<h1>Editar Usuario ${usuario.userId}</h1>
 
-			<g:hasErrors bean="${usuario}">
-				<div class="errors">
-					<g:renderErrors bean="${usuario}" as="list" />
-				</div>
-			</g:hasErrors>
+			<g:if test="${message}">
+	    		<div id="message_error">${message}</div>
+	        </g:if>
 
 			<g:form action="actualizar" id="${usuario.id}">
 				<table id="tableUsuario">

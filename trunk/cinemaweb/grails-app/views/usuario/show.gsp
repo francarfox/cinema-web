@@ -6,6 +6,18 @@
 <body>
 	<div class="container">
 		
+			<g:if test="${message}">
+	    		<div id="message_error">${message}</div>
+	        </g:if>
+	        <g:if test="${messageV}">
+		    	<div id="message_val">${messageV}</div>
+		    </g:if>
+	        <g:hasErrors bean="${usuario}">
+	            <div id="message_error">
+	                <g:renderErrors bean="${usuario}" as="list" />
+	            </div>
+	        </g:hasErrors>
+
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Usuario de ${usuario.userId}</h1>
 

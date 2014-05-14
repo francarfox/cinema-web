@@ -5,8 +5,18 @@
 </head>
 <body>
 	<div class="container">
+
+		<g:if test="${messageV}">
+		   	<div id="message_val">${messageV}</div>
+		</g:if>
+
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Perfil de ${perfil.nombre}</h1>
+			
+			<g:if test="${message}">
+	    		<div id="message_error">${message}</div>
+	        </g:if>
+			
 			<br />
 			<div>
 				<p>Nombre: ${perfil.nombre}</p>

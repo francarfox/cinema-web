@@ -7,6 +7,11 @@
 	<div class="container">
 		<div class="col-md-10">
 			<h1>Acceso denegado</h1>
+			
+			<g:if test="${message}">
+	    		<div id="message_error">${message}</div>
+	        </g:if>
+
 			<br />
 			<h4> Para tener acceso a esta acción debe registrarse como administrador. </h4>
 
