@@ -9,8 +9,11 @@
 		<div class="col-md-10">
 			<h1>Crear Usuario</h1>
 
+			<g:if test="${message}">
+	    		<div id="message_error">${message}</div>
+	        </g:if>
 			<g:hasErrors bean="${usuario}">
-				<div class="errors">
+				<div id="message_error">
 					<g:renderErrors bean="${usuario}" as="list" />
 				</div>
 			</g:hasErrors>

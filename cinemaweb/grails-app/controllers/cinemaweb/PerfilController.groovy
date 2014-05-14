@@ -31,9 +31,9 @@ class PerfilController {
 				
 		if (perfil.validate()){
 			perfil.save()
-			render(view: "show", model: [perfil:perfil])
+			render(view: "show", model: [perfil:perfil,messageV: "Los datos de su perfil han sido actualizados correctamente."])
 		} else {
-			render(view: "edit", model: [perfil:perfil])
+			render(view: "edit", model: [perfil:perfil,message: "ERROR: Los datos son incorrectos."])
 		}
 	}
 

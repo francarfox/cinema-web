@@ -8,8 +8,14 @@
 		<div class="col-md-10">
 			<h1>Loguear Usuario</h1>
 
+			<g:if test="${message}">
+    			<div id="message_error" style="display: block">${message}</div>
+        	</g:if>
+        	<g:if test="${messageV}">
+		    	<div id="message_val">${messageV}</div>
+		    </g:if>
 			<g:hasErrors bean="${usuario}">
-				<div class="errors">
+				<div id="message_error">
 					<g:renderErrors bean="${usuario}" as="list" />
 				</div>
 			</g:hasErrors>

@@ -7,6 +7,11 @@
 	<div class="container">
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Usuario eliminado</h1>
+
+			<g:if test="${message}">
+	    		<div id="message_error">${message}</div>
+	        </g:if>
+        
 			<br />
 			<div>
 				<h2>¡El usuario ha sido eliminado!</h2>

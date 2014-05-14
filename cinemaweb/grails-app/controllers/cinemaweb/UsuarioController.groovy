@@ -41,11 +41,9 @@ class UsuarioController {
 
 		if (usuario.validate()) {
 			usuario.save()
-			flash.message = "Bienvenido ${usuario.perfil.nombre} ${usuario.perfil.apellido}"
-			render(view: "show", model: [usuario:usuario])
+			render(view: "login", model: [usuario:usuario,messageV: "Bienvenido ${usuario.perfil.nombre} ${usuario.perfil.apellido} a CinemaWeb."])
 		} else {
-			flash.message = "Error en la registracion del usuario"
-			render(view: "create", model: [usuario:usuario])
+			render(view: "create", model: [usuario:usuario,message: "ERROR: No ha registrado correctamente los datos."])
 		}
 
 	}
@@ -53,8 +51,7 @@ class UsuarioController {
 	def edit = {
 
 		if (session.usuario == null){
-			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
-			return
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
 			def usuario = Usuario.get(params.id)	
@@ -71,17 +68,16 @@ class UsuarioController {
 				
 		if (usuario.validate()){
 			usuario.save()
-			render(view: "show", model: [usuario:usuario])
+			render(view: "show", model: [usuario:usuario,messageV: "Los datos de su usuario han sido actualizados correctamente."])
 		} else {
-			render(view: "edit", model: [usuario:usuario])
+			render(view: "edit", model: [usuario:usuario,message: "ERROR: Ambas contraseñas no coinciden."])
 		}
 	}
 
 	def show = {
 
 		if (session.usuario == null){
-			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
-			return
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
 			def usuario = Usuario.get(params.id)	
@@ -92,8 +88,7 @@ class UsuarioController {
 	def eliminar = {
 
 		if (session.usuario == null){
-			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
-			return
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
 			def usuario = Usuario.get(params.id)
@@ -114,8 +109,7 @@ class UsuarioController {
 		session.usuario = usuario
 		render(view: "show", model: [usuario:usuario]) //redirect(controller:'' , action:'' )
 		} else {
-			flash.message = "Nombre de usuario y contraseña invalidos."
-			render(view:"login")
+			render(view: "login", model: [message: "ERROR: Nombre de usuario y contraseña invalidos."])
 		}
 
 	}
