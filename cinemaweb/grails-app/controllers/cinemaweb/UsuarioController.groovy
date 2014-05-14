@@ -11,8 +11,7 @@ class UsuarioController {
 	private verifUser() {
 
 		if (session.usuario == null){
-			render "Debe loguearse para realizar esta acción" //Despues lo hago mas lindo
-			return
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 	   	else {
 	   		if (session.usuario.rol == "USER"){
@@ -21,6 +20,22 @@ class UsuarioController {
 	   	}
 	}
 	//!Verificacion de diferentes usuarios y denegacion de acciones
+
+	def create = {
+
+		if (session.usuario == null){
+			render(view: "create")
+		}
+		else {
+			if (session.usuario.rol == "ADMIN"){
+				render(view: "createAdmin")
+			}
+			else {
+				render(view: "create")
+			}
+		}
+	
+	}
 
 	def registrar = {
 		
@@ -35,7 +50,10 @@ class UsuarioController {
 		String user = params.userId
 		String pass = params.password
 		String passV = params.passwordV
-		String rol = "USER"
+		String rol = params.rol
+		if (rol == null){
+			rol = "USER"
+		}
 		def usuario = new Usuario(userId: user, password: pass, passwordV: passV, rol: rol, perfil: perfil)
 
 
@@ -93,6 +111,7 @@ class UsuarioController {
 		else {
 			def usuario = Usuario.get(params.id)
 			usuario.delete()
+			redirect(action:logout) //Mejorar esto
 		}
 		
 	}

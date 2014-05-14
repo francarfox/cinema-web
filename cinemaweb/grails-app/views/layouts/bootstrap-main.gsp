@@ -74,7 +74,8 @@
 		    </g:if>
 		    <g:else>
 		    ¿No has iniciado sesion todavia?
-		      <g:link controller="usuario" action="login">Login</g:link>
+		      <g:link controller="usuario" action="login">Login</g:link> |
+		      <g:link controller="usuario" action="create">Registrarme</g:link>
 		    </g:else>
 		</div>
 		<!--- !Barra de logueo -->
