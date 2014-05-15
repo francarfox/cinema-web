@@ -39,6 +39,13 @@
 						</div>
 					</div>
 
+					<!-- <div class="form-group">
+						<label for="foto" class="col-md-2 col-sm-2 control-label">Foto</label>
+						<div class="col-md-4">
+							<input type="file" name="foto" class="form-control" id="foto" value="${perfil.foto}">
+						</div>
+					</div> -->
+
 					<div class="form-group">
 						<label for="name" class="col-md-2 col-sm-2 control-label">Email *</label>
 						<div class="col-md-4">

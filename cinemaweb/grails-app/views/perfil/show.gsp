@@ -19,6 +19,7 @@
 			
 			<br />
 			<div>
+				<!-- <p><img src="${createLink(controller:'perfil', action:'imagen', id: perfil.id)}"/></p> -->
 				<p>Nombre: ${perfil.nombre}</p>
 				<p>Apellido: ${perfil.apellido}</p>
 				<p>Email: ${perfil.email}</p>

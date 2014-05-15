@@ -1,12 +1,13 @@
 package cinemaweb
 
 class UsuarioController {
+	
 	static scaffold = true
 
 	//Verificacion de diferentes usuarios y denegacion de acciones
 	def beforeInterceptor = [action:this.&verifUser, 
 								except:["create", "list", "index", "login", "registrar", "logout", "validar", "actualizar", 
-								"eliminar", "show"]]  //Dejo como ejemplo el edit que siendo usuario no puede entrar
+								"eliminar", "show"]]  //Dejo como ejemplo el edit que siendo USER no puede entrar
 
 	private verifUser() {
 
@@ -37,7 +38,21 @@ class UsuarioController {
 	
 	}
 
+	//private static final okExtension = ['image/png', 'image/jpeg', 'image/gif']
+
 	def registrar = {
+
+		//Verifico foto de perfil subida
+		/* def foto = request.getFile('foto')
+		if (!okExtension.contains(foto.getContentType())) {
+		    //flash.message = "La foto debe ser de extensión: ${okExtension}"
+		    render(view: "create", model: [message: "ERROR: La foto debe ser de extensión: ${okExtension}."])
+		    return
+		}
+
+		String byte[] foto = foto.bytes
+	  	log.info("File uploaded: $user.avatarType")
+	  	*/
 		
 		String nombre = params.nombre
 		String apellido = params.apellido
@@ -111,7 +126,7 @@ class UsuarioController {
 		else {
 			def usuario = Usuario.get(params.id)
 			usuario.delete()
-			redirect(action:logout) //Mejorar esto
+			redirect(action:logout) //Mejorar esto!!!
 		}
 		
 	}

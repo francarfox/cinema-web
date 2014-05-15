@@ -22,6 +22,7 @@
 			<h1>Usuario de ${usuario.userId}</h1>
 
 			<div>
+				<!-- <p><img src="${createLink(controller:'perfil', action:'imagen', id: usuario.perfil.id)}"/></p> -->
 				<p>Usuario: ${usuario.userId}</p>
 				<p>Password: ${usuario.password}</p>
 				<p>Usuario desde: ${usuario.cuentaCreada}</p>

@@ -28,6 +28,7 @@ class PerfilController {
 		perfil.email = params.email
 		perfil.localidad = params.localidad
 		perfil.pais = params.pais
+		//perfil.foto = params.foto
 				
 		if (perfil.validate()){
 			perfil.save()
@@ -37,4 +38,17 @@ class PerfilController {
 		}
 	}
 
+	//Closure para mostrar la imagen de perfil por pantalla
+	/*def imagen = {
+
+		def perfil = Perfil.get(params.id)
+		byte[] foto = perfil.foto
+	  	
+	  	response.contentType = foto.getContentType()
+	  	response.contentLength = foto.size()
+	  	OutputStream out = response.outputStream
+	  	out.write(foto)
+	  	out.close()
+
+	}*/
 }

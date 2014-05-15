@@ -22,10 +22,10 @@ class Perfil {
     	
     	email email:true, blank:false, unique:true
 
-    	//foto nullable:true
+    	localidad blank:true, nullable:true	
 
-    	localidad blank:true, nullable:true	//agregue nullable
+    	pais blank: true, nullable:true	
 
-    	pais blank: true, nullable:true	//agregue nullable
+    	//foto nullable:true, blank: true, maxSize: 1024 * 1024 * 2
     }
 }
