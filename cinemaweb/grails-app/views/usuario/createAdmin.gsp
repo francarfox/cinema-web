@@ -51,10 +51,10 @@
 					<td><label for="apellido">Apellido *</label></td>
 					<td><g:field type="text" name="apellido" /></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td><label for="foto">Foto</label></td>
 					<td><input type="file" name="foto" /></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td><label for="email">Email *</label></td>
 					<td><g:field type="text" name="email" /></td>
