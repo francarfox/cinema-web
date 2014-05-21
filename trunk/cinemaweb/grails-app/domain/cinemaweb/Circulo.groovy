@@ -3,10 +3,10 @@ package cinemaweb
 class Circulo {
 
 	String nombre
-	String tags
+	String tags //List<String> tags
 	Usuario administrador
 
-	//static hasMany = [usuarios:Usuario, comentarios:Comentario]
+	static hasMany = [usuarios:Usuario] //comentarios:Comentario
 
     static constraints = {
 

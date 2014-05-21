@@ -1,8 +1,10 @@
 package cinemaweb
+import grails.converters.JSON
 
 class CirculoController {
 
 	static scaffold = true
+
 
 	/*
     def index = { 
@@ -36,21 +38,22 @@ class CirculoController {
 
 		if (circulo.validate()){
 			circulo.save()
-			render(view: "index", model:[messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
+			redirect(action:"index")
+			//render(view: "index", model:[messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
 		}
 		else {
 			render(view: "create", model:[circulo:circulo, message: "ERROR: No se han ingresado los datos correctamente."])
 		}
 	}
 
-	/*
 	def delete = {
 
 		def circulo = Circulo.get(params.id)
 		circulo.delete()
-		render(view: "index")
+		return
 	}
 
+	/*
 	def unirse = {
 
 		def usuario = Usuario.get(params.id)
@@ -62,6 +65,7 @@ class CirculoController {
 			//agregar el session.usuario al circulo
 		}
 	}
+	*/
 
 	def edit = {
 
@@ -85,7 +89,7 @@ class CirculoController {
 				
 		if (circulo.validate()){
 			circulo.save()
-			render(view: "index", model: [circulo:circulo,messageV: "Los datos de su circulo han sido actualizados correctamente."])
+			render(view: "show", model: [circulo:circulo,messageV: "Los datos de su circulo han sido actualizados correctamente."])
 		} else {
 			render(view: "edit", model: [circulo:circulo,message: "ERROR: Los datos ingresados no son válidos."])
 		}
@@ -104,5 +108,4 @@ class CirculoController {
 		}
 
 	}
-	*/
 }

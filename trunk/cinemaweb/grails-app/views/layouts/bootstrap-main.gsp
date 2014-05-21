@@ -12,6 +12,11 @@
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'font-awesome.min.css')}" type="stylesheet">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'cinema-web.css')}" type="text/css">
+	
+	<!---Menu-->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type='text/javascript' src='/js/menu_jquery.js'></script>
+
 	<r:require module="jquery"/>
 	<g:layoutHead/>
 	<r:layoutResources />
@@ -64,7 +69,7 @@
 		</nav>
 
 		<!--- Barra de logueo -->
-		<div style="float:right;">
+		<div id="loginmenu">
 			<g:if test="${session.usuario!=null}">
 		      Bienvenido <b><g:link controller="perfil" action="show" id="${session.usuario.id}">
 								${session.usuario?.userId}<!-- &nbsp;${session.usuario?.userId} -->
@@ -79,6 +84,22 @@
 		    </g:else>
 		</div>
 		<!--- !Barra de logueo -->
+		
+		<!--- Barra de Menu -->
+		<div id='cssmenu'>
+		<ul>
+		   <li class='active'><a href='#'><span>Home</span></a></li>
+		   <li class='has-sub'><a href='#'><span>Cines</span></a>
+		      <ul>
+		         <li><a href='#'><span>Hoyts</span></a></li>
+		         <li><a href='#'><span>Cinemark</span></a></li>
+		      </ul>
+		   </li>
+		   <li><a href='#'><span>Peliculas</span></a></li>
+		   <li class='last'><a href='#'><span>Contacto</span></a></li>
+		</ul>
+		</div>
+		<!--- !Barra de Menu -->
 	</div>
 	<!--- !barra superior ---->
 
