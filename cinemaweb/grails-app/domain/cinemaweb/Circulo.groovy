@@ -11,7 +11,16 @@ class Circulo {
     static constraints = {
 
     	nombre blank:false, nullable:false
-    	tags blank:false, nullable:false, inList:["Acción", "Thriller‎", "Drama", "Suspenso", "Terror", "Infantil", "Artes Marciales", "Aventura", "Biógraficas", "Adultas", "Cómicas", "Catástrofes", "Deportivas", "Documentales", "Fantasticas", "Guerra", "Historia", "Musicales", "Policiales", "Romanticas", "Western"]
+    	tags blank:false, nullable:false, inList:["Acción", "Thriller‎", "Drama", "Suspenso", "Terror", "Infantil", "Artes Marcial", "Aventura", "Biógrafica", "Adulta", "Cómica", "Catástrofe", "Deportiva", "Documental", "Fantástica", "Guerra", "Historia", "Musical", "Policial", "Romantica", "Western"]
     	administrador blank:false, nullable: false
+    }
+
+    def estaUsuario(Usuario user){
+    	for(usuario in this.usuarios) {
+    		if(user.userId == usuario.userId){
+    			return true
+    		}	
+    	}
+    	return false
     }
 }

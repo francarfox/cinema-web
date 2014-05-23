@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<meta name="layout" content="bootstrap-main"/>
-		<title>CinemaWeb</title>
+		<title>CinemaWeb · Tu lugar en el cine</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;

@@ -71,11 +71,20 @@
 		<!--- Barra de logueo -->
 		<div id="loginmenu">
 			<g:if test="${session.usuario!=null}">
-		      Bienvenido <b><g:link controller="perfil" action="show" id="${session.usuario.id}">
-								${session.usuario?.userId}<!-- &nbsp;${session.usuario?.userId} -->
-							</g:link>
-						</b> |
-		      <g:link controller="usuario" action="logout">Logout</g:link>
+		      					<li class="dropdown">
+		      						<b>Bienvenido</b>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>${session.usuario?.userId}</b><b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><g:link controller="usuario" action="show" id="${session.usuario.id}">Mi Usuario</g:link></li>
+										<li><g:link controller="perfil" action="show" id="${session.usuario.id}">Mi Perfil</g:link></li>
+										<li><g:link controller="circulo" action="indexusuario" id="${session.usuario.id}">Mis Circulos</g:link></li>
+										<li><a href="#">Mis Comentarios</a></li>
+										<li><a href="#">Mis Reservas</a></li>
+										<li class="divider"></li>
+										<li><g:link controller="usuario" action="logout">Logout</g:link></li>
+										<li><g:link controller="usuario" action="eliminar" id="${session.usuario.id}">Eliminar Cuenta</g:link></li>
+									</ul>
+								</li>				
 		    </g:if>
 		    <g:else>
 		    ¿No has iniciado sesion todavia?
@@ -88,14 +97,16 @@
 		<!--- Barra de Menu -->
 		<div id='cssmenu'>
 		<ul>
-		   <li class='active'><a href='#'><span>Home</span></a></li>
-		   <li class='has-sub'><a href='#'><span>Cines</span></a>
+		   <li class='active'><a href='/cinemaweb'><span>Home</span></a></li>
+		   <li class='has-sub'><a href='/cinemaweb/cine'><span>Cines</span></a>
 		      <ul>
 		         <li><a href='#'><span>Hoyts</span></a></li>
 		         <li><a href='#'><span>Cinemark</span></a></li>
 		      </ul>
 		   </li>
-		   <li><a href='#'><span>Peliculas</span></a></li>
+		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
+		   <li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>
+		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
 		   <li class='last'><a href='#'><span>Contacto</span></a></li>
 		</ul>
 		</div>
@@ -111,9 +122,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<hr style="border-top: 1px solid #D8D8D8;">
-				<div class="col-md-3 pull-right text-right" style="color:grey">
+				<div class="col-md-3 pull-right text-right" style="color:black;padding-bottom:10px;">
 					<i class="fa fa-film"></i> Cinema Web - <g:formatDate format="yyyy" date="${new Date()}"/> 
 				</div>
+				<br />
 			</div>
 		</div>
 	</div>
