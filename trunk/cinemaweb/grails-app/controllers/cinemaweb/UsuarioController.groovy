@@ -126,7 +126,8 @@ class UsuarioController {
 		else {
 			def usuario = Usuario.get(params.id)
 			usuario.delete()
-			redirect(action:logout) //Mejorar esto!!!
+			session.usuario = null
+			return //Mejorar esto!!!
 		}
 		
 	}

@@ -32,8 +32,8 @@
 					<td><g:field type="text" name="nombre"/></td>
 				</tr>
 				<tr>
-					<td><label for="tags">Tags *</label></td>
-					<td><g:select multiple="multiple" from="${['Acción', 'Thriller‎', 'Drama', 'Suspenso', 'Terror', 'Infantil', 'Artes Marciales', 'Aventura', 'Biógraficas', 'Adultas', 'Cómicas', 'Catástrofes', 'Deportivas', 'Documentales', 'Fantasticas', 'Guerra', 'Historia', 'Musicales', 'Policiales', 'Romanticas', 'Western']}" name="tags"/></td>
+					<td><label for="tags">Tag *</label></td>
+					<td><g:select from="${['Acción', 'Thriller‎', 'Drama', 'Suspenso', 'Terror', 'Infantil', 'Arte Marcial', 'Aventura', 'Biógrafica', 'Adulta', 'Cómica', 'Catástrofe', 'Deportiva', 'Documental', 'Fantastica', 'Guerra', 'Historia', 'Musical', 'Policial', 'Romantica', 'Western']}" name="tags"/></td>
 				</tr>
 				<tr>
 					<td colspan="2"><br /></td>

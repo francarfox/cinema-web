@@ -22,7 +22,7 @@
 						<td><g:field type="text" name="nombre" value="${circulo.nombre}" /></td>
 					</tr>
 					<tr>
-						<td><label for="tags">Tags</label></td>
+						<td><label for="tags">Tag</label></td>
 						<td><g:field type="text" name="tags" value="${circulo.tags}" /></td>
 					</tr>
 

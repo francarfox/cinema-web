@@ -9,6 +9,8 @@ class Usuario {
 	Date cuentaCreada = new Date()
 	String rol
 
+	static belongsTo = Circulo //Hacer closure para mostrar cada circulo del usuario
+
     static constraints = {
 
     	userId blank:false, unique:true, size:3..10
