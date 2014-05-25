@@ -132,7 +132,7 @@ class UsuarioController {
 		
 	}
 
-	def login = {
+	def login = { //Se podria verificar que antes de loguear no haya un usuario logueado sino que se deslogue
 
 	}
 
