@@ -5,8 +5,8 @@
 </head>
 <body>
 	<div class="container">
-		
-			<g:if test="${message}">
+
+		<g:if test="${message}">
 	    		<div id="message_error">${message}</div>
 	        </g:if>
 	        <g:if test="${messageV}">
@@ -18,37 +18,104 @@
 	            </div>
 	        </g:hasErrors>
 
-		<div class="col-md-8" style="margin-left:20px;">
-			<h1>Circulo ${circulo.nombre}</h1>
-
-			<div>
-				<p>Nombre: ${circulo.nombre}</p>
-				<p>Tags: ${circulo.tags}</p>
-				<p>Usuarios participantes: 
-					<g:each in="${circulo.usuarios}" var="usuario">
-						<!-- <g:link controller:"usuario" action="show" id="${usuario.id}">${usuario.userId}</g:link> | -->
-						${usuario.userId} |
-					</g:each>
-				</p>
-				<br />
-				<hr style="border-top: 1px solid black;">
-				<p> Comentarios: </p>
-				<br />
-				<hr style="border-top: 1px solid black;">
+	    <div class="row">
+			<div class="col-md-8">
+				<h1>Circulo de ${circulo.nombre}</h1>
 			</div>
-			<br />
+			<div class="col-md-4" style="margin-top:40px;">
+				<g:form action="#" style="float:right">
+					<g:field type="text" name="busquedacirculo" />
+					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
+				</g:form>
+			</div>
+		</div>
+			
+		<div class="col-md-8" style="margin-top:20px;">
+			<table class="table">
+				<thead>
+				<tr>
+					<td><h2 style="text-align:center;color:#ffcc00;">Comentarios</h2></td>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="height:300px"></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<thead>
+					<tr>
+						<td><h2 style="text-align:center;color:#ffcc00;">Postear un comentario</h2></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="height:100px">
+							<g:form action="#">
+								<g:field type="textarea" name="enviarcomentario" style="width:650px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+								<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
+							</g:form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-			<g:form action="edit">
-				<g:submitButton name="Editar Circulo"/>
-			</g:form>
-			<br />
-			<g:form action="delete">
-				<g:submitButton name="Eliminar Circulo"/>
-			</g:form>
-			<br />
-			<g:form action="index">
-				<g:submitButton name="Volver"/>
-			</g:form>
+		<div class="col-md-4 pnl-circuloadmin">
+		<p style="text-align:center;"><strong>¡Bienvenido ${session.usuario.userId} a su circulo!</strong></p>
+			<table class="table tablecirc">
+				<thead>
+				<tr>
+					<td><strong>Nombre</strong></td>
+					<td>${circulo.nombre}</td>
+				</tr>
+				</thead>
+				<tr>
+					<td><strong>Tags</strong></td>
+					<td>${circulo.tags}</td>
+				</tr>
+				<tr>
+					<td><strong>Usuarios</strong></td>
+					<td>
+						<g:if test="${circulo.usuarios!=null}">
+							<g:each in="${circulo.usuarios}" var="usuario">${usuario.userId} |</g:each>
+						</g:if>
+						<g:else>No hay usuarios unidos</g:else>
+					</td>
+				</tr>
+			</table>
+			<table style="background-color:#F1C308">
+				<tr>
+					<td>
+						<g:form action="edit" id="${circulo.id}">
+							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Editar Circulo"/>
+						</g:form>
+					</td>
+					<td style="width:50%;">&nbsp</td>
+					<td>
+						<g:form action="delete" id="${circulo.id}">
+							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Eliminar Circulo"/>
+						</g:form>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">&nbsp</td>
+				</tr>
+				<tr>
+					<td>
+						<g:form action="create">
+							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Crear Circulo" />
+						</g:form>
+					</td>
+					<td style="width:50%;">&nbsp</td>
+					<td>
+						<g:form>
+							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Eliminar Usuario" />
+						</g:form>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>

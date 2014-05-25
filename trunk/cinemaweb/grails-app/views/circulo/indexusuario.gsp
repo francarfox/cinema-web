@@ -15,12 +15,11 @@
 		
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Circulos</h2>
+				<h2>Mis Circulos</h2>
 			</div>
 		</div>
-		<div class="row">
 			<div class="col-md-8">
-				<table class="table table-bordered table-stripped">
+				<table class="table">
 					<thead>
 						<tr>
 							<th class="text-center">Nombre</th>
@@ -45,16 +44,35 @@
 							</g:if>
 						</g:each>
 					</tbody>
+					<tfoot>
+						<tr>
+							<td class="text-center" colspan="4">1</td>
+						</tr>
+					</tfoot>
+				</table>
+		</div>
+		<div class="col-md-4 pnl-circulo">
+				<g:form action="#">
+					<g:field type="text" name="busquedacirculo" />
+					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
+				</g:form>
+				<br />
+				<table style="margin-top:1px; float:right; background-color:#F1C308;">
+					<tr>
+						<td>
+							<g:form action="create">
+								<g:submitButton class="btn btn-lg btn-crearcirculo" name="Crear Circulo" />
+							</g:form>
+						</td>
+						<td style="width:50%;">&nbsp</td>
+						<td>
+							<g:form action="indexusuario" id="${session.usuario.id}">
+								<g:submitButton class="btn btn-lg btn-crearcirculo" name="Mis Circulos" />
+							</g:form>
+						</td>
+					</tr>
 				</table>
 			</div>
-		</div>
-		<div class="row" style="margin-left:1px;">
-			<br />
-			<g:form action="create">
-				<g:submitButton name="Crear Circulo"/>
-			</g:form>
-			<br />
-		</div>
 	</div>
 </body>
 </html>

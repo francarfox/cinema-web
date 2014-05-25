@@ -6,9 +6,15 @@ class CirculoController {
 	static scaffold = true
 
     def index = {
+    	def usuario = Usuario.get(params.id)
 
+    	if (session.usuario == null){
+			redirect(controller:'usuario' , action:'login' )
+		}
+		else {
     	def circulos = Circulo.list() 
         [circulos: circulos]
+    	}
     }
 
     def indexusuario = {

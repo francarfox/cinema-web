@@ -2,8 +2,9 @@
  Estilos para Cinema - Web
 */
 
-h1{
+h1, h2{
   color: black;
+  margin-top: 30px;
 }
 
 h4, h3{
@@ -27,10 +28,18 @@ a:focus {
   color:white;
 }
 
+/*CONTENEDORES*/
 .container {
   background-color: #F1C308;
 }
 
+.row {
+  margin-left: 15px;
+ }
+/*!CONTENEDORES*/
+
+
+/*TABLAS*/
 #tableUsuario {
   border: none;
   width: 60%;
@@ -44,6 +53,26 @@ a:focus {
 table {
   background-color: #BD1133; /*Bordo*/
   color:#ffcc00; /*Amarillo*/
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  margin-top: 15px;
+}
+
+.tablecirc {
+  background-color: #BD1133; /*Bordo*/
+  color:#ffcc00; /*Amarillo*/
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.table tr:hover td{
+  background-color: rgba(254, 254, 254, 0.2);
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
 }
 
 table.data td.field{
@@ -54,6 +83,7 @@ table.data td.field{
 table.data td.{
 	padding-bottom: 5px
 }
+/*!TABLA*/
 
 #message_error {
     background: #fff3f3;
@@ -371,4 +401,35 @@ table.data td.{
     margin-right: 10px;
     color: #ffcc00;
 }
-/*MENU LOGIN*/
+/*!MENU LOGIN*/
+
+/*BOTONES*/
+.btn-buscar {
+  font-size:13px; 
+  padding: 5px 10px; 
+  color:white;
+  background-color: #BD1133;
+}
+.btn-crearcirculo {
+  font-size:15px; 
+  padding: 5px 10px; 
+  color:white;
+  background-color: #BD1133;
+}
+/*!BOTONES*/
+
+/*BARRAS CONTENIDO*/
+
+.pnl-circulo {
+  margin-top: 15px;
+  float:right;
+  width:260px;
+  padding-right:1px;
+}
+
+.pnl-circuloadmin {
+  float:right;
+  width:260px;
+  padding-right:1px;
+  padding-top:30px;
+}
