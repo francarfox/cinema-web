@@ -3,7 +3,7 @@
 */
 
 h1, h2{
-  color: black;
+  color: #BD1133;
   margin-top: 30px;
 }
 
@@ -36,6 +36,15 @@ a:focus {
 .row {
   margin-left: 15px;
  }
+
+.col-md-6 {
+  margin: 20px;
+}
+
+.col-md-5 {
+  float: none;
+  margin: 0 auto;
+}
 /*!CONTENEDORES*/
 
 
@@ -89,7 +98,7 @@ table.data td.{
     background: #fff3f3;
     border: 1px solid red;
     color: #cc0000;
-    margin: 25px 0px 15px 0;
+    margin: 25px 0px 0px 0px;
     padding: 5px 5px 5px 10px
 }
 
@@ -97,7 +106,7 @@ table.data td.{
     background: #fff3f3;
     border: 1px solid green;
     color: green;
-    margin: 25px 0px 15px 0;
+    margin: 25px 0px 0px 0px;
     padding: 5px 5px 5px 10px
 }
 
@@ -416,6 +425,22 @@ table.data td.{
   color:white;
   background-color: #BD1133;
 }
+
+.btn-login {
+  color:#ffcc00;
+  border-color:#BD1133;
+  background-color: #BD1133;
+}
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+  color: #ffcc00;
+  background-color: #9C0825;
+  border-color: #9C0825;
+}
+
 /*!BOTONES*/
 
 /*BARRAS CONTENIDO*/
@@ -433,3 +458,5 @@ table.data td.{
   padding-right:1px;
   padding-top:30px;
 }
+
+/*!BARRAS CONTENIDO*/

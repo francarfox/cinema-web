@@ -9,46 +9,47 @@
 		<g:if test="${messageV}">
 		   	<div id="message_val">${messageV}</div>
 		</g:if>
+		<g:if test="${message}">
+    		<div id="message_error" style="display: block">${message}</div>
+        </g:if>
+		<g:hasErrors bean="${usuario}">
+			<div id="message_error">
+				<g:renderErrors bean="${usuario}" as="list" />
+			</div>
+		</g:hasErrors>
 
-		<div class="col-md-10">
-			<h1>Loguear Usuario</h1>
+		<div class="col-md-3">
+		</div>
 
-			<g:if test="${message}">
-    			<div id="message_error" style="display: block">${message}</div>
-        	</g:if>
-			<g:hasErrors bean="${usuario}">
-				<div id="message_error">
-					<g:renderErrors bean="${usuario}" as="list" />
-				</div>
-			</g:hasErrors>
-
-			<g:form action="validar">
+		<div class="col-md-6">
+			<g:form action="validar" class="form-signin">
 				<table id="tableUsuario">
 					<tr>
-						<td colspan="2"><h2>Datos Usuario</h2></td>
+						<td colspan="2"><h2 class="text-center">Login</h2></td>
 					</tr>
 					<tr>
-						<td><label for="userId">Usuario</label></td>
-						<td><g:field type="text" name="userId" value="" /></td>
+						<td><g:field type="text" class="form-control" placeholder="Usuario" name="userId" /></td>
 					</tr>
 					<tr>
-						<td><label for="password">Password</label></td>
-						<td><g:passwordField name="password" value="" /></td>
+						<td>&nbsp</td>
 					</tr>
-
+					<tr>
+						<td><g:passwordField name="password" class="form-control" placeholder="Password" /></td>
+					</tr>
 					<tr>
 						<td colspan="2"><br /></td>
 					</tr>
 					<tr align="center">
-						<td colspan="2" style="text-align:center"><g:submitButton name="Login"/></td>
+						<td><g:submitButton class="btn btn-lg btn-login btn-block" name="Iniciar Sesión"/></td>
+					</tr>
+					<tr>
+						<td><hr style="border-top: 1px solid black;"></td>
+					</tr>
+					<tr>
+						<td><p style="color:#BD1133;font-size:11px;text-align:center">¿No dispones de una cuenta CinemaWeb? <g:link controller="usuario" action="create">Registrate ahora</p></g:link></td>
 					</tr>
 				</table>
 			</g:form>
-			<p>
-				<g:form action="index" style="margin-left:20px">
-					<g:submitButton name="Volver"/>
-				</g:form>
-			</p>
 		</div>
 	</div>
 </body>

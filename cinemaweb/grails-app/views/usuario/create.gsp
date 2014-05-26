@@ -1,81 +1,64 @@
 <html>
 <head>
-	<title>Crear Usuario</title>
+	<title>Crear Usuario · CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>
 	<div class="container">
 
-		<div class="col-md-10">
-			<h1>Crear Usuario</h1>
+		<g:if test="${message}">
+	    	<div id="message_error">${message}</div>
+	    </g:if>
+		<g:hasErrors bean="${usuario}">
+			<div id="message_error">
+				<g:renderErrors bean="${usuario}" as="list" />
+			</div>
+		</g:hasErrors>
 
-			<g:if test="${message}">
-	    		<div id="message_error">${message}</div>
-	        </g:if>
-			<g:hasErrors bean="${usuario}">
-				<div id="message_error">
-					<g:renderErrors bean="${usuario}" as="list" />
-				</div>
-			</g:hasErrors>
-
+		<div class="col-md-5">
 			<g:form action="registrar">
-			<table id="tableUsuario">
-				<tr>
-					<td colspan="2"><h2>Datos Usuario</h2></td>
-				</tr>
-				<tr>
-					<td><label for="userId">Usuario *</label></td>
-					<td><g:field type="text" name="userId"/></td>
-				</tr>
-				<tr>
-					<td><label for="password">Password *</label></td>
-					<td><g:passwordField name="password"/></td>
-				</tr>
-				<tr>
-					<td><label for="passwordV">Confirmar Password *</label></td>
-					<td><g:passwordField name="passwordV"/></td>
-				</tr>
-
-				<tr>
-					<td colspan="2"><h2>Datos Personales</h2></td>
-				</tr>
-				<tr>
-					<td><label for="nombre">Nombre *</label></td>
-					<td><g:field type="text" name="nombre" /></td>
-				</tr>
-				<tr>
-					<td><label for="apellido">Apellido *</label></td>
-					<td><g:field type="text" name="apellido" /></td>
-				</tr>
-				<!-- <tr>
-					<td><label for="foto">Foto</label></td>
-					<td><input type="file" name="foto" /></td>
-				</tr> -->
-				<tr>
-					<td><label for="email">Email *</label></td>
-					<td><g:field type="text" name="email" /></td>
-				</tr>
-				<tr>
-					<td><label for="localidad">Localidad</label></td>
-					<td><g:field type="text" name="localidad" /></td>
-				</tr>
-				<tr>
-					<td><label for="pais">Pais</label></td>
-					<td><g:countrySelect name="pais" style="width:53%" noSelection="['':'Selecciona tu pais']"/></td>
-				</tr>
-				<tr>
-					<td colspan="2"><br /></td>
-				</tr>
-				<tr align="center">
-					<td colspan="2" style="text-align:center"><g:submitButton name="Registrarme"/></td>
-				</tr>
-			</g:form>
-			</table>
-			<p>
-				<g:form action="index" style="margin-left:20px">
-					<g:submitButton name="Volver"/>
-				</g:form>
-			</p>
+				<h2 style="text-align:center;">Datos Usuario</h2>
+				<div class="form-group">
+					<label for="userId">Usuario *</label>
+					<g:field type="text" class="form-control" name="userId" />
+				</div>
+				<div class="form-group">
+					<label for="password">Password *</label>
+					<g:passwordField class="form-control" name="password"/>
+				</div>
+				<div class="form-group">
+					<label for="passwordV">Confirmar Password *</label>
+					<g:passwordField class="form-control" name="passwordV"/>
+				</div>
+				<br />
+				<h2 style="text-align:center;">Datos Personales</h2>
+				<div class="form-group">
+					<label for="nombre">Nombre *</label>
+					<g:field type="text" class="form-control" name="nombre" />
+				</div>
+				<div class="form-group">
+					<label for="apellido">Apellido *</label>
+					<g:field type="text" class="form-control" name="apellido" />
+				</div>
+				<!--<div class="form-group">
+					<label for="foto">Foto</label>
+					<input type="file" class="form-control" name="foto" />
+				</div>-->
+				<div class="form-group">
+					<label for="email">Email *</label>
+					<g:field type="text" class="form-control" name="email" />
+				</div>
+				<div class="form-group">
+					<label for="localidad">Localidad</label>
+					<g:field type="text" class="form-control" name="localidad" />
+				</div>
+				<div class="form-group">
+					<label for="pais">Pais</label>
+					<g:countrySelect name="pais" class="form-control" noSelection="['':'Selecciona tu pais']"/>
+				</div>
+				<br />
+				<g:submitButton class="btn btn-lg btn-login btn-block" name="Registrarme"/>
+			</g:form>		
 		</div>
 	</div>
 </body>

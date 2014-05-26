@@ -13,14 +13,9 @@
 	        </g:if>
 
 			<br />
-			<h4> Para tener acceso a esta acción debe registrarse como administrador. </h4>
+			<h4> Para tener acceso a esta acción debe ser administrador. </h4>
 
 			<div class="form-group">
-				<p>
-					<g:form action="login" style="margin-left:20px">
-						<g:submitButton name="Login"/>
-					</g:form>
-				</p>
 				<p>
 					<g:form action="index" style="margin-left:20px">
 						<g:submitButton name="Volver"/>

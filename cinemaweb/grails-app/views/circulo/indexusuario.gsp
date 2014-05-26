@@ -53,7 +53,7 @@
 		</div>
 		<div class="col-md-4 pnl-circulo">
 				<g:form action="#">
-					<g:field type="text" name="busquedacirculo" />
+					<g:field type="text" placeholder="Buscar Circulos" name="busquedacirculo" />
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 				<br />
