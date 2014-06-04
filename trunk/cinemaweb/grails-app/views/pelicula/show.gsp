@@ -1,31 +1,80 @@
 <html>
 <head>
-	<title>${pelicula.titulo}</title>
+	<meta name="layout" content="bootstrap-main"/>
+	<title>Cinema web - Pelicula</title>
+	<style type="text/css">
+	.col-md-6{margin: 0px;}
+	h4{margin-bottom: 10px}
+	</style>
 </head>
 <body>
-	<h1>${pelicula.titulo} (${pelicula.puntos})</h1>
-	<div>
-		<g:form action="puntuar" id="${pelicula.id}">
-			<g:select name="puntos" from="${1..10}"/>
-			<g:submitButton name="Puntuar"/>
-		</g:form>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Pelicula: #${movie.id} - ${movie.titulo}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12" id="data-display">
+						<div class="row">
+							<div class="col-md-2"><b>Titulo:</b></div>
+							<div class="col-md-10">${movie.titulo}</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2"><b>Director:</b></div>
+							<div class="col-md-10">${movie.director}</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2"><b>Sinopsis:</b></div>
+							<div class="col-md-10">
+								${movie.sinopsis}	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2"><b>Duracion:</b></div>
+							<div class="col-md-10">
+								${movie.duracion} minutos
+							</div>
+						</div>	
+					</div>
+				</div>
+				<!--- Trailer ---->
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Trailer</h4>
+						<g:if test="${movie.urlTrailer}">
+						<iframe 
+						src="${movie.urlTrailer}">
+					</iframe>
+				</g:if>
+				<g:else>
+				<p><i>No trailer to display</i></p>
+			</g:else>
+		</div>
 	</div>
-	<div>
-		<g:form action="comentar" id="${pelicula.id}">
-			Comentario: 
-			<g:field type="text" name="mensaje"/>
-			<g:submitButton name="Comentar"/>
-		</g:form>
-		<g:each in="${comentarios}" var="comentario">
-			<li>
-				<g:link controller="usuario" action="show" id="${comentario.autor.id}">${comentario.autor}:</g:link>
-				 ${comentario.mensaje} [${comentario.fecha}]
-			</li>
-		</g:each>
+</div>
+<div class="col-md-4">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="well" id="actions">
+				<h4><b>Actions</b></h4>	
+				<div class="row">
+					<div class="col-md-12">
+						<g:link action="edit" id="${movie.id}" ><i class="fa fa-edit"></i> Editar</g:link>
+					</div>
+				</div>
+				<div class="row">
+				<div class="col-md-12">
+						<g:link action="index"><i class="fa fa-list"></i> Peliculas</g:link>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<g:form action="index">
-		<g:submitButton name="Volver"/>
-	</g:form>
+</div>
+</div>
+</div>
 </body>
 </html>

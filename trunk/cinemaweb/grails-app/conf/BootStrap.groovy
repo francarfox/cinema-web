@@ -16,11 +16,11 @@ class BootStrap {
 		    new Cine(nombre: "Cinemark").save(failOnError:true)
 		}
 
-		if(!Pelicula.count()) {
+		/*if(!Pelicula.count()) {
 		    new Pelicula(titulo: "Matrix Reload").save(failOnError:true)
 		    new Pelicula(titulo: "Capitan America").save(failOnError:true)
 		    new Pelicula(titulo: "Volver al Futuro").save(failOnError:true)
-		}
+		}*/
     }
     def destroy = {
     }

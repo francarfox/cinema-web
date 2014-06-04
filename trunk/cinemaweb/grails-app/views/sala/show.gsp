@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta name="layout" content="bootstrap-main"/>
+	<meta name="layout" content="bootstrap-main2"/>
 	<title>Cinema Web - Sala: ${sala.nombre}</title>
 	<style type="text/css">
 	#seats thead tr th, #seats tbody tr td {

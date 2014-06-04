@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta name="layout" content="bootstrap-main"/>
+	<meta name="layout" content="bootstrap-main2"/>
 	<title>Cinema Web - Editar Sala</title>
 </head>
 <body>
