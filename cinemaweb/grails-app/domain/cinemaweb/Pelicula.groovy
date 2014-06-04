@@ -2,13 +2,22 @@ package cinemaweb
 
 class Pelicula {
 	String titulo
+    String director
+    String sinopsis
+    String foto
+    String urlTrailer
+    Integer duracion
     int puntos = 0
-	
-	static hasMany = [comentarios: Comentario]
+    
+    static hasMany = [comentarios: Comentario]
 
     static constraints = {
-    	titulo blank: false, unique: true
+    	titulo blank: false
+        director blank: false
+        sinopsis blank: false
+        duracion min:30
         puntos min: 0
+        foto blank:true
     }
 
     def agregarComentario(comentario) {
