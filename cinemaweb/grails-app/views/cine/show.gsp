@@ -1,26 +1,72 @@
 <html>
 <head>
-	<title>${cine.nombre}</title>
+	<meta name="layout" content="bootstrap-main"/>
+	<title>Cinema web - Cine</title>
+	<style type="text/css">
+	.col-md-6{margin: 0px;}
+	h4{margin-bottom: 10px}
+	</style>
 </head>
 <body>
-	<h1>${cine.nombre}</h1>
-	<g:form action="comentar" id="${cine.id}">
-		Comentario: 
-		<g:field type="text" name="mensaje"/>
-		<g:submitButton name="Comentar"/>
-	</g:form>
-
-	<div>
-		<g:each in="${comentarios}" var="comentario">
-			<li>
-				<g:link controller="usuario" action="show" id="${comentario.autor.id}">${comentario.autor}:</g:link>
-				 ${comentario.mensaje} [${comentario.fecha}]
-			</li>
-		</g:each>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Cine: #${cine.id} - ${cine.nombre}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12" id="data-display">
+						<div class="row">
+							<div class="col-md-3"><b>Nombre:</b></div>
+							<div class="col-md-9">${cine.nombre}</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3"><b>Ubicacion:</b></div>
+							<div class="col-md-9">${cine.ubicacion}</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3"><b>Precion Base:</b></div>
+							<div class="col-md-9">
+								$ ${cine.precioBase}	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3"><b>Apertura:</b></div>
+							<div class="col-md-9">
+								${cine.apertura}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3"><b>Cierre:</b></div>
+							<div class="col-md-9">
+								${cine.cierre}
+							</div>
+						</div>	
+					</div>
+				</div>	
+</div>
+<div class="col-md-4">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="well" id="actions">
+				<h4><b>Actions</b></h4>	
+				<div class="row">
+					<div class="col-md-12">
+						<g:link action="edit" id="${cine.id}" ><i class="fa fa-edit"></i> Editar</g:link>
+					</div>
+				</div>
+				<div class="row">
+				<div class="col-md-12">
+						<g:link action="index"><i class="fa fa-list"></i> Cines</g:link>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<g:form action="index">
-		<g:submitButton name="Volver"/>
-	</g:form>
+</div>
+</div>
+</div>
 </body>
 </html>
