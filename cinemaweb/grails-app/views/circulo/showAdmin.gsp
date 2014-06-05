@@ -85,18 +85,14 @@
 					</td>
 				</tr>
 			</table>
-			<table style="background-color:#F1C308">
+			<table style="background-color:#F1C308;">
 				<tr>
 					<td>
-						<g:form action="edit" id="${circulo.id}">
-							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Editar Circulo"/>
-						</g:form>
+						<g:link action="edit" id="${circulo.id}" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa fa-pencil-square-o"></i> Editar Circulo</g:link>
 					</td>
 					<td style="width:50%;">&nbsp</td>
 					<td>
-						<g:form action="delete" id="${circulo.id}">
-							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Eliminar Circulo"/>
-						</g:form>
+						<g:link action="delete" id="${circulo.id}" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-times"></i> Eliminar Circulo</g:link>
 					</td>
 				</tr>
 				<tr>
@@ -104,15 +100,12 @@
 				</tr>
 				<tr>
 					<td>
-						<g:form action="create">
-							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Crear Circulo" />
-						</g:form>
+						<g:link action="create" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-plus-square"></i> Crear Circulo</g:link>
 					</td>
 					<td style="width:50%;">&nbsp</td>
 					<td>
-						<g:form>
-							<g:submitButton class="btn btn-lg btn-crearcirculo" name="Eliminar Usuario" />
-						</g:form>
+						<!-- Hacer este boton -->
+						<g:link class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-ban"></i> Eliminar Usuario</g:link>
 					</td>
 				</tr>
 			</table>

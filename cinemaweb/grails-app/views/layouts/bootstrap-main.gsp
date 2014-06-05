@@ -38,6 +38,17 @@
 	<!--- barra superior ---->
 	<div class="container">
 		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="col-md-3">
+				<!-- ACA IRIA EL LOGO -->
+			</div>
+			<div class="col-md-12" style="margin: 0 auto; width:70%;top: 80px;">
+				<g:form>
+					<g:field type="text" placeholder="Pelicula" name="busquedapelicula" style="width:200px; height:40px; border-radius:4px; border: 1px solid #ccc; margin-right:15px;" />
+					<g:field type="text" placeholder="Cine" name="busquedacine" style="width:200px; height:40px; border-radius:4px; border: 1px solid #ccc; margin-right:15px;" />
+					<g:field type="text" placeholder="Lugar" name="busquedalugar" style="width:200px; height:40px; border-radius:4px; border: 1px solid #ccc; margin-right:15px;" />
+					<g:submitButton class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;" name="Buscar"/>
+				</g:form>
+			</div>
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -50,7 +61,7 @@
 					<!-- <g:img dir="images/cinema-web" file="LogoCinema-60x50.png" id="bar-logo"/>
 					<a href="#" class="navbar-brand" style="float:none" id="bar-brand">Cinema Web</a> -->
 				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">	
+				<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">	
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
@@ -63,7 +74,7 @@
 							</ul>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 
 			</div><!-- /.container-fluid -->
 		</nav>

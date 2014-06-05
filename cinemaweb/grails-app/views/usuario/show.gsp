@@ -18,6 +18,16 @@
 	            </div>
 	        </g:hasErrors>
 
+	   	<div class="col-md-3" style="margin-top:30px;padding:0;">
+	   		<ul class="menu">
+			  <li><a href="#" class="active"><span>USUARIO</span></a></li>
+			  <li><a href="#"><span>PERFIL</span></a></li>
+			  <li><a href="#"><span>CIRCULOS</span></a></li>
+			  <li><a href="#"><span>COMENTARIOS</span></a></li>
+			  <li><a href="#"><span>RESERVAS</span></a></li>
+			</ul>
+	   	</div>
+
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Usuario de ${usuario.userId}</h1>
 

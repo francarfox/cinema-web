@@ -24,7 +24,7 @@
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" style="float:right">
-					<g:field type="text" placeholder="Buscar Circulos" name="busquedacirculo" />
+					<g:field type="text" placeholder="Buscar Circulos" class="form-control form-busqueda" name="busquedacirculo" />
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
@@ -64,21 +64,15 @@
 				<thead>
 					<tr>
 						<td>
-							<g:form action="desunirse" id="${circulo.id}">
-								<g:submitButton class="btn btn-lg btn-crearcirculo" name="Desunirme"/>
-							</g:form>
+							<g:link action="desunirse" id="${circulo.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-external-link"></i> Desunirme</g:link>
 						</td>
 						<td>&nbsp</td>
 						<td>
-							<g:form action="indexusuario" id="${session.usuario.id}">
-								<g:submitButton class="btn btn-lg btn-crearcirculo" name="Mis Circulos"/>
-							</g:form>
+							<g:link action="indexusuario" id="${session.usuario.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
 						</td>
 						<td>&nbsp</td>
 						<td>
-							<g:form action="index">
-								<g:submitButton class="btn btn-lg btn-crearcirculo" name="Circulos"/>
-							</g:form>
+							<g:link action="index" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-list"></i> Círculos</g:link>
 						</td>
 					</tr>
 				</thead>

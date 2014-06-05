@@ -47,6 +47,13 @@ a:focus {
 }
 /*!CONTENEDORES*/
 
+/*FORM*/
+.form-busqueda {
+  width: 70%;
+  display: table-cell;
+}
+/*!FORM*/
+
 
 /*TABLAS*/
 #tableUsuario {
@@ -110,7 +117,45 @@ table.data td.{
     padding: 5px 5px 5px 10px
 }
 
-/*MENU*/
+/*MENU LATERAL USUARIO*/
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+.menu{
+  margin:0; 
+  padding:0; 
+  width:200px; 
+  list-style:none;
+  background:rgb(189,17,51);
+  font-family: 'PT Sans', sans-serif;
+}
+.menu li{
+  padding:0; 
+  margin:0 0 1px 0; 
+  height:40px; 
+  display:block; 
+}
+.menu li a{
+  text-align:left;
+  height:40px; 
+  padding:0px 25px; 
+  font-size:13px;
+  color:rgb(255,204,0); 
+  display:block; 
+  background:url('verMenuImages.png') 0px 0px no-repeat; 
+  text-decoration:none;
+  font-weight: 700;
+}
+.menu li a:hover{
+  background:url('../images/cinema-web/verMenuImages.png') 0px -40px no-repeat; color:rgb(3,3,3);
+}
+.menu li a.active, .menu li a.active:hover{
+  background:url('../images/cinema-web/verMenuImages.png') 0px -80px no-repeat; color:rgb(3,2,0);
+}
+.menu li a span{
+  line-height:40px;
+}
+/*!MENU LATERAL USUARIO*/
+
+/*MENU PRINCIPAL*/
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
 #cssmenu {
   background: #BD1133;
@@ -414,13 +459,18 @@ table.data td.{
 
 /*BOTONES*/
 .btn-buscar {
-  font-size:13px; 
+  font-size:15px; 
   padding: 5px 10px; 
   color:white;
   background-color: #BD1133;
 }
-.btn-crearcirculo {
+.btn-medium {
+  font-size:12px; 
+}
+.btn-large {
   font-size:15px; 
+}
+.btn-crearcirculo {
   padding: 5px 10px; 
   color:white;
   background-color: #BD1133;
