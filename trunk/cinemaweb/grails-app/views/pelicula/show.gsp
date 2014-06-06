@@ -54,6 +54,21 @@
 			</g:else>
 		</div>
 	</div>
+
+<!--Comentarios-->
+<div id="Comentarios">
+	<div class="col-md-12">
+		<g:form action="comentar" id="${movie.id}">
+			<div class="col-md-2">
+			<g:submitButton name="Comentar" class="btn btn-primary btn-block"/>
+			</div>
+			<g:field type="text" name="mensaje"/>
+		</g:form>
+	</div>
+
+	<g:render template="comentarioTemp" collection="${movie.comentarios}" var="comentario"/>
+</div>
+
 </div>
 <div class="col-md-4">
 	<div class="row">
@@ -73,6 +88,7 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 </div>
 </div>

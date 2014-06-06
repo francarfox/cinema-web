@@ -25,7 +25,7 @@ class Pelicula {
     }
 
     def obtenerComentarios() {
-    	//comentarios.sort(true)
+    	comentarios.sort(true)
     	return comentarios
     }
 

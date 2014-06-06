@@ -43,12 +43,9 @@ class CineController {
     
     def show = {
     	def cine = Cine.get(params.id)
-    	//def comentarios = cine.obtenerComentarios()
 
-    	//[cine: cine, comentarios: comentarios]
         [cine: cine]
     }
-
 
     def index = {
         def cines = Cine.list()
@@ -57,7 +54,7 @@ class CineController {
     }
 
     def comentar = {
-    	def usuario = Usuario.miUsuario()
+    	def usuario = session.usuario
     	def cine = Cine.get(params.id)
 
     	usuario.comentar(cine, params.mensaje)
