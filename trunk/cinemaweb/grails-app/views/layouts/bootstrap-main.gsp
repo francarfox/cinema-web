@@ -89,7 +89,8 @@
 										<li><g:link controller="usuario" action="show" id="${session.usuario.id}">Mi Usuario</g:link></li>
 										<li><g:link controller="perfil" action="show" id="${session.usuario.id}">Mi Perfil</g:link></li>
 										<li><g:link controller="circulo" action="indexusuario" id="${session.usuario.id}">Mis Circulos</g:link></li>
-										<li><a href="#">Mis Comentarios</a></li>
+										<li><g:link controller="comentario" action="indexusuario" id="${session.usuario.id}">Mis Comentarios</g:link></li>
+
 										<li><a href="#">Mis Reservas</a></li>
 										<li class="divider"></li>
 										<li><g:link controller="usuario" action="logout">Logout</g:link></li>
