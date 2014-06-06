@@ -50,17 +50,20 @@ class PeliculaController {
     [movie: movie]
  }
 
-
  def comentar = {
-   def usuario = Usuario.miUsuario()
-   def pelicula = Pelicula.get(params.id)
+  def usuario = session.usuario
+  def pelicula = Pelicula.get(params.id)
 
-   usuario.comentar(pelicula, params.mensaje)
-   redirect(action: "show", id: params.id)
+  if(usuario == null)
+    redirect(controller: "Usuario", action: "login")
+  else{
+    usuario.comentar(pelicula, params.mensaje)
+    redirect(action: "show", id: params.id)
+  }
  }
 
  def puntuar = {
-   def usuario = Usuario.miUsuario()
+   def usuario = session.usuario
    def pelicula = Pelicula.get(params.id)
 
    usuario.puntuar(pelicula, params.puntos)

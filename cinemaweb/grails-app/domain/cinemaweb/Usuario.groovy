@@ -37,9 +37,9 @@ class Usuario {
 		
     }
 
-    static miUsuario() {
+    /*static miUsuario() {
     	return Usuario.get(1)	//probando
-    }
+    }*/
 
     String toString() {
     	return userId
