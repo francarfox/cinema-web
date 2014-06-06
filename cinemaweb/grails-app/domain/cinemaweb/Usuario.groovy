@@ -53,4 +53,8 @@ class Usuario {
     def puntuar(puntuable, puntos) {
     	puntuable.agregarPuntos(puntos)
     }
+
+    def obtenerComentarios() {
+    	return Comentario.findAllByAutor(this)
+    }
 }
