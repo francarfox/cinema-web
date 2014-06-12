@@ -8,8 +8,6 @@ class Sala {
 
 	static hasMany = [asientos: Asiento]
 
-    static belongsTo = [cine: Cine]
-
     static constraints = {
     }
 

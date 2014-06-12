@@ -30,7 +30,7 @@
 						<tr>
 							<td><g:link action="show" id="${movie.id}">${movie.titulo}</g:link></td>
 							<td class="text-center">${movie.director}</td>
-							<td class="text-center">${movie.duracion} m</td>	
+							<td class="text-center">${movie.duracion} m</td>		
 						</tr>
 					</g:each>
 				</tbody>
