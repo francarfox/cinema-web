@@ -42,11 +42,11 @@
 				<!-- ACA IRIA EL LOGO -->
 			</div>
 			<div class="col-md-12" style="margin: 0 auto; width:70%;top: 80px;">
-				<g:form>
-					<g:field type="text" placeholder="Pelicula" name="busquedapelicula" style="width:200px; height:40px; border-radius:4px; border: 1px solid #ccc; margin-right:15px;" />
-					<g:field type="text" placeholder="Cine" name="busquedacine" style="width:200px; height:40px; border-radius:4px; border: 1px solid #ccc; margin-right:15px;" />
-					<g:field type="text" placeholder="Lugar" name="busquedalugar" style="width:200px; height:40px; border-radius:4px; border: 1px solid #ccc; margin-right:15px;" />
-					<g:submitButton class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;" name="Buscar"/>
+				<g:form class="form-inline">
+					<g:field type="text" placeholder="Pelicula" name="busquedapelicula" class="form-control" />
+					<g:field type="text" placeholder="Cine" name="busquedacine" class="form-control" />
+					<g:field type="text" placeholder="Lugar" name="busquedalugar" class="form-control" />
+					<button type="submit" class="btn btn-warning"><i class="fa fa-search"></i> Buscar</button>
 				</g:form>
 			</div>
 			<div class="container-fluid">

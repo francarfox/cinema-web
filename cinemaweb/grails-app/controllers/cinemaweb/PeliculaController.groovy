@@ -71,6 +71,24 @@ class PeliculaController {
  }
 
 
+def uploadPic = {
+    def movie = Pelicula.get(params.id)
+    def error = false
+    if (params.submit) {
+         String picPath = this.uploadMoviePic()
+         if(picPath){
+          movie.foto = picPath
+          movie.save()
+          redirect(action:"show", id: movie.id)
+         }else{
+          error = true
+         }
+    }
+
+    [movie: movie, error: error]
+} 
+
+
     //funciones auxiliares
 
     private def loadMovie(def params){
@@ -91,12 +109,26 @@ class PeliculaController {
 
         
         if(movie.validate()){
-                //String picPath = this.subirFoto()
-                //movie.pic = picPath
                 movie.save()
               }
 
               return movie
             }
 
-          }
+
+    private String uploadMoviePic(){
+        //creo el directorio si no existe
+        def pic = request.getFile("foto")
+        if (pic.isEmpty()) {
+          return ""
+        }
+
+        String photoFile =  params.id + "-pelicula.jpg"
+        String path = grailsAttributes.getApplicationContext().getResource("/images/").getFile().toString()
+        path += "/cinema-web/peliculas-pics/" + photoFile
+
+        pic.transferTo(new File(path))
+        return  photoFile
+    }
+
+  }

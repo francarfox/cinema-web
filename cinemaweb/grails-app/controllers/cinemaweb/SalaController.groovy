@@ -16,10 +16,10 @@ class SalaController{
         	render params as JSON
         	return*/
         	String nombre = params.nombre
-        	def filas = params.filas
-        	def columnas = params.columnas
+        	def filas = params.filas.toInteger()
+        	def columnas = params.columnas.toInteger()
         	def sala = new Sala(nombre: nombre, filas: filas, columnas: columnas)
-        	sala.save()
+        	sala.save(failOnError: true)
 
         	redirect(action: "index")
         }
