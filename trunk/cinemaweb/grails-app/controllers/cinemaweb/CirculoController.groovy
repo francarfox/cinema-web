@@ -91,7 +91,7 @@ class CirculoController {
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
-			circulo.removeFromUsuarios(session.usuario) //NO FUNCAA!!!!
+			circulo.expulsarUsuario(session.usuario)
 			/*JSON.use('deep')
         	render (circulo.usuarios) as JSON
         	return*/
@@ -151,4 +151,23 @@ class CirculoController {
 			}
 		}
 	}
+
+	def comentar = {
+		def usuario = session.usuario
+    	def circulo = Circulo.get(params.id)
+
+    	usuario.comentar(circulo, params.mensaje)
+    	redirect(action: "show", id:params.id)
+	}
+
+	def listarusuarios = {
+		def circulo = Circulo.get(params.id)
+		render(view:"listarusuarios", model:[circulo:circulo])
+	}
+
+	def listarusuarioseliminar = {
+		def circulo = Circulo.get(params.id)
+		render(view:"listarusuarioseliminar", model:[circulo:circulo])
+	}
+
 }

@@ -23,8 +23,8 @@
 				<h1>Circulo de ${circulo.nombre}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
-				<g:form action="#" style="float:right">
-					<g:field type="text" placeholder="Buscar Circulos" name="busquedacirculo" />
+				<g:form action="#" class="form-inline" style="float:right">
+					<g:field class="form-control form-busqueda" type="text" placeholder="Buscar Circulos" name="busquedacirculo" />
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
@@ -39,7 +39,9 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td style="height:300px"></td>
+						<td style="height:300px">
+							<g:render template="comentarioTemp" collection="${circulo.comentarios}" var="comentario"/>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -52,8 +54,8 @@
 				<tbody>
 					<tr>
 						<td style="height:100px">
-							<g:form action="#">
-								<g:field type="textarea" name="enviarcomentario" style="width:650px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+							<g:form action="comentar" id="${circulo.id}">
+								<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
 								<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
 							</g:form>
 						</td>
@@ -77,11 +79,8 @@
 				</tr>
 				<tr>
 					<td><strong>Usuarios</strong></td>
-					<td>
-						<g:if test="${circulo.usuarios!=null}">
-							<g:each in="${circulo.usuarios}" var="usuario">${usuario.userId} |</g:each>
-						</g:if>
-						<g:else>No hay usuarios unidos</g:else>
+					<td>${circulo.usuarios.size()}
+						
 					</td>
 				</tr>
 			</table>
@@ -100,12 +99,12 @@
 				</tr>
 				<tr>
 					<td>
-						<g:link action="create" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-plus-square"></i> Crear Circulo</g:link>
+						<g:link action="listarusuarios" class="btn btn-lg btn-medium btn-crearcirculo" id="${circulo.id}"><i class="fa fa-list"></i> Lista Usuarios</g:link>
 					</td>
 					<td style="width:50%;">&nbsp</td>
 					<td>
 						<!-- Hacer este boton -->
-						<g:link class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-ban"></i> Eliminar Usuario</g:link>
+						<g:link action="listarusuarioseliminar" class="btn btn-lg btn-medium btn-crearcirculo" id="${circulo.id}"><i class="fa fa-ban"></i> Eliminar Usuario</g:link>
 					</td>
 				</tr>
 			</table>

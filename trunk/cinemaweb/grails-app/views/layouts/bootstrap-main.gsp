@@ -41,12 +41,12 @@
 			<div class="col-md-3">
 				<!-- ACA IRIA EL LOGO -->
 			</div>
-			<div class="col-md-12" style="margin: 0 auto; width:70%;top: 80px;">
+			<div class="col-md-12" style="margin:0 auto; width:70%; top:80px;">
 				<g:form class="form-inline">
-					<g:field type="text" placeholder="Pelicula" name="busquedapelicula" class="form-control" />
-					<g:field type="text" placeholder="Cine" name="busquedacine" class="form-control" />
-					<g:field type="text" placeholder="Lugar" name="busquedalugar" class="form-control" />
-					<button type="submit" class="btn btn-warning"><i class="fa fa-search"></i> Buscar</button>
+					<g:field class="form-control form-busqueda-banner" type="text" placeholder="Pelicula" name="busquedapelicula" />
+					<g:field class="form-control form-busqueda-banner" type="text" placeholder="Cine" name="busquedacine" />
+					<g:field class="form-control form-busqueda-banner" type="text" placeholder="Lugar" name="busquedalugar" />
+					<button class="btn btn-warning" type="submit"><i class="fa fa-search"></i> Buscar</button>
 				</g:form>
 			</div>
 			<div class="container-fluid">
