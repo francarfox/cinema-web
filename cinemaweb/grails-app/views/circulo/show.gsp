@@ -23,8 +23,8 @@
 				<h1>Circulo de ${circulo.nombre}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
-				<g:form action="#" style="float:right">
-					<g:field type="text" placeholder="Buscar Circulos" class="form-control form-busqueda" name="busquedacirculo" />
+				<g:form action="#" class="form-inline" style="float:right">
+					<g:field class="form-control form-busqueda" type="text" placeholder="Buscar Circulos" name="busquedacirculo" />
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
@@ -39,7 +39,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td style="height:300px"></td>
+						<td style="height:300px"><g:render template="comentarioTemp" collection="${circulo.comentarios}" var="comentario"/></td>
 					</tr>
 				</tbody>
 			</table>
@@ -51,9 +51,9 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td style="height:100px;">
-							<g:form action="#">
-								<g:field type="textarea" name="enviarcomentario" style="width:1050px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+						<td style="height:100px">
+							<g:form action="comentar" id="${circulo.id}">
+								<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
 								<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
 							</g:form>
 						</td>
@@ -69,6 +69,10 @@
 						<td>&nbsp</td>
 						<td>
 							<g:link action="indexusuario" id="${session.usuario.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
+						</td>
+						<td>&nbsp</td>
+						<td>
+							<g:link action="listarusuarios" class="btn btn-lg btn-large btn-crearcirculo" id="${circulo.id}"><i class="fa fa-list"></i> Lista Usuarios</g:link>
 						</td>
 						<td>&nbsp</td>
 						<td>

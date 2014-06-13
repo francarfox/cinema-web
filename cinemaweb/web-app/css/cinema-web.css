@@ -48,6 +48,11 @@ a:focus {
 /*!CONTENEDORES*/
 
 /*FORM*/
+.form-busqueda-banner {
+  height:50px;
+  font-size:15px;
+  margin-right:5px;
+}
 .form-busqueda {
   width: 70%;
   display: table-cell;

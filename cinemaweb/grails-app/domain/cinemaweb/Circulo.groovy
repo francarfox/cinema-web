@@ -6,7 +6,7 @@ class Circulo {
 	String tags //List<String> tags
 	Usuario administrador
 
-	static hasMany = [usuarios:Usuario] //comentarios:Comentario
+	static hasMany = [usuarios:Usuario, comentarios:Comentario]
 
     static constraints = {
 
@@ -23,4 +23,13 @@ class Circulo {
     	}
     	return false
     }
+
+    def agregarComentario(comentario) {
+        comentarios.add(comentario)
+    }
+
+    def expulsarUsuario(usuario) {
+        this.removeFromUsuarios(usuario)
+    }
+
 }

@@ -20,40 +20,29 @@
 
 	   	<div class="col-md-3" style="margin-top:30px;padding:0;">
 	   		<ul class="menu">
-			  <li><a href="#" class="active"><span>USUARIO</span></a></li>
-			  <li><a href="#"><span>PERFIL</span></a></li>
-			  <li><a href="#"><span>CIRCULOS</span></a></li>
-			  <li><a href="#"><span>COMENTARIOS</span></a></li>
+			  <li><g:link class="active" controller="usuario" action="show" id="${session.usuario.id}"><span>USUARIO</span></g:link></li>
+			  <li><g:link controller="perfil" action="show" id="${session.usuario.id}"><span>PERFIL</span></g:link></li>
+			  <li><g:link controller="circulo" action="indexusuario" id="${session.usuario.id}"><span>CIRCULOS</span></g:link></li>
+			  <li><g:link controller="comentario" action="indexusuario" id="${session.usuario.id}"><span>COMENTARIOS</span></g:link></li>
 			  <li><a href="#"><span>RESERVAS</span></a></li>
 			</ul>
 	   	</div>
 
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Usuario de ${usuario.userId}</h1>
-
+			<br />
 			<div>
 				<!-- <p><img src="${createLink(controller:'perfil', action:'imagen', id: usuario.perfil.id)}"/></p> -->
-				<p>Usuario: ${usuario.userId}</p>
-				<p>Password: ${usuario.password}</p>
-				<p>Usuario desde: ${usuario.cuentaCreada}</p>
-				<br />
-					<g:form controller="perfil" action="show" id="${usuario.id}">
-						<g:submitButton name="Ver Perfil"/>
-					</g:form>
+				<p><strong>Usuario</strong>: ${usuario.userId}</p>
+				<p><strong>Password</strong>: ${usuario.password}</p>
+				<p><strong>Usuario desde</strong>: ${usuario.cuentaCreada}</p>
 			</div>
 			<br />
 
-			<g:form action="edit" id="${usuario.id}">
-				<g:submitButton name="Editar Cuenta"/>
-			</g:form>
-			<br />
-			<g:form action="eliminar" id="${usuario.id}">
-				<g:submitButton name="Eliminar Cuenta"/>
-			</g:form>
-			<br />
-			<g:form action="index">
-				<g:submitButton name="Volver"/>
-			</g:form>
+			<g:if test="${ session.usuario.userId == usuario.userId }">
+				<g:link action="edit" class="btn btn-lg btn-large btn-crearcirculo" id="${usuario.id}"><i class="fa fa fa-pencil-square-o"></i> Editar Usuario</g:link>
+				<g:link action="eliminar" class="btn btn-lg btn-large btn-crearcirculo" id="${usuario.id}"><i class="fa fa-ban"></i> Eliminar Cuenta</g:link>
+			</g:if>
 		</div>
 	</div>
 </body>
