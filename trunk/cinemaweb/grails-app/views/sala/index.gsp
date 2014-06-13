@@ -22,14 +22,23 @@
 					<thead>
 						<tr>
 							<th>Nombre</th>
-							<th class="text-center">Filas</th>
-							<th class="text-center">Columnas</th>
+							<th>Cine</th>
+							<th class="text-center adjust-to-content">Filas</th>
+							<th class="text-center adjust-to-content">Columnas</th>
 						</tr>
 					</thead>		
 					<tbody>
 						<g:each in="${salas}" var="sala">
 						<tr>
 							<td><g:link action="show" id="${sala.id}">${sala.nombre}</g:link></td>
+							<td>
+								<g:if test="${sala.cine}">
+									<g:link controller="cine" action="show" id="${sala.cine.id}">${sala.cine.nombre}</g:link>
+								</g:if>
+								<g:else>
+									"-"
+								</g:else>
+							</td>	
 							<td class="text-center">${sala.filas}</td>
 							<td class="text-center">${sala.columnas}</td>	
 						</tr>

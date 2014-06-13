@@ -16,6 +16,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="cine" class="col-md-2 col-sm-2 control-label">Cine:</label>
+					<div class="col-md-4">
+						<g:select name="cine" from="${cines}" value="${(sala.cine) ? sala.cine.id : ""}" optionKey="id" optionValue="nombre" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="fila" class="col-md-2 col-sm-2 control-label">Filas:</label>
 					<div class="col-md-2">
 						<g:select name="filas" from="${1..15}" value="${sala.filas}" class="form-control"/>

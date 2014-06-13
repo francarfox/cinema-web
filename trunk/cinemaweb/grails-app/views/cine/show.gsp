@@ -47,6 +47,30 @@
 					</div>
 				</div>
 
+		<g:if test="${!cine.salas.isEmpty()}">
+			<div class="row">
+				<div class="col-md-6">
+					<h4>Salas:</h4>
+					<table class="table table-bordered table-stripped" id="table-list">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th class="adjust-to-content">Asientos</th>
+							</tr>	
+						</thead>
+						<tbody>
+							<g:each in="${cine.salas}" var="sala">
+							<tr>
+								<td><g:link controller="sala" action="show" id="${sala.id}" target="_blank"> ${sala.nombre}</g:link></td>
+								<td class="text-center">${(sala.asientos) ? sala.asientos.size() : "0"}</td>
+							</tr>
+							</g:each>
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</g:if>
+
 <!--Comentarios-->
 <div id="Comentarios">
 	<div class="col-md-12">
@@ -68,8 +92,11 @@
 			<div class="well" id="actions">
 				<h4><b>Actions</b></h4>	
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<g:link action="edit" id="${cine.id}" ><i class="fa fa-edit"></i> Editar</g:link>
+					</div>
+					<div class="col-md-6">
+						<g:link action="uploadPic" id="${cine.id}" ><i class="fa fa-file"></i> Cargar Foto</g:link>
 					</div>
 				</div>
 				<div class="row">
@@ -80,6 +107,14 @@
 			</div>
 		</div>
 	</div>
+	<g:if test="${cine.foto}">
+		<div class="row">
+			<div class="col-md-12">
+				<h4><b>Foto</b></h4>	
+				<g:img dir="/images/cinema-web/cines-pics" file="${cine.foto}" class="img-rounded show-img" />
+			</div>
+		</div>
+	</g:if>
 </div>
 </div>
 </div>

@@ -52,15 +52,19 @@
 					<tbody>
 						<tr>
 							<td class="field">Nombre:</td>
-							<td class="value">${sala.nombre}</td>
+							<td class="value"><strong>${sala.nombre}</strong></td>
+						</tr>
+						<tr>
+							<td class="field">Cine:</td>
+							<td class="value"><strong>${sala.cine ? sala.cine.nombre : "-"}</strong></td>
 						</tr>
 						<tr>
 							<td class="field">Filas:</td>
-							<td class="value">${sala.filas}</td>
+							<td class="value"><strong>${sala.filas}</strong></td>
 						</tr>
 						<tr>
 							<td class="field">Columnas:</td>
-							<td class="value">${sala.columnas}</td>
+							<td class="value"><strong>${sala.columnas}</strong></td>
 						</tr>
 					</tbody>	
 				</table>
