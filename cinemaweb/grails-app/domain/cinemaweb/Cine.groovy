@@ -9,7 +9,7 @@ class Cine {
     String foto
 
     //falta agregar funcion
-	static hasMany = [comentarios: Comentario]
+	static hasMany = [comentarios: Comentario, salas: Sala]
 
     static constraints = {
     	nombre blank: false, unique: true

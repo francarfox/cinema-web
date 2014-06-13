@@ -9,7 +9,7 @@ class CineController {
         def cine = null
         if(params.submit){
             data = params
-            cine = new Cine(nombre: params.nombre, ubicacion: params.ubicacion, precioBase: params.float("precioBase"),apertura: params.apertura, cierre: params.cierre, foto: "default")
+            cine = new Cine(nombre: params.nombre, ubicacion: params.ubicacion, precioBase: params.float("precioBase"),apertura: params.apertura, cierre: params.cierre, foto: "")
             if(cine.validate()){
                 cine.save();
                 redirect(action:"show", id: cine.id)
@@ -60,6 +60,39 @@ class CineController {
     	usuario.comentar(cine, params.mensaje)
     	redirect(action: "show", id:params.id)
     }
+
+    def uploadPic = {
+    def cine = Cine.get(params.id)
+    def error = false
+    if (params.submit) {
+         String picPath = this.uploadCinePic()
+         if(picPath){
+          cine.foto = picPath
+          cine.save()
+          redirect(action:"show", id: cine.id)
+         }else{
+          error = true
+         }
+    }
+
+    [cine: cine, error: error]
+}
+
+
+private String uploadCinePic(){
+        //creo el directorio si no existe
+        def pic = request.getFile("foto")
+        if (pic.isEmpty()) {
+          return ""
+        }
+
+        String photoFile =  params.id + "-cine.jpg"
+        String path = grailsAttributes.getApplicationContext().getResource("/images/").getFile().toString()
+        path += "/cinema-web/cines-pics/" + photoFile
+
+        pic.transferTo(new File(path))
+        return  photoFile
+}
 
 
     //metodos auxiliares

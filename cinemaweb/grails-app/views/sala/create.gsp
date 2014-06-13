@@ -5,6 +5,7 @@
 </head>
 <body>
 	<div class="container">
+		<g:if test="${!cines.isEmpty()}">
 		<div class="row">
 			<div class="col-md-8">
 				<h4>Nueva Sala</h4>
@@ -13,6 +14,12 @@
 					<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>
 					<div class="col-md-4">
 						<input name="nombre" class="form-control" id="name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="cine" class="col-md-2 col-sm-2 control-label">Cine:</label>
+					<div class="col-md-4">
+						<g:select name="cine" from="${cines}" optionKey="id" optionValue="nombre" class="form-control"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -38,7 +45,22 @@
 				</div>
 			</g:form>
 		</div>	
-	</div>	
+	</div>
+	</g:if>
+	<g:else>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="alert alert-danger">
+					No hay cines creados
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+					<g:link controller="sala" action="index" class="btn btn-default btn-block">Volver</g:link>
+			</div>	
+		</div>	
+	</g:else>
 </div>	
 </body>
 </html>

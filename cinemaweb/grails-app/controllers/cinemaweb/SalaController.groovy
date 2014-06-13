@@ -18,11 +18,14 @@ class SalaController{
         	String nombre = params.nombre
         	def filas = params.filas.toInteger()
         	def columnas = params.columnas.toInteger()
-        	def sala = new Sala(nombre: nombre, filas: filas, columnas: columnas)
+            def cine = Cine.get(params.cine)
+        	def sala = new Sala(nombre: nombre, filas: filas, columnas: columnas,cine: cine)
         	sala.save(failOnError: true)
 
         	redirect(action: "index")
         }
+
+        [cines: Cine.list()]
     }
 
     def edit = {
@@ -32,12 +35,13 @@ class SalaController{
     		sala.nombre = params.nombre
     		sala.filas = params.filas.toInteger()
     		sala.columnas = params.columnas.toInteger()
+            sala.cine = Cine.get(params.cine)
     		sala.save()
 
     		redirect(action: "show", id: sala.id)
     	}
 
-    	[sala: sala]
+    	[sala: sala, cines: Cine.list()]
     }
 
 
