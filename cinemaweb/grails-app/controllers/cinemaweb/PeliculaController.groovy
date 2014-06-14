@@ -3,6 +3,7 @@ import grails.converters.JSON
 
 class PeliculaController {
 	static scaffold = true
+  def fileService
 
   def index = {
      def movies = Pelicula.list()
@@ -74,10 +75,11 @@ class PeliculaController {
 def uploadPic = {
     def movie = Pelicula.get(params.id)
     def error = false
-    if (params.submit) {
-         String picPath = this.uploadMoviePic()
-         if(picPath){
-          movie.foto = picPath
+    if (params.submit){
+         String fileName = params.id + "-pelicula.jpg"
+         String filePath = "/peliculas-pics/" + fileName
+         if(fileService.uploadFile(request.getFile("foto"),filePath)){
+          movie.foto = fileName
           movie.save()
           redirect(action:"show", id: movie.id)
          }else{
@@ -114,21 +116,5 @@ def uploadPic = {
 
               return movie
             }
-
-
-    private String uploadMoviePic(){
-        //creo el directorio si no existe
-        def pic = request.getFile("foto")
-        if (pic.isEmpty()) {
-          return ""
-        }
-
-        String photoFile =  params.id + "-pelicula.jpg"
-        String path = grailsAttributes.getApplicationContext().getResource("/images/").getFile().toString()
-        path += "/cinema-web/peliculas-pics/" + photoFile
-
-        pic.transferTo(new File(path))
-        return  photoFile
-    }
 
   }

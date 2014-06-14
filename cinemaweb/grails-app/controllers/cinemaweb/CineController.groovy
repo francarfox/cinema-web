@@ -2,6 +2,7 @@ package cinemaweb
 
 class CineController {
 	static scaffold = true
+    def fileService
 
     def create = {
 
@@ -65,9 +66,10 @@ class CineController {
     def cine = Cine.get(params.id)
     def error = false
     if (params.submit) {
-         String picPath = this.uploadCinePic()
-         if(picPath){
-          cine.foto = picPath
+        String fileName = params.id + "-cine.jpg"
+         String filePath = "/cines-pics/" + fileName
+         if(fileService.uploadFile(request.getFile("foto"),filePath)){
+          cine.foto = fileName
           cine.save()
           redirect(action:"show", id: cine.id)
          }else{
@@ -78,21 +80,6 @@ class CineController {
     [cine: cine, error: error]
 }
 
-
-private String uploadCinePic(){
-        //creo el directorio si no existe
-        def pic = request.getFile("foto")
-        if (pic.isEmpty()) {
-          return ""
-        }
-
-        String photoFile =  params.id + "-cine.jpg"
-        String path = grailsAttributes.getApplicationContext().getResource("/images/").getFile().toString()
-        path += "/cinema-web/cines-pics/" + photoFile
-
-        pic.transferTo(new File(path))
-        return  photoFile
-}
 
 
     //metodos auxiliares
