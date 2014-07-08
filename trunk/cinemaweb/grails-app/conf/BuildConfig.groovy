@@ -44,14 +44,14 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
-        mavenRepo "http://repo.grails.org/grails/libs-releases/"
-        mavenRepo "http://m2repo.spockframework.org/ext/"
-        mavenRepo "http://m2repo.spockframework.org/snapshots/"
+        //mavenRepo "http://repo.grails.org/grails/libs-releases/"
+        //mavenRepo "http://m2repo.spockframework.org/ext/"
+        //mavenRepo "http://m2repo.spockframework.org/snapshots/"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-        runtime 'mysql:mysql-connector-java:5.1.27'
+        // runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
     }
 
