@@ -65,7 +65,7 @@
 		</div>
 
 		<div class="col-md-4 pnl-circuloadmin">
-		<p style="text-align:center;"><strong>¡Bienvenido ${session.usuario.userId} a su circulo!</strong></p>
+		<p style="text-align:center;"><strong>¡Bienvenido [Nombre de Usuario] a su circulo!</strong></p>
 			<table class="table tablecirc">
 				<thead>
 				<tr>

@@ -8,9 +8,14 @@ class Usuario {
 	Perfil perfil
 	Date cuentaCreada = new Date()
 	String rol
-    Set<Circulo> circulos = []
+    //Set<Circulo> circulos = []
 
     static hasMany = [circulos:Circulo] //Un usuario puede tener varios comentarios tambien
+
+    static mapping = {
+        circulos joinTable:[name:"mm_usuarios_circulos", key:"mm_usuario_id"]
+    }
+
 
     static constraints = {
 

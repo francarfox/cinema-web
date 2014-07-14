@@ -36,7 +36,7 @@
 							<td class="text-center">${circulo.tags}</td>
 							<td class="text-center">${circulo.administrador}</td>
 							<td class="text-center">
-								<g:if test="${circulo.estaUsuario(session.usuario) || (session.usuario.userId == circulo.administrador.userId)}">
+								<g:if test="${circulo.estaUsuario(loggedUser) || (loggedUser.userId == circulo.administrador.userId)}">
 									<g:link action="show" id="${circulo.id}" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;">Ver <i class="fa fa-check"></i></g:link>
 								</g:if>
 								<g:else>
@@ -68,7 +68,7 @@
 						</td>
 						<td style="width:50%;">&nbsp</td>
 						<td>
-							<g:link action="indexusuario" id="${session.usuario.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
+							<g:link action="indexusuario" id="${loggedUser.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
 						</td>
 					</tr>
 				</table>

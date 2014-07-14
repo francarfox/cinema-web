@@ -12,11 +12,13 @@ class UsuarioController {
 
 	private verifUser() {
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 	   	else {
-	   		if (session.usuario.rol == "USER"){
+	   		def usuario = Usuario.get(session.loggedUser)
+
+	   		if (usuario.rol == "USER"){
 		     	render(view:"denegado")
 	     	}
 	   	}
@@ -25,11 +27,13 @@ class UsuarioController {
 
 	def create = {
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			render(view: "create")
 		}
 		else {
-			if (session.usuario.getRol() == "ADMIN"){
+			def usuario = Usuario.get(session.loggedUser) 
+
+			if (usuario.getRol() == "ADMIN"){
 				render(view: "createAdmin")
 			}
 			else {
@@ -83,7 +87,7 @@ class UsuarioController {
 
 	def edit = {
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
@@ -109,7 +113,7 @@ class UsuarioController {
 
 	def show = {
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
@@ -120,7 +124,7 @@ class UsuarioController {
 
 	def eliminar = {
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
@@ -141,7 +145,8 @@ class UsuarioController {
 		def usuario = Usuario.findByUserIdAndPassword(params.userId,params.password) 
 
 		if (usuario != null){
-			session.usuario = usuario
+			session.loggedUser = usuario.id
+
 			render(view: "show", model: [usuario:usuario]) 
 		} 
 		else {
@@ -152,8 +157,8 @@ class UsuarioController {
 
 	def logout = {
 
-		if (session.usuario != null) {
-			session.usuario = null
+		if (session.loggedUser != null) {
+			session.loggedUser = null
 			render(view:"logout")
 			//redirect(url:resource(dir:'' ))
 		}

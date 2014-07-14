@@ -20,10 +20,10 @@
 
 	   	<div class="col-md-3" style="margin-top:30px;padding:0;">
 	   		<ul class="menu">
-			  <li><g:link class="active" controller="usuario" action="show" id="${session.usuario.id}"><span>USUARIO</span></g:link></li>
-			  <li><g:link controller="perfil" action="show" id="${session.usuario.id}"><span>PERFIL</span></g:link></li>
-			  <li><g:link controller="circulo" action="indexusuario" id="${session.usuario.id}"><span>CIRCULOS</span></g:link></li>
-			  <li><g:link controller="comentario" action="indexusuario" id="${session.usuario.id}"><span>COMENTARIOS</span></g:link></li>
+			  <li><g:link class="active" controller="usuario" action="show" id="${session.loggedUser}"><span>USUARIO</span></g:link></li>
+			  <li><g:link controller="perfil" action="show" id="${session.loggedUser}"><span>PERFIL</span></g:link></li>
+			  <li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}"><span>CIRCULOS</span></g:link></li>
+			  <li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}"><span>COMENTARIOS</span></g:link></li>
 			  <li><a href="#"><span>RESERVAS</span></a></li>
 			</ul>
 	   	</div>
@@ -39,7 +39,7 @@
 			</div>
 			<br />
 
-			<g:if test="${ session.usuario.userId == usuario.userId }">
+			<g:if test="${ session.loggedUser == usuario.userId }">
 				<g:link action="edit" class="btn btn-lg btn-large btn-crearcirculo" id="${usuario.id}"><i class="fa fa fa-pencil-square-o"></i> Editar Usuario</g:link>
 				<g:link action="eliminar" class="btn btn-lg btn-large btn-crearcirculo" id="${usuario.id}"><i class="fa fa-ban"></i> Eliminar Cuenta</g:link>
 			</g:if>

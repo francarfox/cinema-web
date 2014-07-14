@@ -30,7 +30,7 @@
 					</thead>		
 					<tbody>
 						<g:each in="${circulos}" var="circulo">
-							<g:if test="${circulo.estaUsuario(session.usuario) || (session.usuario.userId == circulo.administrador.userId)}">
+							<g:if test="${circulo.estaUsuario(loggedUser) || (loggedUser.userId == circulo.administrador.userId)}">
 								<tr>
 									<td class="text-center"><g:link action="show" id="${circulo.id}"><i class="fa fa-comments"></i> ${circulo.nombre}</g:link></td>
 									<td class="text-center">${circulo.tags}</td>
@@ -62,7 +62,7 @@
 						</td>
 						<td style="width:50%;">&nbsp</td>
 						<td>
-							<g:link action="indexusuario" id="${session.usuario.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
+							<g:link action="indexusuario" id="${loggedUser.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
 						</td>
 					</tr>
 				</table>
