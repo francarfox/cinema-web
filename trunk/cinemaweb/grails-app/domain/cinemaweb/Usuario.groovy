@@ -8,8 +8,9 @@ class Usuario {
 	Perfil perfil
 	Date cuentaCreada = new Date()
 	String rol
+    Set<Circulo> circulos = []
 
-	static belongsTo = Circulo //Hacer closure para mostrar cada circulo del usuario
+    static hasMany = [circulos:Circulo] //Un usuario puede tener varios comentarios tambien
 
     static constraints = {
 
@@ -56,5 +57,21 @@ class Usuario {
 
     def obtenerComentarios() {
     	return Comentario.findAllByAutor(this)
+    }
+
+    def unirseCirculo(circulo) {
+    	circulo.agregarUsuario(this)
+    }
+
+    def dejarCirculo(circulo) {
+    	circulo.expulsarUsuario(this)
+    }
+
+    def eliminarUsuario() {
+    	this.delete()
+    }
+
+    Usuario buscarUsuario(usuario) { //no funciona
+    	return this.findByUserId(usuario)
     }
 }

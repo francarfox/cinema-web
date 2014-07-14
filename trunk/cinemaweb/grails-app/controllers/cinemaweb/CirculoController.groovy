@@ -63,20 +63,22 @@ class CirculoController {
 		return
 	}
 
-	def unirse = {
+	def unirse() {
 
 		def usuario = Usuario.get(params.id)
+		def usuarioOnline = Usuario.get(session.usuario.id)
 		def circulo = Circulo.get(params.id)
 
-    	if (session.usuario == null){
-			redirect(controller:'usuario' , action:'login' )
+
+    	if (usuarioOnline == null){
+			redirect(controller:'usuario' , action:'login')
 		}
 		else {
-			if ( (circulo.estaUsuario(session.usuario)) || (session.usuario.userId == circulo.administrador.userId) ) { 
+			if ( (circulo.estaUsuario(usuarioOnline)) || (usuarioOnline.getUserId() == circulo.obtenerAdministrador()) ) { 
 				redirect(action: "show", id:circulo.id)
 			}
 			else {
-				circulo.addToUsuarios(session.usuario)
+				usuarioOnline.addToCirculos(circulo)
 				render(view: "show", model: [circulo:circulo, messageV: "Se ha unido al circulo ${circulo.nombre} correctamente."])
 			}
 		}
@@ -137,11 +139,11 @@ class CirculoController {
 		}
 		else {
 			def circulo = Circulo.get(params.id)
-			if (session.usuario.userId == circulo.administrador.userId) {	
+			if (session.usuario.getUserId() == circulo.obtenerAdministrador()) {	
 				render(view:"showAdmin", model:[circulo:circulo])
 			}
 			else {
-				if ( (circulo.estaUsuario(session.usuario)) || (session.usuario.userId == circulo.administrador.userId) ) {
+				if ( (circulo.estaUsuario(session.usuario)) || (session.usuario.getUserId() == circulo.obtenerAdministrador()) ) {
 					[circulo:circulo]
 				}
 				else {
