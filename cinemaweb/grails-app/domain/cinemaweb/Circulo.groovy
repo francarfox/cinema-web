@@ -5,8 +5,11 @@ class Circulo {
 	String nombre
 	String tags //List<String> tags
 	Usuario administrador
+    Set<Usuario> usuarios = []
+    Set<Comentario> comentarios = []
 
 	static hasMany = [usuarios:Usuario, comentarios:Comentario]
+    static belongsTo = Usuario
 
     static constraints = {
 
@@ -28,8 +31,16 @@ class Circulo {
         comentarios.add(comentario)
     }
 
+    def agregarUsuario(usuario) {
+        usuario.addToCirculos(this)
+    }
+
     def expulsarUsuario(usuario) {
         this.removeFromUsuarios(usuario)
+    }
+
+    String obtenerAdministrador() {
+        return administrador.toString()
     }
 
 }

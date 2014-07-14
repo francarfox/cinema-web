@@ -10,7 +10,6 @@ class Perfil {
 	String pais
 	//Inbox inbox
 
-	//static hasMany = [ circulos:Circulo, promociones:Promocion ]
 
 	static belongsTo = Usuario
 

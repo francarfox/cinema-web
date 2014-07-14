@@ -3,13 +3,19 @@ import cinemaweb.*
 class BootStrap {
 
     def init = { servletContext ->
-    	/*if(!Usuario.count()) {
-    		//def perfil = new Perfil(nombre: "Esteban", apellido: "Quito", email: "esteban@quito.com")
-		    //new Usuario(userId:"usuario", password:"123abc", passwordV:"123abc", rol:"USER", perfil: perfil).save(failOnError:true)
+    	if(!Usuario.count()) {
+    		def perfil = new Perfil(nombre: "Federico", apellido: "Di Rocco", email: "fede.dirocco@hotmail.com")
+		    new Usuario(userId:"fedecarp34", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
 
-		    def perfil = new Perfil(nombre: "Rosa", apellido: "Meltrozo", email: "rosamel@trozo.com")
-		    new Usuario(userId:"Rosa69", password:"rosita", passwordV:"rosita", rol:"ADMIN", perfil: perfil).save(failOnError:true)
-		}*/
+		    perfil = new Perfil(nombre: "Rosa", apellido: "Meltrozo", email: "rosamel@trozo.com")
+		    new Usuario(userId:"Rosa69", password:"rosita", passwordV:"rosita", rol:"USER", perfil: perfil).save(failOnError:true)
+
+		    perfil = new Perfil(nombre: "Fran", apellido: "Fox", email: "franfox@gmail.com")
+		    new Usuario(userId:"FranCarFox", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
+
+		    perfil = new Perfil(nombre: "Matias", apellido: "Barro", email: "mastiasbarro@gmail.com")
+		    new Usuario(userId:"mati09", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
+		}
 
 		/*if(!Cine.count()) {
 		    new Cine(nombre: "Hoyts").save(failOnError:true)

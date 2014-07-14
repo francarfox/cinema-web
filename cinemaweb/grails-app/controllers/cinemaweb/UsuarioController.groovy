@@ -1,4 +1,5 @@
 package cinemaweb
+import grails.converters.JSON
 
 class UsuarioController {
 	
@@ -28,7 +29,7 @@ class UsuarioController {
 			render(view: "create")
 		}
 		else {
-			if (session.usuario.rol == "ADMIN"){
+			if (session.usuario.getRol() == "ADMIN"){
 				render(view: "createAdmin")
 			}
 			else {
@@ -70,7 +71,6 @@ class UsuarioController {
 			rol = "USER"
 		}
 		def usuario = new Usuario(userId: user, password: pass, passwordV: passV, rol: rol, perfil: perfil)
-
 
 		if (usuario.validate()) {
 			usuario.save()
@@ -125,25 +125,26 @@ class UsuarioController {
 		}
 		else {
 			def usuario = Usuario.get(params.id)
-			usuario.delete()
+			usuario.eliminarUsuario()
 			session.usuario = null
 			return //Mejorar esto!!!
 		}
 		
 	}
 
-	def login = { //Se podria verificar que antes de loguear no haya un usuario logueado sino que se deslogue
+	def login = { 
 
 	}
 
 	def validar = {
 
-		def usuario = Usuario.findByUserId(params.userId)
-		
-		if (usuario && usuario.password == params.password){
-		session.usuario = usuario
-		render(view: "show", model: [usuario:usuario]) //redirect(controller:'' , action:'' )
-		} else {
+		def usuario = Usuario.findByUserIdAndPassword(params.userId,params.password) 
+
+		if (usuario != null){
+			session.usuario = usuario
+			render(view: "show", model: [usuario:usuario]) 
+		} 
+		else {
 			render(view: "login", model: [message: "ERROR: Nombre de usuario y contraseña invalidos."])
 		}
 
