@@ -8,26 +8,28 @@ class CirculoController {
     def index = {
     	def usuario = Usuario.get(params.id)
 
-    	if (session.usuario == null){
+    	if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
     	def circulos = Circulo.list() 
-        [circulos: circulos]
+    	def loggedUser = Usuario.get(session.loggedUser)
+        [circulos: circulos, loggedUser: loggedUser]
     	}
     }
 
     def indexusuario = {
 
     	def circulos = Circulo.list() 
-        [circulos: circulos]
+    	def loggedUser = Usuario.get(session.loggedUser)
+        [circulos: circulos, loggedUser: loggedUser]
     }
 
     def create = {
 
     	def usuario = Usuario.get(params.id)
 
-    	if (session.usuario == null){
+    	if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
@@ -41,7 +43,8 @@ class CirculoController {
 
 		String nombre = params.nombre
 		String tags = params.tags
-		Usuario administrador = session.usuario
+		//Usuario administrador = session.usuario
+		Usuario administrador = Usuario.get(session.loggedUser) 
 
 		def circulo = new Circulo(nombre: nombre,tags: tags,administrador: administrador)
 
@@ -65,10 +68,13 @@ class CirculoController {
 
 	def unirse() {
 
-		def usuario = Usuario.get(params.id)
-		def usuarioOnline = Usuario.get(session.usuario.id)
+		//def usuario = Usuario.get(params.id)
+		def usuarioOnline = Usuario.get(session.loggedUser)
 		def circulo = Circulo.get(params.id)
 
+		/*JSON.use('deep')
+				render circulo as JSON
+				return*/
 
     	if (usuarioOnline == null){
 			redirect(controller:'usuario' , action:'login')
@@ -78,7 +84,8 @@ class CirculoController {
 				redirect(action: "show", id:circulo.id)
 			}
 			else {
-				usuarioOnline.addToCirculos(circulo)
+				circulo.addToUsuarios(usuarioOnline)
+				circulo.save()
 				render(view: "show", model: [circulo:circulo, messageV: "Se ha unido al circulo ${circulo.nombre} correctamente."])
 			}
 		}
@@ -89,7 +96,7 @@ class CirculoController {
 		def usuario = Usuario.get(params.id)
 		def circulo = Circulo.get(params.id)
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
@@ -105,7 +112,7 @@ class CirculoController {
 
 		def usuario = Usuario.get(params.id)
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
@@ -134,16 +141,17 @@ class CirculoController {
 
 		def usuario = Usuario.get(params.id)
 
-		if (session.usuario == null){
+		if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
 			def circulo = Circulo.get(params.id)
-			if (session.usuario.getUserId() == circulo.obtenerAdministrador()) {	
+			def loggedUser = Usuario.get(session.loggedUser)
+			if (loggedUser.getUserId() == circulo.obtenerAdministrador()) {	
 				render(view:"showAdmin", model:[circulo:circulo])
 			}
 			else {
-				if ( (circulo.estaUsuario(session.usuario)) || (session.usuario.getUserId() == circulo.obtenerAdministrador()) ) {
+				if ( (circulo.estaUsuario(session.usuario)) || (loggedUser.getUserId() == circulo.obtenerAdministrador()) ) {
 					[circulo:circulo]
 				}
 				else {
@@ -155,10 +163,10 @@ class CirculoController {
 	}
 
 	def comentar = {
-		def usuario = session.usuario
+		def logedUser = Usuario.get(session.loggedUser)
     	def circulo = Circulo.get(params.id)
 
-    	usuario.comentar(circulo, params.mensaje)
+    	logedUser.comentar(circulo, params.mensaje)
     	redirect(action: "show", id:params.id)
 	}
 

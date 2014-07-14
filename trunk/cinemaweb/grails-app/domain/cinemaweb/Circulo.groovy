@@ -11,6 +11,10 @@ class Circulo {
 	static hasMany = [usuarios:Usuario, comentarios:Comentario]
     static belongsTo = Usuario
 
+    static mapping = {
+        usuarios joinTable:[name:"mm_usuarios_circulos", key:"mm_circulo_id"]
+    }
+
     static constraints = {
 
     	nombre blank:false, nullable:false

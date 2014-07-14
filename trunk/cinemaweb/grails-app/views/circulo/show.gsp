@@ -68,7 +68,7 @@
 						</td>
 						<td>&nbsp</td>
 						<td>
-							<g:link action="indexusuario" id="${session.usuario.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
+							<g:link action="indexusuario" id="${session.loggedUser}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
 						</td>
 						<td>&nbsp</td>
 						<td>
