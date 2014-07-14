@@ -4,10 +4,10 @@ import grails.converters.JSON
 class SalaController{
 
 	static scaffold = true
+    def salaService
 
     def index = {
-        def salas = Sala.list() 
-        [salas: salas]
+        [salas: this.salaService.getSalas()]
     }
 
 	def create = {
@@ -15,13 +15,7 @@ class SalaController{
 			/*JSON.use('deep')
         	render params as JSON
         	return*/
-        	String nombre = params.nombre
-        	def filas = params.filas.toInteger()
-        	def columnas = params.columnas.toInteger()
-            def cine = Cine.get(params.cine)
-        	def sala = new Sala(nombre: nombre, filas: filas, columnas: columnas,cine: cine)
-        	sala.save(failOnError: true)
-
+            this.salaService.create(params)
         	redirect(action: "index")
         }
 
@@ -29,19 +23,20 @@ class SalaController{
     }
 
     def edit = {
-    	def sala = Sala.get(params.id)
 
     	if(params.submit > 0){
-    		sala.nombre = params.nombre
+    		/*sala.nombre = params.nombre
     		sala.filas = params.filas.toInteger()
     		sala.columnas = params.columnas.toInteger()
             sala.cine = Cine.get(params.cine)
-    		sala.save()
+    		sala.save()*/
 
-    		redirect(action: "show", id: sala.id)
+            this.salaService.edit(params.id,params)
+
+    		redirect(action: "show", id: params.id)
     	}
 
-    	[sala: sala, cines: Cine.list()]
+    	[sala: this.salaService.getSala(params.id), cines: Cine.list()]
     }
 
 
