@@ -20,7 +20,7 @@
 
 	    <div class="row">
 			<div class="col-md-8">
-				<h1>Circulo de ${circulo.nombre}</h1>
+				<h1>Circulo de ${circulo.getNombre()}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
@@ -65,17 +65,17 @@
 		</div>
 
 		<div class="col-md-4 pnl-circuloadmin">
-		<p style="text-align:center;"><strong>¡Bienvenido [Nombre de Usuario] a su circulo!</strong></p>
+		<p style="text-align:center;"><strong>¡Bienvenido ${circulo.getAdministrador()} a su circulo!</strong></p>
 			<table class="table tablecirc">
 				<thead>
 				<tr>
 					<td><strong>Nombre</strong></td>
-					<td>${circulo.nombre}</td>
+					<td>${circulo.getNombre()}</td>
 				</tr>
 				</thead>
 				<tr>
 					<td><strong>Tags</strong></td>
-					<td>${circulo.tags}</td>
+					<td>${circulo.getTags()}</td>
 				</tr>
 				<tr>
 					<td><strong>Usuarios</strong></td>

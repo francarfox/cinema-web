@@ -82,21 +82,20 @@
 		<!--- Barra de logueo -->
 		<div id="loginmenu">
 			<g:if test="${session.loggedUser!=null}">
-		      					<li class="dropdown">
-		      						<b>Bienvenido</b>
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Nombre de Usuario</b><b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><g:link controller="usuario" action="show" id="${session.loggedUser}">Mi Usuario</g:link></li>
-										<li><g:link controller="perfil" action="show" id="${session.loggedUser}">Mi Perfil</g:link></li>
-										<li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}">Mis Circulos</g:link></li>
-										<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}">Mis Comentarios</g:link></li>
-
-										<li><a href="#">Mis Reservas</a></li>
-										<li class="divider"></li>
-										<li><g:link controller="usuario" action="logout">Logout</g:link></li>
-										<li><g:link controller="usuario" action="eliminar" id="${session.loggedUser}">Eliminar Cuenta</g:link></li>
-									</ul>
-								</li>				
+		      	<li class="dropdown">
+		      		<b>Bienvenido</b>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>${session.loggedUser}</b><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><g:link controller="usuario" action="show" id="${session.loggedUser}">Mi Usuario</g:link></li>
+							<li><g:link controller="perfil" action="show" id="${session.loggedUser}">Mi Perfil</g:link></li>
+							<li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}">Mis Circulos</g:link></li>
+							<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}">Mis Comentarios</g:link></li>
+							<li><a href="#">Mis Reservas</a></li>
+							<li class="divider"></li>
+							<li><g:link controller="usuario" action="logout">Logout</g:link></li>
+							<li><g:link controller="usuario" action="eliminar" id="${session.loggedUser}">Eliminar Cuenta</g:link></li>
+						</ul>
+				</li>				
 		    </g:if>
 		    <g:else>
 		    ¿No has iniciado sesion todavia?

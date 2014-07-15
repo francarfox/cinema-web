@@ -20,7 +20,7 @@
 
 		<div class="row">
 			<div class="col-md-8">
-				<h1>Circulo de ${circulo.nombre}</h1>
+				<h1>Circulo de ${circulo.getNombre()}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
