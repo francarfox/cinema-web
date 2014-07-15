@@ -5,30 +5,26 @@ class CirculoController {
 
 	static scaffold = true
 
-    def index = {
+    def index() {
     	def usuario = Usuario.get(params.id)
 
     	if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
-    	def circulos = Circulo.list() 
-    	def loggedUser = Usuario.get(session.loggedUser)
-        [circulos: circulos, loggedUser: loggedUser]
+    		def circulos = Circulo.list() 
+    		def loggedUser = Usuario.get(session.loggedUser)
+        	[circulos: circulos, loggedUser: loggedUser]
     	}
     }
 
-    def indexusuario = {
-
+    def indexusuario() {
     	def circulos = Circulo.list() 
     	def loggedUser = Usuario.get(session.loggedUser)
         [circulos: circulos, loggedUser: loggedUser]
     }
 
-    def create = {
-
-    	def usuario = Usuario.get(params.id)
-
+    def create() {
     	if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
@@ -37,92 +33,78 @@ class CirculoController {
 		}
 	}
 
-	def armar = {
-
-		def usuario = Usuario.get(params.id)
-
+	def armar() {
+		def usuario = Usuario.get(session.loggedUser)
 		String nombre = params.nombre
-		String tags = params.tags
-		//Usuario administrador = session.usuario
-		Usuario administrador = Usuario.get(session.loggedUser) 
+		String tags = params.tags 
 
-		def circulo = new Circulo(nombre: nombre,tags: tags,administrador: administrador)
+		def circulo = new Circulo(nombre: nombre,tags: tags,administrador: usuario.getUserId())
 
 		if (circulo.validate()){
-			//circulo.addToUsuarios(user)
 			circulo.save()
-			redirect(action:"show", id:circulo.id) 
-			//render(view: "show", model:[circulo:circulo, messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
+			usuario.addToCirculos(circulo)
+			redirect(action:"show", id:circulo.id) //render(view: "show", model:[circulo:circulo, messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
 		}
 		else {
 			render(view: "create", model:[circulo:circulo, message: "ERROR: No se han ingresado los datos correctamente."])
 		}
 	}
 
-	def delete = {
-
+	def delete() {
 		def circulo = Circulo.get(params.id)
 		circulo.delete()
 		return
 	}
 
 	def unirse() {
-
-		//def usuario = Usuario.get(params.id)
 		def usuarioOnline = Usuario.get(session.loggedUser)
 		def circulo = Circulo.get(params.id)
-
-		/*JSON.use('deep')
-				render circulo as JSON
-				return*/
 
     	if (usuarioOnline == null){
 			redirect(controller:'usuario' , action:'login')
 		}
 		else {
-			if ( (circulo.estaUsuario(usuarioOnline)) || (usuarioOnline.getUserId() == circulo.obtenerAdministrador()) ) { 
+			if ( circulo.estaUsuario(usuarioOnline) ) {
 				redirect(action: "show", id:circulo.id)
 			}
 			else {
-				circulo.addToUsuarios(usuarioOnline)
-				circulo.save()
+				usuarioOnline.addToCirculos(circulo)
 				render(view: "show", model: [circulo:circulo, messageV: "Se ha unido al circulo ${circulo.nombre} correctamente."])
 			}
 		}
 	}
 
-	def desunirse = {
-
-		def usuario = Usuario.get(params.id)
-		def circulo = Circulo.get(params.id)
-
+	def desunirse() {
 		if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
-			circulo.expulsarUsuario(session.usuario)
-			/*JSON.use('deep')
-        	render (circulo.usuarios) as JSON
-        	return*/
+			def circulo = Circulo.get(params.id)
+			def loggedUser = Usuario.get(session.loggedUser)
+
+			loggedUser.removeFromCirculos(circulo)
 			redirect(action:"index")
 		}
 	}
 
-	def edit = {
-
-		def usuario = Usuario.get(params.id)
-
+	def edit() {
 		if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
-			def circulo = Circulo.get(params.id)	
-			[circulo:circulo]
+			def circulo = Circulo.get(params.id)
+			def loggedUser = Usuario.get(session.loggedUser)
+
+			if (loggedUser.getUserId() == circulo.getAdministrador()) {
+				[circulo:circulo]
+			}
+			else {
+				render(view:"denegado")
+			}
 		}
 	}
 
-	def actualizar = {
-
+	def actualizar() {
 		def circulo = Circulo.get(params.id)
 
 		circulo.nombre = params.nombre
@@ -130,28 +112,26 @@ class CirculoController {
 				
 		if (circulo.validate()){
 			circulo.save()
-			render(view: "show", model: [circulo:circulo,messageV: "Los datos de su circulo han sido actualizados correctamente."])
+			render(view: "showAdmin", model: [circulo:circulo,messageV: "Los datos de su circulo han sido actualizados correctamente."])
 		} else {
 			render(view: "edit", model: [circulo:circulo,message: "ERROR: Los datos ingresados no son válidos."])
 		}
 	}
 
 
-	def show = {
-
-		def usuario = Usuario.get(params.id)
-
+	def show() {
 		if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
 		else {
 			def circulo = Circulo.get(params.id)
 			def loggedUser = Usuario.get(session.loggedUser)
-			if (loggedUser.getUserId() == circulo.obtenerAdministrador()) {	
+
+			if (loggedUser.getUserId() == circulo.getAdministrador()) {
 				render(view:"showAdmin", model:[circulo:circulo])
 			}
 			else {
-				if ( (circulo.estaUsuario(session.usuario)) || (loggedUser.getUserId() == circulo.obtenerAdministrador()) ) {
+				if (circulo.estaUsuario(loggedUser)) {
 					[circulo:circulo]
 				}
 				else {
@@ -162,22 +142,23 @@ class CirculoController {
 		}
 	}
 
-	def comentar = {
-		def logedUser = Usuario.get(session.loggedUser)
+	def comentar() {
+		def loggedUser = Usuario.get(session.loggedUser)
     	def circulo = Circulo.get(params.id)
 
-    	logedUser.comentar(circulo, params.mensaje)
+    	loggedUser.comentar(circulo, params.mensaje)
     	redirect(action: "show", id:params.id)
 	}
 
-	def listarusuarios = {
+	def listarusuarios() {
 		def circulo = Circulo.get(params.id)
-		render(view:"listarusuarios", model:[circulo:circulo])
+		[circulo:circulo]
 	}
 
-	def listarusuarioseliminar = {
+	def listarusuarioseliminar() {
 		def circulo = Circulo.get(params.id)
-		render(view:"listarusuarioseliminar", model:[circulo:circulo])
+		//def lista = circulo.mostrarUsuariosSinAdmin()
+		[circulo:circulo] //,lista:lista
 	}
 
 }

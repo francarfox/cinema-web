@@ -3,32 +3,29 @@ package cinemaweb
 class Circulo {
 
 	String nombre
-	String tags //List<String> tags
-	Usuario administrador
+	String tags //Set<String> tags
+	String administrador
     Set<Usuario> usuarios = []
     Set<Comentario> comentarios = []
 
 	static hasMany = [usuarios:Usuario, comentarios:Comentario]
     static belongsTo = Usuario
 
-    static mapping = {
-        usuarios joinTable:[name:"mm_usuarios_circulos", key:"mm_circulo_id"]
-    }
-
     static constraints = {
 
     	nombre blank:false, nullable:false
-    	tags blank:false, nullable:false, inList:["Acción", "Thriller‎", "Drama", "Suspenso", "Terror", "Infantil", "Artes Marcial", "Aventura", "Biógrafica", "Adulta", "Cómica", "Catástrofe", "Deportiva", "Documental", "Fantástica", "Guerra", "Historia", "Musical", "Policial", "Romantica", "Western"]
+    	tags blank:false, nullable:false, inList:["Acción", "Thriller‎", "Drama", "Suspenso", "Terror", "Infantil", "Arte Marcial", "Aventura", "Biógrafica", "Adulta", "Cómica", "Catástrofe", "Deportiva", "Documental", "Fantástica", "Guerra", "Historia", "Musical", "Policial", "Romantica", "Western"]
     	administrador blank:false, nullable: false
     }
 
     def estaUsuario(Usuario user){
-    	for(usuario in this.usuarios) {
-    		if(user.userId == usuario.userId){
-    			return true
-    		}	
-    	}
-    	return false
+        def cant = usuarios.findAll{it.getUserId() == user.getUserId()}.size()
+        if( cant == 0 ) {
+            return false
+        }
+        else {
+            return true
+        }
     }
 
     def agregarComentario(comentario) {
@@ -43,8 +40,9 @@ class Circulo {
         this.removeFromUsuarios(usuario)
     }
 
-    String obtenerAdministrador() {
-        return administrador.toString()
+    def mostrarUsuariosSinAdmin(){
+        def lista = usuarios.findAll{it.getUserId() != this.getAdministrador()}
+        return lista
     }
 
 }

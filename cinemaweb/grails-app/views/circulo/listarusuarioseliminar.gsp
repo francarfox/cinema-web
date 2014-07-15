@@ -8,7 +8,7 @@
 
 	    <div class="row">
 			<div class="col-md-8">
-				<h1>Usuarios del círculo ${circulo.nombre}</h1>
+				<h1>Usuarios del círculo ${circulo.getNombre()}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
@@ -20,14 +20,16 @@
 			
 		<div class="col-md-8" style="margin-top:20px;">
 			<g:form action="desunirse" id="${circulo.id}">
-				<g:if test="${circulo.usuarios!=null}">
+				<g:if test="${circulo.usuarios != null && circulo.usuarios.size() != 1}">
 					<g:each in="${circulo.usuarios}" var="usuario">
-						<div class="col-md-2">
-							<p>FOTO</p>
-							<br />
-							<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.userId}</g:link></strong></p>
-							<g:checkBox name="listaeliminar" value="${usuario.id}" />
-						</div>
+						<g:if test="${usuario.getUserId() != circulo.getAdministrador()}">
+							<div class="col-md-2">
+								<p>FOTO</p>
+								<br />
+								<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.getUserId()}</g:link></strong></p>
+								<g:checkBox name="listaeliminar" value="${usuario.id}" />
+							</div>
+						</g:if>
 					</g:each>
 					<div class="col-md-12">
 						<br />
@@ -35,7 +37,7 @@
 					</div>
 				</g:if>
 				<g:else>
-					<h4>No hay usuarios unidos para mostrar</h4>
+					<h4 style="margin-left:20px;">No hay usuarios unidos para eliminar</h4>
 				</g:else>
 			</g:form>
 		</div>
