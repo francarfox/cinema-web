@@ -59,13 +59,14 @@ class Usuario {
     	return Comentario.findAllByAutor(this)
     }
 
+    /*
     def unirseCirculo(circulo) {
     	circulo.agregarUsuario(this)
     }
 
     def dejarCirculo(circulo) {
     	circulo.expulsarUsuario(this)
-    }
+    }*/
 
     def eliminarUsuario() {
     	this.delete()

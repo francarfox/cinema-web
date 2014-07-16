@@ -45,4 +45,8 @@ class Circulo {
         return lista
     }
 
+    def eliminarCirculo() {
+        this.delete()
+    }
+
 }

@@ -52,7 +52,7 @@ class CirculoController {
 
 	def delete() {
 		def circulo = Circulo.get(params.id)
-		circulo.delete()
+		circulo.eliminarCirculo()
 		return
 	}
 
@@ -83,6 +83,19 @@ class CirculoController {
 			def loggedUser = Usuario.get(session.loggedUser)
 
 			loggedUser.removeFromCirculos(circulo)
+			redirect(action:"index")
+		}
+	}
+
+	def eliminarusuario(Integer userid) {
+		if (session.loggedUser == null){
+			redirect(controller:'usuario' , action:'login' )
+		}
+		else {
+			def circulo = Circulo.get(params.id)
+			def usuarioAEliminar = Usuario.get(userid)
+
+			usuarioAEliminar.removeFromCirculos(circulo)
 			redirect(action:"index")
 		}
 	}
