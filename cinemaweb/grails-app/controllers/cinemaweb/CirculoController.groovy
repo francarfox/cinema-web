@@ -52,6 +52,7 @@ class CirculoController {
 
 	def delete() {
 		def circulo = Circulo.get(params.id)
+		circulo.eliminarUsuarios()
 		circulo.eliminarCirculo()
 		return
 	}
