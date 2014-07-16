@@ -122,7 +122,7 @@
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
 		   <!---<li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>-->
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
-		   <g:if test="${session.loggedUserRol != 'USER'}">
+		   <g:if test="${session.loggedUserRol == 'ADMIN'}">
 		   		 <li class='has-sub'><a href='#'><span>Administrador</span></a>
 		   		 	<ul>
 		         		<li><a href='#'>Manejo de Usuarios</a></li>
@@ -131,6 +131,7 @@
 						<li><a href='#'>Manejo de Comentarios</a></li>
 						<li><a href='#'>Manejo de Reservas</a></li>
 						<li><a href='#'>Manejo de Circulos</a></li>
+						<li><a href='#'>Manejo de Promociones</a></li>
 		      		</ul>
 		      	</li>
 		   </g:if>

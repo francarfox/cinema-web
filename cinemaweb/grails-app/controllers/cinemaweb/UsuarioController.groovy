@@ -25,7 +25,7 @@ class UsuarioController {
 	}
 	//!Verificacion de diferentes usuarios y denegacion de acciones
 
-	def create = {
+	def create() {
 
 		if (session.loggedUser == null){
 			render(view: "create")
@@ -45,7 +45,7 @@ class UsuarioController {
 
 	//private static final okExtension = ['image/png', 'image/jpeg', 'image/gif']
 
-	def registrar = {
+	def registrar() {
 
 		//Verifico foto de perfil subida
 		/* def foto = request.getFile('foto')
@@ -85,7 +85,7 @@ class UsuarioController {
 
 	}
 
-	def edit = {
+	def edit() {
 
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
@@ -96,7 +96,7 @@ class UsuarioController {
 		}
 	}
 
-	def actualizar = {
+	def actualizar() {
 
 		def usuario = Usuario.get(params.id)
 
@@ -111,7 +111,7 @@ class UsuarioController {
 		}
 	}
 
-	def show = {
+	def show() {
 
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
@@ -122,7 +122,7 @@ class UsuarioController {
 		}
 	}
 
-	def eliminar = {
+	def eliminar() {
 
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
@@ -136,11 +136,11 @@ class UsuarioController {
 		
 	}
 
-	def login = { 
+	def login() { 
 
 	}
 
-	def validar = {
+	def validar() {
 
 		def usuario = Usuario.findByUserIdAndPassword(params.userId,params.password) 
 
@@ -156,7 +156,7 @@ class UsuarioController {
 
 	}
 
-	def logout = {
+	def logout() {
 
 		if (session.loggedUser != null) {
 			session.loggedUser = null
@@ -165,4 +165,8 @@ class UsuarioController {
 		}
 	}
 
+	def verusuario() {
+		def usuario = Usuario.findByUserId(params.nombre)
+		render(view:"show", model:[usuario:usuario])
+	}
 }
