@@ -27,7 +27,7 @@
 								<p>FOTO</p>
 								<br />
 								<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.getUserId()}</g:link></strong></p>
-								<g:checkBox name="userid" value="${usuario.id}" />
+								<input type="radio" name="userid" value="${usuario.id}" />
 							</div>
 						</g:if>
 					</g:each>

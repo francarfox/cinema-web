@@ -49,4 +49,8 @@ class Circulo {
         this.delete()
     }
 
+    def eliminarUsuarios() {
+        this.usuarios.toList().each{ this.removeFromUsuarios(it) }
+    }
+
 }
