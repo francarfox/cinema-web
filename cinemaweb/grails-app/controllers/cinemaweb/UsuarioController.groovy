@@ -146,7 +146,8 @@ class UsuarioController {
 
 		if (usuario != null){
 			session.loggedUser = usuario.id
-
+			session.loggedUserNombre = usuario.userId
+			session.loggedUserRol = usuario.rol
 			render(view: "show", model: [usuario:usuario]) 
 		} 
 		else {

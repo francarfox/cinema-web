@@ -37,7 +37,7 @@ class Circulo {
     }
 
     def expulsarUsuario(usuario) {
-        this.removeFromUsuarios(usuario)
+        usuario.removeFromCirculos(this)
     }
 
     def mostrarUsuariosSinAdmin(){

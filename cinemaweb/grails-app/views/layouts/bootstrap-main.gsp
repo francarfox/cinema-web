@@ -84,13 +84,17 @@
 			<g:if test="${session.loggedUser!=null}">
 		      	<li class="dropdown">
 		      		<b>Bienvenido</b>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>${session.loggedUser}</b><b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>${session.loggedUserNombre}</b><b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><g:link controller="usuario" action="show" id="${session.loggedUser}">Mi Usuario</g:link></li>
 							<li><g:link controller="perfil" action="show" id="${session.loggedUser}">Mi Perfil</g:link></li>
 							<li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}">Mis Circulos</g:link></li>
 							<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}">Mis Comentarios</g:link></li>
 							<li><a href="#">Mis Reservas</a></li>
+							<g:if test="${session.loggedUserRol != 'USER'}">
+								<li class="divider"></li>
+								<li><g:link>Panel Administrador</g:link></li>
+							</g:if>
 							<li class="divider"></li>
 							<li><g:link controller="usuario" action="logout">Logout</g:link></li>
 							<li><g:link controller="usuario" action="eliminar" id="${session.loggedUser}">Eliminar Cuenta</g:link></li>
@@ -108,7 +112,7 @@
 		<!--- Barra de Menu -->
 		<div id='cssmenu'>
 		<ul>
-		   <li class='active'><a href='/cinemaweb'><span>Home</span></a></li>
+		   <li><a href='/cinemaweb'><span>Home</span></a></li>
 		   <li class='has-sub'><a href='/cinemaweb/cine'><span>Cines</span></a>
 		      <ul>
 		         <li><a href='#'><span>Hoyts</span></a></li>
@@ -116,19 +120,31 @@
 		      </ul>
 		   </li>
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
-		   <li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>
+		   <!---<li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>-->
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
+		   <g:if test="${session.loggedUserRol != 'USER'}">
+		   		 <li class='has-sub'><a href='#'><span>Administrador</span></a>
+		   		 	<ul>
+		         		<li><a href='#'>Manejo de Usuarios</a></li>
+						<li><a href='#'>Manejo de Cines</a></li>
+						<li><a href='#'>Manejo de Peliculas</a></li>
+						<li><a href='#'>Manejo de Comentarios</a></li>
+						<li><a href='#'>Manejo de Reservas</a></li>
+						<li><a href='#'>Manejo de Circulos</a></li>
+		      		</ul>
+		      	</li>
+		   </g:if>
 		   <li class='last'><a href='#'><span>Contacto</span></a></li>
 		</ul>
 		</div>
 		<!--- !Barra de Menu -->
 	</div>
-	<!--- !barra superior ---->
+	<!--- !barra superior -->
 
 	<g:layoutBody/>
 
 
-	<!--- footer ---->
+	<!--- footer -->
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
