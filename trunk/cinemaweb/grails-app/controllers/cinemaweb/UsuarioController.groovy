@@ -161,6 +161,8 @@ class UsuarioController {
 
 		if (session.loggedUser != null) {
 			session.loggedUser = null
+			session.loggedUserNombre = null
+			session.loggedUserRol = null
 			render(view:"logout")
 			//redirect(url:resource(dir:'' ))
 		}
