@@ -71,7 +71,7 @@ class Usuario {
     	this.delete()
     }
 
-    Usuario buscarUsuario(usuario) { //no funciona
-    	return this.findByUserId(usuario)
+    def buscarUsuario(nombre) {
+        usuario.findByUserId(nombre)
     }
 }

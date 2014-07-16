@@ -18,6 +18,7 @@
 	            </div>
 	        </g:hasErrors>
 
+	    <g:if test="${ session.loggedUserNombre == usuario.userId }">
 	   	<div class="col-md-3" style="margin-top:30px;padding:0;">
 	   		<ul class="menu">
 			  <li><g:link class="active" controller="usuario" action="show" id="${session.loggedUser}"><span>USUARIO</span></g:link></li>
@@ -27,6 +28,7 @@
 			  <li><a href="#"><span>RESERVAS</span></a></li>
 			</ul>
 	   	</div>
+	   	</g:if>
 
 		<div class="col-md-8" style="margin-left:20px;">
 			<h1>Usuario de ${usuario.userId}</h1>
@@ -39,7 +41,7 @@
 			</div>
 			<br />
 
-			<g:if test="${ session.loggedUser == usuario.userId }">
+			<g:if test="${ session.loggedUserNombre == usuario.userId }">
 				<g:link action="edit" class="btn btn-lg btn-large btn-crearcirculo" id="${usuario.id}"><i class="fa fa fa-pencil-square-o"></i> Editar Usuario</g:link>
 				<g:link action="eliminar" class="btn btn-lg btn-large btn-crearcirculo" id="${usuario.id}"><i class="fa fa-ban"></i> Eliminar Cuenta</g:link>
 			</g:if>

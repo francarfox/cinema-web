@@ -34,7 +34,7 @@
 						<tr>
 							<td class="text-center"><g:link action="show" id="${circulo.id}"><i class="fa fa-comments"></i> ${circulo.getNombre()}</g:link></td>
 							<td class="text-center">${circulo.getTags()}</td>
-							<td class="text-center">${circulo.getAdministrador()}</td>
+							<td class="text-center"><g:link controller="usuario" action="verusuario" params="[nombre:circulo.getAdministrador()]">${circulo.getAdministrador()}</g:link></td>
 							<td class="text-center">
 								<g:if test="${circulo.estaUsuario(loggedUser)}">
 									<g:link action="show" id="${circulo.id}" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;">Ver <i class="fa fa-check"></i></g:link>
