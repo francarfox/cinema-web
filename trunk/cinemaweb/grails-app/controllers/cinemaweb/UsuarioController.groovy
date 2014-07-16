@@ -130,8 +130,9 @@ class UsuarioController {
 		else {
 			def usuario = Usuario.get(params.id)
 			usuario.eliminarUsuario()
-			session.usuario = null
-			return //Mejorar esto!!!
+			session.loggedUser = null
+			session.loggedUserRol = null
+			return 
 		}
 		
 	}
