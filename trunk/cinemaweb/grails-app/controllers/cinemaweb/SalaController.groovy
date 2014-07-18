@@ -11,81 +11,56 @@ class SalaController{
     }
 
 	def create = {
-		if (params.submit > 0) {
+		def errors = null
+        if (params.submit > 0) {
 			/*JSON.use('deep')
         	render params as JSON
         	return*/
-            this.salaService.create(params)
-        	redirect(action: "index")
+            errors = this.salaService.create(params)
+        	if(!errors){
+                redirect(action: "index")    
+            }
         }
 
-        [cines: Cine.list()]
+        [cines: Cine.list(), errors: errors]
     }
 
     def edit = {
+        def errors = null
+        def salaData = this.salaService.getSala(params.id).properties
 
     	if(params.submit > 0){
-    		/*sala.nombre = params.nombre
-    		sala.filas = params.filas.toInteger()
-    		sala.columnas = params.columnas.toInteger()
-            sala.cine = Cine.get(params.cine)
-    		sala.save()*/
-
-            this.salaService.edit(params.id,params)
-
-    		redirect(action: "show", id: params.id)
+            errors = this.salaService.edit(params.id,params)
+            if(!errors){
+                redirect(action: "show", id: params.id)    
+            }
     	}
 
-    	[sala: this.salaService.getSala(params.id), cines: Cine.list()]
+    	[sala: salaData, cines: Cine.list(), errors:errors]
     }
 
 
     def show = {
-    	def sala = Sala.get(params.id)
-    	def asientosOcupados = this.getAsientosOcupados(sala.asientos)
+    	def sala = this.salaService.getSala(params.id)
 
-    	[sala: Sala.get(params.id), asientosOcupados: asientosOcupados]
+    	[sala: sala, asientosOcupados: sala.getAsientosOcupados()]
     }
 
 
     def updateSeats = {
-    	def sala = Sala.get(params.id)
+    	
     	if(params.toAdd){
 			//cargo todos los asientos
-			/*JSON.use('deep')
-				render params.toAdd as JSON
-				return*/
-             params.list("toAdd").each {
-                def pos = it.split(",")
-                def asiento = new Asiento(fila: pos[0],columna: pos[1])
-                sala.addToAsientos(asiento)
-            }
+             this.salaService.addAsientos(params.id,params.list("toAdd"))
             }else if(params.toRemove){
-            params.list("toRemove").each {
-                def pos = it.split(",")
-                def asiento = sala.getAsiento(pos[0].toInteger(),pos[1].toInteger())
-                //remuevo el asiento
-                sala.removeFromAsientos(asiento)
-            }
+            this.salaService.removerAsientos(params.id, params.list("toRemove"))
         }
 
-        sala.save();
         redirect(action: "show", id: params.id)
     }
 
 
 	//funciones auxiliares
-
-	private def getAsientosOcupados(def asientos){
-		def asientosOcupados = []
-		if (asientos) {
-			asientos.each {asientosOcupados.add(it.fila + "," + it.columna)}
-		}
-
-		return asientosOcupados
-
-	}
-
 
     private def dumpVar(def var){
         if(var.getClass() == String || var.getClass() == Integer){

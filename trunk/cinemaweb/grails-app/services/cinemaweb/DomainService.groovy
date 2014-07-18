@@ -17,7 +17,13 @@ abstract class DomainService {
 
 	protected def submitDomainAttributes(def domainInstance, def attributes){
 		domainInstance.properties = attributes
-		domainInstance.save(failOnError: true)
+		if(domainInstance.validate()){
+			domainInstance.save(failOnError: true)	
+			return null
+		}else{
+			return domainInstance.errors.getAllErrors()
+		}
+		
 	}
 
 

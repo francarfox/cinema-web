@@ -17,10 +17,10 @@ class BootStrap {
 		    new Usuario(userId:"mati09", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
 		}
 
-		/*if(!Cine.count()) {
-		    new Cine(nombre: "Hoyts").save(failOnError:true)
-		    new Cine(nombre: "Cinemark").save(failOnError:true)
-		}*/
+		if(!Cine.count()) {
+		    new Cine(nombre: "Hoyts",ubicacion: "Parana 1234", precioBase: 12.0, apertura: "08:00", cierre: "23:00").save(failOnError:true)
+		    
+		}
 
 		/*if(!Pelicula.count()) {
 		    new Pelicula(titulo: "Matrix Reload").save(failOnError:true)
