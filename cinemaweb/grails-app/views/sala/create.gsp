@@ -9,6 +9,17 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h4>Nueva Sala</h4>
+				<g:if test="${errors}">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-danger">
+								<g:each in="${errors}">
+									<p><g:message error="${it}" /></p>
+								</g:each>		
+							</div>
+						</div>
+					</div>
+				</g:if>
 				<g:form action="create" class="form-horizontal">
 				<div class="form-group">
 					<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>

@@ -11,13 +11,19 @@ class Sala {
     static belongsTo = [cine: Cine]
 
     static constraints = {
+        nombre blank: false
     }
 
     public def getAsiento(def fila, def columna){
-    	for(asiento in this.asientos) {
-    		if(asiento.fila == fila && asiento.columna == columna){
-    			return asiento
-    		}	
-    	}
+        return this.asientos.find { it.fila == fila && it.columna == columna }
     }
+
+    public def getAsientosOcupados(){
+        def asientosOcupados = []
+        if (this.asientos) {
+            this.asientos.each{asientosOcupados.add(it.fila + "," + it.columna)}   
+        }
+        return asientosOcupados
+    }
+
 }
