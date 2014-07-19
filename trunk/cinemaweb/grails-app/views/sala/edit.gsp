@@ -1,25 +1,26 @@
 <html>
 <head>
-	<meta name="layout" content="bootstrap-main2"/>
+	<meta name="layout" content="bootstrap-main"/>
 	<title>Cinema Web - Editar Sala</title>
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<h4>Sala #${sala.id} - ${sala.nombre}</h4>
-				<g:if test="${errors}" >
+		<g:if test="${errors}" >
 					<div class="row">
 						<div class="col-md-12">
-							<div class="alert alert-danger">
+							<div id="message_error">
+								<ul>
 								<g:each in="${errors}">
-									<p><g:message error="${it}" /></p>
+									<li><g:message error="${it}" /></li>
 								</g:each>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</g:if>
-
+		<div class="row">
+			<div class="col-md-8">
+				<h4>Sala #${sala.id} - ${sala.nombre}</h4>
 				<g:form action="edit" id="${sala.id}" class="form-horizontal">
 				<div class="form-group">
 					<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>
