@@ -4,7 +4,9 @@ import grails.transaction.Transactional
 
 @Transactional
 abstract class DomainService {
- 
+ 	
+	def fileService
+
 	public def create(def attributes){
 		def domain = this.getDomainInstance()
 		this.submitDomainAttributes(domain,attributes)
@@ -18,14 +20,31 @@ abstract class DomainService {
 	protected def submitDomainAttributes(def domainInstance, def attributes){
 		domainInstance.properties = attributes
 		if(domainInstance.validate()){
-			domainInstance.save(failOnError: true)	
+			domainInstance.save(flush: true)	
 			return null
 		}else{
+			domainInstance.discard()
 			return domainInstance.errors.getAllErrors()
 		}
 		
+	}	
+
+
+	public def subirFoto(String id, String fotoAtribute, def file, String path){
+		def domainInstance = this.getDomainInstance(id)
+		String fileName = id + ".jpg"
+        String filePath = path + fileName
+        def error = false;
+        if(this.fileService.uploadFile(file, filePath)){
+        	domainInstance."$fotoAtribute" = fileName
+        	domainInstance.save()
+        }else{
+        	error = true
+        }
+
+        return error
 	}
 
 
-	public abstract def getDomainInstance(String id = "");
+	public abstract def getDomainInstance(String id = "")
 }
