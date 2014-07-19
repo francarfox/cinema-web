@@ -5,14 +5,18 @@
 </head>
 <body>
 	<div class="container">
-		<g:if test="${cine && cine.hasErrors()}">
-			<div class="row">
-				<div class="col-md-8">
-					<div id="message_error">
-						<g:renderErrors bean="${cine}" as="list" />
+		<g:if test="${errors}">
+					<div class="row">
+						<div class="col-md-6">
+							<div id="message_error">
+								<ul>
+								<g:each in="${errors}">
+									<li><g:message error="${it}" /></li>
+								</g:each>
+								</ul>		
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
 		</g:if>
 		<div class="row">
 			<div class="col-md-8">

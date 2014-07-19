@@ -1,55 +1,48 @@
 package cinemaweb
 
-class CineController {
+class CineController extends BaseController{
 	static scaffold = true
-    def fileService
+    def cineService
 
     def create = {
-
-        def data = [nombre: "",ubicacion: "",precioBase: "20", apertura: "08:00", cierre:"00:00"]
-        def cine = null
+        def data = dataToDisplay(params,null)
+        def errors = null
         if(params.submit){
-            data = params
-            cine = new Cine(nombre: params.nombre, ubicacion: params.ubicacion, precioBase: params.float("precioBase"),apertura: params.apertura, cierre: params.cierre, foto: "")
-            if(cine.validate()){
-                cine.save();
-                redirect(action:"show", id: cine.id)
+            errors = this.cineService.create(params)
+            if(!errors){
+                redirect(action:"index")
             }        
         }
 
-        def model = [data: data, hours: this.getOpenCloseHours(), cine: cine, action: "create", id: "",back: [action:"index",id:""]]
+        def model = [data: data, hours: Cine.getOpenCloseHours(), errors: errors, action: "create", id: "",back: [action:"index",id:""]]
         render(view: "create",model: model)
     }
 
 
     def edit = {
-        def cine = Cine.get(params.id)
-        def data = cine
+        def data =  dataToDisplay(params, this.cineService.getCine(params.id))
+        //def data =  dataToDisplay(params,null)
+        def errors = null
         if (params.submit) {
-            cine.nombre = params.nombre
-            cine.ubicacion = params.ubicacion
-            cine.precioBase = params.float("precioBase")
-            cine.apertura = params.apertura
-            cine.cierre = params.cierre
-            if (cine.validate()) {
-                cine.save();
-                redirect(action:"show", id: cine.id)
+            errors =  this.cineService.edit(params.id, params)
+            if (!errors) {
+                redirect(action:"show", id: params.id)
             }
         }
 
-        def model = [data: data, hours: this.getOpenCloseHours(), cine: cine, action: "edit", id: cine.id,back: [action:"show",id:cine.id]]
+        def model = [data: data, hours: Cine.getOpenCloseHours(), errors: errors, action: "edit", id: params.id,back: [action:"show",id:params.id]]
         render(view: "create",model: model)
     }
 
     
     def show = {
-    	def cine = Cine.get(params.id)
+    	def cine = this.cineService.getCine(params.id)
 
         [cine: cine]
     }
 
     def index = {
-        def cines = Cine.list()
+        def cines = this.cineService.getListadoCines()
 
         [cines: cines]
     }
@@ -63,31 +56,45 @@ class CineController {
     }
 
     def uploadPic = {
-    def cine = Cine.get(params.id)
     def error = false
     if (params.submit) {
-        String fileName = params.id + "-cine.jpg"
-         String filePath = "/cines-pics/" + fileName
-         if(fileService.uploadFile(request.getFile("foto"),filePath)){
-          cine.foto = fileName
-          cine.save()
-          redirect(action:"show", id: cine.id)
-         }else{
-          error = true
-         }
+        error = this.cineService.subirFoto(params.id, "foto",request.getFile("foto"), "/cines-pics/")
+        if(!error){
+            redirect(action: "show", id:params.id)
+        }
     }
 
-    [cine: cine, error: error]
+    [cine: this.cineService.getCine(params.id), error: error]
 }
 
 
+/** metodos heredados **/
 
-    //metodos auxiliares
+    def dataToDisplay(params, domain){
+        def porDefecto = null
+        if(domain){
+            porDefecto = domain
+        }else{
+            porDefecto = getAtributosPorDefecto();
+        }
 
-    //devuelve el listado de horas de apertura y cierre para el pulldown
-    private def getOpenCloseHours(){
-        return ["00:00", "01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00",
-                "12:00", "13:00","14:00", "15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"
-        ]
+        return [nombre: params.nombre ?: porDefecto.nombre ,
+                ubicacion: params.ubicacion ?: porDefecto.ubicacion,
+                precioBase: params.precioBase ?: porDefecto.precioBase, 
+                apertura: params.apertura ?: porDefecto.apertura, 
+                cierre: params.cierre ?: porDefecto.cierre]
     }
+
+
+    def getAtributosPorDefecto(){
+
+        return [
+                    nombre: "", 
+                    ubicacion:  "",
+                    precioBase: "30",
+                    apertura: "08:00",
+                    cierre: "23:00",
+            ]
+    }
+
 }
