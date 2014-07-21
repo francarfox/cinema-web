@@ -34,7 +34,7 @@ class UsuarioController {
 			def usuario = Usuario.get(session.loggedUser) 
 
 			if (usuario.getRol() == "ADMIN"){
-				render(view: "createAdmin")
+				redirect(action:"create", controller:"administrador") //render(view: "createAdmin")
 			}
 			else {
 				render(view: "create")
@@ -43,26 +43,11 @@ class UsuarioController {
 	
 	}
 
-	//private static final okExtension = ['image/png', 'image/jpeg', 'image/gif']
-
 	def registrar() {
-
-		//Verifico foto de perfil subida
-		/* def foto = request.getFile('foto')
-		if (!okExtension.contains(foto.getContentType())) {
-		    //flash.message = "La foto debe ser de extensión: ${okExtension}"
-		    render(view: "create", model: [message: "ERROR: La foto debe ser de extensión: ${okExtension}."])
-		    return
-		}
-
-		String byte[] foto = foto.bytes
-	  	log.info("File uploaded: $user.avatarType")
-	  	*/
 		
 		String nombre = params.nombre
 		String apellido = params.apellido
-		String email = params.email
-		//byte[] foto = params.foto  
+		String email = params.email 
 		String localidad = params.localidad
 		String pais	= params.pais
 		def perfil = new Perfil(nombre: nombre, apellido: apellido, email: email, localidad: localidad, pais: pais)
@@ -71,6 +56,7 @@ class UsuarioController {
 		String pass = params.password
 		String passV = params.passwordV
 		String rol = params.rol
+		
 		if (rol == null){
 			rol = "USER"
 		}
@@ -164,7 +150,6 @@ class UsuarioController {
 			session.loggedUserNombre = null
 			session.loggedUserRol = null
 			render(view:"logout")
-			//redirect(url:resource(dir:'' ))
 		}
 	}
 

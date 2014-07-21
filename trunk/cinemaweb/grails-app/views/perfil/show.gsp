@@ -15,10 +15,10 @@
 
 		<div class="col-md-3" style="margin-top:30px;padding:0;">
 	   		<ul class="menu">
-			  <li><g:link controller="usuario" action="show" id="${session.usuario.id}"><span>USUARIO</span></g:link></li>
-			  <li><g:link class="active" controller="perfil" action="show" id="${session.usuario.id}"><span>PERFIL</span></g:link></li>
-			  <li><g:link controller="circulo" action="indexusuario" id="${session.usuario.id}"><span>CIRCULOS</span></g:link></li>
-			  <li><g:link controller="comentario" action="indexusuario" id="${session.usuario.id}"><span>COMENTARIOS</span></g:link></li>
+			  <li><g:link controller="usuario" action="show" id="${session.usuario}"><span>USUARIO</span></g:link></li>
+			  <li><g:link class="active" controller="perfil" action="show" id="${session.usuario}"><span>PERFIL</span></g:link></li>
+			  <li><g:link controller="circulo" action="indexusuario" id="${session.usuario}"><span>CIRCULOS</span></g:link></li>
+			  <li><g:link controller="comentario" action="indexusuario" id="${session.usuario}"><span>COMENTARIOS</span></g:link></li>
 			  <li><a href="#"><span>RESERVAS</span></a></li>
 			</ul>
 	   	</div>
