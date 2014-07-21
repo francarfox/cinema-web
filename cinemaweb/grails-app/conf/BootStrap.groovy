@@ -5,16 +5,19 @@ class BootStrap {
     def init = { servletContext ->
     	if(!Usuario.count()) {
     		def perfil = new Perfil(nombre: "Federico", apellido: "Di Rocco", email: "fede.dirocco@hotmail.com")
-		    new Usuario(userId:"fedecarp34", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
+		    new Usuario(userId:"fedecarp34", password:"12345", passwordV:"12345", rol:"USER", perfil: perfil).save(failOnError:true)
 
 		    perfil = new Perfil(nombre: "Rosa", apellido: "Meltrozo", email: "rosamel@trozo.com")
 		    new Usuario(userId:"Rosa69", password:"rosita", passwordV:"rosita", rol:"USER", perfil: perfil).save(failOnError:true)
 
 		    perfil = new Perfil(nombre: "Fran", apellido: "Fox", email: "franfox@gmail.com")
-		    new Usuario(userId:"FranCarFox", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
+		    new Usuario(userId:"FranCarFox", password:"12345", passwordV:"12345", rol:"USER", perfil: perfil).save(failOnError:true)
 
 		    perfil = new Perfil(nombre: "Matias", apellido: "Barro", email: "mastiasbarro@gmail.com")
-		    new Usuario(userId:"mati09", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
+		    new Usuario(userId:"mati09", password:"12345", passwordV:"12345", rol:"USER", perfil: perfil).save(failOnError:true)
+
+		    perfil = new Perfil(nombre: "Admin", apellido: "Trator", email: "admin@gmail.com")
+		    new Administrador(userId:"admin01", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
 		}
 
 		if(!Cine.count()) {
