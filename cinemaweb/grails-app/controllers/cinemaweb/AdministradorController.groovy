@@ -34,7 +34,7 @@ class AdministradorController extends UsuarioController {
 			
 				if (admin.validate()) {
 					admin.save()
-					redirect(action: "login", controller:"usuario")
+					redirect(action: "login", controller:"usuario", model: [usuario:usuario,messageV: "Bienvenido ${usuario.perfil.nombre} ${usuario.perfil.apellido} a CinemaWeb."])
 				} else {
 					render(view: "create", model: [usuario:admin,message: "ERROR: No ha registrado correctamente los datos."])
 				}
@@ -42,4 +42,57 @@ class AdministradorController extends UsuarioController {
 		}
 
     }
+
+    def paneladministrador() {
+    	
+    }
+
+    def listarusuarios() {
+    	def loggedUser = Usuario.get(session.loggedUser)
+
+    	if (loggedUser.getRol() == "ADMIN") {
+    		def usuarios = Usuario.list()
+    		[usuarios: usuarios]
+    	}
+    	else {
+    		render(view:"denegado")
+    	}
+    }
+
+    def eliminarusuario() {
+		if (session.loggedUser == null){
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		}
+		else {
+			def usuario = Usuario.get(params.id)
+			usuario.eliminarUsuario()
+			redirect(action: "listarusuarios")
+		}
+		
+	}
+
+	def listarcirculos() {
+    	def loggedUser = Usuario.get(session.loggedUser)
+
+    	if (loggedUser.getRol() == "ADMIN") {
+    		def circulos = Circulo.list()
+    		[circulos: circulos]
+    	}
+    	else {
+    		render(view:"denegado")
+    	}
+    }
+
+    def eliminarcirculo() {
+		if (session.loggedUser == null){
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		}
+		else {
+			def circulo = Circulo.get(params.id)
+			circulo.eliminarUsuarios()
+			circulo.eliminarCirculo()
+			redirect(action: "listarcirculos")
+		}
+		
+	}
 }

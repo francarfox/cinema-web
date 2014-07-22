@@ -93,7 +93,7 @@
 							<li><a href="#">Mis Reservas</a></li>
 							<g:if test="${session.loggedUserRol != 'USER'}">
 								<li class="divider"></li>
-								<li><g:link>Panel Administrador</g:link></li>
+								<li><g:link controller="administrador" action="paneladministrador">Panel Administrador</g:link></li>
 							</g:if>
 							<li class="divider"></li>
 							<li><g:link controller="usuario" action="logout">Logout</g:link></li>
@@ -123,14 +123,14 @@
 		   <!---<li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>-->
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
 		   <g:if test="${session.loggedUserRol == 'ADMIN'}">
-		   		 <li class='has-sub'><a href='#'><span>Administrador</span></a>
+		   		 <li class='has-sub'><a href='/cinemaweb/administrador/paneladministrador'><span>Administrador</span></a>
 		   		 	<ul>
-		         		<li><a href='#'>Manejo de Usuarios</a></li>
+		         		<li><a href='/cinemaweb/administrador/listarusuarios'>Manejo de Usuarios</a></li>
 						<li><a href='#'>Manejo de Cines</a></li>
 						<li><a href='#'>Manejo de Peliculas</a></li>
-						<li><a href='#'>Manejo de Comentarios</a></li>
+						<li><a href='/cinemaweb/administrador/listarcomentarios'>Manejo de Comentarios</a></li>
 						<li><a href='#'>Manejo de Reservas</a></li>
-						<li><a href='#'>Manejo de Circulos</a></li>
+						<li><a href='/cinemaweb/administrador/listarcirculos'>Manejo de Circulos</a></li>
 						<li><a href='#'>Manejo de Promociones</a></li>
 		      		</ul>
 		      	</li>
