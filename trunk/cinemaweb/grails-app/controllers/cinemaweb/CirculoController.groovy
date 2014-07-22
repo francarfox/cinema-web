@@ -6,8 +6,6 @@ class CirculoController {
 	static scaffold = true
 
     def index() {
-    	def usuario = Usuario.get(params.id)
-
     	if (session.loggedUser == null){
 			redirect(controller:'usuario' , action:'login' )
 		}
