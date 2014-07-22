@@ -1,7 +1,7 @@
 package cinemaweb
 import grails.converters.JSON
 
-class SalaController{
+class SalaController extends BaseController{
 
 	static scaffold = true
     def salaService
@@ -12,6 +12,7 @@ class SalaController{
 
 	def create = {
 		def errors = null
+        def data = this.dataToDisplay(params, null)
         if (params.submit > 0) {
 			/*JSON.use('deep')
         	render params as JSON
@@ -22,12 +23,12 @@ class SalaController{
             }
         }
 
-        [cines: Cine.list(), errors: errors]
+        [data: data, cines: Cine.list(), errors: errors]
     }
 
     def edit = {
         def errors = null
-        def salaData = this.salaService.getSala(params.id).properties
+        def salaData = this.dataToDisplay(params,this.salaService.getSala(params.id))
 
     	if(params.submit > 0){
             errors = this.salaService.edit(params.id,params)
@@ -36,7 +37,7 @@ class SalaController{
             }
     	}
 
-    	[sala: salaData, cines: Cine.list(), errors:errors]
+    	[data: salaData, cines: Cine.list(), errors:errors, salaID: params.id]
     }
 
 
@@ -59,6 +60,16 @@ class SalaController{
         redirect(action: "show", id: params.id)
     }
 
+
+
+    def getAtributosPorDefecto(){
+        return [
+                nombre: "",
+                cine: "",
+                filas: "10",
+                columnas: "15"
+        ]
+    }
 
 	//funciones auxiliares
 
