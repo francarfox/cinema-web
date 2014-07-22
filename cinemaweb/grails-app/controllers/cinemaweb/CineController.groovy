@@ -70,28 +70,13 @@ class CineController extends BaseController{
 
 /** metodos heredados **/
 
-    def dataToDisplay(params, domain){
-        def porDefecto = null
-        if(domain){
-            porDefecto = domain
-        }else{
-            porDefecto = getAtributosPorDefecto();
-        }
-
-        return [nombre: params.nombre ?: porDefecto.nombre ,
-                ubicacion: params.ubicacion ?: porDefecto.ubicacion,
-                precioBase: params.precioBase ?: porDefecto.precioBase, 
-                apertura: params.apertura ?: porDefecto.apertura, 
-                cierre: params.cierre ?: porDefecto.cierre]
-    }
-
 
     def getAtributosPorDefecto(){
 
         return [
                     nombre: "", 
                     ubicacion:  "",
-                    precioBase: "30",
+                    precioBase: "54",
                     apertura: "08:00",
                     cierre: "23:00",
             ]

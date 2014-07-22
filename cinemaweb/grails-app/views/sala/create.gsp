@@ -26,25 +26,25 @@
 				<div class="form-group">
 					<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>
 					<div class="col-md-4">
-						<input name="nombre" class="form-control" id="name">
+						<input name="nombre" class="form-control" id="name" value="${data.nombre}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="cine" class="col-md-2 col-sm-2 control-label">Cine:</label>
 					<div class="col-md-4">
-						<g:select name="cine" from="${cines}" optionKey="id" optionValue="nombre" class="form-control"/>
+						<g:select name="cine" from="${cines}" optionKey="id" optionValue="nombre" class="form-control" value="${data.cine}"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="fila" class="col-md-2 col-sm-2 control-label">Filas:</label>
 					<div class="col-md-2">
-						<g:select name="filas" from="${1..15}" value="5" class="form-control"/>
+						<g:select name="filas" from="${1..15}" value="${data.filas}" class="form-control"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="columna" class="col-md-2 col-sm-2 control-label">Columnas:</label>
 					<div class="col-md-2">
-						<g:select name="columnas" from="${1..20}" value="10" class="form-control"/>
+						<g:select name="columnas" from="${1..20}" value="10" class="form-control" value="${data.columnas}"/>
 					</div>
 				</div>
 				<div class="form-group">
