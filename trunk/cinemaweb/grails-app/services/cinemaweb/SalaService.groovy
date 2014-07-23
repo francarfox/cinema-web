@@ -2,23 +2,24 @@ package cinemaweb
 
 import grails.transaction.Transactional
 
-@Transactional
 class SalaService extends DomainService{
 
+	@Transactional
 	public def getDomainInstance(String id = ""){
 		return (id) ? Sala.get(id) : new Sala()
 	}
 
-
+	@Transactional
 	public def getSala(String id){
 		return this.getDomainInstance(id)
 	}
 
+	@Transactional
 	public def getSalas(){
 		return Sala.list();
 	}
 
-
+	@Transactional
 	public def addAsientos(String id, def listaAsientos) {
 		def sala = this.getDomainInstance(id)
 		listaAsientos.each {
@@ -29,6 +30,7 @@ class SalaService extends DomainService{
          sala.save()
 	}
 
+	@Transactional
 	public def removerAsientos(String id, def listaAsientos){
 		def sala = this.getDomainInstance(id)
 		listaAsientos.each{

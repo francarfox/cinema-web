@@ -2,20 +2,24 @@ package cinemaweb
 
 import grails.transaction.Transactional
 
+
 abstract class DomainService {
  	
 	def fileService
 
+	@Transactional
 	public def create(def attributes){
 		def domain = this.getDomainInstance()
 		this.submitDomainAttributes(domain,attributes)
 	}
 
+	@Transactional
 	public def edit(String id, def attributes){
 		def domain = this.getDomainInstance(id)
 		this.submitDomainAttributes(domain,attributes)
 	}
 
+	@Transactional
 	protected def submitDomainAttributes(def domainInstance, def attributes){
 		domainInstance.properties = attributes
 		if(domainInstance.validate()){
@@ -28,7 +32,7 @@ abstract class DomainService {
 		
 	}	
 
-
+	@Transactional
 	public def subirFoto(String id, String fotoAtribute, def file, String path){
 		def domainInstance = this.getDomainInstance(id)
 		String fileName = id + ".jpg"
@@ -44,6 +48,6 @@ abstract class DomainService {
         return error
 	}
 
-
+	
 	public abstract def getDomainInstance(String id = "")
 }
