@@ -2,7 +2,6 @@ package cinemaweb
 
 import grails.transaction.Transactional
 
-@Transactional
 abstract class DomainService {
  	
 	def fileService
