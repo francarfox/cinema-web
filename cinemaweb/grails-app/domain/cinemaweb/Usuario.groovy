@@ -69,7 +69,7 @@ class Usuario {
     }*/
 
     def eliminarUsuario() {
-    	this.delete()
+    	this.delete(flush: true)
     }
 
     def buscarUsuario(nombre) {

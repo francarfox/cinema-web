@@ -22,14 +22,14 @@
 			<g:form action="eliminarusuario" id="${circulo.id}">
 				<g:if test="${circulo.usuarios != null && circulo.usuarios.size() != 1}">
 					<g:each in="${circulo.usuarios}" var="usuario">
-						<g:if test="${usuario.getUserId() != circulo.getAdministrador()}">
 							<div class="col-md-2">
 								<p>FOTO</p>
 								<br />
 								<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.getUserId()}</g:link></strong></p>
-								<input type="radio" name="userid" value="${usuario.id}" />
+								<g:if test="${usuario.getUserId() != circulo.getAdministrador()}">
+									<input type="radio" name="userid" value="${usuario.id}" />
+								</g:if>
 							</div>
-						</g:if>
 					</g:each>
 					<div class="col-md-12">
 						<br />

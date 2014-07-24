@@ -93,7 +93,7 @@
 							<li><a href="#">Mis Reservas</a></li>
 							<g:if test="${session.loggedUserRol != 'USER'}">
 								<li class="divider"></li>
-								<li><g:link controller="administrador" action="paneladministrador">Panel Administrador</g:link></li>
+								<li><g:link controller="usuario" action="paneladministrador">Panel Administrador</g:link></li>
 							</g:if>
 							<li class="divider"></li>
 							<li><g:link controller="usuario" action="logout">Logout</g:link></li>
@@ -113,24 +113,19 @@
 		<div id='cssmenu'>
 		<ul>
 		   <li><a href='/cinemaweb'><span>Home</span></a></li>
-		   <li class='has-sub'><a href='/cinemaweb/cine'><span>Cines</span></a>
-		      <ul>
-		         <li><a href='#'><span>Hoyts</span></a></li>
-		         <li><a href='#'><span>Cinemark</span></a></li>
-		      </ul>
-		   </li>
+		   <li><a href='/cinemaweb/cine'><span>Cines</span></a></li>
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
 		   <!---<li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>-->
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
 		   <g:if test="${session.loggedUserRol == 'ADMIN'}">
-		   		 <li class='has-sub'><a href='/cinemaweb/administrador/paneladministrador'><span>Administrador</span></a>
+		   		 <li class='has-sub'><a href='/cinemaweb/usuario/paneladministrador'><span>Administrador</span></a>
 		   		 	<ul>
-		         		<li><a href='/cinemaweb/administrador/listarusuarios'>Manejo de Usuarios</a></li>
+		         		<li><a href='/cinemaweb/usuario/listarusuarios'>Manejo de Usuarios</a></li>
 						<li><a href='#'>Manejo de Cines</a></li>
 						<li><a href='#'>Manejo de Peliculas</a></li>
-						<li><a href='/cinemaweb/administrador/listarcomentarios'>Manejo de Comentarios</a></li>
+						<li><a href='/cinemaweb/usuario/listarcomentarios'>Manejo de Comentarios</a></li>
 						<li><a href='#'>Manejo de Reservas</a></li>
-						<li><a href='/cinemaweb/administrador/listarcirculos'>Manejo de Circulos</a></li>
+						<li><a href='/cinemaweb/usuario/listarcirculos'>Manejo de Circulos</a></li>
 						<li><a href='#'>Manejo de Promociones</a></li>
 		      		</ul>
 		      	</li>
