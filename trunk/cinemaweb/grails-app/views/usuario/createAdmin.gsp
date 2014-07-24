@@ -24,7 +24,7 @@
 				</div>
 				<div class="form-group">
 					<label for="rol">Tipo de Usuario</label>
-					<g:select from="${['USER', 'ADMIN', 'SUPERADMIN']}" class="form-control" name="rol"/>
+					<g:select from="${['USER', 'ADMIN']}" class="form-control" name="rol"/>
 				</div>
 				<div class="form-group">
 					<label for="password">Password *</label>

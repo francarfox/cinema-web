@@ -17,7 +17,7 @@ class BootStrap {
 		    new Usuario(userId:"mati09", password:"12345", passwordV:"12345", rol:"USER", perfil: perfil).save(failOnError:true)
 
 		    perfil = new Perfil(nombre: "Admin", apellido: "Trator", email: "admin@gmail.com")
-		    new Administrador(userId:"admin01", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
+		    new Usuario(userId:"admin01", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
 		}
 
 		if(!Cine.count()) {

@@ -95,7 +95,7 @@ class CirculoController {
 			def usuarioAEliminar = Usuario.get(userid)
 
 			usuarioAEliminar.removeFromCirculos(circulo)
-			redirect(action:"index")
+			redirect(action:"show", id:circulo.id)
 		}
 	}
 

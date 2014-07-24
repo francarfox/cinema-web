@@ -34,7 +34,7 @@ class UsuarioController {
 			def usuario = Usuario.get(session.loggedUser) 
 
 			if (usuario.getRol() == "ADMIN"){
-				redirect(action:"create", controller:"administrador") //render(view: "createAdmin")
+				render(view: "createAdmin") //redirect(action:"create", controller:"administrador")
 			}
 			else {
 				render(view: "create")
@@ -155,6 +155,76 @@ class UsuarioController {
 
 	def verusuario() {
 		def usuario = Usuario.findByUserId(params.nombre)
-		render(view:"show", model:[usuario:usuario])
+		render(view:"show", model:[usuario:usuario]) //redirect(action: "show", id:usuario.id)
+	}
+
+
+	///////////////////// Metodos para admin ///////////////////////////
+
+	def cambiarrol() {
+    	def usuario = Usuario.get(params.id)
+
+    	if (usuario.rol == "USER") {
+    		usuario.rol = "ADMIN"
+			redirect(action: "listarusuarios")
+		}
+		else {
+			usuario.rol = "USER"
+			redirect(action: "show", id:usuario.id)
+		}
+		
+    }
+
+    def paneladministrador() {
+    	
+    }
+
+    def listarusuarios() {
+    	def loggedUser = Usuario.get(session.loggedUser)
+
+    	if (loggedUser.getRol() == "ADMIN") {
+    		def usuarios = Usuario.list()
+    		[usuarios: usuarios]
+    	}
+    	else {
+    		render(view:"denegado")
+    	}
+    }
+
+    def eliminarusuario() {
+		if (session.loggedUser == null){
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		}
+		else {
+			def usuario = Usuario.get(params.id)
+			usuario.eliminarUsuario()
+			redirect(action: "listarusuarios")
+		}
+		
+	}
+
+	def listarcirculos() {
+    	def loggedUser = Usuario.get(session.loggedUser)
+
+    	if (loggedUser.getRol() == "ADMIN") {
+    		def circulos = Circulo.list()
+    		[circulos: circulos]
+    	}
+    	else {
+    		render(view:"denegado")
+    	}
+    }
+
+    def eliminarcirculo() {
+		if (session.loggedUser == null){
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		}
+		else {
+			def circulo = Circulo.get(params.id)
+			circulo.eliminarUsuarios()
+			circulo.eliminarCirculo()
+			redirect(action: "listarcirculos")
+		}
+		
 	}
 }
