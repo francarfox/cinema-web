@@ -25,18 +25,6 @@
 </head>
 <body>
 <div class="container">
-		<g:if test="${!canCreate}">
-	   		<div class="row">
-	   			<div class="col-md-4">
-	   				<div id="message_error">
-	   					<b>Oops!! parace que hay algo que falta.</b><br>
-	   					chequea que hayan cines, salas y peliculas.
-	   				</div>
-	   			</div>
-	   		</div>
-	   	</g:if>
-		
-		<g:else>
 		<g:if test="${errors}">
 					<div class="row">
 						<div class="col-md-6">
@@ -52,8 +40,8 @@
 			</g:if>
 			<div class="row">
 				<div class="col-md-8">
-					<h4>Nueva funcion</h4>
-					<g:form action="create" class="form-horizontal">
+					<h4>Funcion# ${funcionID} - ${dataToDisplay.nombre}</h4>
+					<g:form action="edit" id="${funcionID}"class="form-horizontal">
 						<div class="form-group">
 							<label for="nombre" class="col-md-2 col-sm-2 control-label">Nombre:</label>
 							<div class="col-md-4">
@@ -104,15 +92,14 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-10 col-md-offset-2">
-								<g:link action="index" class="btn btn-default">Cancelar</g:link>
-								<button type="submit" class="btn btn-primary">Crear</button>
+								<g:link action="show" id="${funcionID}" class="btn btn-default">Cancelar</g:link>
+								<button type="submit" class="btn btn-primary">Editar</button>
 								<input type="hidden" name="submit" value="1">
 							</div>
 						</div>
 					</g:form>	
 				</div>
 			</div>
-		</g:else>
 </div>	
 </body>
 </html>

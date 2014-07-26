@@ -522,8 +522,9 @@ div#data-display .row {margin-bottom: 10px}
 
 div.well#actions{padding: 10px; background-color: #C22141; border-color:#F58F8F; color:yellow;}
 div.well#actions a{color:yellow;}
-div.well#actions h4{ margin-left: 10px; text-decoration: underline;}
+div.well#actions h4{ margin-left: 10px; text-decoration: underline; margin-bottom: 10px}
 div.well#actions .row {margin-left: 0px}
+div.well#actions div.col-md-6 {margin: 0px;}
 
 div#button-bar{margin-top: 20px}
 div#button-bar a {color:yellow; background-color: #BD1133 }
@@ -542,6 +543,19 @@ td.adjust-to-content,th.adjust-to-content{
 img.show-img{
   width:100%;
 border: 1px solid rgb(172, 172, 172);
+}
+
+
+
+button.btn-cinema, a.btn-cinema{
+  color: yellow;
+  background-color: #BD1133;
+  border-color: #d43f3
+}
+
+button.btn-cinema:hover, a.btn-cinema:hover{
+  background-color: #E70935;
+  color:yellow;
 }
 
 
