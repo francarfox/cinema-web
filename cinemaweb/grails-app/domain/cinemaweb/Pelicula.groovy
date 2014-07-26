@@ -9,7 +9,7 @@ class Pelicula {
     Integer duracion
     int puntos = 0
     
-    static hasMany = [comentarios: Comentario]
+    static hasMany = [comentarios: Comentario, funciones: Funcion]
 
     static constraints = {
     	titulo blank: false

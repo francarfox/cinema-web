@@ -6,7 +6,7 @@ class Sala {
 	Integer filas
 	Integer columnas
 
-	static hasMany = [asientos: Asiento]
+	static hasMany = [asientos: Asiento, funciones: Funcion]
 
     static belongsTo = [cine: Cine]
 
