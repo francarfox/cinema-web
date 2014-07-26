@@ -56,6 +56,7 @@
 			</div>
 			<div class="col-sm-10 col-md-2">
 				<button type="submit" class="btn btn-primary btn-block">Crear</button>
+				<input type="hidden" name="submit" value="1">
 			</div>
 		</div>
 	</g:uploadForm>

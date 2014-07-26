@@ -22,14 +22,20 @@ class BootStrap {
 
 		if(!Cine.count()) {
 		    new Cine(nombre: "Hoyts",ubicacion: "Parana 1234", precioBase: 12.0, apertura: "08:00", cierre: "23:00").save(failOnError:true)
-		    
+		    new Cine(nombre: "Showcase Norte",ubicacion: "Esteban Echeberría 456", precioBase: 65, apertura: "08:00", cierre: "23:00").save(failOnError:true)
 		}
 
-		/*if(!Pelicula.count()) {
-		    new Pelicula(titulo: "Matrix Reload").save(failOnError:true)
-		    new Pelicula(titulo: "Capitan America").save(failOnError:true)
-		    new Pelicula(titulo: "Volver al Futuro").save(failOnError:true)
-		}*/
+		if(!Pelicula.count()) {
+		    new Pelicula(titulo: "Matrix Reload", director: "Wachowski Brothers", sinopsis: "Matrix", duracion: 120, foto:"asd", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "Pulp Fiction", director: "Quentin Tarantino", sinopsis: "Pulp", duracion: 180, foto:"asd", urlTrailer:"asd").save(failOnError:true)
+		}
+
+
+		if(!Sala.count()){
+			new Sala(nombre: "Hoyts Sala I", cine: "1", filas: 10, columnas: 15).save(failOnError: true);
+			new Sala(nombre: "Hoyts Sala II", cine: "1", filas: 15, columnas: 20).save(failOnError: true);
+			new Sala(nombre: "Showcase Norte Sala I", cine: "2", filas: 10, columnas: 15).save(failOnError: true);
+		}
     }
     def destroy = {
     }

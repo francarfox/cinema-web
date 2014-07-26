@@ -84,7 +84,7 @@ class CineController extends BaseController{
                     precioBase: "54",
                     apertura: "08:00",
                     cierre: "23:00",
-            ]
+        ]
     }
 
 }
