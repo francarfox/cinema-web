@@ -10,6 +10,11 @@ class CineService extends DomainService{
 	}
 
 	@Transactional
+	public def edit(String id, def attributes){
+		return []
+	}
+
+	@Transactional
 	public def getCine(String id){
 		return this.getDomainInstance(id)
 	}

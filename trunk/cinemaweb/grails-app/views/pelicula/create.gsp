@@ -1,5 +1,5 @@
 <html>
-<head>
+<head>index
 	<meta name="layout" content="bootstrap-main"/>
 	<title>Cinema Web - Nueva Pelicula</title>
 	<style type="text/css">

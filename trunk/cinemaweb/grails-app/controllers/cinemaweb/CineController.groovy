@@ -5,7 +5,7 @@ class CineController extends BaseController{
     def cineService
 
     def create = {
-        def data = dataToDisplay(params,null)
+        def data = this.dataToDisplay(params,null)
         def errors = null
         if(params.submit){
             errors = this.cineService.create(params)
@@ -20,7 +20,7 @@ class CineController extends BaseController{
 
 
     def edit = {
-        def data =  dataToDisplay(params, this.cineService.getCine(params.id))
+        def data =  this.dataToDisplay(params, this.cineService.getCine(params.id))
         //def data =  dataToDisplay(params,null)
         def errors = null
         if (params.submit) {
@@ -45,6 +45,11 @@ class CineController extends BaseController{
         def cines = this.cineService.getListadoCines()
 
         [cines: cines]
+    }
+
+    def delete = {
+        this.cineService.delete(params.id)
+        redirect(action:"index")
     }
 
     def comentar = {

@@ -5,6 +5,7 @@ class SalaController extends BaseController{
 
 	static scaffold = true
     def salaService
+    def debugService
 
     def index = {
         [salas: this.salaService.getSalas()]
@@ -59,8 +60,6 @@ class SalaController extends BaseController{
 
         redirect(action: "show", id: params.id)
     }
-
-
 
     def getAtributosPorDefecto(){
         return [
