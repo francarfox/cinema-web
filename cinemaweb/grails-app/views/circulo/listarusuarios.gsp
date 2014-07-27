@@ -22,9 +22,11 @@
 			<g:if test="${circulo.usuarios!=null}">
 				<g:each in="${circulo.usuarios}" var="usuario">
 					<div class="col-md-2">
-						<p>FOTO</p>
+						<g:img dir="/images/cinema-web/perfil-pics" file="${usuario.perfil.foto}" class="img-rounded show-img" />
 						<br />
-						<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.userId}</g:link></strong></p>
+						<p style="text-align:center;"><strong>
+							<g:link controller="usuario" action="show" id="${usuario.id}">${usuario.userId}</g:link>
+						</strong></p>
 					</div>
 				</g:each>
 			</g:if>

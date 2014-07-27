@@ -12,7 +12,7 @@
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
-					<g:field class="form-control form-busqueda" type="text" placeholder="Buscar Circulos" name="busquedacirculo" />
+					<g:field class="form-control form-busqueda" type="text" placeholder="Buscar Usuarios" name="busquedacirculo" />
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
@@ -23,11 +23,11 @@
 				<g:if test="${circulo.usuarios != null && circulo.usuarios.size() != 1}">
 					<g:each in="${circulo.usuarios}" var="usuario">
 							<div class="col-md-2">
-								<p>FOTO</p>
+								<g:img dir="/images/cinema-web/perfil-pics" file="${usuario.perfil.foto}" class="img-rounded show-img" />
 								<br />
-								<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.getUserId()}</g:link></strong></p>
+								<p style="text-align:center;"><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.getUserId()}</g:link></strong></p>
 								<g:if test="${usuario.getUserId() != circulo.getAdministrador()}">
-									<input type="radio" name="userid" value="${usuario.id}" />
+									<input type="radio" name="userid" value="${usuario.id}" style="margin-left:38px;" />
 								</g:if>
 							</div>
 					</g:each>

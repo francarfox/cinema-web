@@ -25,14 +25,14 @@
 				<g:each in="${usuarios}" var="usuario">
 					<div class="col-md-2">
 						<g:form action="eliminarusuario" id="${usuario.id}">
-							<p>FOTO</p>
+							<g:img dir="/images/cinema-web/perfil-pics" file="${usuario.perfil.foto}" class="img-rounded show-img" />
 							<br />
-							<p><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.userId}</g:link></strong></p>
-							<p>${usuario.rol}</p>
+							<p style="text-align:center;"><strong><g:link controller="usuario" action="show" id="${usuario.id}">${usuario.userId}</g:link></strong></p>
+							<p style="text-align:center;">${usuario.rol}</p>
 							<g:if test="${session.loggedUserNombre != usuario.userId}">
-								<g:link action="cambiarrol" id="${usuario.id}" class="btn btn-lg btn-medium btn-crearcirculo">Cambiar Rol</g:link>
+								<g:link action="cambiarrol" id="${usuario.id}" class="btn btn-lg btn-medium btn-crearcirculo" style="margin-bottom:10px;margin-left:30px;"><i class="fa fa-refresh"></i> Cambiar Rol</g:link>
+								<g:submitButton class="btn btn-lg btn-medium btn-crearcirculo" name="Eliminar" style="margin-left:43px;" />
 							</g:if>
-							<g:submitButton class="btn btn-lg btn-medium btn-crearcirculo" name="Eliminar" />
 						</g:form>
 					</div>
 				</g:each>

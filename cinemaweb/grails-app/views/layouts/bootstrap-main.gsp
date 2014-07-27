@@ -87,7 +87,6 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>${session.loggedUserNombre}</b><b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><g:link controller="usuario" action="show" id="${session.loggedUser}">Mi Usuario</g:link></li>
-							<li><g:link controller="perfil" action="show" id="${session.loggedUser}">Mi Perfil</g:link></li>
 							<li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}">Mis Circulos</g:link></li>
 							<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}">Mis Comentarios</g:link></li>
 							<li><a href="#">Mis Reservas</a></li>

@@ -24,7 +24,7 @@
 					<thead>
 						<tr>
 							<th class="text-center">Nombre</th>
-							<th class="text-center">Tags</th>
+							<th class="text-center">Tag</th>
 							<th class="text-center">Administrador</th>
 							<th></th>
 						</tr>

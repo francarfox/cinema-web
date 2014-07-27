@@ -6,7 +6,7 @@ class UsuarioController {
 	static scaffold = true
 
 	//Verificacion de diferentes usuarios y denegacion de acciones
-	def beforeInterceptor = [action:this.&verifUser, 
+	/*def beforeInterceptor = [action:this.&verifUser, 
 								except:["create", "list", "index", "login", "registrar", "logout", "validar", "actualizar", 
 								"eliminar", "show"]]  //Dejo como ejemplo el edit que siendo USER no puede entrar
 
@@ -22,7 +22,7 @@ class UsuarioController {
 		     	render(view:"denegado")
 	     	}
 	   	}
-	}
+	}*/
 	//!Verificacion de diferentes usuarios y denegacion de acciones
 
 	def create() {
@@ -34,7 +34,7 @@ class UsuarioController {
 			def usuario = Usuario.get(session.loggedUser) 
 
 			if (usuario.getRol() == "ADMIN"){
-				render(view: "createAdmin") //redirect(action:"create", controller:"administrador")
+				render(view: "createAdmin")
 			}
 			else {
 				render(view: "create")
@@ -50,7 +50,8 @@ class UsuarioController {
 		String email = params.email 
 		String localidad = params.localidad
 		String pais	= params.pais
-		def perfil = new Perfil(nombre: nombre, apellido: apellido, email: email, localidad: localidad, pais: pais)
+		String foto	= "default.png"
+		def perfil = new Perfil(nombre: nombre, apellido: apellido, email: email, localidad: localidad, pais: pais, foto: foto)
 
 		String user = params.userId
 		String pass = params.password
@@ -85,15 +86,16 @@ class UsuarioController {
 	def actualizar() {
 
 		def usuario = Usuario.get(params.id)
+		def perfil = Perfil.get(params.id)
 
 		usuario.password = params.password
 		usuario.passwordV = params.passwordV
 				
 		if (usuario.validate()){
 			usuario.save()
-			render(view: "show", model: [usuario:usuario,messageV: "Los datos de su usuario han sido actualizados correctamente."])
+			render(view: "show", model: [usuario:usuario,perfil:perfil,messageV: "Los datos de su usuario han sido actualizados correctamente."])
 		} else {
-			render(view: "edit", model: [usuario:usuario,message: "ERROR: Ambas contraseñas no coinciden."])
+			render(view: "edit", model:[usuario:usuario])
 		}
 	}
 
@@ -103,8 +105,9 @@ class UsuarioController {
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
-			def usuario = Usuario.get(params.id)	
-			[usuario:usuario]
+			def usuario = Usuario.get(params.id)
+			def perfil = Perfil.get(params.id)
+			[usuario:usuario, perfil:perfil]
 		}
 	}
 
@@ -135,7 +138,7 @@ class UsuarioController {
 			session.loggedUser = usuario.id
 			session.loggedUserNombre = usuario.userId
 			session.loggedUserRol = usuario.rol
-			render(view: "show", model: [usuario:usuario]) 
+			render(view: "show", model: [usuario:usuario,perfil:usuario.perfil]) 
 		} 
 		else {
 			render(view: "login", model: [message: "ERROR: Nombre de usuario y contraseña invalidos."])
@@ -155,7 +158,7 @@ class UsuarioController {
 
 	def verusuario() {
 		def usuario = Usuario.findByUserId(params.nombre)
-		render(view:"show", model:[usuario:usuario]) //redirect(action: "show", id:usuario.id)
+		render(view:"show", model:[usuario:usuario,perfil:usuario.perfil])
 	}
 
 
@@ -170,7 +173,7 @@ class UsuarioController {
 		}
 		else {
 			usuario.rol = "USER"
-			redirect(action: "show", id:usuario.id)
+			redirect(action: "listarusuarios")
 		}
 		
     }
