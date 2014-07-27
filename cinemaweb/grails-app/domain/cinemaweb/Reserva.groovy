@@ -13,4 +13,15 @@ class Reserva {
     	reserva_key  blank:false, unique:true
     	fecha 		 nullable:false
     }
+
+ 	public static def getPeliculasReservables(){
+ 	   	def peliculasReservables = []
+    	Pelicula.getAll().each(){
+ 	   		if(it.funciones.size() > 0){	
+ 	   			peliculasReservables << it
+ 	   		}
+ 	   	}
+
+ 	   	return peliculasReservables
+ 	}   
 }

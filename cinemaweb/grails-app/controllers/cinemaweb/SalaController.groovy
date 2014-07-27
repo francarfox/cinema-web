@@ -7,7 +7,7 @@ class SalaController extends BaseController{
     def salaService
     def debugService
 
-    def index = {
+    def index(){
         [salas: this.salaService.getSalas()]
     }
 

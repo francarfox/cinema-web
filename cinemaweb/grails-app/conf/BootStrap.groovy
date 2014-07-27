@@ -26,16 +26,16 @@ class BootStrap {
 		}
 
 		if(!Pelicula.count()) {
-		    new Pelicula(titulo: "Matrix Reload", director: "Wachowski Brothers", sinopsis: "Matrix", duracion: 120, foto:"asd", urlTrailer:"asd").save(failOnError:true)
-		    new Pelicula(titulo: "Pulp Fiction", director: "Quentin Tarantino", sinopsis: "Pulp", duracion: 180, foto:"asd", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "Matrix Reload", director: "Wachowski Brothers", sinopsis: "Matrix", duracion: 120, foto:"default.png", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "Pulp Fiction", director: "Quentin Tarantino", sinopsis: "Pulp", duracion: 180, foto:"default.png", urlTrailer:"asd").save(failOnError:true)
 		}
 
 
-		if(!Sala.count()){
-			new Sala(nombre: "Hoyts Sala I", cine: "1", filas: 10, columnas: 15).save(failOnError: true);
-			new Sala(nombre: "Hoyts Sala II", cine: "1", filas: 15, columnas: 20).save(failOnError: true);
-			new Sala(nombre: "Showcase Norte Sala I", cine: "2", filas: 10, columnas: 15).save(failOnError: true);
-		}
+		/*if(!Sala.count()){
+			new Sala(nombre: "Hoyts Sala I", cine: Cine.get(1), filas: 10, columnas: 15).save(failOnError: true);
+			new Sala(nombre: "Hoyts Sala II", cine: Cine.get(1), filas: 15, columnas: 20).save(failOnError: true);
+			new Sala(nombre: "Showcase Norte Sala I", Cine.get(2), filas: 10, columnas: 15).save(failOnError: true);
+		}*/
     }
     def destroy = {
     }

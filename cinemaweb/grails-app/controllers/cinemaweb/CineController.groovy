@@ -1,21 +1,19 @@
 package cinemaweb
 
 class CineController extends BaseController{
-	static scaffold = true
     def cineService
 
     def create = {
         def data = this.dataToDisplay(params,null)
         def errors = null
-        if(params.submit){
+        if(params.submit > 0){
             errors = this.cineService.create(params)
             if(!errors){
                 redirect(action:"index")
             }        
         }
 
-        def model = [data: data, hours: Cine.getOpenCloseHours(), errors: errors, action: "create", id: "",back: [action:"index",id:""]]
-        render(view: "create",model: model)
+        [data: data, hours: Cine.getOpenCloseHours(), errors: errors, action: "create", id: "",back: [action:"index",id:""]]
     }
 
 
