@@ -13,6 +13,8 @@ class Funcion {
 
 	static belongsTo = [cine: Cine, sala: Sala, pelicula: Pelicula]
 
+	static hasMany = [reservas: Reserva]
+
     static constraints = {
     	nombre blank: false
     	desde  nullable: false
