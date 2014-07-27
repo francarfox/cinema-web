@@ -5,7 +5,7 @@ class Perfil {
 	String nombre
 	String apellido
 	String email
-	//byte[] foto
+	String foto
 	String localidad
 	String pais
 	//Inbox inbox
@@ -25,6 +25,6 @@ class Perfil {
 
     	pais blank: true, nullable:true	
 
-    	//foto nullable:true, blank: true, maxSize: 1024 * 1024 * 2
+    	foto nullable: true, blank: true
     }
 }

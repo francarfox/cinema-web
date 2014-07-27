@@ -5,41 +5,24 @@
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-10">
-			<h1>Editar Usuario ${usuario.userId}</h1>
 
-			<g:if test="${message}">
-	    		<div id="message_error">${message}</div>
-	        </g:if>
-
+		<h1 style="margin-left:30px;">Editando Usuario ${usuario.userId}</h1>
+	   	<div class="col-md-5">
 			<g:form action="actualizar" id="${usuario.id}">
-				<table id="tableUsuario">
-					<tr>
-						<td colspan="2"><h2>Datos Usuario</h2></td>
-					</tr>
-					<tr>
-						<td><label for="password">Password *</label></td>
-						<td><g:passwordField name="password" value="${usuario.password}" /></td>
-					</tr>
-					<tr>
-						<td><label for="passwordV">Confirmar Password *</label></td>
-						<td><g:passwordField name="passwordV" value="${usuario.passwordV}" /></td>
-					</tr>
-
-					<tr>
-						<td colspan="2"><br /></td>
-					</tr>
-					<tr align="center">
-						<td colspan="2" style="text-align:center"><g:submitButton name="Editar"/></td>
-					</tr>
-				</table>
+				<h2 style="text-align:center;">Datos Usuario</h2>
+				<div class="form-group">
+					<label for="password">Password *</label>
+					<g:passwordField name="password" class="form-control" value="${usuario.password}" />
+				</div>
+				<div class="form-group">
+					<label for="passwordV">Confirmar Password *</label>
+					<g:passwordField name="passwordV" class="form-control" value="${usuario.passwordV}" />
+				</div>
+				<br />
+				<g:submitButton class="btn btn-lg btn-login btn-block" name="Editar"/>
 			</g:form>
-			<p>
-				<g:form action="index" style="margin-left:20px">
-					<g:submitButton name="Volver"/>
-				</g:form>
-			</p>
 		</div>
+		<br />
 	</div>
 </body>
 </html>

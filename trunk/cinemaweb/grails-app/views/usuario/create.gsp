@@ -40,10 +40,6 @@
 					<label for="apellido">Apellido *</label>
 					<g:field type="text" class="form-control" name="apellido" />
 				</div>
-				<!--<div class="form-group">
-					<label for="foto">Foto</label>
-					<input type="file" class="form-control" name="foto" />
-				</div>-->
 				<div class="form-group">
 					<label for="email">Email *</label>
 					<g:field type="text" class="form-control" name="email" />

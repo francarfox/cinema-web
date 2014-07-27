@@ -541,8 +541,10 @@ td.adjust-to-content,th.adjust-to-content{
 
 
 img.show-img{
-  width:100%;
-border: 1px solid rgb(172, 172, 172);
+  width: 100%;
+  height: 100%;
+  border: 3px solid #BD1133;
+  margin-bottom:10px;
 }
 
 

@@ -23,7 +23,7 @@
 					<thead>
 						<tr>
 							<th class="text-center">Nombre</th>
-							<th class="text-center">Tags</th>
+							<th class="text-center">Tag</th>
 							<th class="text-center">Administrador</th>
 							<th></th>
 						</tr>
@@ -33,8 +33,8 @@
 							<g:if test="${circulo.estaUsuario(loggedUser)}">
 								<tr>
 									<td class="text-center"><g:link action="show" id="${circulo.id}"><i class="fa fa-comments"></i> ${circulo.getNombre()}</g:link></td>
-							<td class="text-center">${circulo.getTags()}</td>
-							<td class="text-center">${circulo.getAdministrador()}</td>
+									<td class="text-center">${circulo.getTags()}</td>
+									<td class="text-center">${circulo.getAdministrador()}</td>
 									<td class="text-center">
 										<g:link action="show" id="${circulo.id}" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;">Ver <i class="fa fa-check"></i></g:link>
 									</td>	

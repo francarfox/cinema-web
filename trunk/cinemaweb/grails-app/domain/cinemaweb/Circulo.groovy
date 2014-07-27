@@ -5,6 +5,7 @@ class Circulo {
 	String nombre
 	String tags //Set<String> tags
 	String administrador
+    String foto
     Set<Usuario> usuarios = []
     Set<Comentario> comentarios = []
 
@@ -16,6 +17,7 @@ class Circulo {
     	nombre blank:false, nullable:false
     	tags blank:false, nullable:false, inList:["Acción", "Thriller‎", "Drama", "Suspenso", "Terror", "Infantil", "Arte Marcial", "Aventura", "Biógrafica", "Adulta", "Cómica", "Catástrofe", "Deportiva", "Documental", "Fantástica", "Guerra", "Historia", "Musical", "Policial", "Romantica", "Western"]
     	administrador blank:false, nullable: false
+        foto nullable: true, blank: true
     }
 
     def estaUsuario(Usuario user){

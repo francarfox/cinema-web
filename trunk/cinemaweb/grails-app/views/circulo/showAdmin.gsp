@@ -66,6 +66,18 @@
 
 		<div class="col-md-4 pnl-circuloadmin">
 		<p style="text-align:center;"><strong>¡Bienvenido ${circulo.getAdministrador()} a su circulo!</strong></p>
+			<div class="row" style="margin-left:5px;">
+				<div class="col-md-12" style="padding-left:0px;">
+					<g:if test="${circulo.foto}">
+						<g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" />
+							<g:link controller="circulo" action="uploadPic" class="btn btn-lg btn-medium btn-crearcirculo" id="${circulo.id}" style="margin-bottom:10px;"><i class="fa fa fa-camera"></i> Editar Foto</g:link>
+					</g:if>
+					<g:else>
+						<g:img dir="/images/cinema-web/circulos-pics" file="${'default.png'}" class="img-rounded show-img" />
+						<g:link controller="circulo" action="uploadPic" class="btn btn-lg btn-medium btn-crearcirculo" id="${circulo.id}" style="margin-bottom:10px;"><i class="fa fa fa-camera"></i> Subir Foto</g:link>
+					</g:else>
+				</div>
+			</div>
 			<table class="table tablecirc">
 				<thead>
 				<tr>
@@ -74,7 +86,7 @@
 				</tr>
 				</thead>
 				<tr>
-					<td><strong>Tags</strong></td>
+					<td><strong>Tag</strong></td>
 					<td>${circulo.getTags()}</td>
 				</tr>
 				<tr>

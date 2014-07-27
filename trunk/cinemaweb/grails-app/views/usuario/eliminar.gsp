@@ -19,9 +19,6 @@
 			</div>
 
 			<br />
-			<g:form action="index">
-				<g:submitButton name="Volver"/>
-			</g:form>
 		</div>
 	</div>
 </body>

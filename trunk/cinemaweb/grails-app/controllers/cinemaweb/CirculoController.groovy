@@ -4,6 +4,7 @@ import grails.converters.JSON
 class CirculoController {
 
 	static scaffold = true
+	def fileService
 
     def index() {
     	if (session.loggedUser == null){
@@ -34,9 +35,10 @@ class CirculoController {
 	def armar() {
 		def usuario = Usuario.get(session.loggedUser)
 		String nombre = params.nombre
-		String tags = params.tags 
+		String tags = params.tags
+		String foto = "default.png"
 
-		def circulo = new Circulo(nombre: nombre,tags: tags,administrador: usuario.getUserId())
+		def circulo = new Circulo(nombre: nombre, tags: tags, administrador: usuario.getUserId(), foto: foto)
 
 		if (circulo.validate()){
 			circulo.save()
@@ -171,6 +173,23 @@ class CirculoController {
 		def circulo = Circulo.get(params.id)
 		//def lista = circulo.mostrarUsuariosSinAdmin()
 		[circulo:circulo] //,lista:lista
+	}
+
+	def uploadPic() {
+    	def circulo = Circulo.get(params.id)
+    	def error = false
+    	if (params.submit) {
+        	String fileName = params.id + "-circulo.jpg"
+         	String filePath = "/circulos-pics/" + fileName
+         	if(fileService.uploadFile(request.getFile("foto"),filePath)){
+          		circulo.foto = fileName
+          		circulo.save()
+          		render(view:"showAdmin", model:[circulo:circulo])
+         	} else {
+          		error = true
+         	}
+    	}
+    	[circulo: circulo, error: error]
 	}
 
 }

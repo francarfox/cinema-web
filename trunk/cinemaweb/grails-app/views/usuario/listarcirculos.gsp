@@ -21,20 +21,21 @@
 		</div>
 			
 		<div class="col-md-12" style="margin-top:30px;">
-			<g:if test="${circulos!=null}">
+			<g:if test="${circulos.size() != 0}">
 				<g:each in="${circulos}" var="circulo">
 					<div class="col-md-2">
 						<g:form action="eliminarcirculo" id="${circulo.id}">
-							<p>FOTO</p>
+							<g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" />
 							<br />
-							<p><strong><g:link controller="circulo" action="show" id="${circulo.id}">${circulo.nombre}</g:link></strong></p>
-							<g:submitButton class="btn btn-lg btn-medium btn-crearcirculo" name="Eliminar" />
+							<p style="text-align:center;"><strong><g:link controller="circulo" action="show" id="${circulo.id}">${circulo.nombre}</g:link></strong></p>
+							<p style="text-align:center;"><strong><g:link controller="usuario" action="verusuario" params="[nombre:circulo.getAdministrador()]">(${circulo.getAdministrador()})</g:link></strong></p>
+							<g:submitButton class="btn btn-lg btn-medium btn-crearcirculo" style="margin-left:43px;" name="Eliminar" />
 						</g:form>
 					</div>
 				</g:each>
 			</g:if>
 			<g:else>
-				<h4>No hay circulos para mostrar</h4>
+				<h4 style="margin-left:20px;">No hay circulos para mostrar</h4>
 			</g:else>
 		</div>
 

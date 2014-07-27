@@ -24,27 +24,15 @@ class Usuario {
 				{
 					return false
 				}
-				/*if (!pass.matches('^.*(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&]).*$')) {
-					return 'usuario.password.error.strength'
-				}*/
 		})
 
 		passwordV(nullable:false, validator: { pass2, usuario ->
 					return pass2 == usuario.password
 		})
 
-		rol inList:["ADMIN", "SUPERADMIN", "USER"]
-
-		
+		rol inList:["ADMIN", "SUPERADMIN", "USER"]		
     }
 
-    /*static miUsuario() {
-    	return Usuario.get(1)	//probando
-    }*/
-
-    String toString() {
-    	return userId
-    }
 
     def comentar(comentable, mensaje) {
     	def comentario = new Comentario(autor:this, mensaje: mensaje)
@@ -75,4 +63,5 @@ class Usuario {
     def buscarUsuario(nombre) {
         usuario.findByUserId(nombre)
     }
+
 }
