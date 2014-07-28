@@ -42,7 +42,7 @@
 
 			<div class="col-sm-10 col-md-2">
 				<input type="hidden" name="submit" value="1">
-				<g:link action="showAdmin" id="${circulo.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa fa-reply"></i> Volver</g:link>
+				<g:link action="show" id="${circulo.id}" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa fa-reply"></i> Volver</g:link>
 			</div>
 			</g:uploadForm>
 		</div>	

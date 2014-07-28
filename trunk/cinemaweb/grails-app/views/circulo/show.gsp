@@ -4,7 +4,22 @@
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>
-	<div class="container">
+	<div class="container" style="padding-left:0px;">
+
+		<div class="container">
+		<g:if test="${errors}">
+			<div class="row">
+				<div class="col-md-11">
+					<div id="message_error">
+						<ul>
+							<g:each in="${errors}">
+								<li><g:message error="${it}" /></li>
+							</g:each>
+						</ul>		
+					</div>
+				</div>
+			</div>
+		</g:if>
 
 		<g:if test="${!circulo.estaUsuario(usuario)}">
 			<h1>Acceso denegado: debe ingresar al circulo para poder verlo.</h1>

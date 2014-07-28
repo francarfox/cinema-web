@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title> Panel Administrador Usuarios · CinemaWeb</title>
+	<title> Usuarios · CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 
