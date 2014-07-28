@@ -1,5 +1,5 @@
 package cinemaweb
-
+import grails.converters.JSON
 import grails.transaction.Transactional
 
 

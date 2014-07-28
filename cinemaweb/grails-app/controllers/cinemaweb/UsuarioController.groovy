@@ -4,107 +4,72 @@ import grails.converters.JSON
 class UsuarioController {
 	
 	static scaffold = true
+	def usuarioService
 
-	//Verificacion de diferentes usuarios y denegacion de acciones
-	/*def beforeInterceptor = [action:this.&verifUser, 
-								except:["create", "list", "index", "login", "registrar", "logout", "validar", "actualizar", 
-								"eliminar", "show"]]  //Dejo como ejemplo el edit que siendo USER no puede entrar
-
-	private verifUser() {
-
-		if (session.loggedUser == null){
-			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
-		}
-	   	else {
-	   		def usuario = Usuario.get(session.loggedUser)
-
-	   		if (usuario.rol == "USER"){
-		     	render(view:"denegado")
-	     	}
-	   	}
-	}*/
-	//!Verificacion de diferentes usuarios y denegacion de acciones
+	def index() {
+    	def usuarios = this.usuarioService.getListadoUsuarios()
+    	[usuarios: usuarios]
+    }
 
 	def create() {
-
 		if (session.loggedUser == null){
 			render(view: "create")
-		}
-		else {
+		} else {
 			def usuario = Usuario.get(session.loggedUser) 
 
 			if (usuario.getRol() == "ADMIN"){
 				render(view: "createAdmin")
-			}
-			else {
+			} else {
 				render(view: "create")
 			}
 		}
-	
 	}
 
 	def registrar() {
-		
-		String nombre = params.nombre
-		String apellido = params.apellido
-		String email = params.email 
-		String localidad = params.localidad
-		String pais	= params.pais
-		String foto	= "default.png"
-		def perfil = new Perfil(nombre: nombre, apellido: apellido, email: email, localidad: localidad, pais: pais, foto: foto)
-
-		String user = params.userId
-		String pass = params.password
-		String passV = params.passwordV
-		String rol = params.rol
-		
-		if (rol == null){
-			rol = "USER"
-		}
-		def usuario = new Usuario(userId: user, password: pass, passwordV: passV, rol: rol, perfil: perfil)
-
-		if (usuario.validate()) {
-			usuario.save()
-			render(view: "login", model: [usuario:usuario,messageV: "Bienvenido ${usuario.perfil.nombre} ${usuario.perfil.apellido} a CinemaWeb."])
-		} else {
-			render(view: "create", model: [usuario:usuario,message: "ERROR: No ha registrado correctamente los datos."])
-		}
-
+		def errors = null
+        if(params.submit) {
+            errors = this.usuarioService.create(params)
+            if(!errors) {
+                render(view: "login", model: [messageV: "Bienvenido ${params.nombre} ${params.apellido} a CinemaWeb."])
+            } else {
+				render(view: "create", model:[params:params, errors: errors])    
+        	}
+        } else {
+        	render(view:"denegado") //Cambiar lo que dice en la frase
+        }
 	}
 
 	def edit() {
-
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
-		}
-		else {
-			def usuario = Usuario.get(params.id)	
+		} else {
+			def usuario = Usuario.get(session.loggedUser)	
 			[usuario:usuario]
 		}
 	}
 
 	def actualizar() {
-
-		def usuario = Usuario.get(params.id)
-		def perfil = Perfil.get(params.id)
-
-		usuario.password = params.password
-		usuario.passwordV = params.passwordV
-				
-		if (usuario.validate()){
-			usuario.save()
-			render(view: "show", model: [usuario:usuario,perfil:perfil,messageV: "Los datos de su usuario han sido actualizados correctamente."])
+		if (session.loggedUser == null) {
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		} else {
-			render(view: "edit", model:[usuario:usuario])
-		}
+			def usuario = Usuario.get(session.loggedUser)
+			def perfil = Perfil.get(params.id)
+			def errors = null
+        	if (params.submit) {
+            	errors =  this.usuarioService.edit(params.id,params)
+            	if (!errors) {
+                	render(view: "show", model:[usuario:usuario, perfil:perfil, messageV: "Los datos de su usuario han sido actualizados correctamente."])
+            	} else {
+        			render(view: "edit", model:[usuario:usuario, params:params, errors:errors])
+        		} 
+        	}
+        }
 	}
 
 	def show() {
-
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
-		}
-		else {
+		} else {
 			def usuario = Usuario.get(params.id)
 			def perfil = Perfil.get(params.id)
 			[usuario:usuario, perfil:perfil]
@@ -112,18 +77,15 @@ class UsuarioController {
 	}
 
 	def eliminar() {
-
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		} else {
+			def errors = this.usuarioService.eliminar(params.id)
+			//this.usuarioService.delete(params.id)
+			if (!errors) {
+				redirect(action:"logout")
+			}
 		}
-		else {
-			def usuario = Usuario.get(params.id)
-			usuario.eliminarUsuario()
-			session.loggedUser = null
-			session.loggedUserRol = null
-			return 
-		}
-		
 	}
 
 	def login() { 
@@ -131,28 +93,20 @@ class UsuarioController {
 	}
 
 	def validar() {
-
 		def usuario = Usuario.findByUserIdAndPassword(params.userId,params.password) 
 
 		if (usuario != null){
-			session.loggedUser = usuario.id
-			session.loggedUserNombre = usuario.userId
-			session.loggedUserRol = usuario.rol
-			render(view: "show", model: [usuario:usuario,perfil:usuario.perfil]) 
-		} 
-		else {
-			render(view: "login", model: [message: "ERROR: Nombre de usuario y contraseña invalidos."])
+			this.usuarioService.login(session,usuario)
+			render(view: "show", model:[usuario:usuario,perfil:usuario.perfil])
+		} else {
+			render(view: "login")
 		}
-
 	}
 
 	def logout() {
-
 		if (session.loggedUser != null) {
-			session.loggedUser = null
-			session.loggedUserNombre = null
-			session.loggedUserRol = null
-			render(view:"logout")
+			this.usuarioService.logout(session)
+			redirect(uri: "") //Vuelvo al home
 		}
 	}
 
@@ -169,11 +123,11 @@ class UsuarioController {
 
     	if (usuario.rol == "USER") {
     		usuario.rol = "ADMIN"
-			redirect(action: "listarusuarios")
+			redirect(action: "index")
 		}
 		else {
 			usuario.rol = "USER"
-			redirect(action: "listarusuarios")
+			redirect(action: "index")
 		}
 		
     }
@@ -182,26 +136,14 @@ class UsuarioController {
     	
     }
 
-    def listarusuarios() {
-    	def loggedUser = Usuario.get(session.loggedUser)
-
-    	if (loggedUser.getRol() == "ADMIN") {
-    		def usuarios = Usuario.list()
-    		[usuarios: usuarios]
-    	}
-    	else {
-    		render(view:"denegado")
-    	}
-    }
-
     def eliminarusuario() {
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
-		}
-		else {
-			def usuario = Usuario.get(params.id)
-			usuario.eliminarUsuario()
-			redirect(action: "listarusuarios")
+		} else {
+			def errors = this.usuarioService.eliminar(params.id)
+			if (!errors) {
+				redirect(action: "index")
+			}
 		}
 		
 	}
@@ -210,7 +152,7 @@ class UsuarioController {
     	def loggedUser = Usuario.get(session.loggedUser)
 
     	if (loggedUser.getRol() == "ADMIN") {
-    		def circulos = Circulo.list()
+    		this.circuloService.getListadoCirculos()
     		[circulos: circulos]
     	}
     	else {
