@@ -7,22 +7,16 @@ class UsuarioController {
 	def usuarioService
 
 	def index() {
-    	def usuarios = this.usuarioService.getListadoUsuarios()
-    	[usuarios: usuarios]
+		if (session.loggedUser == null) {
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		} else {
+    		def usuarios = this.usuarioService.getListadoUsuarios()
+    		[usuarios: usuarios]
+    	}
     }
 
 	def create() {
-		if (session.loggedUser == null){
-			render(view: "create")
-		} else {
-			def usuario = Usuario.get(session.loggedUser) 
 
-			if (usuario.getRol() == "ADMIN"){
-				render(view: "createAdmin")
-			} else {
-				render(view: "create")
-			}
-		}
 	}
 
 	def registrar() {

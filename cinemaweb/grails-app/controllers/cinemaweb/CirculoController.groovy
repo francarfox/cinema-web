@@ -106,9 +106,10 @@ class CirculoController {
 
 	def actualizar() {
 		def circulo = Circulo.get(params.id)
+		def loggedUser = Usuario.get(session.loggedUser)
 		def errors =  this.circuloService.edit(circulo,params)
 		if (!errors) {
-			render(view: "showAdmin", model: [circulo:circulo])
+			render(view: "show", model: [circulo:circulo, usuario:loggedUser])
 		} else {
 			render(view: "edit", model: [circulo:circulo,errors:errors])
 		}
@@ -139,20 +140,20 @@ class CirculoController {
 	}
 
 	def uploadPic() {
-    	def circulo = Circulo.get(params.id)
-    	def error = false
+		def loggedUser = Usuario.get(session.loggedUser)
+		def circulo = Circulo.get(params.id)
+
+		def error = false
     	if (params.submit) {
-        	String fileName = params.id + "-circulo.jpg"
-         	String filePath = "/circulos-pics/" + fileName
-         	if(fileService.uploadFile(request.getFile("foto"),filePath)){
-          		circulo.foto = fileName
-          		circulo.save()
-          		render(view:"showAdmin", model:[circulo:circulo])
-         	} else {
+        	error = this.circuloService.subirFoto(params.id, "foto",request.getFile("foto"), "/circulos-pics/")
+        	if(!error){
+        		redirect(action: "show", id:params.id)
+        } else {
           		error = true
          	}
     	}
-    	[circulo: circulo, error: error]
+
+    	[circulo:circulo, error:error]
 	}
 
 }

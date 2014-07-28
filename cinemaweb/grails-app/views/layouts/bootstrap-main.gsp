@@ -114,7 +114,12 @@
 		   <li><a href='/cinemaweb'><span>Home</span></a></li>
 		   <li><a href='/cinemaweb/cine'><span>Cines</span></a></li>
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
-		   <li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>
+		   <li class='has-sub'><a href=''><span>Usuarios</span></a>
+		   		<ul>
+		         		<li><a href='/cinemaweb/usuario/index'>Buscar Usuarios</a></li>
+		         		<li><a href='/cinemaweb/usuario/create'>Crear Usuario</a></li>
+		        </ul>
+		   </li>
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
 		   <g:if test="${session.loggedUserRol == 'ADMIN'}">
 		   		 <li class='has-sub'><a href='/cinemaweb/usuario/paneladministrador'><span>Administrador</span></a>

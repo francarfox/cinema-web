@@ -19,13 +19,17 @@
 				</div>
 			</div>
 		</g:if>
-
-		<div class="col-md-5">
+		<g:if test="${session.loggedUserRol == 'ADMIN'}">
+			<div class="col-md-5">
 			<g:form action="registrar">
 				<h2 style="text-align:center;">Datos Usuario</h2>
 				<div class="form-group">
 					<label for="userId">Usuario *</label>
 					<g:field type="text" class="form-control" name="userId" />
+				</div>
+				<div class="form-group">
+					<label for="rol">Tipo de Usuario</label>
+					<g:select from="${['USER', 'ADMIN']}" class="form-control" name="rol"/>
 				</div>
 				<div class="form-group">
 					<label for="password">Password *</label>
@@ -59,9 +63,55 @@
 				</div>
 				<br />
 				<input type="hidden" name="submit" value="1">
-				<g:submitButton class="btn btn-lg btn-login btn-block" name="Registrarme"/>
+				<g:submitButton class="btn btn-lg btn-login btn-block" name="Registrar"/>
 			</g:form>		
 		</div>
+		</g:if>
+
+		<g:else>
+		<div class="col-md-5">
+			<g:form action="registrar">
+				<h2 style="text-align:center;">Datos Usuario</h2>
+				<div class="form-group">
+					<label for="userId">Usuario *</label>
+					<g:field type="text" class="form-control" name="userId" />
+				</div>
+				<div class="form-group">
+					<label for="password">Password *</label>
+					<g:passwordField class="form-control" name="password" />
+				</div>
+				<div class="form-group">
+					<label for="passwordV">Confirmar Password *</label>
+					<g:passwordField class="form-control" name="passwordV" />
+				</div>
+				<br />
+				<h2 style="text-align:center;">Datos Personales</h2>
+				<div class="form-group">
+					<label for="nombre">Nombre *</label>
+					<g:field type="text" class="form-control" name="nombre" />
+				</div>
+				<div class="form-group">
+					<label for="apellido">Apellido *</label>
+					<g:field type="text" class="form-control" name="apellido" />
+				</div>
+				<div class="form-group">
+					<label for="email">Email *</label>
+					<g:field type="text" class="form-control" name="email" />
+				</div>
+				<div class="form-group">
+					<label for="localidad">Localidad</label>
+					<g:field type="text" class="form-control" name="localidad" />
+				</div>
+				<div class="form-group">
+					<label for="pais">Pais</label>
+					<g:countrySelect name="pais" class="form-control" noSelection="['':'Selecciona tu pais']" />
+				</div>
+				<br />
+				<input type="hidden" name="submit" value="1">
+				<g:submitButton class="btn btn-lg btn-login btn-block" name="Registrarme" />
+			</g:form>		
+		</div>
+		</g:else>
 	</div>
 </body>
 </html>

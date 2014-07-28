@@ -5,6 +5,19 @@
 </head>
 <body>
 	<div class="container">
+		<g:if test="${errors}">
+			<div class="row">
+				<div class="col-md-11">
+					<div id="message_error">
+						<ul>
+							<g:each in="${errors}">
+								<li><g:message error="${it}" /></li>
+							</g:each>
+						</ul>		
+					</div>
+				</div>
+			</div>
+		</g:if>
 		<h1 style="margin-left:30px;">Editando perfil de ${perfil.nombre}</h1>
 	   	<div class="col-md-5">
 			<g:form action="actualizar" id="${perfil.id}">
@@ -30,6 +43,7 @@
 					<g:countrySelect name="pais" class="form-control" noSelection="['':'Selecciona tu pais']" value="${perfil.pais}"/>
 				</div>
 				<br />
+				<input type="hidden" name="submit" value="1">
 				<g:submitButton class="btn btn-lg btn-login btn-block" name="Editar"/>
 			</g:form>
 		</div>
