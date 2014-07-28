@@ -10,11 +10,6 @@
 		height: 300px;
 	}
 	</style>
-	<script type="text/javascript">
-	var decodedData = $('<div/>').html("${cinesData}").text();
-	console.log(cinesData);
-	var cinesData = $.parseJSON(decodedData);
-	</script>
 </head>
 <body>
 	<div class="container">
