@@ -6,14 +6,19 @@
 <body>
 	<div class="container">
 
-		<g:if test="${message}">
-	    	<div id="message_error">${message}</div>
-	    </g:if>
-		<g:hasErrors bean="${usuario}">
-			<div id="message_error">
-				<g:renderErrors bean="${usuario}" as="list" />
+		<g:if test="${errors}">
+			<div class="row">
+				<div class="col-md-11">
+					<div id="message_error">
+						<ul>
+							<g:each in="${errors}">
+								<li><g:message error="${it}" /></li>
+							</g:each>
+						</ul>		
+					</div>
+				</div>
 			</div>
-		</g:hasErrors>
+		</g:if>
 
 		<div class="col-md-5">
 			<g:form action="registrar">
@@ -53,6 +58,7 @@
 					<g:countrySelect name="pais" class="form-control" noSelection="['':'Selecciona tu pais']"/>
 				</div>
 				<br />
+				<input type="hidden" name="submit" value="1">
 				<g:submitButton class="btn btn-lg btn-login btn-block" name="Registrarme"/>
 			</g:form>		
 		</div>

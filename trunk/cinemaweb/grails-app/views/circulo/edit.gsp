@@ -5,6 +5,20 @@
 </head>
 <body>
 	<div class="container">
+
+		<g:if test="${errors}">
+			<div class="row">
+				<div class="col-md-11">
+					<div id="message_error">
+						<ul>
+							<g:each in="${errors}">
+								<li><g:message error="${it}" /></li>
+							</g:each>
+						</ul>		
+					</div>
+				</div>
+			</div>
+		</g:if>
 		
 			<h1>Editar Circulo ${circulo.nombre}</h1>
 

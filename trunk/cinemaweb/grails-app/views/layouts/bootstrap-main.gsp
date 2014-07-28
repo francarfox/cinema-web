@@ -87,7 +87,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>${session.loggedUserNombre}</b><b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><g:link controller="usuario" action="show" id="${session.loggedUser}">Mi Usuario</g:link></li>
-							<li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}">Mis Circulos</g:link></li>
+							<li><g:link controller="circulo" action="index" id="${session.loggedUser}" params="[accion:'miscirculos']">Mis Circulos</g:link></li>
 							<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}">Mis Comentarios</g:link></li>
 							<li><a href="#">Mis Reservas</a></li>
 							<g:if test="${session.loggedUserRol != 'USER'}">
@@ -114,12 +114,12 @@
 		   <li><a href='/cinemaweb'><span>Home</span></a></li>
 		   <li><a href='/cinemaweb/cine'><span>Cines</span></a></li>
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
-		   <!---<li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>-->
+		   <li><a href='/cinemaweb/usuario/index'><span>Usuarios</span></a></li>
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
 		   <g:if test="${session.loggedUserRol == 'ADMIN'}">
 		   		 <li class='has-sub'><a href='/cinemaweb/usuario/paneladministrador'><span>Administrador</span></a>
 		   		 	<ul>
-		         		<li><a href='/cinemaweb/usuario/listarusuarios'>Manejo de Usuarios</a></li>
+		         		<li><a href='/cinemaweb/usuario/index'>Manejo de Usuarios</a></li>
 						<li><a href='#'>Manejo de Cines</a></li>
 						<li><a href='#'>Manejo de Peliculas</a></li>
 						<li><a href='/cinemaweb/usuario/listarcomentarios'>Manejo de Comentarios</a></li>

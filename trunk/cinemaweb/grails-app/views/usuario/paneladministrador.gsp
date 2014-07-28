@@ -15,7 +15,7 @@
 		</div>
 		<div style="margin-left:30px;">
 			<div class="col-md-3" style="margin-top:30px;">
-				<g:link action="listarusuarios"><img src="../images/pnl/usuarios.png" style="width:200px;heigh:200px;" /></g:link>
+				<g:link action="index"><img src="../images/pnl/usuarios.png" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
 				<g:link action="listarcirculos"><img src="../images/pnl/circulos.png" style="width:200px;heigh:200px;" /></g:link>

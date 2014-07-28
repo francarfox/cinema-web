@@ -5,22 +5,17 @@ class CirculoController {
 
 	static scaffold = true
 	def fileService
+	def circuloService
 
     def index() {
     	if (session.loggedUser == null){
-			redirect(controller:'usuario' , action:'login' )
+			redirect(controller:'usuario' , action:'login')
 		}
 		else {
-    		def circulos = Circulo.list() 
+    		def circulos = this.circuloService.getListadoCirculos() 
     		def loggedUser = Usuario.get(session.loggedUser)
         	[circulos: circulos, loggedUser: loggedUser]
     	}
-    }
-
-    def indexusuario() {
-    	def circulos = Circulo.list() 
-    	def loggedUser = Usuario.get(session.loggedUser)
-        [circulos: circulos, loggedUser: loggedUser]
     }
 
     def create() {
@@ -33,27 +28,18 @@ class CirculoController {
 	}
 
 	def armar() {
-		def usuario = Usuario.get(session.loggedUser)
-		String nombre = params.nombre
-		String tags = params.tags
-		String foto = "default.png"
-
-		def circulo = new Circulo(nombre: nombre, tags: tags, administrador: usuario.getUserId(), foto: foto)
-
-		if (circulo.validate()){
-			circulo.save()
-			usuario.addToCirculos(circulo)
-			redirect(action:"show", id:circulo.id) //render(view: "show", model:[circulo:circulo, messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
-		}
-		else {
-			render(view: "create", model:[circulo:circulo, message: "ERROR: No se han ingresado los datos correctamente."])
-		}
+        if(params.submit) {
+            def errors = this.circuloService.create(session,params)
+            if(!errors) {
+            	redirect(action:"index") //render(view: "show", model:[circulo:circulo, messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
+            } else {
+            	render(view: "create", model:[errors:errors])
+            }
+        }
 	}
 
 	def delete() {
-		def circulo = Circulo.get(params.id)
-		circulo.eliminarUsuarios()
-		circulo.eliminarCirculo()
+		this.circuloService.delete(params)
 		return
 	}
 
@@ -70,7 +56,7 @@ class CirculoController {
 			}
 			else {
 				usuarioOnline.addToCirculos(circulo)
-				render(view: "show", model: [circulo:circulo, messageV: "Se ha unido al circulo ${circulo.nombre} correctamente."])
+				render(view: "show", model:[circulo:circulo, usuario:usuarioOnline])
 			}
 		}
 	}
@@ -120,39 +106,22 @@ class CirculoController {
 
 	def actualizar() {
 		def circulo = Circulo.get(params.id)
-
-		circulo.nombre = params.nombre
-		circulo.tags = params.tags
-				
-		if (circulo.validate()){
-			circulo.save()
-			render(view: "showAdmin", model: [circulo:circulo,messageV: "Los datos de su circulo han sido actualizados correctamente."])
+		def errors =  this.circuloService.edit(circulo,params)
+		if (!errors) {
+			render(view: "showAdmin", model: [circulo:circulo])
 		} else {
-			render(view: "edit", model: [circulo:circulo,message: "ERROR: Los datos ingresados no son válidos."])
+			render(view: "edit", model: [circulo:circulo,errors:errors])
 		}
 	}
 
 
 	def show() {
-		if (session.loggedUser == null){
+		if (session.loggedUser == null) {
 			redirect(controller:'usuario' , action:'login' )
-		}
-		else {
+		} else {
 			def circulo = Circulo.get(params.id)
 			def loggedUser = Usuario.get(session.loggedUser)
-
-			if (loggedUser.getUserId() == circulo.getAdministrador()) {
-				render(view:"showAdmin", model:[circulo:circulo])
-			}
-			else {
-				if (circulo.estaUsuario(loggedUser)) {
-					[circulo:circulo]
-				}
-				else {
-					render(view:"denegado")
-					//redirect(action:"index") con mensaje de error
-				}
-			}
+			render(view:"show", model:[circulo:circulo, usuario:loggedUser])
 		}
 	}
 
@@ -167,12 +136,6 @@ class CirculoController {
 	def listarusuarios() {
 		def circulo = Circulo.get(params.id)
 		[circulo:circulo]
-	}
-
-	def listarusuarioseliminar() {
-		def circulo = Circulo.get(params.id)
-		//def lista = circulo.mostrarUsuariosSinAdmin()
-		[circulo:circulo] //,lista:lista
 	}
 
 	def uploadPic() {

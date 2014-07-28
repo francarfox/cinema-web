@@ -18,7 +18,7 @@
 	            </div>
 	        </g:hasErrors>
 
-	    <g:if test="${ session.loggedUserNombre == usuario.userId }">
+	    
 	   	<div class="col-md-3" style="margin-top:30px;padding:0;margin-left:20px;">
 	   		<div class="row">
 				<div class="col-md-12">
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 	   	</div>
-	   	</g:if>
+
 
 	   	<div class="col-md-4" style="margin-left:120px;margin-right:50px;">
 			<h1>Usuario de ${perfil.nombre}</h1>
@@ -59,19 +59,21 @@
 				<g:link controller="perfil" action="edit" class="btn btn-lg btn-large btn-crearcirculo" style="margin-left:80px;" id="${perfil.id}"><i class="fa fa fa-pencil-square-o"></i> Editar Perfil</g:link>
 			</g:if>
 		</div>
+		
+		<g:if test="${ session.loggedUserNombre == usuario.userId }">
 		<div class="col-md-3" style="margin-top:30px;padding:0;">
 			<div class="row">
 	   			<ul class="menu">
 			  		<li><g:link class="active" controller="usuario" action="show" id="${session.loggedUser}"><span>USUARIO</span></g:link></li>
 			  		<!-- <li><g:link controller="perfil" action="show" id="${session.loggedUser}"><span>PERFIL</span></g:link></li> -->
-			  		<li><g:link controller="circulo" action="indexusuario" id="${session.loggedUser}"><span>CIRCULOS</span></g:link></li>
+			  		<li><g:link controller="circulo" action="index" id="${session.loggedUser}" params="[accion:'miscirculos']"><span>CIRCULOS</span></g:link></li>
 			  		<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}"><span>COMENTARIOS</span></g:link></li>
 			  		<li><a href="#"><span>RESERVAS</span></a></li>
 			  		<li><a href="#"><span>PROMOCIONES</span></a></li>
 				</ul>
 			</div>
 		</div>
-
+		</g:if>
 	</div>
 </body>
 </html>
