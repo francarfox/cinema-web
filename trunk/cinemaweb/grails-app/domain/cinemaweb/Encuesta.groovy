@@ -26,7 +26,9 @@ class Encuesta {
     }
 
     def eliminarOpciones() {
-        this.opciones.toList().each{ this.removeFromOpciones(it) }
+        this.opciones.toList().each{ this.removeFromOpciones(it) 
+                                        it.eliminarOpcion()
+                                    }
     }
 
     def eliminarUsuarios() {
@@ -43,7 +45,7 @@ class Encuesta {
     	this.addToUsuarios(usuario)
     }
 
-    def sumarVoto(String opc) {
+    def sumarVoto(Integer opc) {
         def opcion = this.getOpcion(opc)
         opcion.sumarCantidad()
     }
@@ -52,15 +54,21 @@ class Encuesta {
     	return this.usuarios.size()
     }
 
-    def getOpcion(String opc) {
+    def getOpcion(Integer opc) {
         def opcionN = new Opcion()
     	def opcion = opcionN.obtenerOpcion(opc)
         return opcion
     }
 
-    def getVotos(String opc) {
+    def getVotos(Integer opc) {
     	def opcion = Opcion.getOpcion(opc)
         return opcion.getCantidad()
+    }
+
+    def getOpcionesOrdenadas(){
+        //def opciones = Opcion.list(sort: "cantidad", order: "desc")
+        def opcionesOrd = opciones.sort{it.getCantidad()}.reverse()
+        return opcionesOrd
     }
 
 }

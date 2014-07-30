@@ -102,7 +102,7 @@
 						</td>
 						<td style="width:50%;">&nbsp</td>
 						<td>
-							<g:link action="index" id="${loggedUser.id}" params="[accion:'miscirculos']" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
+							<g:link action="index" id="${session.loggedUser}" params="[accion:'miscirculos']" class="btn btn-lg btn-large btn-crearcirculo"><i class="fa fa-comments"></i> Mis Círculos</g:link>
 						</td>
 					</tr>
 				</table>

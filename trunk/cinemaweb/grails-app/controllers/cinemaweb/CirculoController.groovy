@@ -31,7 +31,8 @@ class CirculoController {
         if(params.submit) {
             def errors = this.circuloService.create(session,params)
             if(!errors) {
-            	redirect(action:"index") //render(view: "show", model:[circulo:circulo, messageV: "El circulo ${circulo.nombre} se ha creado correctamente."])
+            	//redirect(action:"show",id:params.circulo)
+            	redirect(action:"index")
             } else {
             	render(view: "create", model:[errors:errors])
             }
