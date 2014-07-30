@@ -9,8 +9,9 @@ class Usuario {
 	Date cuentaCreada = new Date()
 	String rol
     Set<Circulo> circulos = []
+    Set<Encuesta> encuestas = []
 
-    static hasMany = [circulos:Circulo] //Un usuario puede tener varios comentarios tambien
+    static hasMany = [circulos:Circulo,encuestas:Encuesta] //Un usuario puede tener varios comentarios tambien
 
     static constraints = {
 

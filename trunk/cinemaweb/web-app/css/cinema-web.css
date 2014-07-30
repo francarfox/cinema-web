@@ -78,6 +78,7 @@ table {
   -moz-border-radius: 50px;
   border-radius: 50px;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .tablecirc {
