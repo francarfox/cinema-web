@@ -13,8 +13,12 @@ class Opcion {
     	this.cantidad = this.cantidad + 1
     }
 
-    def obtenerOpcion(String nombre) {
-    	def opcion = Opcion.findByNombre(nombre)
+    def obtenerOpcion(Integer id) {
+    	def opcion = Opcion.findById(id)
     	return opcion
+    }
+
+    def eliminarOpcion() {
+    	this.delete()
     }
 }

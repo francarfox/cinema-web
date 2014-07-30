@@ -58,7 +58,8 @@ class Circulo {
     }
 
     def eliminarEncuesta() {
-        this.encuesta.delete()
+        this.encuesta = null
+        //this.encuesta.delete()
     }
 
 }

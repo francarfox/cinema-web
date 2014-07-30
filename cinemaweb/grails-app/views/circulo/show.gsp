@@ -140,14 +140,19 @@
 										<td colspan="2" style="text-align:center;"><h3><strong>Encuesta:<br /><h4>${circulo.encuesta.getTitulo()}</h4></strong></h3></td>
 									</tr>
 								</thead>
-									<g:each in="${circulo.encuesta.opciones}" var="opcion">
+									<g:each in="${circulo.encuesta.getOpcionesOrdenadas()}" var="opcion">
 										<tr>
 											<td>${opcion.cantidad}</td>
 											<td><strong>${opcion.nombre}</strong></td>
 										</tr>
 									</g:each>
+								<tfoot>
+									<tr>
+										<td colspan="2"><h5 style="text-align:center">Cantidad de votos: ${circulo.encuesta.getCantidadTotalVotos()}</h5></td>
+									</tr>
+								</tfoot>
 							</table>
-							<g:link action="delete" controller="encuesta" class="btn btn-lg btn-medium btn-crearcirculo" style="margin-left:60px;" params="[id:circulo.encuesta.id,circuloid:circulo.id]"><i class="fa fa-legal"></i> Eliminar Encuesta</g:link>
+							<g:link action="delete" controller="encuesta" class="btn btn-lg btn-medium btn-crearcirculo" style="margin-left:60px;" params="[id:circulo.encuesta.id,circuloid:circulo.id]"><i class="fa fa-times-circle"></i> Eliminar Encuesta</g:link>
 							</g:if>
 							<g:else>
 								<table class="table tablecirc">
@@ -159,7 +164,7 @@
 								<g:form action="votar" controller="encuesta" id="${circulo.encuesta.id}" params="[circulo:circulo.id]">
 									<g:each in="${circulo.encuesta.opciones}" var="opcion">
 										<tr>
-											<td><input type="radio" name="opc" value="${opcion.nombre}" /></td>
+											<td><input type="radio" name="opc" value="${opcion.id}" /></td>
 											<td><strong>${opcion.nombre}</strong></td>
 										</tr>
 									</g:each>
@@ -268,12 +273,17 @@
 										<td colspan="2" style="text-align:center;"><h3><strong>Encuesta:<br /><h4>${circulo.encuesta.getTitulo()}</h4></strong></h3></td>
 									</tr>
 								</thead>
-									<g:each in="${circulo.encuesta.opciones}" var="opcion">
+									<g:each in="${circulo.encuesta.getOpcionesOrdenadas()}" var="opcion">
 										<tr>
 											<td>${opcion.cantidad}</td>
 											<td><strong>${opcion.nombre}</strong></td>
 										</tr>
 									</g:each>
+								<tfoot>
+									<tr>
+										<td colspan="2"><h5 style="text-align:center">Cantidad de votos: ${circulo.encuesta.getCantidadTotalVotos()}</h5></td>
+									</tr>
+								</tfoot>
 							</table>
 							</g:if>
 							<g:else>
@@ -286,7 +296,7 @@
 								<g:form action="votar" controller="encuesta" id="${circulo.encuesta.id}" params="[circulo:circulo.id]">
 									<g:each in="${circulo.encuesta.opciones}" var="opcion">
 										<tr>
-											<td><input type="radio" name="opc" value="${opcion.nombre}" /></td>
+											<td><input type="radio" name="opc" value="${opcion.id}" /></td>
 											<td><strong>${opcion.nombre}</strong></td>
 										</tr>
 									</g:each>
