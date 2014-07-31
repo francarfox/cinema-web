@@ -13,7 +13,7 @@ class PeliculaController {
 
   def create = {
     def movie = null;
-    if(params.submit > 0){
+    if(params.submit){
       movie = this.loadMovie(params)
       if(!movie.hasErrors()){
         redirect(action:"show",id: movie.id)
@@ -26,7 +26,7 @@ class PeliculaController {
 
   def edit = {
       def movie = null;
-      if(params.submit > 0){
+      if(params.submit){
         movie = this.loadMovie(params)
         if(!movie.hasErrors()){
           redirect(action:"show",id: movie.id)
