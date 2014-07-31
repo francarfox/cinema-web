@@ -111,7 +111,7 @@
 		<!--- Barra de Menu -->
 		<div id='cssmenu'>
 		<ul>
-		   <li><a href='/cinemaweb'><span>Home</span></a></li>
+		   <li><a href='/cinemaweb/'><span>Home</span></a></li>
 		   <li><a href='/cinemaweb/cine'><span>Cines</span></a></li>
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
 		   <li class='has-sub'><a href=''><span>Usuarios</span></a>

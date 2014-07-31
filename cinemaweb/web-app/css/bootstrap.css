@@ -5423,6 +5423,7 @@ button.close {
 }
 .carousel {
   position: relative;
+  margin-top: 30px;
 }
 .carousel-inner {
   position: relative;
