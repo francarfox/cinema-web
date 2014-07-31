@@ -8,7 +8,8 @@
 	<calendar:resources lang="en"/>
 	<!---- cargo el archivo que maneja los selects de cines ---->
 	<r:external uri="/js/cine-data_select.js"/>
-	<script>
+	<g:if test="${!errorMessage}">
+		<script>
 	var decodedData = $('<div/>').html("${cinesData}").text();
 	console.log(cinesData);
 	var cinesData = $.parseJSON(decodedData);
@@ -22,15 +23,16 @@
 		});
 	});
 	</script>
+	</g:if>
 </head>
 <body>
 <div class="container">
-		<g:if test="${!canCreate}">
+		<g:if test="${errorMessage}">
 	   		<div class="row">
 	   			<div class="col-md-4">
 	   				<div id="message_error">
 	   					<b>Oops!! parace que hay algo que falta.</b><br>
-	   					chequea que hayan cines, salas y peliculas.
+	   					${errorMessage}
 	   				</div>
 	   			</div>
 	   		</div>

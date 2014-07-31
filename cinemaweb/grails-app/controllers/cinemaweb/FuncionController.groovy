@@ -37,19 +37,26 @@ class FuncionController extends BaseController{
     def create(){
     	//render params as grails.converters.JSON
     	def errors = (params.submit) ? this.funcionService.create(params) : null
-
+        //render errors as grails.converters.JSON
     	if(params.submit && !errors){
     		redirect(action:"index")
     	}else{
-			
+			try {
+                this.funcionService.canCreate()      
+            }
+            catch(Exception e) {
+                //no se puede crear funciones porque faltan peliculas, cines, salas o asientos
+                return [errorMessage: e.getMessage()]        
+            }
+        
     		def cinesData = this.funcionService.getCinesData() as grails.converters.JSON 
-    		//render dataToDisplay(params,null) as grails.converters.JSON 
-	 		[dataToDisplay: dataToDisplay(params,null),
-	 		 canCreate: this.funcionService.canCreate(), 
+    		//render this.funcionService.getCinesData() as grails.converters.JSON
+            //render dataToDisplay(params,null) as grails.converters.JSON 
+	 		[dataToDisplay: dataToDisplay(params,null), 
 	 		 horarios: Cine.getOpenCloseHours(),
 	 		 peliculas: this.funcionService.getPeliculas(), 
 	 		 cinesData: cinesData,
-	 		 errors:errors]    		
+	 		 errors:errors]    	
     	}
 
     }

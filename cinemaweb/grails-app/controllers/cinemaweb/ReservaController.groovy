@@ -13,7 +13,7 @@ class ReservaController {
     }
 
     def nueva_pasouno(){
-    	//render this.reservaService.getDataFunciones(params.id) as grails.converters.JSON
+        //render this.reservaService.getDataFunciones(params.id) as grails.converters.JSON
 		def model= [pelicula: Pelicula.get(params.id), 
     	 			funcionesData: this.reservaService.getDataFunciones(params.id) as grails.converters.JSON 
     				]

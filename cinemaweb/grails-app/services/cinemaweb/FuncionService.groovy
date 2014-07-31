@@ -21,6 +21,29 @@ class FuncionService extends DomainService{
 		this.submitDomainAttributes(domain,loadDateAttributes(attributes))
 	}
 
+    @Transactional
+    def protected submitDomainAttributes(domain,attributes){
+        domain.properties = attributes
+        def dateErrors = this.checkDateAttrs(attributes.desde, attributes.hasta)
+        if(!dateErrors && domain.validate()){
+            domain.save(flush: true)    
+            return null
+        }else{
+            domain.discard()
+            return domain.errors.getAllErrors() // dateErrors
+        }
+    }
+
+
+    def checkDateAttrs(desde, hasta){
+        if(desde.compareTo(hasta) > 0){
+            return ["Chequea las fechas"]
+        }else{
+            return null
+        }
+    }
+
+
 	def getFuncion(String id){
 		return this.getDomainInstance(id)
 	}
@@ -42,38 +65,56 @@ class FuncionService extends DomainService{
     //chequeo si hay cines, salas y peliculas para poder crear una funcion
     @Transactional
     def canCreate(){
-    	def canCreate = false
-    	if(Pelicula.count() > 0){
-    		canCreate = true
+    	if(Pelicula.count() == 0){
+    		throw new Exception("No hay peliculas");
     	}
 
-    	//si hay peliculas chequeo que hayan cines y salas
-    	if(canCreate && Cine.count() > 0){
+    	//chequeo que hayan cines, salas y asientos
+    	if(Cine.count() > 0){
     		//chequeo si cada sala tiene salas
-    		def tienenSalas = true
+    		def haySalas = false
+            def hayAsientos = false
     		Cine.getAll().each(){
-    			if(it.salas.size() == 0){
-    				tienenSalas = false
-    			}
+    			if(it.salas.size() > 0){
+    				haySalas = true
+    			   //chequeo si alguna de las salas tiene asientos
+                   it.salas.each(){ sala ->
+                        if(sala.getAsientosOcupados().size() > 0){
+                            hayAsientos = true
+                        }
+                   }
+                }
     		}
+            //exception si no hay salas
+            if(!haySalas){
+                throw new Exception("No hay salas para ningun cine")
+            }
 
-    		canCreate = tienenSalas
-    	}
+            if(!hayAsientos){
+                throw new Exception("No hay asientos para ninguna de las salas creadas")
+            }
+    	}else{
+            throw new Exception("No hay cines")
+        }
 
-    	return canCreate
     }
 
 
     @Transactional
     def getCinesData(){
     	//traigo los cines y para cada uno su sala
-    	return Cine.list().collect(){it ->  def salas = it.salas.collect(){
-    												 	[id:it.id, nombre:it.nombre]
-    												 }.sort(){
-    												 	a,b -> a.id <=> b.id
-    												 }
-    										[id:it.id,nombre:it.nombre, salas: salas]
-    									}
+    	return Cine.list().collect(){it -> if(it.salas.size() > 0){
+                                            def currentsalas = it.salas.collect(){currentSala->
+                                                        if(currentSala.getAsientosOcupados().size() > 0){
+                                                            [id:currentSala.id, nombre:currentSala.nombre]
+                                                        }
+                                                     }.findAll{ obj -> obj != null}
+
+                                            if(currentsalas){
+                                                [id:it.id,nombre:it.nombre, salas: currentsalas.sort {a,b -> a.id <=> b.id}]
+                                             }
+                                           }
+    									}.findAll { obj -> obj != null}
     }
 
     @Transactional

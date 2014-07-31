@@ -3,15 +3,16 @@ package cinemaweb
 class Reserva {
 
 	String reserva_key
-	Date fecha
+	Date fecha_reserva
+	Date fecha_funcion
 
 	static belongs_to = [funcion: Funcion]
 
 	static hasMany = [asientos: Asiento]
 
     static constraints = {
-    	reserva_key  blank:false, unique:true
-    	fecha 		 nullable:false
+    	reserva_key  		 blank:false, unique:true
+    	fecha_reserva		 nullable:false
     }
 
  	public static def getPeliculasReservables(){
