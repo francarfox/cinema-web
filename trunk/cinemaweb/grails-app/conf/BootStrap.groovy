@@ -21,15 +21,45 @@ class BootStrap {
 		}
 
 		if(!Cine.count()) {
-		    new Cine(nombre: "Hoyts",ubicacion: "Parana 1234", precioBase: 12.0, apertura: "08:00", cierre: "23:00").save(failOnError:true)
-		    new Cine(nombre: "Showcase Norte",ubicacion: "Esteban Echeberría 456", precioBase: 65, apertura: "08:00", cierre: "23:00").save(failOnError:true)
+		    new Cine(nombre: "Hoyts Unicenter",ubicacion: "Parana 1234, Martinez", precioBase: 12.0, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Showcase Norte",ubicacion: "Esteban Echeberría 456, Martinez", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Hoyts Abasto",ubicacion: "Av. Corrientes 3200, Almagro", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Village Caballito",ubicacion: "Av. Rivadavia 5071, Caballito", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Belgrano Multiplex",ubicacion: "Vuelta de Obligado 2237, Belgrano", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Atlas Patio Bullrich",ubicacion: "Av. del Libertador 750,Recoleta", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Showcase Belgrano",ubicacion: "Monroe 1655, Belgrano", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Cultural San Martín",ubicacion: "Sarmiento 1551, Monserrat", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Arte Cinema",ubicacion: "Salta 1620, CABA", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
+		    new Cine(nombre: "Cinemark Palermo",ubicacion: "Beruti 3399, Palermo", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
 		}
 
 		if(!Pelicula.count()) {
 		    new Pelicula(titulo: "Matrix Reload", director: "Wachowski Brothers", sinopsis: "Matrix", duracion: 120, foto:"default.png", urlTrailer:"asd").save(failOnError:true)
 		    new Pelicula(titulo: "Pulp Fiction", director: "Quentin Tarantino", sinopsis: "Pulp", duracion: 180, foto:"default.png", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "Socios por accidente", director: "Fabián Forte, Nicanor Loreti", sinopsis: "Comedia", duracion: 82, foto:"socios-por-accidente.jpg", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "El planeta de los simios: Confrontación", director: "Matt Reeves", sinopsis: "Aventuras", duracion: 130, foto:"el-planeta-de-los-simios-confrontacion.jpg", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "12 horas para sobrevivir", director: "James DeMonaco", sinopsis: "Suspenso", duracion: 103, foto:"12-hrs-para-sobrevivir.jpg", urlTrailer:"asd").save(failOnError:true)
+		    new Pelicula(titulo: "Guardianes de la Galaxia", director: "James Gunn", sinopsis: "Ciencia Ficción", duracion: 120, foto:"guardianes-de-la-galaxia.jpg", urlTrailer:"asd").save(failOnError:true)
+		    
 		}
 
+		if(!Circulo.count()) {
+			def user = Usuario.get(4)//mati09
+			def circ = new Circulo(nombre: "StarWars fanaticos", tags: "Acción", administrador: user.getUserId(), foto: "default.png").save(failOnError:true)
+			user.addToCirculos(circ)
+
+			user = Usuario.get(2) //Rosa69
+			circ = new Circulo(nombre: "Solo terror", tags: "Terror", administrador: user.getUserId(), foto: "default.png").save(failOnError:true)
+			user.addToCirculos(circ)
+
+			user = Usuario.get(1) //fedecarp34
+			circ = new Circulo(nombre: "Juntada por viejas pelis", tags: "Suspenso", administrador: user.getUserId(), foto: "default.png").save(failOnError:true)
+			user.addToCirculos(circ)
+
+			user = Usuario.get(3) //FranCarFox
+			circ = new Circulo(nombre: "Las mejores peliculas cómicas ", tags: "Cómica", administrador: user.getUserId(), foto: "default.png").save(failOnError:true)
+			user.addToCirculos(circ)
+		}
 
 		/*if(!Sala.count()){
 			new Sala(nombre: "Hoyts Sala I", cine: Cine.get(1), filas: 10, columnas: 15).save(failOnError: true);
