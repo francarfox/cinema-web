@@ -12,8 +12,6 @@
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'font-awesome.min.css')}" type="stylesheet">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'cinema-web.css')}" type="text/css">
-	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-	<script type="text/javascript">stLight.options({publisher: "f417ec3e-f975-4dde-8cec-6fae9a9f2fca", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 	
 	<!---Menu-->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>

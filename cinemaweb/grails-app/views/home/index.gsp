@@ -16,20 +16,29 @@
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
           </ol>
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
-            <div class="item active">
-                <img src="images/cinema-web/peliculas-pics/1-pelicula.jpg" alt="">
+          <div class="item active">
+                <img src="images/slider/cinema-web.jpg" alt="">
                 <div class="carousel-caption">
-                  ...
                 </div>
             </div>
             <div class="item">
-                <img src="images/cinema-web/peliculas-pics/1-pelicula.jpg" alt="">
+                <img src="images/slider/planeta-de-los-simios.jpg" alt="">
                 <div class="carousel-caption">
-                  ...
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/slider/relatos-salvajes-banner.jpg" alt="">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/slider/en-el-tornado.jpg" alt="">
+                <div class="carousel-caption">
                 </div>
             </div>
           </div>
@@ -45,9 +54,8 @@
     </div>
 
     <div class="col-md-2" style="padding-left:0px;">
-        <div style="margin-top:28px;margin-bottom:20px;margin-left:15px;">
-          <span class='st_facebook' displayText='Facebook'></span>
-          <span class='st_twitter' displayText='Tweet'></span>
+        <div style="margin-top:28px;margin-bottom:20px;margin-left:5px;">
+          <img src="images/redessociales.png" alt="">
         </div>
         <g:form controller="usuario" action="validar" class="form-signin">
             <table id="tableUsuario" style="width:100%;margin:0 0;">
@@ -79,8 +87,8 @@
         <div class="col-md-12 navbar">
 
           <div class="col-xs-5 borde-hm">
-            <h3><i class="fa fa-film"></i> Ultimas Peliculas</h3>
-            <g:each in="${peliculas}" var="pelicula">
+            <h3><i class="fa fa-film"></i> Peliculas mejor ranquedas</h3>
+            <g:each in="${peliculasPunt}" var="pelicula">
               <div class="col-xs-4">
                 <g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" class="img-rounded show-img" style="width:113px;height:158px;" />
               </div>
@@ -88,16 +96,16 @@
                 <h4 style="margin-top:5px;">${pelicula.getTitulo()}</h4>
               </div>
               <div class="col-xs-8">
-                <p>Director: ${pelicula.getDirector()}</p>
+                <p style="font-size:12px;">Director: ${pelicula.getDirector()}</p>
               </div>
               <div class="col-xs-8">
-                <p>Sinópsis: ${pelicula.getSinopsis()}</p>
+                <p style="font-size:12px;">Sinópsis: ${pelicula.getSinopsis()}</p>
               </div>
               <div class="col-xs-8">
-                <p>Duración: ${pelicula.getDuracion()} minutos</p>
+                <p style="font-size:12px;">Duración: ${pelicula.getDuracion()} minutos</p>
               </div>
-              <div class="col-xs-8" style="margin-bottom:5px;">
-                <p>Puntuación: ${pelicula.getPuntos()}</p>
+              <div class="col-xs-8" style="margin-bottom:22px;">
+                <p style="font-size:12px;">Puntuación: ${pelicula.getPuntos()}</p>
               </div>
             </g:each>
           </div>
@@ -152,6 +160,42 @@
           </div>
         </div>
 
-  </div>
+    <div class="col-md-12">
+    <h3><i class="fa fa-film"></i> Ultimas Peliculas</h3>
+    <div class="carousel slide" id="myCarousel" data-interval="false">
+        <div class="carousel-inner">
+          <div class="item active">
+                <ul class="thumbnails" style="margin-left:-7px;">
+                  <g:each in="${peliculas1}" var="pelicula">
+                    <li class="span3">
+                        <div class="thumbnail">
+                          <g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" />
+                        </div>
+                    </li>
+                  </g:each>
+                </ul>
+          </div>
+          <div class="item">
+                <ul class="thumbnails" style="margin-left:-7px;">
+                  <g:each in="${peliculas2}" var="pelicula">
+                    <li class="span3">
+                        <div class="thumbnail">
+                          <g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" />
+                        </div>
+                    </li>
+                  </g:each>
+                </ul>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+    </div>
+    </div>
+</div>
+
 </body>
 </html>
