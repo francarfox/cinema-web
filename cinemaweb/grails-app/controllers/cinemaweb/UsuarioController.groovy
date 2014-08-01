@@ -105,8 +105,12 @@ class UsuarioController {
 	}
 
 	def verusuario() {
-		def usuario = Usuario.findByUserId(params.nombre)
-		render(view:"show", model:[usuario:usuario,perfil:usuario.perfil])
+		if (session.loggedUser == null){
+			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
+		} else {
+			def usuario = Usuario.findByUserId(params.nombre)
+			render(view:"show", model:[usuario:usuario,perfil:usuario.perfil])
+		}
 	}
 
 

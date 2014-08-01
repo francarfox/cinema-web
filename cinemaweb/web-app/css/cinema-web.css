@@ -45,6 +45,10 @@ a:focus {
   float: none;
   margin: 0 auto;
 }
+
+.borde-hm{
+  border: 2px #BD1133 solid;
+}
 /*!CONTENEDORES*/
 
 /*FORM*/
