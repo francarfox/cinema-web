@@ -5472,7 +5472,7 @@ button.close {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 15%;
+  width: 10%;
   font-size: 20px;
   color: #fff;
   text-align: center;
@@ -5585,9 +5585,11 @@ button.close {
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: -15px;
+    margin-left: -35px;
+    margin-right: -35px;
     font-size: 30px;
   }
+
   .carousel-caption {
     right: 20%;
     left: 20%;
