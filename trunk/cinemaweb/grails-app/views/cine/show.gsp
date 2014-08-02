@@ -8,7 +8,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Cine: #${cine.id} - ${cine.nombre}</h3>

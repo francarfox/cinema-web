@@ -8,7 +8,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Pelicula: #${movie.id} - ${movie.titulo}</h3>

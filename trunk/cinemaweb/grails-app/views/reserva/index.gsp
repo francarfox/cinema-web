@@ -12,7 +12,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<g:if test="${peliculas.size() == 0}"> 
 		<div class="row">
 	   			<div class="col-md-4">

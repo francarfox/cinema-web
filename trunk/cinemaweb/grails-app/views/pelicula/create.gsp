@@ -1,5 +1,5 @@
 <html>
-<head>index
+<head>
 	<meta name="layout" content="bootstrap-main"/>
 	<title>Cinema Web - Nueva Pelicula</title>
 	<style type="text/css">
@@ -7,7 +7,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<g:if test="${movie}">
 	    	<g:hasErrors bean="${movie}">
 			<div id="message_error">

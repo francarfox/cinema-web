@@ -7,7 +7,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<g:if test="${movie}">
 	    	<g:hasErrors bean="${movie}">
 			<div id="message_error">
