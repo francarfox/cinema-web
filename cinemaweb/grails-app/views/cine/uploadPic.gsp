@@ -9,7 +9,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 <div class="row">
 	<div class="col-md-8">
 		<h4>${cine.nombre}: Pic</h4>

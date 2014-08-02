@@ -4,7 +4,7 @@
 	<title>Cinema Web - Funciones </title>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<div class="row" id="button-bar">
 			<div class="col-md-12">
 				<g:link action="create" class="btn btn-danger"><i class="fa fa-plus-square"></i> Nueva Funcion</g:link>

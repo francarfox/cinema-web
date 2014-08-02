@@ -4,7 +4,7 @@
 	<title>Cinema Web - Salas</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<div class="row" id="button-bar">
 			<div class="col-md-12">
 				<g:link url="/cinemaweb" class="btn btn-danger"><i class="fa fa-home"></i> Pagina Principal</g:link>

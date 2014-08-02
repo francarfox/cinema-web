@@ -4,7 +4,7 @@
 	<title>Cinema Web - Editar Sala</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container-simple">
 		<g:if test="${errors}" >
 					<div class="row">
 						<div class="col-md-12">

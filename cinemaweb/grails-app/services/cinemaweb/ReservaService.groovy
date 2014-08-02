@@ -35,7 +35,7 @@ class ReservaService extends DomainService{
 														 	a,b -> a.cine <=> b.cine
 														 }.groupBy([{it.cine}])//agrupo por cine
 
-							[fecha: date.format("dd-MM-YYYY"), funciones: funcionesList]
+							[fecha: date.format("dd-MM-yyyy"), funciones: funcionesList]
 							
 						}.findAll { obj ->
 							//traigo solos los dias que hay funciones
