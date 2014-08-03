@@ -221,7 +221,7 @@
         <h3 style="margin-bottom:10px;"><i class="fa fa-comment"></i> Ultimos Comentarios</h3>
       </div>
       <div class="col-md-2">
-        <img src="images/banners/publicidad.g|" alt="">
+        <img src="images/banners/publicidad.gif" alt="">
       </div>
     </div>
 
