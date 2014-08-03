@@ -11,7 +11,7 @@ class Reserva {
 	static hasMany = [asientos: Asiento]
 
     static constraints = {
-    	reserva_key  		 blank:false, unique:true
+    	reserva_key  		 unique:true
     	fecha_reserva		 nullable:false
     }
 

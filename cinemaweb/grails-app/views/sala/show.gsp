@@ -133,7 +133,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<g:each in="${1..sala.filas}" var="fila">
+					<g:each in="${sala.filas..1}" var="fila">
 					<tr>
 						<td class="text-center td-header">${fila}</td>
 						<g:each in="${1..sala.columnas}" var="columna">

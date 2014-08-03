@@ -57,4 +57,12 @@ class ReservaService extends DomainService{
 			order("cine","asc")
 		}
 	}
+
+	def getSalaFuncion(funcionID){
+		return Funcion.get(funcionID).sala
+	}
+
+	def crearReserva(params){
+		
+	}
 }
