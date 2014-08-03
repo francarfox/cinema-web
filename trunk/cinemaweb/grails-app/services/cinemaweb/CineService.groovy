@@ -10,8 +10,15 @@ class CineService extends DomainService{
 	}
 
 	@Transactional
+	public def create(def attributes){
+		def domain = this.getDomainInstance()
+		this.submitDomainAttributes(domain,attributes)
+	}
+
+	@Transactional
 	public def edit(String id, def attributes){
-		return []
+		def domain = this.getDomainInstance(id)
+		this.submitDomainAttributes(domain,attributes)
 	}
 
 	@Transactional

@@ -157,11 +157,11 @@
 				<g:img dir="/images/cinema-web/peliculas-pics" file="${(pelicula.foto) ? pelicula.foto : 'default.png'}" class="img-rounded show-img" />
 			</div>
 			<div class="col-md-8">
-				<g:form class="form-horizontal">
+				<g:form class="form-horizontal" action="nueva_pasodos" id="${pelicula.id}" method="POST">
 				<div class="form-group">
 					<label for="fecha" class="col-md-2 col-sm-2 control-label">Fecha:</label>
 							<div class="col-md-4">
-								<select class="form-control" id="fecha_select">
+								<select class="form-control" id="fecha_select" name="fecha">
 									<option value="-1"> - </option>
 								</select>
 							</div>
