@@ -104,15 +104,6 @@ class UsuarioController {
 		}
 	}
 
-	def verusuario() {
-		if (session.loggedUser == null){
-			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
-		} else {
-			def usuario = Usuario.findByUserId(params.nombre)
-			render(view:"show", model:[usuario:usuario,perfil:usuario.perfil])
-		}
-	}
-
 
 	///////////////////// Metodos para admin ///////////////////////////
 

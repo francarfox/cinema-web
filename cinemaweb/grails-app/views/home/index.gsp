@@ -80,20 +80,20 @@
       <div class="col-md-2" style="margin-top:20px;padding-left:0px;">
         <h5 style="margin-bottom:10px;"><strong>Ultimos usuarios unidos</strong></h5>
         <g:each in="${usuarios}" var="usuario">
-            <p>${usuario.id} - <i class="fa fa-user"></i> <g:link controller="usuario" action="verusuario" params="[nombre:usuario.getUserId()]">${usuario.getUserId()}</g:link></p>
+            <p>${usuario.id} - <i class="fa fa-user"></i> <g:link controller="usuario" action="show" id="${usuario.id}">${usuario.getUserId()}</g:link></p>
         </g:each>
       </div>
 
         <div class="col-md-12 navbar">
 
-          <div class="col-xs-5 borde-hm">
+          <div class="col-xs-5 borde-hm" style="height:790px;">
             <h3><i class="fa fa-film"></i> Peliculas mejor ranquedas</h3>
             <g:each in="${peliculasPunt}" var="pelicula">
               <div class="col-xs-4">
-                <g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" class="img-rounded show-img" style="width:113px;height:158px;" />
+                <g:link controller="pelicula" action="show" id="${pelicula.id}"><g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" class="img-rounded show-img" style="width:113px;height:158px;" /></g:link>
               </div>
               <div class="col-xs-8">
-                <h4 style="margin-top:5px;">${pelicula.getTitulo()}</h4>
+                <h4 style="margin-top:5px;"><g:link controller="pelicula" action="show" id="${pelicula.id}">${pelicula.getTitulo()}</g:link></h4>
               </div>
               <div class="col-xs-8">
                 <p style="font-size:12px;">Director: ${pelicula.getDirector()}</p>
@@ -110,14 +110,14 @@
             </g:each>
           </div>
 
-          <div class="col-xs-4 borde-hm" style="margin-left:5px;padding-bottom:29px;">
+          <div class="col-xs-4 borde-hm" style="margin-left:5px;padding-bottom:29px;height:790px;">
             <h3><i class="fa fa-video-camera"></i> Cines más comentados</h3>
             <g:each in="${cines}" var="cine">
               <div class="col-xs-4">
-                <g:img dir="/images/cinema-web/cines-pics" file="${cine.foto}" class="img-rounded show-img" style="width:82px;height:82px;" />
+                <g:link controller="cine" action="show" id="${cine.id}"><g:img dir="/images/cinema-web/cines-pics" file="${cine.foto}" class="img-rounded show-img" style="width:82px;height:82px;" /></g:link>
               </div>
               <div class="col-xs-8">
-                <h4 style="margin-top:5px;margin-bottom:15px;">${cine.getNombre()}</h4>
+                <g:link controller="cine" action="show" id="${cine.id}"><h4 style="margin-top:5px;margin-bottom:15px;">${cine.getNombre()}</h4></g:link>
               </div>
               <div class="col-xs-8" style="font-size:12px;">
                 <p>${cine.getUbicacion()}</p>
@@ -129,28 +129,28 @@
           </div>
 
           <div class="col-xs-3" style="padding:0 0;width:24%;margin-left:5px;">
-            <div class="col-xs-12 borde-hm" style="padding-right:0px;">
+            <div class="col-xs-12 borde-hm" style="padding-right:0px;height:421px;">
               <h4 style="margin-top:23px;"><i class="fa fa-users"></i> Circulos más populares</h4>
               <g:each in="${circulos}" var="circulo">
                 <div class="col-xs-4">
-                  <g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" />
+                  <g:link controller="circulo" action="show" id="${circulo.id}"><g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" /></g:link>
                 </div>
                 <div class="col-xs-8">
-                  <h5 style="margin-top:5px;margin-bottom:15px;">${circulo.getNombre()}</h5>
+                  <h5 style="margin-top:5px;margin-bottom:15px;"><g:link controller="circulo" action="show" id="${circulo.id}">${circulo.getNombre()}</g:link></h5>
                 </div>
                 <div class="col-xs-8" style="font-size:12px;margin-bottom:18px;">
                   <p>${circulo.getTags()} · ${circulo.usuarios.size()} usuarios</p>
                 </div>
               </g:each>
             </div>
-            <div class="col-xs-12 borde-hm" style="margin-top:27px;padding-right:0px;">
+            <div class="col-xs-12 borde-hm" style="margin-top:27px;padding-right:0px;height:342px;">
               <h4 style="margin-top:23px;"><i class="fa fa-users"></i> Ultimos Circulos</h4>
               <g:each in="${circulosUlt}" var="circulo">
                 <div class="col-xs-4">
-                  <g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" />
+                  <g:link controller="circulo" action="show" id="${circulo.id}"><g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" /></g:link>
                 </div>
                 <div class="col-xs-8">
-                  <h5 style="margin-top:5px;margin-bottom:15px;">${circulo.getNombre()}</h5>
+                  <h5 style="margin-top:5px;margin-bottom:15px;"><g:link controller="circulo" action="show" id="${circulo.id}">${circulo.getNombre()}</g:link></h5>
                 </div>
                 <div class="col-xs-8" style="font-size:12px;margin-bottom:18px;">
                   <p>${circulo.getTags()} · ${circulo.usuarios.size()} usuarios</p>
@@ -161,15 +161,15 @@
         </div>
 
     <div class="col-md-12">
-    <h3><i class="fa fa-film"></i> Ultimas Peliculas</h3>
-    <div class="carousel slide" id="myCarousel" data-interval="false">
+    <h3 style="margin-bottom:10px;"><i class="fa fa-film"></i> Ultimas Peliculas agregadas</h3>
+    <div class="carousel slide" id="myCarousel" data-interval="false" style="margin-top:0px;">
         <div class="carousel-inner">
           <div class="item active">
                 <ul class="thumbnails" style="margin-left:-7px;">
                   <g:each in="${peliculas1}" var="pelicula">
                     <li class="span3">
                         <div class="thumbnail">
-                          <g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" />
+                          <g:link controller="pelicula" action="show" id="${pelicula.id}"><g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" /></g:link>
                         </div>
                     </li>
                   </g:each>
@@ -180,7 +180,18 @@
                   <g:each in="${peliculas2}" var="pelicula">
                     <li class="span3">
                         <div class="thumbnail">
-                          <g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" />
+                          <g:link controller="pelicula" action="show" id="${pelicula.id}"><g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" /></g:link>
+                        </div>
+                    </li>
+                  </g:each>
+                </ul>
+          </div>
+          <div class="item">
+                <ul class="thumbnails" style="margin-left:-7px;">
+                  <g:each in="${peliculas3}" var="pelicula">
+                    <li class="span3">
+                        <div class="thumbnail">
+                          <g:link controller="pelicula" action="show" id="${pelicula.id}"><g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" /></g:link>
                         </div>
                     </li>
                   </g:each>
@@ -195,6 +206,24 @@
         </div>
     </div>
     </div>
+
+    <div class="col-md-12" style="margin-top:30px;">
+      <img src="images/banners/reserva.gif" alt="">
+    </div>
+
+    <div class="col-md-12" style="margin-top:30px;">
+      <div class="col-md-8 borde-hm">
+        <h3 style="margin-bottom:10px;"><i class="fa fa-comment"></i> Ultimos Comentarios</h3>
+      </div>
+      <div class="col-md-2">
+        <img src="images/banners/publicidad.gif" alt="">
+      </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:30px;">
+      <a href='/cinemaweb/circulo/index'><img src="images/banners/banner-fondo.jpg" alt=""></a>
+    </div>
+
 </div>
 
 </body>
