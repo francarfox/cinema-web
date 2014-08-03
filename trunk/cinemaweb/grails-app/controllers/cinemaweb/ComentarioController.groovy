@@ -5,7 +5,7 @@ class ComentarioController {
 
     def index() { }
 
-    def indexusuario = {
+    def indexusuario() {
     	def usuario = Usuario.get(session.loggedUser)
     	def comentarios = usuario.obtenerComentarios();
 
