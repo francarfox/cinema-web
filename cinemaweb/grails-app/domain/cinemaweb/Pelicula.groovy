@@ -8,6 +8,7 @@ class Pelicula {
     String urlTrailer
     Integer duracion
     int puntos = 0
+    Set<Comentario> comentarios = []
     
     static hasMany = [comentarios: Comentario, funciones: Funcion]
 

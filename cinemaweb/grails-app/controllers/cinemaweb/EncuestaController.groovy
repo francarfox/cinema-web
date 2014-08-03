@@ -7,8 +7,12 @@ class EncuestaController {
 	def encuestaService
 
     def index() { 
-    	def encuesta = this.encuestaService.getListadoEncuestas()
-    	[encuesta: encuesta]
+        if (session.loggedUser == null) {
+            redirect(action:"login", controller:"usuario")
+        } else {
+    	   def encuesta = this.encuestaService.getListadoEncuestas()
+    	   [encuestas: encuesta]
+        }
     }
 
     def create() {
@@ -39,8 +43,14 @@ class EncuestaController {
     }
 
     def delete() {
-    	this.encuestaService.delete(params)
-		redirect(action:"show", controller:"circulo", id:params.circuloid)
+        if (params.accion == "admin") {
+            this.encuestaService.delete(params)
+            def circulos = Circulo.list()
+            redirect(action:"listarencuestas", controller:"usuario", model:[ciruclos:circulos])
+        } else {
+    	  this.encuestaService.delete(params)
+		  redirect(action:"show", controller:"circulo", id:params.circuloid)
+        }
     }
 
 }

@@ -7,6 +7,7 @@ class Cine {
     String apertura
     String cierre
     String foto
+    Set<Comentario> comentarios = []
 
     //falta agregar funcion
 	static hasMany = [comentarios: Comentario, salas: Sala, funciones: Funcion]
