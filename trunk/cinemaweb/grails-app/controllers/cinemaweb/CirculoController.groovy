@@ -119,7 +119,7 @@ class CirculoController {
 
 	def show() {
 		if (session.loggedUser == null) {
-			redirect(controller:'usuario' , action:'login' )
+			redirect(controller:'usuario' , action:'login')
 		} else {
 			def circulo = Circulo.get(params.id)
 			def loggedUser = Usuario.get(session.loggedUser)

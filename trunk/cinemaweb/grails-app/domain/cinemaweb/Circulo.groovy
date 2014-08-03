@@ -62,4 +62,7 @@ class Circulo {
         //this.encuesta.delete()
     }
 
+    def getCantidadUsuarios() {
+        return this.usuarios.size()
+    }
 }

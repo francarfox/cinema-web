@@ -23,6 +23,8 @@
 
 		<g:if test="${!circulo.estaUsuario(usuario)}">
 			<h1>Acceso denegado: debe ingresar al circulo para poder verlo.</h1>
+			<h2>¿Desea unirse al circulo ${circulo.getNombre()}? 
+			<g:link action="unirse" id="${circulo.id}" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;">Unirse <i class="fa fa-mail-reply"></i></g:link></h2>
 		</g:if>
 
 		<g:else> <!-- SHOW ADMIN -->
