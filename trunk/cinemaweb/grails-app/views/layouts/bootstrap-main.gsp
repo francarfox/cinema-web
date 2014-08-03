@@ -116,8 +116,8 @@
 		   <li><a href='/cinemaweb/pelicula'><span>Peliculas</span></a></li>
 		   <li class='has-sub'><a href=''><span>Usuarios</span></a>
 		   		<ul>
-		         		<li><a href='/cinemaweb/usuario/index'>Buscar Usuarios</a></li>
-		         		<li><a href='/cinemaweb/usuario/create'>Crear Usuario</a></li>
+		         	<li><a href='/cinemaweb/usuario/index'>Buscar Usuarios</a></li>
+		         	<li><a href='/cinemaweb/usuario/create'>Crear Usuario</a></li>
 		        </ul>
 		   </li>
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
@@ -131,6 +131,7 @@
 						<li><a href='#'>Manejo de Reservas</a></li>
 						<li><a href='/cinemaweb/usuario/listarcirculos'>Manejo de Circulos</a></li>
 						<li><a href='#'>Manejo de Promociones</a></li>
+						<li><a href='/cinemaweb/usuario/listarencuestas'>Manejo de Encuestas</a></li>
 		      		</ul>
 		      	</li>
 		   </g:if>

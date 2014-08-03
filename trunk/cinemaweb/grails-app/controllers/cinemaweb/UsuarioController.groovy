@@ -161,4 +161,26 @@ class UsuarioController {
 		}
 		
 	}
+
+	def listarencuestas() {
+		if (session.loggedUser == null){
+			redirect(controller:'usuario' , action:'login')
+		}
+		else {
+    		def circulos = Circulo.list()
+    		[circulos:circulos]
+    	}
+	}
+
+	def listarcomentarios() {
+		if (session.loggedUser == null){
+			redirect(controller:'usuario' , action:'login')
+		}
+		else {
+    		def circulos = Circulo.list()
+    		def peliculas = Pelicula.list()
+    		def cines = Cine.list()
+    		[circulos:circulos,peliculas:peliculas,cines:cines]
+    	}
+	}
 }

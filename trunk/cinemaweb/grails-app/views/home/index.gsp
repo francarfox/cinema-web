@@ -57,6 +57,7 @@
         <div style="margin-top:28px;margin-bottom:20px;margin-left:5px;">
           <img src="images/redessociales.png" alt="">
         </div>
+        <g:if test="${session.loggedUser == null}">
         <g:form controller="usuario" action="validar" class="form-signin">
             <table id="tableUsuario" style="width:100%;margin:0 0;">
                 <tr>
@@ -76,6 +77,10 @@
                 </tr>
             </table>
         </g:form>
+        </g:if>
+        <g:else>
+          <h2>Bienvenido ${session.loggedUserNombre} a CinemaWeb!</h2>
+        </g:else>
       </div>
       <div class="col-md-2" style="margin-top:20px;padding-left:0px;">
         <h5 style="margin-bottom:10px;"><strong>Ultimos usuarios unidos</strong></h5>
@@ -216,7 +221,7 @@
         <h3 style="margin-bottom:10px;"><i class="fa fa-comment"></i> Ultimos Comentarios</h3>
       </div>
       <div class="col-md-2">
-        <img src="images/banners/publicidad.gif" alt="">
+        <img src="images/banners/publicidad.g|" alt="">
       </div>
     </div>
 
