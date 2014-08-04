@@ -11,21 +11,28 @@
 				margin-top: 40px
 			}
 			
-			td.seat-active, td.seat-none{
+			td.seat-active, td.seat-none, td.seat-booked{
 				width: 40px;
 				height: 26px;
 			}
 
-			td.seat-active{
+			td.seat-active, td.seat-booked{
 				border: 1px solid #636363;
 				background-image: url("../../images/icon_seat.png");
 				background-size: 80% 89%;
 				background-repeat:no-repeat;
 				background-position:center;
+			}
+
+			td.seat-active{
 				background-color: #A1FF89;
 				cursor: pointer;
 			}
 
+			td.seat-booked{
+				background-color: red;
+			}
+			
 			td.seat-active.selected, td.seat-active:hover{
 				background-color: #9595E2;;
 			}
@@ -67,9 +74,10 @@
 				var filaAsiento = asiento.attr("data-fila");
 				var columnaAsiento = asiento.attr("data-columna");
 				$("<input>").attr({
-					"name": "asientos[]",
+					"name": "asientos",
 					"type": "hidden",
-					"data-asiento": filaAsiento + "," + columnaAsiento
+					"data-asiento": filaAsiento + "," + columnaAsiento,
+					"value": filaAsiento + "," + columnaAsiento
 				}).appendTo("form.asientos-reserva");
 				cantidadAsientos--;
 				$("span#asientos-reservables").html(cantidadAsientos);
@@ -107,8 +115,9 @@
 					<div class="col-md-8" style="margin:0px">
 						<g:form action="nueva_pasodos" id="${peliculaID}" method="POST" class="asientos-reserva">
 							<input type="hidden" name="submit" value="1"/>
-							<input type="hidden" name="funcion" value="${funcionID}"7>
-							<input type="hidden" name="horario" value="${fecha}"/>
+							<input type="hidden" name="funcion" value="${funcion}"7>
+							<input type="hidden" name="fecha" value="${fecha}"/>
+							<input type="hidden" name="num_asientos" value="${num_asientos}">
 							<button type="submit" class="btn btn-warning disabled pull-right" id="submit-asientos">Siguiente</button>
 						</g:form>
 					</div>
@@ -122,9 +131,13 @@
 								<g:each in="${salaFilas..1}" var="fil">
 									<tr>
 										<g:each in="${1..salaColumnas}" var="col">
-											<g:if test="${salaAsientos.contains(fil +','+ col)}">
-												<td class="seat-active" data-fila="${fil}" data-columna="${col}">
-												</td>
+											<g:if test="${salaAsientos.contains(fil +','+ col) || asientosReservados.contains(fil +','+ col)}">
+												<g:if test="${asientosReservados.contains(fil +','+ col)}">
+												<td class="seat-booked" data-fila="${fil}" data-columna="${col}"></td>
+												</g:if>
+												<g:else>
+													<td class="seat-active" data-fila="${fil}" data-columna="${col}"></td>
+												</g:else>	
 											</g:if>
 											<g:else>
 												<td class="seat-none" data-fila="${fil}" data-columna="${col}"></td>
