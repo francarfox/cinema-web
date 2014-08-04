@@ -22,25 +22,34 @@ class ReservaController {
 
 
     def nueva_pasodos(){
-        def error = null
+        def nuevaReserva = null
 
         if(params.submit){ 
-            //error = this.reservaService.crearReserva(params)
-            render params.asientos.list()
+            nuevaReserva = this.reservaService.crearReserva(params)    
+            //this.reservaService.crearReserva(params)
         }
 
-        def sala = this.reservaService.getSalaFuncion(params.funcion)
+        if(nuevaReserva){
+            redirect(action: "nueva_pasotres", id: params.id, params: [resID: nuevaReserva])
+        }else{
+             def sala = this.reservaService.getSalaFuncion(params.funcion)
 
-        def model = [
+             def model = [
                      peliculaID: params.id,
-                     funcionID: params.funcion,
+                     funcion: params.funcion,
                      fecha: params.fecha,
                      num_asientos: params.num_asientos,
-                     error: error,
                      salaFilas: sala.filas,
                      salaColumnas: sala.columnas,
-                     salaAsientos: sala.getAsientosOcupados()]
+                     salaAsientos: sala.getAsientosOcupados(),
+                     asientosReservados: this.reservaService.getAsientosReservados(params.funcion,params.fecha)]
 
-        render(view: "pasodos.gsp", model: model)
+            render(view: "pasodos.gsp", model: model)
+        }
+       
+    }
+
+    def nueva_pasotres(){
+        render params
     }
 }
