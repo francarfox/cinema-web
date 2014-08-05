@@ -39,13 +39,13 @@
 				<div class="col-md-3 reserva-film">
 					<div class="row">
 						<div class="col-md-12">
-							<h3 class="text-center">${pelicula.titulo}</h3>
-						</div>	
+							<g:img dir="/images/cinema-web/peliculas-pics" file="${(pelicula.foto) ? pelicula.foto : 'default.png'}" class="img-rounded show-img" />
+						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<g:img dir="/images/cinema-web/peliculas-pics" file="${(pelicula.foto) ? pelicula.foto : 'default.png'}" class="img-rounded show-img" />
-						</div>
+							<h4 class="text-center" style="margin-bottom:10px">${pelicula.titulo}</h4>
+						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12">
