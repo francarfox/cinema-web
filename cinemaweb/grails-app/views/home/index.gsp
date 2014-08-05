@@ -213,7 +213,9 @@
     </div>
 
     <div class="col-md-12" style="margin-top:30px;">
+    <g:link controller="reserva" action="index">
       <img src="images/banners/reserva.gif" alt="">
+    </g:link>
     </div>
 
     <div class="col-md-12" style="margin-top:30px;">
