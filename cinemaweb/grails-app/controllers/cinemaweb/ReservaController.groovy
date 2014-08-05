@@ -30,7 +30,9 @@ class ReservaController {
         }
 
         if(nuevaReserva){
-            redirect(action: "nueva_pasotres", id: params.id, params: [resID: nuevaReserva])
+            //guardo el id de la reserva en la session
+            session["reserva_provisoria"] = nuevaReserva
+            redirect(action: "nueva_pasotres", id: params.id)
         }else{
              def sala = this.reservaService.getSalaFuncion(params.funcion)
 
@@ -50,6 +52,27 @@ class ReservaController {
     }
 
     def nueva_pasotres(){
-        render params
+        if(params.finish){
+           this.reservaService.submitTransaccion(session["reserva_provisoria"])
+           redirect(action: "reserva_gracias", id: params.id)
+        }else{
+           def reservaProvisoria = this.reservaService.getReservaProvisoria(session["reserva_provisoria"])
+            render(view: "pasotres.gsp", model: [reservaProvisoria: reservaProvisoria]) 
+        }
+        
+    }
+
+
+    def reserva_gracias(){
+        def reserva = this.reservaService.getReservaProvisoria(session["reserva_provisoria"])
+        render(view: "gracias.gsp", model: [reserva: reserva])
+    }
+
+
+    def borrar_provisoria(){
+       def reservaProvisoria = this.reservaService.getReservaProvisoria(params.reservaID)
+       reservaProvisoria.delete(flush: true)
+       //borro la key 
+       session["reserva_provisoria"] = ""
     }
 }

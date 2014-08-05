@@ -77,11 +77,21 @@ class BootStrap {
 			user.addToCirculos(circ)
 		}
 
-		/*if(!Sala.count()){
+		if(!Sala.count()){
 			new Sala(nombre: "Hoyts Sala I", cine: Cine.get(1), filas: 10, columnas: 15).save(failOnError: true);
 			new Sala(nombre: "Hoyts Sala II", cine: Cine.get(1), filas: 15, columnas: 20).save(failOnError: true);
-			new Sala(nombre: "Showcase Norte Sala I", Cine.get(2), filas: 10, columnas: 15).save(failOnError: true);
-		}*/
+			new Sala(nombre: "Showcase Norte Sala I", cine: Cine.get(2), filas: 10, columnas: 15).save(failOnError: true);
+		}
+
+		//cargo los asientos para sala 1
+		def sala1 = Sala.get(1)
+		(4..sala1.filas).each{ fil->
+			 (1..sala1.columnas).each{ col->
+			 	if(col != 4 && col != 11){
+			 		sala1.addToAsientos(new Asiento(fila:fil,columna: col))
+			 	}
+			 }
+		}
     }
     def destroy = {
     }
