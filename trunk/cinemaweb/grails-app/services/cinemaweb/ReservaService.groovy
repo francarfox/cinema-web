@@ -123,8 +123,26 @@ class ReservaService extends DomainService{
 		}
 	}*/
 
+	def getReservaProvisoria(reservaID){
+		if(reservaID){
+			return Reserva.findWhere(reserva_key:reservaID)
+		}else{
+			return null
+		}
+	}
+
+	def submitTransaccion(reservaID){
+		def reserva = this.getReservaProvisoria(reservaID)
+		reserva.transaccionID = this.getTransactionID()
+		reserva.save()
+	}
+
+	def getTransactionID(){
+		return this.randomIDKey(16)
+	}
+
 	def randomIDKey(cantDigitos){
-		def pool = ['a'..'z','A'..'Z',0..9,'_'].flatten()
+		def pool = ['A'..'Z',0..9].flatten()
 		Random rand = new Random(System.currentTimeMillis())
 
 		def passChars = (0..cantDigitos).collect { pool[rand.nextInt(pool.size())] }
