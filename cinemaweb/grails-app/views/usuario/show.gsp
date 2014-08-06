@@ -33,8 +33,8 @@
 	   	</div>
 
 
-	   	<div class="col-md-4" style="margin-left:120px;margin-right:50px;">
-			<h1>Usuario de ${perfil.nombre}</h1>
+	   	<div class="col-md-6" style="margin-left:120px;margin-right:50px;">
+			<h1><i class="fa fa-user"></i> Usuario de ${perfil.nombre}</h1>
 			<div style="margin-top:20px;">
 				<p><strong>Usuario</strong>: ${usuario.userId}</p>
 				<p><strong>Usuario desde</strong>: ${usuario.cuentaCreada}</p>

@@ -7,9 +7,9 @@
 	<div class="container">
 
 	<g:if test="${params.accion == 'eliminar'}">
-		<div class="row">
+
 			<div class="col-md-8">
-				<h1>Usuarios del círculo ${circulo.getNombre()}</h1>
+				<h1><i class="fa fa-list"></i> Usuarios del círculo ${circulo.getNombre()}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
@@ -17,7 +17,7 @@
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
-		</div>
+
 			
 		<div class="col-md-8" style="margin-top:20px;">
 			<g:form action="eliminarusuario" id="${circulo.id}">
@@ -46,9 +46,9 @@
 	</g:if>
 
 	<g:else>
-	    <div class="row">
+
 			<div class="col-md-8">
-				<h1>Usuarios del círculo ${circulo.nombre}</h1>
+				<h1><i class="fa fa-list"></i> Usuarios del círculo ${circulo.nombre}</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
@@ -56,7 +56,7 @@
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
-		</div>
+
 			
 		<div class="col-md-8" style="margin-top:20px;">
 			<g:if test="${circulo.usuarios!=null}">

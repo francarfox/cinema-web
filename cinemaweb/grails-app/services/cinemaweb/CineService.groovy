@@ -28,7 +28,7 @@ class CineService extends DomainService{
 
 	@Transactional
 	public def getListadoCines() {
-		return Cine.list()
+		return Cine.list(sort:"nombre")
 	}
 
 }

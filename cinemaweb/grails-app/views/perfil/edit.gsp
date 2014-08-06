@@ -18,7 +18,7 @@
 				</div>
 			</div>
 		</g:if>
-		<h1 style="margin-left:30px;">Editando perfil de ${perfil.nombre}</h1>
+		<h1 style="margin-left:30px;"><i class="fa fa fa-pencil-square-o"></i> Editando perfil de ${perfil.nombre}</h1>
 	   	<div class="col-md-5">
 			<g:form action="actualizar" id="${perfil.id}">
 				<h2 style="text-align:center;">Datos Perfil</h2>

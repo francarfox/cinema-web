@@ -20,7 +20,7 @@
 		</g:if>
 		<div class="row">
 			<div class="col-md-8">
-				<h4>Nuevo Cine</h4>
+				<h2><i class="fa fa-video-camera"></i> Nuevo Cine</h2>
 				<g:form action="${action}" id="${id}" class="form-horizontal">
 				<div class="form-group">
 					<label for="name" class="col-md-2 col-sm-2 control-label">Nombre:</label>
@@ -55,10 +55,10 @@
 				<div class="form-group">
 					<div class="col-sm-10 col-md-2 col-md-offset-2">
 						<input type="hidden" name="submit" value="1">
-						<g:link controller="cine" action="${back.action}" id="${back.id}" class="btn btn-default btn-block">Volver</g:link>
+						<g:link controller="cine" action="${back.action}" id="${back.id}" class="btn btn-default btn-medium btn-block">Volver</g:link>
 					</div>
 					<div class="col-sm-10 col-md-2">
-						<button type="submit" class="btn btn-primary btn-block">Crear</button>
+						<button type="submit" class="btn btn-login btn-medium btn-block">Crear</button>
 					</div>
 				</div>
 			</g:form>

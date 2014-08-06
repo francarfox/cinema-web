@@ -5,6 +5,7 @@ class UsuarioController {
 	
 	static scaffold = true
 	def usuarioService
+	def circuloService
 
 	def index() {
 		if (session.loggedUser == null) {
@@ -138,10 +139,8 @@ class UsuarioController {
 	}
 
 	def listarcirculos() {
-    	def loggedUser = Usuario.get(session.loggedUser)
-
-    	if (loggedUser.getRol() == "ADMIN") {
-    		this.circuloService.getListadoCirculos()
+    	if (session.loggedUserRol == "ADMIN") {
+    		def circulos = this.circuloService.getListadoCirculos()
     		[circulos: circulos]
     	}
     	else {
@@ -182,5 +181,11 @@ class UsuarioController {
     		def cines = Cine.list()
     		[circulos:circulos,peliculas:peliculas,cines:cines]
     	}
+	}
+
+	def verusuario() { //Ver un usuario a partir de un string nombre
+		def usuario = Usuario.findByUserId(params.nombre)
+		def perfil = Perfil.get(usuario.id)
+		render(view:"show", model:[usuario:usuario,perfil:perfil]) //redirect(action: "show", id:usuario.id)
 	}
 }

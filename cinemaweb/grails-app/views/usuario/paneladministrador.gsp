@@ -10,7 +10,7 @@
 
 
 			<div class="col-md-12">
-				<h1>Panel Administrador</h1>
+				<h1><i class="fa fa-wrench"></i> Panel Administrador</h1>
 			</div>
 
 		<div style="margin-left:30px;">

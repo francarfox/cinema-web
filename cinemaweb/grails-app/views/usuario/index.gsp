@@ -8,9 +8,9 @@
 <body>
 	<div class="container">
 			
-		<div class="row">
+		
 			<div class="col-md-8">
-				<h1>Usuarios de CinemaWeb (total: ${usuarios.size()})</h1>
+				<h1><i class="fa fa-user"></i> Usuarios de CinemaWeb (total: ${usuarios.size()})</h1>
 			</div>
 			<div class="col-md-4" style="margin-top:40px;">
 				<g:form action="#" class="form-inline" style="float:right">
@@ -18,7 +18,7 @@
 					<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 				</g:form>
 			</div>
-		</div>
+
 			
 		<div class="col-md-12" style="margin-top:30px;">
 			<g:if test="${usuarios!=null}">

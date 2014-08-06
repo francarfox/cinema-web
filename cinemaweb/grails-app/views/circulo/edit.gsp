@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Editar Circulo - CinemaWeb</title>
+	<title>Editar Círculo - CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>
@@ -20,7 +20,7 @@
 			</div>
 		</g:if>
 		
-			<h1>Editar Circulo ${circulo.nombre}</h1>
+			<h1><i class="fa fa fa-pencil-square-o"></i> Editar Círculo ${circulo.nombre}</h1>
 
 			<g:if test="${message}">
 	    		<div id="message_error">${message}</div>
@@ -28,7 +28,7 @@
 
 	        <div class="col-md-5">
 			<g:form action="actualizar" id="${circulo.id}">
-				<h2 style="text-align:center;">Datos Circulo</h2>
+				<h2 style="text-align:center;">Datos Círculo</h2>
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
 					<g:field class="form-control" type="text" name="nombre" value="${circulo.nombre}" />

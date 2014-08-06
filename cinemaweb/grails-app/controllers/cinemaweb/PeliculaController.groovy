@@ -6,7 +6,7 @@ class PeliculaController {
   def fileService
 
   def index = {
-     def movies = Pelicula.list()
+     def movies = Pelicula.list(sort:"nombre")
      [movies: movies]
   }
 

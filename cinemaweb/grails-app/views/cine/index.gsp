@@ -5,18 +5,20 @@
 </head>
 <body>
 	<div class="container" id="container-simple">
-		<div class="row" id="button-bar">
+		<g:if test="${session.loggedUserRol == 'ADMIN'}">
+			<div class="row" id="button-bar">
+				<div class="col-md-2">
+					<g:link action="create" class="btn btn-login btn-medium btn-block"><i class="fa fa-plus-square"></i> Nuevo Cine</g:link>
+				</div>
+			</div>
+		</g:if>
+		<div class="row">
 			<div class="col-md-12">
-				<g:link action="create" class="btn btn-danger"><i class="fa fa-plus-square"></i> Nuevo Cine</g:link>
+				<h2><i class="fa fa-video-camera"></i> Cines</h2>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				<h3>Cines</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-5" style="width:700px;">
 				<table class="table table-bordered table-stripped" id="table-list">
 					<thead>
 						<tr>

@@ -86,11 +86,11 @@ class BootStrap {
 		}
 
 		if(!Comentario.count()){
-			/*def user = Usuario.get(1)
+			def user = Usuario.get(1)
 			def peli = Pelicula.get(21)
 			def cine = Cine.get(1)
 			user.comentar(peli, "Excelente pelicula, te mantiene atrapado todo el tiempo")
-			user.comentar(cine, "Buenos asientos y el sonido aceptable")*/
+			user.comentar(cine, "Buenos asientos y el sonido aceptable")
 		}
 
 		if(!Sala.count()){

@@ -20,7 +20,7 @@
 			</div>
 		</g:if>
 
-		<h1 style="margin-left:30px;">Editando Usuario ${session.loggedUserNombre}</h1>
+		<h1 style="margin-left:30px;"><i class="fa fa fa-pencil-square-o"></i> Editando Usuario ${session.loggedUserNombre}</h1>
 	   	<div class="col-md-5">
 			<g:form action="actualizar" id="${session.loggedUser}">
 				<h2 style="text-align:center;">Datos Usuario</h2>
