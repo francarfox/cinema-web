@@ -43,7 +43,8 @@
 				<!--- Trailer ---->
 				<div class="row">
 					<div class="col-md-12">
-						<h4>Trailer</h4>
+						<br />
+						<h3><i class="fa fa-youtube"></i> Trailer</h3>
 						<g:if test="${movie.urlTrailer}">
 						<iframe 
 						src="${movie.urlTrailer}">
@@ -57,6 +58,26 @@
 
 <!--Comentarios-->
 <div class="col-md-12">
+	<br />
+	<h3><i class="fa fa-star"></i> Puntuación</h3>
+	<h5><strong>${movie.nombre} posee ${movie.puntos} puntos.</strong></h5>
+	<g:if test="${session.loggedUser != null}">
+	<g:form action="puntuar" id="${movie.id}">
+	<table class="table" style="width:200px;">
+		<tr>
+			<td><g:select from="${[1,2,3,4,5,6,7,8,9,10]}" class="form-control" name="puntos"/></td>
+			<td>
+				<input type="hidden" name="submit" value="1">
+				<g:submitButton class="btn btn-login " name="Puntuar"/>
+			</td>
+		<tr>
+	</table>
+	</g:form>
+	</g:if>
+	<g:else>
+		<h5><i class="fa fa-exclamation-triangle"></i> Debe estar logueado para poder comentar | <g:link controller="usuario" action="login">Login</g:link></h5>
+	</g:else>
+	<br />
 	<h3><i class="fa fa-comments-o"></i> Comentarios</h3>
 </div>
 <div id="Comentarios">
@@ -80,7 +101,7 @@
 		</table>
 	</g:if>
 	<g:else>
-		<h4 style="text-align:center;">Debe estar logueado para poder comentar | <g:link controller="usuario" action="login">Login</g:link></h4>
+		<h4 style="text-align:center;"><i class="fa fa-exclamation-triangle"></i> Debe estar logueado para poder comentar | <g:link controller="usuario" action="login">Login</g:link></h4>
 	</g:else>
 </div>
 
