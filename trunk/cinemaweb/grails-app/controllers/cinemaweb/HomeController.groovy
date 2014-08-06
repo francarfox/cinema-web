@@ -28,4 +28,8 @@ class HomeController {
             comentarios:comentarios
     	]
     }
+
+    def contacto() {
+        
+    }
 }
