@@ -136,7 +136,7 @@
 		      		</ul>
 		      	</li>
 		   </g:if>
-		   <li class='last'><a href='#'><span>Contacto</span></a></li>
+		   <li class='last'><a href='/cinemaweb/home/contacto'><span>Contacto</span></a></li>
 		</ul>
 		</div>
 		<!--- !Barra de Menu -->
