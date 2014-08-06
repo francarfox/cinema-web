@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="margin-left:15px;">
 	<div class="col-md-12">
 		<h5 style="margin-bottom:0px;">
 			<g:img dir="/images/cinema-web/perfil-pics" file="${comentario.autor.perfil.foto}" class="img-rounded show-img" style="width:40px;height:40px;margin-bottom:1px;" />

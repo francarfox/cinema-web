@@ -1,33 +1,23 @@
 package cinemaweb
 
-class Pelicula {
-	String titulo
+class Pelicula extends Comentable {
+	String nombre
     String director
     String sinopsis
     String foto
     String urlTrailer
     Integer duracion
     int puntos = 0
-    Set<Comentario> comentarios = []
     
-    static hasMany = [comentarios: Comentario, funciones: Funcion]
+    static hasMany = [funciones: Funcion]
 
     static constraints = {
-    	titulo blank: false
+    	nombre blank: false
         director blank: false
         sinopsis blank: false
         duracion min:30
         puntos min: 0
         foto blank:true
-    }
-
-    def agregarComentario(comentario) {
-    	comentarios.add(comentario)
-    }
-
-    def obtenerComentarios() {
-    	comentarios.sort(true)
-    	return comentarios
     }
 
     def agregarPuntos(puntos) {

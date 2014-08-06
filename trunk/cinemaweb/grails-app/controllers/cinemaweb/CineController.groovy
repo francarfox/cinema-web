@@ -51,11 +51,15 @@ class CineController extends BaseController{
     }
 
     def comentar = {
-    	def usuario = session.usuario
+    	def usuario = Usuario.get(session.loggedUser)
     	def cine = Cine.get(params.id)
 
-    	usuario.comentar(cine, params.mensaje)
-    	redirect(action: "show", id:params.id)
+        if(usuario == null){
+            redirect(controller: "usuario", action: "login")
+        }else{
+    	   usuario.comentar(cine, params.mensaje)
+    	   redirect(action: "show", id:params.id)
+        }
     }
 
     def uploadPic = {

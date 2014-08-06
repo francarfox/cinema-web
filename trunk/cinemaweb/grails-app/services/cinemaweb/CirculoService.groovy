@@ -13,7 +13,7 @@ class CirculoService extends DomainService {
 		String tags = attributes.tags
 		String foto = "default.png"
 
-		def circulo = new Circulo(nombre: nombre, tags: tags, administrador: usuario.getUserId(), foto: foto)
+		def circulo = new Circulo(nombre: nombre, tags: tags, administrador: usuario.getUserId(), foto: foto, esComentableEnHome: false)
 
 		if (circulo.validate()){
 			circulo.save(flush: true)
