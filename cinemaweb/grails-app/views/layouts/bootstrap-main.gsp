@@ -120,6 +120,7 @@
 		         	<li><a href='/cinemaweb/usuario/create'>Crear Usuario</a></li>
 		        </ul>
 		   </li>
+		   <li><a href='/cinemaweb/promocion/index'><span>Promociones</span></a></li>
 		   <li><a href='/cinemaweb/circulo/index'><span>Circulos</span></a></li>
 		   <g:if test="${session.loggedUserRol == 'ADMIN'}">
 		   		 <li class='has-sub'><a href='/cinemaweb/usuario/paneladministrador'><span>Administrador</span></a>

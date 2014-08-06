@@ -57,17 +57,20 @@
 
 <!--Comentarios-->
 <div id="Comentarios">
-	<div class="col-md-12">
-		<g:form action="comentar" id="${movie.id}">
-			<div class="col-md-2">
-			<g:submitButton name="Comentar" class="btn btn-primary btn-block"/>
-			</div>
-			<g:field type="text" name="mensaje"/>
-		</g:form>
-	</div>
-
+	<table class="table">
+		<tr>
+			<td><h2 style="text-align:center;color:#ffcc00;">Postear un comentario</h2></td>
+		</tr>
+		<td style="height:100px">
+			<g:form action="comentar" id="${movie.id}">
+				<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+				<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
+			</g:form>
+		</td>
+	</table>
 	<g:render template="comentarioTemp" collection="${movie.obtenerComentarios()}" var="comentario"/>
 </div>
+
 
 </div>
 <div class="col-md-4">
