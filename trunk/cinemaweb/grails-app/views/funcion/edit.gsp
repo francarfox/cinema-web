@@ -51,7 +51,7 @@
 						<div class="form-group">
 							<label for="cine" class="col-md-2 col-sm-2 control-label">Pelicula:</label>
 							<div class="col-md-4">
-								<g:select class="form-control" from="${peliculas}" name="pelicula" optionKey="id" optionValue="titulo" value="${dataToDisplay.pelicula}"></g:select>
+								<g:select class="form-control" from="${peliculas}" name="pelicula" optionKey="id" optionValue="nombre" value="${dataToDisplay.pelicula}"></g:select>
 							</div>
 						</div>
 						<div class="form-group">

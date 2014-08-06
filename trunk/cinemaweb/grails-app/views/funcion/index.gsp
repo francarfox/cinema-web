@@ -33,7 +33,7 @@
 						<g:each in="${funciones}" var="funcion">
 						<tr>
 							<td><g:link action="show" id="${funcion.id}">${funcion.nombre}</g:link></td>
-							<td class="text-center">${funcion.pelicula.titulo}</td>
+							<td class="text-center">${funcion.pelicula.nombre}</td>
 							<td class="text-center">${funcion.cine.nombre}</td>
 							<td class="text-center">${funcion.horario} hs</td>
 							<td class="text-center">$ ${funcion.precio}</td>
