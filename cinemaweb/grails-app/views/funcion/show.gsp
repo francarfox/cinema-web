@@ -24,7 +24,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-3"><b>Pelicula:</b></div>
-							<div class="col-md-9">${funcion.pelicula.titulo}</div>
+							<div class="col-md-9">${funcion.pelicula.nombre}</div>
 						</div>
 						<div class="row">
 							<div class="col-md-3"><b>Cine:</b></div>

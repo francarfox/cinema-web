@@ -44,7 +44,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<h4 class="text-center" style="margin-bottom:10px">${pelicula.titulo}</h4>
+							<h4 class="text-center" style="margin-bottom:10px">${pelicula.nombre}</h4>
 						</div>	
 					</div>
 					<div class="row">

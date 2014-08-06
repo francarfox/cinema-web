@@ -149,7 +149,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h4><b>Pelicula:</b> ${pelicula.titulo}</h4>  
+				<h4><b>Pelicula:</b> ${pelicula.nombre}</h4>  
 			</div>
 		</div>
 		<div class="row">
