@@ -15,31 +15,31 @@
 
 		<div style="margin-left:30px;">
 			<div class="col-md-3" style="margin-top:30px;">
-				<g:link action="index"><img src="../images/pnl/usuarios.png" style="width:200px;heigh:200px;" /></g:link>
+				<g:link action="index"><img src="../images/pnl/usuarios.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<g:link action="listarcirculos"><img src="../images/pnl/circulos.png" style="width:200px;heigh:200px;" /></g:link>
+				<g:link action="listarcirculos"><img src="../images/pnl/circulos.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<g:link action="listarcomentarios"><img src="../images/pnl/comentario.png" style="width:200px;heigh:200px;" /></g:link>
+				<g:link action="listarcomentarios"><img src="../images/pnl/comentario.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/peliculas.png" style="width:200px;heigh:200px;" /> 
+				<img src="../images/pnl/peliculas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/cines.png" style="width:200px;heigh:200px;" /> 
+				<img src="../images/pnl/cines.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/salas.png" style="width:200px;heigh:200px;" /> 
+				<img src="../images/pnl/salas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/reservas.png" style="width:200px;heigh:200px;" /> 
+				<img src="../images/pnl/reservas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/promociones.png" style="width:200px;heigh:200px;" /> 
+				<img src="../images/pnl/promociones.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<g:link action="listarencuestas"><img src="../images/pnl/encuestas.png" style="width:200px;heigh:200px;margin-bottom:20px;" /></g:link>
+				<g:link action="listarencuestas"><img src="../images/pnl/encuestas.jpg" class="img-rounded show-img" style="width:200px;heigh:200px;margin-bottom:20px;" /></g:link>
 			</div>
 		</div>
 	</div>

@@ -90,6 +90,7 @@
 							<li><g:link controller="circulo" action="index" id="${session.loggedUser}" params="[accion:'miscirculos']">Mis Círculos</g:link></li>
 							<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}">Mis Comentarios</g:link></li>
 							<li><a href="#">Mis Reservas</a></li>
+							<li><a href="#">Mis Promociones</a></li>
 							<g:if test="${session.loggedUserRol != 'USER'}">
 								<li class="divider"></li>
 								<li><g:link controller="usuario" action="paneladministrador">Panel Administrador</g:link></li>

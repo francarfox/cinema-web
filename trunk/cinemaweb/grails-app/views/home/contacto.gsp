@@ -41,6 +41,8 @@
 				</tbody>
 			</table>
 			</div>
+			<br />
+			<h4 style="text-align:center;"><a href="https://code.google.com/p/proyecto-cinema-web/"><i class="fa fa-google-plus-square"></i> <i>Repositorio Google Code</i></a></h4>
 		</div>
 		
 	</div>

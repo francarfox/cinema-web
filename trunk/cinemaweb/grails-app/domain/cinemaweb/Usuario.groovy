@@ -12,7 +12,7 @@ class Usuario {
     Set<Encuesta> encuestas = []
     Set<Comentario> comentarios = []
 
-    static hasMany = [circulos:Circulo,encuestas:Encuesta,comentarios:Comentario]
+    static hasMany = [circulos:Circulo,encuestas:Encuesta,comentarios:Comentario] //promociones:Promocion
 
     static constraints = {
 
