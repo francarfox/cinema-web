@@ -8,7 +8,7 @@
 
 
 			<div class="col-md-12">
-				<h1>Encuestas de CinemaWeb</h1>
+				<h1><i class="fa fa-dot-circle-o"></i> Encuestas de CinemaWeb</h1>
 			</div>
 
 			<div class="col-md-12">
@@ -39,7 +39,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td class="text-center" colspan="4">1</td>
+							<td class="text-center" colspan="4"></td>
 						</tr>
 					</tfoot>
 				</table>

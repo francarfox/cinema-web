@@ -20,7 +20,6 @@
 					<tbody>
 						<g:each in="${comentarios}" var="comentario">
 							<tr>
-								<td class="text-center"><g:link action="show" id="${comentario.id}"><i class="fa fa-comments"></i> ${comentario.autor.getUserId()}</g:link></td>
 								<td class="text-center">${comentario.mensaje}</td>
 								<td class="text-center">${comentario.fecha}</td>
 								<td class="text-center">${comentario.comentable.getNombre()}</td>	

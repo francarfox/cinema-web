@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Ver Circulo - CinemaWeb</title>
+	<title>Ver Círculo - CinemaWeb</title>
 	<meta name="layout" content="bootstrap-main"/>
 </head>
 <body>
@@ -29,9 +29,9 @@
 
 		<g:else> <!-- SHOW ADMIN -->
 			<g:if test="${session.loggedUserNombre == circulo.getAdministrador()}">
-				<div class="row">
+
 					<div class="col-md-8">
-						<h2>Circulo de ${circulo.getNombre()}</h2>
+						<h2><i class="fa fa-users"></i> Círculo de ${circulo.getNombre()}</h2>
 					</div>
 					<div class="col-md-4" style="margin-top:40px;">
 						<g:form action="#" class="form-inline" style="float:right">
@@ -39,7 +39,6 @@
 							<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 						</g:form>
 					</div>
-				</div>
 			
 				<div class="col-md-8" style="margin-top:20px;">
 					<table class="table">
@@ -66,7 +65,7 @@
 							<tr>
 								<td style="height:100px">
 									<g:form action="comentar" id="${circulo.id}">
-								<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+								<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;margin-top:15px;color:black;" />
 								<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
 									</g:form>
 								</td>
@@ -76,7 +75,7 @@
 				</div>
 
 				<div class="col-md-4 pnl-circuloadmin">
-					<p style="text-align:center;"><strong>¡Bienvenido ${circulo.getAdministrador()} a su circulo!</strong></p>
+					<p style="text-align:center;"><strong>¡Bienvenido ${circulo.getAdministrador()} a su círculo!</strong></p>
 					
 				
 						<div class="col-md-12" style="padding-left:0px;margin-bottom:15px;">
@@ -102,11 +101,11 @@
 						<table style="background-color:#F1C308;">
 							<tr>
 								<td>
-									<g:link action="edit" id="${circulo.id}" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa fa-pencil-square-o"></i> Editar Circulo</g:link>
+									<g:link action="edit" id="${circulo.id}" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa fa-pencil-square-o"></i> Editar Círculo</g:link>
 								</td>
 								<td style="width:50%;">&nbsp</td>
 								<td>
-									<g:link action="delete" id="${circulo.id}" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-times"></i> Eliminar Circulo</g:link>
+									<g:link action="delete" id="${circulo.id}" class="btn btn-lg btn-medium btn-crearcirculo"><i class="fa fa-times"></i> Eliminar Círculo</g:link>
 								</td>
 							</tr>
 							<tr>
@@ -185,9 +184,9 @@
 			</g:if>
 
 			<g:else> <!-- SHOW NO ADMIN -->
-				<div class="row">
+
 					<div class="col-md-8">
-						<h2>Circulo de ${circulo.getNombre()}</h2>
+						<h2><i class="fa fa-users"></i> Círculo de ${circulo.getNombre()}</h2>
 					</div>
 					<div class="col-md-4" style="margin-top:40px;">
 						<g:form action="#" class="form-inline" style="float:right">
@@ -195,7 +194,6 @@
 							<g:submitButton class="btn btn-lg btn-buscar" name="Buscar"/>
 						</g:form>
 					</div>
-				</div>
 			
 				<div class="col-md-8" style="margin-top:20px;">
 					<table class="table">
@@ -222,7 +220,7 @@
 							<tr>
 								<td style="height:100px">
 									<g:form action="comentar" id="${circulo.id}">
-								<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+								<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;margin-top:15px;color:black;" />
 								<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
 									</g:form>
 								</td>

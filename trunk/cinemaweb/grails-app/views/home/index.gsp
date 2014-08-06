@@ -141,7 +141,7 @@
                   <g:link controller="circulo" action="show" id="${circulo.id}"><g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" /></g:link>
                 </div>
                 <div class="col-xs-8">
-                  <h5 style="margin-top:5px;margin-bottom:15px;"><g:link controller="circulo" action="show" id="${circulo.id}">${circulo.getNombre()}</g:link></h5>
+                  <h5 style="margin-top:5px;margin-bottom:15px;"><g:link controller="circulo" action="show" id="${circulo.id}"><strong>${circulo.getNombre()}</strong></g:link></h5>
                 </div>
                 <div class="col-xs-8" style="font-size:12px;margin-bottom:18px;">
                   <p>${circulo.getTags()} · ${circulo.usuarios.size()} usuarios</p>
@@ -155,7 +155,7 @@
                   <g:link controller="circulo" action="show" id="${circulo.id}"><g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" /></g:link>
                 </div>
                 <div class="col-xs-8">
-                  <h5 style="margin-top:5px;margin-bottom:15px;"><g:link controller="circulo" action="show" id="${circulo.id}">${circulo.getNombre()}</g:link></h5>
+                  <h5 style="margin-top:5px;margin-bottom:15px;"><g:link controller="circulo" action="show" id="${circulo.id}"><strong>${circulo.getNombre()}</strong></g:link></h5>
                 </div>
                 <div class="col-xs-8" style="font-size:12px;margin-bottom:18px;">
                   <p>${circulo.getTags()} · ${circulo.usuarios.size()} usuarios</p>
@@ -225,7 +225,9 @@
             <g:each in="${comentarios}" var="comentario">
               <g:if test="${comentario.comentable.esComentableEnHome == true}">
               <h5 style="margin-bottom:0px;">
-                <g:img dir="/images/cinema-web/perfil-pics" file="${comentario.autor.perfil.foto}" class="img-rounded show-img" style="width:40px;height:40px;margin-bottom:1px;" />
+                <g:link controller="usuario" action="show" id="${comentario.autor.id}">
+                  <g:img dir="/images/cinema-web/perfil-pics" file="${comentario.autor.perfil.foto}" class="img-rounded show-img" style="width:40px;height:40px;margin-bottom:1px;" />
+                </g:link>
                 <strong><g:link controller="usuario" action="show" id="${comentario.autor.id}">${comentario.autor.userId}</g:link> comentó en ${comentario.comentable.getNombre()}</strong>
               </h5>
               <h5>${comentario.mensaje}</h5>

@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="layout" content="bootstrap-main"/>
-	<title>Cinema Web - Nueva Pelicula</title>
+	<title>Cinema Web - Nueva Película</title>
 	<style type="text/css">
 	.col-md-6{margin:0px;}
 	</style>
@@ -17,7 +17,7 @@
 	    </g:if>
 <div class="row">
 	<div class="col-md-8">
-		<h4>Nueva Pelicula</h4>
+		<h2><i class="fa fa-film"></i> Nueva Película</h2>
 		<g:uploadForm action="create" class="form-horizontal">
 		<div class="form-group">
 			<label for="nombre" class="col-md-2 col-sm-2 control-label">Nombre:</label>
@@ -52,10 +52,10 @@
 		<div class="form-group">
 			<div class="col-sm-10 col-md-2 col-md-offset-2">
 				<input type="hidden" name="submit" value="1">
-				<g:link controller="pelicula" action="index" class="btn btn-default btn-block">Volver</g:link>
+				<g:link controller="pelicula" action="index" class="btn btn-default btn-medium btn-block">Volver</g:link>
 			</div>
 			<div class="col-sm-10 col-md-2">
-				<button type="submit" class="btn btn-primary btn-block">Crear</button>
+				<button type="submit" class="btn btn-login btn-medium btn-block">Crear</button>
 				<input type="hidden" name="submit" value="1">
 			</div>
 		</div>

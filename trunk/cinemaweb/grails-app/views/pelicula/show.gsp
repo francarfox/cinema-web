@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="layout" content="bootstrap-main"/>
-	<title>Cinema web - Pelicula</title>
+	<title>Cinema web - Película</title>
 	<style type="text/css">
 	.col-md-6{margin: 0px;}
 	h4{margin-bottom: 10px}
@@ -11,7 +11,7 @@
 	<div class="container" id="container-simple">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Pelicula: #${movie.id} - ${movie.nombre}</h3>
+				<h3><i class="fa fa-film"></i> Película: #${movie.id} - ${movie.nombre}</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -56,19 +56,32 @@
 	</div>
 
 <!--Comentarios-->
+<div class="col-md-12">
+	<h3><i class="fa fa-comments-o"></i> Comentarios</h3>
+</div>
 <div id="Comentarios">
 	<table class="table">
-		<tr>
-			<td><h2 style="text-align:center;color:#ffcc00;">Postear un comentario</h2></td>
-		</tr>
-		<td style="height:100px">
-			<g:form action="comentar" id="${movie.id}">
-				<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;" />
+		<tbody>
+			<tr>
+				<td style="height:350px">
+					<g:render template="comentarioTemp" collection="${movie.obtenerComentarios()}" var="comentario"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<g:if test="${session.loggedUser != null}">
+		<table class="table">
+			<td style="height:100px">
+				<g:form action="comentar" id="${movie.id}">
+				<g:field type="textarea" name="mensaje" style="width:600px; height:50px;-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;margin-top:15px;color:black;" />
 				<g:submitButton class="btn btn-lg btn-buscar" name="Enviar" style="background-color:#ffcc00;color:#BD1133;"/>
 			</g:form>
-		</td>
-	</table>
-	<g:render template="comentarioTemp" collection="${movie.obtenerComentarios()}" var="comentario"/>
+			</td>
+		</table>
+	</g:if>
+	<g:else>
+		<h4 style="text-align:center;">Debe estar logueado para poder comentar | <g:link controller="usuario" action="login">Login</g:link></h4>
+	</g:else>
 </div>
 
 
@@ -77,7 +90,6 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well" id="actions">
-				<h4><b>Actions</b></h4>	
 				<div class="row">
 					<div class="col-md-6">
 						<g:link action="edit" id="${movie.id}" ><i class="fa fa-edit"></i> Editar</g:link>
@@ -97,7 +109,7 @@
 	<g:if test="${movie.foto}">
 		<div class="row">
 			<div class="col-md-12">
-				<h4><b>Foto</b></h4>	
+				<h3><i class="fa fa-file"></i> Foto</h3>	
 				<g:img dir="/images/cinema-web/peliculas-pics" file="${movie.foto}" class="img-rounded show-img" />
 			</div>
 		</div>	
