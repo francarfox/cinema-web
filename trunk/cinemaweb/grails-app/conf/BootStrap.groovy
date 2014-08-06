@@ -78,6 +78,13 @@ class BootStrap {
 			user.addToCirculos(circ)
 		}
 
+		if(!Promocion.count()){
+			new Promocion(nombre:"Promoción CITI - Entradas a Precio de día Miércoles", foto:"promo-citi.jpg", descripcion: "Comprando las entradas en Hoyts con Tarjetas del Banco CITI + DNI, se obtienen las mismas a precio de día miércoles.").save(failOnError: true)
+    		new Promocion(nombre:"Claro Club", foto:"promo-claro.jpg", descripcion: "Beneficio 2x1 en entradas de cine CINEMARK de lunes a domingos. ").save(failOnError: true)
+    		new Promocion(nombre:"Peli de la semana", foto:"promo-cinemark.png", descripcion: "Entrada a 34 pesos todos los días a las 17hs, una peli diferente cada semana.").save(failOnError: true)
+			new Promocion(nombre:"Banco Patagonia", foto:"promo-pata.jpg", descripcion: "2x1 en entradas todos los días. Todos los cines Showcase habilitados.").save(failOnError: true)
+		}
+
 		if(!Comentario.count()){
 			/*def user = Usuario.get(1)
 			def peli = Pelicula.get(21)
@@ -87,9 +94,9 @@ class BootStrap {
 		}
 
 		if(!Sala.count()){
-			new Sala(nombre: "Hoyts Sala I", cine: Cine.get(1), filas: 10, columnas: 15).save(failOnError: true);
-			new Sala(nombre: "Hoyts Sala II", cine: Cine.get(1), filas: 15, columnas: 20).save(failOnError: true);
-			new Sala(nombre: "Showcase Norte Sala I", cine: Cine.get(2), filas: 10, columnas: 15).save(failOnError: true);
+			new Sala(nombre: "Hoyts Sala I", cine: Cine.get(1), filas: 10, columnas: 15).save(failOnError: true)
+			new Sala(nombre: "Hoyts Sala II", cine: Cine.get(1), filas: 15, columnas: 20).save(failOnError: true)
+			new Sala(nombre: "Showcase Norte Sala I", cine: Cine.get(2), filas: 10, columnas: 15).save(failOnError: true)
 		}
 
 		//cargo los asientos para sala 1

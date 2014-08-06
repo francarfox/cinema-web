@@ -92,7 +92,7 @@
         <div class="col-md-12 navbar">
 
           <div class="col-xs-5 borde-hm" style="height:790px;">
-            <h3><i class="fa fa-film"></i> Peliculas mejor ranquedas</h3>
+            <h3><i class="fa fa-film"></i> Películas mejor ranqueadas</h3>
             <g:each in="${peliculasPunt}" var="pelicula">
               <div class="col-xs-4">
                 <g:link controller="pelicula" action="show" id="${pelicula.id}"><g:img dir="/images/cinema-web/peliculas-pics" file="${pelicula.foto}" class="img-rounded show-img" style="width:113px;height:158px;" /></g:link>
@@ -135,7 +135,7 @@
 
           <div class="col-xs-3" style="padding:0 0;width:24%;margin-left:5px;">
             <div class="col-xs-12 borde-hm" style="padding-right:0px;height:421px;">
-              <h4 style="margin-top:23px;"><i class="fa fa-users"></i> Circulos más populares</h4>
+              <h4 style="margin-top:23px;"><i class="fa fa-users"></i> Círculos más populares</h4>
               <g:each in="${circulos}" var="circulo">
                 <div class="col-xs-4">
                   <g:link controller="circulo" action="show" id="${circulo.id}"><g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" /></g:link>
@@ -149,7 +149,7 @@
               </g:each>
             </div>
             <div class="col-xs-12 borde-hm" style="margin-top:27px;padding-right:0px;height:342px;">
-              <h4 style="margin-top:23px;"><i class="fa fa-users"></i> Ultimos Circulos</h4>
+              <h4 style="margin-top:23px;"><i class="fa fa-users"></i> Últimos Círculos</h4>
               <g:each in="${circulosUlt}" var="circulo">
                 <div class="col-xs-4">
                   <g:link controller="circulo" action="show" id="${circulo.id}"><g:img dir="/images/cinema-web/circulos-pics" file="${circulo.foto}" class="img-rounded show-img" style="width:70px;height:70px;" /></g:link>
@@ -166,7 +166,7 @@
         </div>
 
     <div class="col-md-12">
-    <h3 style="margin-bottom:10px;"><i class="fa fa-film"></i> Ultimas Peliculas agregadas</h3>
+    <h3 style="margin-bottom:10px;"><i class="fa fa-film"></i> Últimas Películas agregadas</h3>
     <div class="carousel slide" id="myCarousel" data-interval="false" style="margin-top:0px;">
         <div class="carousel-inner">
           <div class="item active">
@@ -220,7 +220,7 @@
 
     <div class="col-md-12" style="margin-top:30px;">
       <div class="col-md-8 borde-hm">
-        <h3 style="margin-bottom:10px;"><i class="fa fa-comment"></i> Ultimos Comentarios</h3>
+        <h3 style="margin-bottom:10px;"><i class="fa fa-comment"></i> Últimos Comentarios</h3>
           <div class="col-md-12">
             <g:each in="${comentarios}" var="comentario">
               <g:if test="${comentario.comentable.esComentableEnHome == true}">

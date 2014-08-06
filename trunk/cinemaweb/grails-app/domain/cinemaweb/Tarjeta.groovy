@@ -1,11 +1,11 @@
 package cinemaweb
 
 class Tarjeta {
-	String nombre
-	int saldo
+	String banco
+	int saldo = 0
 
     static constraints = {
-    	nombre blank: false
+    	banco blank: false
     	saldo min: 0
     }
 }
