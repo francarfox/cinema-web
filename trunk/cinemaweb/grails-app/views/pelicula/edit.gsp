@@ -32,6 +32,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="genero" class="col-md-2 col-sm-2 control-label">Genero:</label>
+			<div class="col-md-3">
+				<g:select name="genero" from="${generos}" value="${movie.genero}" optionKey="key" optionValue="value" class="form-control"/>
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="sinopsis" class="col-md-2 col-sm-2 control-label">Sinopsis:</label>
 			<div class="col-md-6">
 				<textarea name="sinopsis" class="form-control" rows="6">${movie.sinopsis}</textarea>
@@ -41,12 +47,6 @@
 			<label for="duracion" class="col-md-2 col-sm-2 control-label">Duracion:</label>
 			<div class="col-md-2">
 				<g:select name="duracion" from="${90..180}" value="${movie.duracion ?: 90}" class="form-control"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="trailer" class="col-md-2 col-sm-2 control-label">Trailer Url:</label>
-			<div class="col-md-6">
-				<input name="trailer" class="form-control" id="trailer" value="${movie.urlTrailer}">
 			</div>
 		</div>
 		<div class="form-group">

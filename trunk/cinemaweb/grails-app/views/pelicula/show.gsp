@@ -27,6 +27,10 @@
 							<div class="col-md-10">${movie.director}</div>
 						</div>
 						<div class="row">
+							<div class="col-md-2"><b>Género:</b></div>
+							<div class="col-md-10">${listaGeneros[movie.genero]}</div>
+						</div>
+						<div class="row">
 							<div class="col-md-2"><b>Sinopsis:</b></div>
 							<div class="col-md-10">
 								${movie.sinopsis}	
@@ -40,22 +44,6 @@
 						</div>	
 					</div>
 				</div>
-				<!--- Trailer ---->
-				<div class="row">
-					<div class="col-md-12">
-						<br />
-						<h3><i class="fa fa-youtube"></i> Trailer</h3>
-						<g:if test="${movie.urlTrailer}">
-						<iframe 
-						src="${movie.urlTrailer}">
-					</iframe>
-				</g:if>
-				<g:else>
-				<p><i>No trailer to display</i></p>
-			</g:else>
-		</div>
-	</div>
-
 <!--Comentarios-->
 <div class="col-md-12">
 	<br />

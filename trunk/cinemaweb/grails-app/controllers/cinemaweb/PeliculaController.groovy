@@ -21,7 +21,7 @@ class PeliculaController {
       }
     }
 
-    [movie: movie]
+    [movie: movie, generos: Pelicula.generos]
   }
 
 
@@ -36,7 +36,7 @@ class PeliculaController {
         movie = Pelicula.get(params.id)
       }
 
-      [movie:movie]
+      [movie:movie, generos: Pelicula.generos]
   }
 
 
@@ -49,7 +49,7 @@ class PeliculaController {
 
  def show = {
     def movie = Pelicula.get(params.id)
-    [movie: movie]
+    [movie: movie, listaGeneros: Pelicula.generos]
  }
 
  def comentar = {
@@ -127,7 +127,7 @@ def uploadPic = {
         movie.director = params.director ?: ""
         movie.sinopsis = params.sinopsis ?: ""
         movie.duracion = params.duracion.toInteger()
-        movie.urlTrailer = params.trailer ?: ""
+        movie.genero = params.genero.toInteger()
         movie.foto = ""
 
         
