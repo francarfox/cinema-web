@@ -27,4 +27,8 @@ abstract class Comentable {
     def sumarCantidadComentarios() {
         this.cantComentarios = this.cantComentarios + 1
     }
+
+    def eliminarComentario(comentario) {
+        this.removeFromComentarios(comentario)
+    }
 }

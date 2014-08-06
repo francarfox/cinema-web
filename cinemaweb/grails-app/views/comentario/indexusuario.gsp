@@ -5,36 +5,30 @@
 </head>
 <body>
 	<div class="container">		
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Mis Comentarios</h2>
-			</div>
+		<div class="col-md-12">
+			<h2><i class="fa fa-comments-o"></i> Mis Comentarios</h2>
 		</div>
 			<div class="col-md-8">
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="text-center">Autor</th>
 							<th class="text-center">Mensaje</th>
 							<th class="text-center">Fecha</th>
-							<th></th>
+							<th class="text-center">Comentado en</th>
 						</tr>
 					</thead>		
 					<tbody>
 						<g:each in="${comentarios}" var="comentario">
 							<tr>
-								<td class="text-center"><g:link action="show" id="${comentario.id}"><i class="fa fa-comments"></i> ${comentario.autor}</g:link></td>
 								<td class="text-center">${comentario.mensaje}</td>
 								<td class="text-center">${comentario.fecha}</td>
-								<td class="text-center">
-									<g:link action="show" id="${comentario.id}" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;">Ver <i class="fa fa-check"></i></g:link>
-								</td>	
+								<td class="text-center">${comentario.comentable.getNombre()}</td>	
 							</tr>
 						</g:each>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td class="text-center" colspan="4">1</td>
+							<td class="text-center" colspan="4"></td>
 						</tr>
 					</tfoot>
 				</table>

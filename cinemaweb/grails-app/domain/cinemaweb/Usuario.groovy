@@ -12,7 +12,7 @@ class Usuario {
     Set<Encuesta> encuestas = []
     Set<Comentario> comentarios = []
 
-    static hasMany = [circulos:Circulo,encuestas:Encuesta,comentarios:Comentario] //Un usuario puede tener varios comentarios tambien
+    static hasMany = [circulos:Circulo,encuestas:Encuesta,comentarios:Comentario]
 
     static constraints = {
 
@@ -48,7 +48,6 @@ class Usuario {
     }
 
     def obtenerComentarios() {
-    	//return Comentario.findAllByAutor(this)
         return this.comentarios.sort{a, b -> a.id <=> b.id }.reverse()
     }
 
@@ -67,6 +66,10 @@ class Usuario {
 
     def buscarUsuario(nombre) {
         usuario.findByUserId(nombre)
+    }
+
+    def eliminarComentario(comentario) {
+        this.removeFromComentarios(comentario)
     }
 
 }

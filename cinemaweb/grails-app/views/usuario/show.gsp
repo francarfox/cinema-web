@@ -60,12 +60,12 @@
 			</g:if>
 		</div>
 		
-		<g:if test="${ session.loggedUserNombre == usuario.userId }">
+		<!-- <g:if test="${ session.loggedUserNombre == usuario.userId }">
 		<div class="col-md-3" style="margin-top:30px;padding:0;">
 			<div class="row">
 	   			<ul class="menu">
 			  		<li><g:link class="active" controller="usuario" action="show" id="${session.loggedUser}"><span>USUARIO</span></g:link></li>
-			  		<!-- <li><g:link controller="perfil" action="show" id="${session.loggedUser}"><span>PERFIL</span></g:link></li> -->
+			  		
 			  		<li><g:link controller="circulo" action="index" id="${session.loggedUser}" params="[accion:'miscirculos']"><span>CIRCULOS</span></g:link></li>
 			  		<li><g:link controller="comentario" action="indexusuario" id="${session.loggedUser}"><span>COMENTARIOS</span></g:link></li>
 			  		<li><a href="#"><span>RESERVAS</span></a></li>
@@ -73,7 +73,7 @@
 				</ul>
 			</div>
 		</div>
-		</g:if>
+		</g:if> -->
 	</div>
 </body>
 </html>
