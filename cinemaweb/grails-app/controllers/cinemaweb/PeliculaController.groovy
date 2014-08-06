@@ -15,6 +15,7 @@ class PeliculaController {
     def movie = null;
     if(params.submit){
       movie = this.loadMovie(params)
+      movie.foto = "default.png"
       if(!movie.hasErrors()){
         redirect(action:"show",id: movie.id)
       }
@@ -52,7 +53,7 @@ class PeliculaController {
  }
 
  def comentar = {
-  def usuario = session.usuario
+  def usuario = Usuario.get(session.loggedUser)
   def pelicula = Pelicula.get(params.id)
 
   if(usuario == null)
@@ -64,11 +65,15 @@ class PeliculaController {
  }
 
  def puntuar = {
-   def usuario = session.usuario
+   def usuario = Usuario.get(session.loggedUser)
    def pelicula = Pelicula.get(params.id)
 
-   usuario.puntuar(pelicula, params.puntos)
-   redirect(action: "show", id: params.id)
+   if(usuario == null)
+    redirect(controller: "Usuario", action: "login")
+    else{
+    usuario.puntuar(pelicula, params.puntos)
+    redirect(action: "show", id: params.id)
+    }
  }
 
 
@@ -102,7 +107,7 @@ def uploadPic = {
           movie = new Pelicula()
         }
 
-        movie.titulo  = params.titulo ?: ""
+        movie.nombre  = params.nombre ?: ""
         movie.director = params.director ?: ""
         movie.sinopsis = params.sinopsis ?: ""
         movie.duracion = params.duracion.toInteger()

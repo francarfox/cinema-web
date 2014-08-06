@@ -82,7 +82,7 @@
 		</g:form>
 	</div>
 
-	<g:render template="comentarioTemp" collection="${cine.comentarios}" var="comentario"/>
+	<g:render template="comentarioTemp" collection="${cine.obtenerComentarios()}" var="comentario"/>
 </div>
 
 </div>

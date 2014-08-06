@@ -1,16 +1,16 @@
 package cinemaweb
 
-class Circulo {
+class Circulo extends Comentable {
 
 	String nombre
-	String tags //Set<String> tags
+	String tags
 	String administrador
     String foto
     Encuesta encuesta
+    Integer cantUsuarios = 1
     Set<Usuario> usuarios = []
-    Set<Comentario> comentarios = []
 
-	static hasMany = [usuarios:Usuario, comentarios:Comentario]
+	static hasMany = [usuarios:Usuario]
     static belongsTo = Usuario
 
     static constraints = {
@@ -30,10 +30,6 @@ class Circulo {
         else {
             return true
         }
-    }
-
-    def agregarComentario(comentario) {
-        comentarios.add(comentario)
     }
 
     def agregarUsuario(usuario) {
@@ -64,5 +60,9 @@ class Circulo {
 
     def getCantidadUsuarios() {
         return this.usuarios.size()
+    }
+
+    def sumarCantidadUsuarios() {
+        this.cantUsuarios = this.cantUsuarios + 1
     }
 }

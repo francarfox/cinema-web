@@ -11,7 +11,7 @@
 	<div class="container" id="container-simple">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Pelicula: #${movie.id} - ${movie.titulo}</h3>
+				<h3>Pelicula: #${movie.id} - ${movie.nombre}</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -19,8 +19,8 @@
 				<div class="row">
 					<div class="col-md-12" id="data-display">
 						<div class="row">
-							<div class="col-md-2"><b>Titulo:</b></div>
-							<div class="col-md-10">${movie.titulo}</div>
+							<div class="col-md-2"><b>Nombre:</b></div>
+							<div class="col-md-10">${movie.nombre}</div>
 						</div>
 						<div class="row">
 							<div class="col-md-2"><b>Director:</b></div>
@@ -66,7 +66,7 @@
 		</g:form>
 	</div>
 
-	<g:render template="comentarioTemp" collection="${movie.comentarios}" var="comentario"/>
+	<g:render template="comentarioTemp" collection="${movie.obtenerComentarios()}" var="comentario"/>
 </div>
 
 </div>

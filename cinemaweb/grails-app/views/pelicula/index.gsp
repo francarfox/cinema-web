@@ -20,7 +20,7 @@
 				<table class="table table-bordered table-stripped" id="table-list">
 					<thead>
 						<tr>
-							<th>Titulo</th>
+							<th>Nombre</th>
 							<th class="text-center">Director</th>
 							<th class="text-center">Duracion</th>
 						</tr>
@@ -28,7 +28,7 @@
 					<tbody>
 						<g:each in="${movies}" var="movie">
 						<tr>
-							<td><g:link action="show" id="${movie.id}">${movie.titulo}</g:link></td>
+							<td><g:link action="show" id="${movie.id}">${movie.nombre}</g:link></td>
 							<td class="text-center">${movie.director}</td>
 							<td class="text-center">${movie.duracion} m</td>		
 						</tr>

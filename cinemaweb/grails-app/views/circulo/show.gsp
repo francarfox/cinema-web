@@ -22,7 +22,7 @@
 		</g:if>
 
 		<g:if test="${!circulo.estaUsuario(usuario)}">
-			<h1>Acceso denegado: debe ingresar al circulo para poder verlo.</h1>
+			<h2>Acceso denegado: debe ingresar al circulo para poder verlo.</h2>
 			<h2>¿Desea unirse al circulo ${circulo.getNombre()}? 
 			<g:link action="unirse" id="${circulo.id}" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;">Unirse <i class="fa fa-mail-reply"></i></g:link></h2>
 		</g:if>
@@ -31,7 +31,7 @@
 			<g:if test="${session.loggedUserNombre == circulo.getAdministrador()}">
 				<div class="row">
 					<div class="col-md-8">
-						<h1>Circulo de ${circulo.getNombre()}</h1>
+						<h2>Circulo de ${circulo.getNombre()}</h2>
 					</div>
 					<div class="col-md-4" style="margin-top:40px;">
 						<g:form action="#" class="form-inline" style="float:right">
@@ -51,7 +51,7 @@
 						<tbody>
 							<tr>
 								<td style="height:550px">
-									<g:render template="comentarioTemp" collection="${circulo.comentarios}" var="comentario"/>
+									<g:render template="comentarioTemp" collection="${circulo.obtenerComentarios()}" var="comentario"/>
 								</td>
 							</tr>
 						</tbody>
@@ -187,7 +187,7 @@
 			<g:else> <!-- SHOW NO ADMIN -->
 				<div class="row">
 					<div class="col-md-8">
-						<h1>Circulo de ${circulo.getNombre()}</h1>
+						<h2>Circulo de ${circulo.getNombre()}</h2>
 					</div>
 					<div class="col-md-4" style="margin-top:40px;">
 						<g:form action="#" class="form-inline" style="float:right">
@@ -207,7 +207,7 @@
 						<tbody>
 							<tr>
 								<td style="height:400px">
-									<g:render template="comentarioTemp" collection="${circulo.comentarios}" var="comentario"/>
+									<g:render template="comentarioTemp" collection="${circulo.obtenerComentarios()}" var="comentario"/>
 								</td>
 							</tr>
 						</tbody>

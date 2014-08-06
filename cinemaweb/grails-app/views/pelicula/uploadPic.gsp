@@ -12,7 +12,7 @@
 	<div class="container" id="container-simple">
 <div class="row">
 	<div class="col-md-8">
-		<h4>${movie.titulo}: Pic</h4>
+		<h4>${movie.nombre}: Pic</h4>
 		<g:if test="${error}">
 		<div class="row">
 			<div class="col-md-12">

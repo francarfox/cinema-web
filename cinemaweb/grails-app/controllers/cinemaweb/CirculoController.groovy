@@ -57,6 +57,7 @@ class CirculoController {
 			}
 			else {
 				usuarioOnline.addToCirculos(circulo)
+				circulo.sumarCantidadUsuarios() //todo esto deberia estar en un solo metodo del dominio
 				render(view: "show", model:[circulo:circulo, usuario:usuarioOnline])
 			}
 		}

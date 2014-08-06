@@ -1,16 +1,14 @@
 package cinemaweb
 
-class Cine {
+class Cine extends Comentable {
 	String nombre
     String ubicacion
     Float  precioBase
     String apertura
     String cierre
     String foto
-    Set<Comentario> comentarios = []
 
-    //falta agregar funcion
-	static hasMany = [comentarios: Comentario, salas: Sala, funciones: Funcion]
+	static hasMany = [salas: Sala, funciones: Funcion]
 
     static constraints = {
     	nombre blank: false, unique: true
@@ -18,15 +16,6 @@ class Cine {
         precioBase nullable: false
         foto nullable: true, blank: true
     }   
-
-    def agregarComentario(comentario) {
-    	comentarios.add(comentario)
-    }
-
-    def obtenerComentarios() {
-    	//comentarios.sort(true)
-    	return comentarios
-    }
 
 
     //devuelve el listado de horas de apertura y cierre para el pulldown

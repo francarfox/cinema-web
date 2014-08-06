@@ -20,9 +20,9 @@
 		<h4>Editar Pelicula</h4>
 		<g:form action="edit" id="${movie.id}" class="form-horizontal">
 		<div class="form-group">
-			<label for="titulo" class="col-md-2 col-sm-2 control-label">Titulo:</label>
+			<label for="nombre" class="col-md-2 col-sm-2 control-label">Nombre:</label>
 			<div class="col-md-4">
-				<input name="titulo" class="form-control" id="titulo" value="${movie.titulo}">
+				<input name="nombre" class="form-control" id="nombre" value="${movie.nombre}">
 			</div>
 		</div>
 		<div class="form-group">

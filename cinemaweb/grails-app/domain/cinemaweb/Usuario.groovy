@@ -10,8 +10,9 @@ class Usuario {
 	String rol
     Set<Circulo> circulos = []
     Set<Encuesta> encuestas = []
+    Set<Comentario> comentarios = []
 
-    static hasMany = [circulos:Circulo,encuestas:Encuesta] //Un usuario puede tener varios comentarios tambien
+    static hasMany = [circulos:Circulo,encuestas:Encuesta,comentarios:Comentario] //Un usuario puede tener varios comentarios tambien
 
     static constraints = {
 
@@ -36,8 +37,10 @@ class Usuario {
 
 
     def comentar(comentable, mensaje) {
-    	def comentario = new Comentario(autor:this, mensaje: mensaje)
+    	def comentario = new Comentario(autor:this, mensaje: mensaje, comentable:comentable)
     	comentable.agregarComentario(comentario)
+        this.addToComentarios(comentario)
+        comentable.sumarCantidadComentarios()
     }
 
     def puntuar(puntuable, puntos) {
@@ -45,7 +48,8 @@ class Usuario {
     }
 
     def obtenerComentarios() {
-    	return Comentario.findAllByAutor(this)
+    	//return Comentario.findAllByAutor(this)
+        return this.comentarios.sort{a, b -> a.id <=> b.id }.reverse()
     }
 
     /*
