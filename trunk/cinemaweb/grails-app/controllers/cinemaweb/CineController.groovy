@@ -63,16 +63,32 @@ class CineController extends BaseController{
     }
 
     def uploadPic = {
-    def error = false
-    if (params.submit) {
-        error = this.cineService.subirFoto(params.id, "foto",request.getFile("foto"), "/cines-pics/")
-        if(!error){
-            redirect(action: "show", id:params.id)
+        def error = false
+        if (params.submit) {
+            error = this.cineService.subirFoto(params.id, "foto",request.getFile("foto"), "/cines-pics/")
+            if(!error){
+                redirect(action: "show", id:params.id)
+            }
         }
+
+        [cine: this.cineService.getCine(params.id), error: error]
     }
 
-    [cine: this.cineService.getCine(params.id), error: error]
-}
+    def eliminarcomentario() {
+        def comentario = Comentario.get(params.comentarioid)
+        def cine = Cine.get(params.id)
+        def usuario = Usuario.get(session.loggedUser)
+
+        if(session.loggedUserRol != "ADMIN"){
+            redirect(controller: "usuario", action: "login") //tiene que ser admin para eliminar comentarios
+        }else{
+            usuario.eliminarComentario(comentario)
+            cine.eliminarComentario(comentario)
+            comentario.delete()
+            redirect(action:"listarcomentarios", controller:"usuario")
+        }
+
+    }
 
 
 /** metodos heredados **/

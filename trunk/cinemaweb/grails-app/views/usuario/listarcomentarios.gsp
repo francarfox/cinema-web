@@ -1,16 +1,16 @@
 <html>
 <head>
 	<meta name="layout" content="bootstrap-main"/>
-	<title>Encuestas - CinemaWeb</title>
+	<title>Comentarios Admin - CinemaWeb</title>
 </head>
 <body>
 	<div class="container">
 
 
 			<div class="col-md-12">
-				<h1>Comentarios de CinemaWeb</h1>
+				<h1 style="margin-bottom:30px;">Comentarios de CinemaWeb</h1>
 			</div>
-			<h1>Comentarios en Cines</h1>
+			<h2>Comentarios en Cines</h2>
 			<div class="col-md-12">
 				<table class="table">
 					<thead>
@@ -22,27 +22,28 @@
 					</thead>		
 					<tbody>
 						<g:if test="${cines.comentarios != null}">
-						<g:each in="${cines.comentarios}" var="comentario">
+						<g:each in="${cines}" var="cine">
+							<g:each in="${cine.comentarios}" var="comentario">
 							<tr>
 								<td class="text-center">${comentario.getMensaje()}</td>
-								<td class="text-center">${comentario.getAutor()}</td>
+								<td class="text-center">${comentario.getAutor().getUserId()}</td>
 								<td class="text-center">
-									<g:link controller="cine" action="eliminarcomentario" id="${comentario.id}" params="[accion:'admin']" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;"><i class="fa fa-times"></i> Eliminar</g:link>
+									<g:link controller="cine" action="eliminarcomentario" id="${cine.id}" params="[comentarioid:comentario.id]" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;"><i class="fa fa-times"></i> Eliminar</g:link>
 								</td>	
-								</tr>
+							</tr>
+							</g:each>
 						</g:each>
 						</g:if>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td class="text-center" colspan="4">1</td>
+							<td class="text-center" colspan="4"></td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 		
-
-			<h1>Comentarios en Peliculas</h1>
+			<h2>Comentarios en Peliculas</h2>
 			<div class="col-md-12">
 				<table class="table">
 					<thead>
@@ -54,26 +55,28 @@
 					</thead>		
 					<tbody>
 						<g:if test="${peliculas.comentarios != null}">
-						<g:each in="${peliculas.comentarios}" var="comentario">
+						<g:each in="${peliculas}" var="pelicula">
+							<g:each in="${pelicula.comentarios}" var="comentario">
 							<tr>
 								<td class="text-center">${comentario.getMensaje()}</td>
-								<td class="text-center">${comentario.getAutor()}</td>
+								<td class="text-center">${comentario.getAutor().getUserId()}</td>
 								<td class="text-center">
-									<g:link controller="pelicula" action="eliminarcomentario" id="${comentario.id}" params="[accion:'admin']" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;"><i class="fa fa-times"></i> Eliminar</g:link>
+									<g:link controller="pelicula" action="eliminarcomentario" id="${pelicula.id}" params="[comentarioid:comentario.id]" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;"><i class="fa fa-times"></i> Eliminar</g:link>
 								</td>	
-								</tr>
+							</tr>
+							</g:each>
 						</g:each>
 						</g:if>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td class="text-center" colspan="4">1</td>
+							<td class="text-center" colspan="4"></td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 
-			<h1>Comentarios en Circulos</h1>
+			<h2>Comentarios en Círculos</h2>
 			<div class="col-md-12">
 				<table class="table">
 					<thead>
@@ -85,25 +88,27 @@
 					</thead>		
 					<tbody>
 						<g:if test="${circulos.comentarios != null}">
-						<g:each in="${circulos.comentarios}" var="comentario">
+						<g:each in="${circulos}" var="circulo">
+							<g:each in="${circulo.comentarios}" var="comentario">
 							<tr>
 								<td class="text-center">${comentario.getMensaje()}</td>
-								<td class="text-center">${comentario.getAutor()}</td>
+								<td class="text-center">${comentario.getAutor().getUserId()}</td>
 								<td class="text-center">
-									<g:link controller="circulo" action="eliminarcomentario" id="${comentario.id}" params="[accion:'admin']" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;"><i class="fa fa-times"></i> Eliminar</g:link>
+									<g:link controller="circulo" action="eliminarcomentario" id="${circulo.id}" params="[comentarioid:comentario.id]" class="btn btn-lg btn-warning" style="font-size:13px; padding: 5px 10px; color:black;"><i class="fa fa-times"></i> Eliminar</g:link>
 								</td>	
-								</tr>
+							</tr>
+							</g:each>
 						</g:each>
 						</g:if>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td class="text-center" colspan="4">1</td>
+							<td class="text-center" colspan="4"></td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
-	
+
 	</div>
 </body>
 </html>

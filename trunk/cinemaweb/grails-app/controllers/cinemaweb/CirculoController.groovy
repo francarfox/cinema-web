@@ -158,4 +158,20 @@ class CirculoController {
     	[circulo:circulo, error:error]
 	}
 
+	def eliminarcomentario() {
+        def comentario = Comentario.get(params.comentarioid)
+        def circulo = Circulo.get(params.id)
+        def usuario = Usuario.get(session.loggedUser)
+
+        if(session.loggedUserRol != "ADMIN"){
+            redirect(controller: "usuario", action: "login") //tiene que ser admin para eliminar comentarios
+        }else{
+            usuario.eliminarComentario(comentario)
+            circulo.eliminarComentario(comentario)
+            comentario.delete()
+            redirect(action:"listarcomentarios", controller:"usuario")
+        }
+
+    }
+
 }
