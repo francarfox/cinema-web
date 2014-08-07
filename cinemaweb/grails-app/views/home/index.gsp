@@ -237,8 +237,14 @@
             </g:each>
           </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4">
         <img src="images/banners/publicidad.gif" alt="">
+      </div>
+
+      <div class="col-md-4" style="margin-top:10px;">
+        <g:link controller="promocion" action="index">
+          <img src="images/banners/promos.gif" alt="">
+        </g:link>
       </div>
     </div>
 

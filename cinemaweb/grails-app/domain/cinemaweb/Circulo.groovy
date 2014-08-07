@@ -7,7 +7,7 @@ class Circulo extends Comentable {
 	String administrador
     String foto
     Encuesta encuesta
-    Integer cantUsuarios = 1
+    Integer cantUsuarios = 0
     Set<Usuario> usuarios = []
 
 	static hasMany = [usuarios:Usuario]
@@ -58,8 +58,8 @@ class Circulo extends Comentable {
     }
 
     def eliminarEncuesta() {
+        this.encuesta.eliminarEncuesta()
         this.encuesta = null
-        //this.encuesta.delete()
     }
 
     def getCantidadUsuarios() {
