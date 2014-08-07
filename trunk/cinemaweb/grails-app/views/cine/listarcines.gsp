@@ -6,7 +6,7 @@
 <body>
 	<div class="container">
 			<div class="col-md-12">
-				<h1 style="margin-bottom:30px;"><i class="fa fa-comments-o"></i> Panel Adminstrador Cine</h1>
+				<h1 style="margin-bottom:30px;"><i class="fa fa-video-camera"></i> Panel Adminstrador Cine</h1>
 			</div>
 			<div class="col-md-8">
 				<g:link controller="cine" action="create" class="btn btn-warning" style="color:black">Nuevo cine</g:link>

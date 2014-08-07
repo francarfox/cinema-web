@@ -63,7 +63,7 @@
 	</g:form>
 	</g:if>
 	<g:else>
-		<h5><i class="fa fa-exclamation-triangle"></i> Debe estar logueado para poder comentar | <g:link controller="usuario" action="login">Login</g:link></h5>
+		<h5><i class="fa fa-exclamation-triangle"></i> Debe estar logueado para poder puntuar | <g:link controller="usuario" action="login">Login</g:link></h5>
 	</g:else>
 	<br />
 	<h3><i class="fa fa-comments-o"></i> Comentarios</h3>

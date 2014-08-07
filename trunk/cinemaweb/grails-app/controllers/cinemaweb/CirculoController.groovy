@@ -56,8 +56,7 @@ class CirculoController {
 				redirect(action: "show", id:circulo.id)
 			}
 			else {
-				usuarioOnline.addToCirculos(circulo)
-				circulo.sumarCantidadUsuarios() //todo esto deberia estar en un solo metodo del dominio
+				circulo.agregarUsuario(usuarioOnline)
 				render(view: "show", model:[circulo:circulo, usuario:usuarioOnline])
 			}
 		}
@@ -70,8 +69,7 @@ class CirculoController {
 		else {
 			def circulo = Circulo.get(params.id)
 			def loggedUser = Usuario.get(session.loggedUser)
-
-			loggedUser.removeFromCirculos(circulo)
+			circulo.expulsarUsuario(loggedUser)
 			redirect(action:"index")
 		}
 	}
@@ -83,8 +81,7 @@ class CirculoController {
 		else {
 			def circulo = Circulo.get(params.id)
 			def usuarioAEliminar = Usuario.get(userid)
-
-			usuarioAEliminar.removeFromCirculos(circulo)
+			circulo.expulsarUsuario(usuarioAEliminar)
 			redirect(action:"show", id:circulo.id)
 		}
 	}

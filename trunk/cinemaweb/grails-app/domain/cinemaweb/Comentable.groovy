@@ -14,6 +14,7 @@ abstract class Comentable {
 
     def agregarComentario(comentario) {
     	comentarios.add(comentario)
+        this.sumarCantidadComentarios()
     }
 
     def obtenerComentarios() {
@@ -30,5 +31,10 @@ abstract class Comentable {
 
     def eliminarComentario(comentario) {
         this.removeFromComentarios(comentario)
+        comentario.delete()
+    }
+
+    def eliminarComentarios() {
+        this.comentarios.toList().each{ this.eliminarComentario(it) }
     }
 }
