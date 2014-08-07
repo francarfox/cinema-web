@@ -8,4 +8,9 @@ class PromocionController {
     	def promos = promocionService.list()
     	[promos: promos]
     }
+
+    def show() {
+    	def promo = promocionService.get(params.id)
+    	[promo: promo]
+    }
 }

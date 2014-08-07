@@ -115,10 +115,14 @@
 						<g:link action="uploadPic" id="${cine.id}" ><i class="fa fa-file"></i> Cargar Foto</g:link>
 					</div>
 				</div>
+
 				<div class="row">
-				<div class="col-md-12">
-						<g:link action="index"><i class="fa fa-list"></i> Cines</g:link>
-				</div>
+					<div class="col-md-12">
+							<g:link action="index"><i class="fa fa-list"></i> Cines</g:link>
+					</div>
+					<div class="col-md-12">
+							<g:link controller="promocion" action="index" id="${cine.id}"><i class="fa fa-list"></i> Promociones</g:link>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,7 @@ package cinemaweb
 
 class CineController extends BaseController{
     def cineService
+    def comentarioService
 
     def create(){
         def data = this.dataToDisplay(params,null)
@@ -13,7 +14,7 @@ class CineController extends BaseController{
             }        
         }
 
-        [data: data, hours: Cine.getOpenCloseHours(), errors: errors, action: "create", id: "",back: [action:"index",id:""]]
+        [data: data, hours: cineService.getOpenCloseHours(), errors: errors, action: "create", id: "",back: [action:"index",id:""]]
     }
 
 
@@ -28,15 +29,16 @@ class CineController extends BaseController{
             }
         }
 
-        def model = [data: data, hours: Cine.getOpenCloseHours(), errors: errors, action: "edit", id: params.id,back: [action:"show",id:params.id]]
+        def model = [data: data, hours: cineService.getOpenCloseHours(), errors: errors, action: "edit", id: params.id,back: [action:"show",id:params.id]]
         render(view: "create",model: model)
     }
 
     
     def show(){
     	def cine = this.cineService.getCine(params.id)
+        def promos = this.cineService.getPromociones(cine)
 
-        [cine: cine]
+        [cine: cine, promos: promos]
     }
 
     def index(){
@@ -52,7 +54,7 @@ class CineController extends BaseController{
 
     def comentar(){
     	def usuario = Usuario.get(session.loggedUser)
-    	def cine = Cine.get(params.id)
+    	def cine = cineService.getCine(params.id)
 
         if(usuario == null){
             redirect(controller: "usuario", action: "login")
@@ -75,8 +77,8 @@ class CineController extends BaseController{
     }
 
     def eliminarcomentario() {
-        def comentario = Comentario.get(params.comentarioid)
-        def cine = Cine.get(params.id)
+        def comentario = comentarioService.get(params.comentarioid)
+        def cine = cineService.getCine(params.id)
         def usuario = Usuario.get(session.loggedUser)
 
         if(session.loggedUserRol != "ADMIN"){

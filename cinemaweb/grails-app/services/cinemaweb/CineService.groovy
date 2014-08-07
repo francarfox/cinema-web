@@ -44,4 +44,13 @@ class CineService extends DomainService{
 		cine.delete()
 	}
 
+	@Transactional
+	public def getPromociones(cine){
+		return cine.getPromos()
+	}
+
+	@Transactional
+	public def getOpenCloseHours(){
+		return Cine.getOpenCloseHours()
+	}
 }
