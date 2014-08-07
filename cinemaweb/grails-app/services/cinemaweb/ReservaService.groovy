@@ -74,7 +74,7 @@ class ReservaService extends DomainService{
 	}
 
 
-	def crearReserva(params){
+	def crearReserva(params,usuario){
 		//cargo los asientos reservados.
 		def reservaAsientos = params.list("asientos").collect(){
 														def posicionAsiento = it.split(",")
@@ -88,6 +88,7 @@ class ReservaService extends DomainService{
 		nuevaReserva.funcion = Funcion.get(params.funcion)
 		nuevaReserva.fecha_funcion = new Date().parse("dd-MM-yyyy",params.fecha)
 		nuevaReserva.fecha_reserva = new Date()
+		nuevaReserva.usuario = Usuario.get(usuario)
 		//chqueo que la key de la reserva no sea repetida
 		while(!nuevaReserva.save()){
 			nuevaReserva.reserva_key = this.randomIDKey(8)

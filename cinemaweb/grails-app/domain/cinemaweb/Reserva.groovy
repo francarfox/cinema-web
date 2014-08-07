@@ -7,7 +7,7 @@ class Reserva {
 	Date fecha_funcion
 	String	transaccionID
 
-	static belongsTo = [funcion: Funcion]
+	static belongsTo = [funcion: Funcion, usuario: Usuario]
 
 	static hasMany = [asientos: Asiento]
 
