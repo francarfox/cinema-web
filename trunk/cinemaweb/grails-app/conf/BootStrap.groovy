@@ -51,14 +51,14 @@ class BootStrap {
 		}
 
 		if(!Pelicula.count()) {
-		    new Pelicula(nombre: "Matrix Reload", director: "Wachowski Brothers", sinopsis: "cinema web", genero: 6 , duracion: 120, foto:"default.png").save(failOnError:true)
-		    new Pelicula(nombre: "Pulp Fiction", director: "Quentin Tarantino", sinopsis: "cinema web", genero: 1, duracion: 180, foto:"default.png").save(failOnError:true)
 		    new Pelicula(nombre: "Mujeres al ataque", director: "Nick Cassavetes", sinopsis: "cinema web", genero: 2, duracion: 109, foto:"mujeres-al-ataque.jpg",puntos: 19).save(failOnError:true)
 		    new Pelicula(nombre: "X-Men: Días del futuro pasado", director: "Bryan Singer", sinopsis: "cinema web", genero: 3, duracion: 131, foto:"x-men-dias-del-futuro-pasado.jpg",puntos: 52).save(failOnError:true)
 		    new Pelicula(nombre: "7 cajas", director: "Juan Carlos Maneglia, Tana Schémbori", sinopsis: "cinema web", genero: 1, duracion: 105, foto:"7-cajas.jpg",puntos: 22).save(failOnError:true)
 		    new Pelicula(nombre: "Malefica", director: "Robert Stromberg", sinopsis: "cinema web", genero: 4, duracion: 97, foto:"malefica.jpg",puntos: 28).save(failOnError:true)
 		    new Pelicula(nombre: "Oculus", director: "Mike Flanagan", sinopsis: "cinema web", genero: 5, duracion: 104, foto:"oculus.jpg",puntos: 29).save(failOnError:true)
 		    new Pelicula(nombre: "El inventor de juegos", director: "Juan Pablo Buscarini", sinopsis: "cinema web", genero: 6, duracion: 111, foto:"el-inventor-de-juegos.jpg",puntos: 18).save(failOnError:true)
+		    new Pelicula(nombre: "Marea baja", director: "Paulo Pécora", sinopsis: "cinema web", genero: 8, duracion: 72, foto:"marea-baja.jpg", puntos: 12).save(failOnError:true)
+		    new Pelicula(nombre: "Don Giovanni", director: "Kasper Holten", sinopsis: "cinema web", genero: 7, duracion: 220, foto:"don-giovanni.jpg", puntos: 12).save(failOnError:true)
 		    new Pelicula(nombre: "Socios por accidente", director: "Fabián Forte, Nicanor Loreti", sinopsis: "cinema web", genero: 2, duracion: 82, foto:"socios-por-accidente.jpg",puntos: 6).save(failOnError:true)
 		    new Pelicula(nombre: "El planeta de los simios: Confrontación", director: "Matt Reeves", sinopsis: "cinema web", genero: 6, duracion: 130, foto:"el-planeta-de-los-simios-confrontacion.jpg",puntos: 20).save(failOnError:true)
 		    new Pelicula(nombre: "12 horas para sobrevivir", director: "James DeMonaco", sinopsis: "cinema web", genero: 5, duracion: 103, foto:"12-hrs-para-sobrevivir.jpg", puntos: 23).save(failOnError:true)
@@ -68,8 +68,10 @@ class BootStrap {
 		    new Pelicula(nombre: "Bajo la misma estrella", director: "Josh Boone", sinopsis: "cinema web", genero: 1, duracion: 126, foto:"bajo-la-misma-estrella.jpg",puntos: 12).save(failOnError:true)
 		    new Pelicula(nombre: "Aviones 2: Equipo de rescate", director: "Roberts Gannaway", sinopsis: "cinema web", genero: 9, duracion: 83, foto:"aviones-2-equipo-de-rescate.jpg",puntos: 18).save(failOnError:true)
 		    new Pelicula(nombre: "Los indestructibles 3", director: "No informado", sinopsis: "cinema web", genero: 3, duracion: 100, foto:"los-indestructibles-3.jpg",puntos: 0).save(failOnError:true)
+		    new Pelicula(nombre: "Líbranos del mal", director: "Scott Derrickson", sinopsis: "cinema web", genero: 5, duracion: 118, foto:"libranos-del-mal.jpg",puntos: 20).save(failOnError:true)
 		    new Pelicula(nombre: "Hercules", director: "Brett Ratner", sinopsis: "cinema web", genero: 3, duracion: 120, foto:"hercules.jpg",puntos: 0).save(failOnError:true)
 		    new Pelicula(nombre: "Los Caballeros del Zodiaco", director: "No informado", sinopsis: "cinema web", genero: 9, duracion: 90, foto:"los-caballeros-del-zodiaco.jpg",puntos: 0).save(failOnError:true)
+		    new Pelicula(nombre: "Relatos salvajes", director: "Damián Szifrón", sinopsis: "cinema web", genero: 8, duracion: 120, foto:"relatos-salvajes.jpg",puntos: 0).save(failOnError:true)
 
 		}
 
@@ -77,17 +79,26 @@ class BootStrap {
 			def user = Usuario.get(4)//mati09
 			def circ = new Circulo(nombre: "StarWars fanaticos", tags: "Acción", administrador: user.getUserId(), foto: "circulo-starwars.jpg", esComentableEnHome: false).save(failOnError:true)
 			user.addToCirculos(circ)
-			user = Usuario.get(2) //Rosa69
+			user = Usuario.get(2) //pablocosso
+			user.addToCirculos(circ)
+			circ.sumarCantidadUsuarios()
+			user = Usuario.get(3) //FranCarFox
+			user.addToCirculos(circ)
+			circ.sumarCantidadUsuarios()
+			user = Usuario.get(1) //fedecarp34
 			user.addToCirculos(circ)
 			circ.sumarCantidadUsuarios()
 
-			user = Usuario.get(2) //Rosa69
+			user = Usuario.get(2) //pablocosso
 			circ = new Circulo(nombre: "Solo terror", tags: "Terror", administrador: user.getUserId(), foto: "circulo-terror.jpg", esComentableEnHome: false).save(failOnError:true)
 			user.addToCirculos(circ)
 
 			user = Usuario.get(1) //fedecarp34
 			circ = new Circulo(nombre: "Juntada por viejas pelis", tags: "Suspenso", administrador: user.getUserId(), foto: "circulo-pelisviejas.jpg", esComentableEnHome: false).save(failOnError:true)
 			user.addToCirculos(circ)
+			user = Usuario.get(2) //pablocosso
+			user.addToCirculos(circ)
+			circ.sumarCantidadUsuarios()
 
 			user = Usuario.get(3) //FranCarFox
 			circ = new Circulo(nombre: "Las mejores peliculas cómicas ", tags: "Cómica", administrador: user.getUserId(), foto: "circulo-risa.jpg", esComentableEnHome: false).save(failOnError:true)
@@ -106,6 +117,10 @@ class BootStrap {
 			cine = Cine.get(2)
 			user.comentar(peli, "Un plomo. Demasiado 3hs, parecía 3 pelis juntas")
 			user.comentar(cine, "Asientos incómodos pero buen de sonido")
+
+			/*user = Usuario.get(1)
+			def circ = Circulo.get(3)
+			user.comentar(circ, "Bienvenidos a mi circulo!! Cuando quieran hacemos una encuesta ;)")*/
 		}
 
 		if(!Sala.count()){
