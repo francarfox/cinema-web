@@ -14,18 +14,26 @@ class ReservaController {
 
     def nueva_pasouno(){
         //render this.reservaService.getDataFunciones(params.id) as grails.converters.JSON
-		def model= [pelicula: Pelicula.get(params.id), 
-    	 			funcionesData: this.reservaService.getDataFunciones(params.id) as grails.converters.JSON 
-    				]
-    	render(view: "pasouno.gsp", model: model)
+		if (!session.loggedUser) {
+            render(view: "notlogged")
+        }else{
+
+            def model= [pelicula: Pelicula.get(params.id), 
+                    funcionesData: this.reservaService.getDataFunciones(params.id) as grails.converters.JSON 
+                    ]
+            render(view: "pasouno.gsp", model: model)   
+        }
     }
 
 
     def nueva_pasodos(){
-        def nuevaReserva = null
+        if (!session.loggedUser) {
+            render(view: "notlogged")
+        }else{
+            def nuevaReserva = null
 
         if(params.submit){ 
-            nuevaReserva = this.reservaService.crearReserva(params)    
+            nuevaReserva = this.reservaService.crearReserva(params,session.loggedUser)    
             //this.reservaService.crearReserva(params)
         }
 
@@ -49,17 +57,24 @@ class ReservaController {
             render(view: "pasodos.gsp", model: model)
         }
        
+        }
     }
 
     def nueva_pasotres(){
-        if(params.finish){
-           this.reservaService.submitTransaccion(session["reserva_provisoria"])
-           redirect(action: "reserva_gracias", id: params.id)
+        if(!session.loggedUser){
+            //borro la reserva provisoria
+            def reservaProvisoria = this.reservaService.getReservaProvisoria(session["reserva_provisoria"])
+            reservaProvisoria.delete()
+            render(view: "notlogged")
         }else{
-           def reservaProvisoria = this.reservaService.getReservaProvisoria(session["reserva_provisoria"])
-            render(view: "pasotres.gsp", model: [reservaProvisoria: reservaProvisoria]) 
+            if(params.finish){
+               this.reservaService.submitTransaccion(session["reserva_provisoria"])
+               redirect(action: "reserva_gracias", id: params.id)
+            }else{
+               def reservaProvisoria = this.reservaService.getReservaProvisoria(session["reserva_provisoria"])
+                render(view: "pasotres.gsp", model: [reservaProvisoria: reservaProvisoria]) 
+            }
         }
-        
     }
 
 
