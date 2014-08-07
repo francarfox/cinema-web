@@ -84,6 +84,7 @@ class UsuarioService extends DomainService {
 		return Usuario.list()
 	}
 
+	
 	@Transactional
 	public def get(id) {
 		return getDomainInstance(id)
@@ -98,4 +99,9 @@ class UsuarioService extends DomainService {
 	public def buscarUsuarioYPass(user, pass) {
 		return Usuario.findByUserIdAndPassword(user, pass)
 	}	
+
+	@Transactional
+	public def getReservasUsuario(usuarioID){
+		return Usuario.get(usuarioID).reservas.sort {a,b -> a.fecha_reserva <=> b.fecha_reserva}.reverse()
+	}
 }

@@ -108,6 +108,14 @@ class UsuarioController {
 		}
 	}
 
+	def reservas_usuario(){
+        if(session.loggedUser){
+		[reservas: this.usuarioService.getReservasUsuario(session.loggedUser)]
+        }else{
+            redirect(controller:"home", view:"index")
+        }
+    }
+
 
 	///////////////////// Metodos para admin ///////////////////////////
 

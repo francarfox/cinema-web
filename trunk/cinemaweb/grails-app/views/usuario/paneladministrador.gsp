@@ -29,12 +29,12 @@
 			<div class="col-md-3" style="margin-top:30px;">
 				<g:link controller="cine" action="listarcines"><img src="../images/pnl/cines.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
-			<div class="col-md-3" style="margin-top:30px;">
+			<!-- <div class="col-md-3" style="margin-top:30px;">
 				<img src="../images/pnl/salas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/reservas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
-			</div>
+				<g:link controller="usario" action="reservas_usuario"><img src="../images/pnl/reservas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> </g:link>
+			</div> -->
 			<div class="col-md-3" style="margin-top:30px;">
 				<img src="../images/pnl/promociones.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
 			</div>
