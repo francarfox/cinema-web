@@ -73,7 +73,7 @@
 					  		}
 
 					  		if(!error && data.reglas[i] == "letters-only"){
-					  			error = (value.match(/[0-9\ \-\_\?\!]/) != null);
+					  			error = (value.match(/[0-9\-\_\?\!]/) != null);
 					  		}
 
 					  		if(!error && data.reglas[i] == "numbers-only"){
