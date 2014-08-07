@@ -24,10 +24,10 @@
 				<g:link action="listarcomentarios"><img src="../images/pnl/comentario.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/peliculas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
+				<g:link controller="pelicula" action="listarpeliculas"><img src="../images/pnl/peliculas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
-				<img src="../images/pnl/cines.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
+				<g:link controller="cine" action="listarcines"><img src="../images/pnl/cines.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /></g:link>
 			</div>
 			<div class="col-md-3" style="margin-top:30px;">
 				<img src="../images/pnl/salas.png" class="img-rounded show-img" style="width:200px;heigh:200px;" /> 
