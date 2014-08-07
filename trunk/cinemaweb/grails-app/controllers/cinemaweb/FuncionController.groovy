@@ -7,60 +7,78 @@ class FuncionController extends BaseController{
 	def funcionService
 
     def index() { 
-    	[funciones: this.funcionService.getFunciones()]
+        if(!this.isAdminUser()){
+            render(view:"access_denied")
+        }else{
+            [funciones: this.funcionService.getFunciones()]    
+        }
+    	
     }
 
     def show() {
-    	[funcion: this.funcionService.getFuncion(params.id)]
-    }
+        if(!this.isAdminUser()){
+            render(view:"access_denied")
+        }else{
+    	   [funcion: this.funcionService.getFuncion(params.id),adminUserLogged: this.isAdminUser()]
+    }   }
 
     def edit(){
-    	//render params as grails.converters.JSON
-    	def errors = (params.submit) ? this.funcionService.edit(params.id,params) : null
+    	if(!this.isAdminUser()){
+            render(view:"access_denied")
+        }else{
+               //render params as grails.converters.JSON
+            def errors = (params.submit) ? this.funcionService.edit(params.id,params) : null
 
-    	if(params.submit && !errors){
-    		redirect(action:"show",id: params.id)
-    	}else{
-			
-    		def cinesData = this.funcionService.getCinesData() as grails.converters.JSON 
-    		//render dataToDisplay(params,this.funcionService.getFuncion(params.id)) as grails.converters.JSON 
-	 		[
-	 		 funcionID: params.id,
-	 		 dataToDisplay: dataToDisplay(params,this.funcionService.getFuncion(params.id)),
-	 		 horarios: Cine.getOpenCloseHours(),
-	 		 peliculas: this.funcionService.getPeliculas(), 
-	 		 cinesData: cinesData,
-	 		 errors:errors]    		
-    	}
+            if(params.submit && !errors){
+                redirect(action:"show",id: params.id)
+            }else{
+                
+                def cinesData = this.funcionService.getCinesData() as grails.converters.JSON 
+                //render dataToDisplay(params,this.funcionService.getFuncion(params.id)) as grails.converters.JSON 
+                [
+                 funcionID: params.id,
+                 dataToDisplay: dataToDisplay(params,this.funcionService.getFuncion(params.id)),
+                 horarios: Cine.getOpenCloseHours(),
+                 peliculas: this.funcionService.getPeliculas(), 
+                 cinesData: cinesData,
+                 errors:errors,
+                 adminUserLogged: this.isAdminUser()]           
+            } 
+        }
+        
     }
 
     def create(){
-    	//render params as grails.converters.JSON
-    	def errors = (params.submit) ? this.funcionService.create(params) : null
-        //render errors as grails.converters.JSON
-    	if(params.submit && !errors){
-    		redirect(action:"index")
-    	}else{
-			try {
-                this.funcionService.canCreate()      
+
+        if(!this.isAdminUser()){
+            render(view:"access_denied")
+        }else{
+                //render params as grails.converters.JSON
+            def errors = (params.submit) ? this.funcionService.create(params) : null
+            //render errors as grails.converters.JSON
+            if(params.submit && !errors){
+                redirect(action:"index")
+            }else{
+                try {
+                    this.funcionService.canCreate()      
+                }
+                catch(Exception e) {
+                    //no se puede crear funciones porque faltan peliculas, cines, salas o asientos
+                    return [errorMessage: e.getMessage()]        
+                }
+            
+                def cinesData = this.funcionService.getCinesData() as grails.converters.JSON 
+                //render this.funcionService.getCinesData() as grails.converters.JSON
+                //render dataToDisplay(params,null) as grails.converters.JSON 
+                [dataToDisplay: dataToDisplay(params,null), 
+                 horarios: Cine.getOpenCloseHours(),
+                 peliculas: this.funcionService.getPeliculas(), 
+                 cinesData: cinesData,
+                 errors:errors]       
             }
-            catch(Exception e) {
-                //no se puede crear funciones porque faltan peliculas, cines, salas o asientos
-                return [errorMessage: e.getMessage()]        
-            }
-        
-    		def cinesData = this.funcionService.getCinesData() as grails.converters.JSON 
-    		//render this.funcionService.getCinesData() as grails.converters.JSON
-            //render dataToDisplay(params,null) as grails.converters.JSON 
-	 		[dataToDisplay: dataToDisplay(params,null), 
-	 		 horarios: Cine.getOpenCloseHours(),
-	 		 peliculas: this.funcionService.getPeliculas(), 
-	 		 cinesData: cinesData,
-	 		 errors:errors]    	
-    	}
+        }
 
     }
-
 
     //metodos heredados 
 
