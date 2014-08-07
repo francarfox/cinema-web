@@ -47,12 +47,12 @@ class PeliculaController {
    [pelicula: pelicula, comentarios: comentarios]
  }*/
 
- def show = {
+ def show(){
     def movie = Pelicula.get(params.id)
     [movie: movie, listaGeneros: Pelicula.generos]
  }
 
- def comentar = {
+ def comentar(){
   def usuario = Usuario.get(session.loggedUser)
   def pelicula = Pelicula.get(params.id)
 
@@ -64,7 +64,7 @@ class PeliculaController {
   }
  }
 
- def puntuar = {
+ def puntuar(){
    def usuario = Usuario.get(session.loggedUser)
    def pelicula = Pelicula.get(params.id)
 
@@ -76,8 +76,30 @@ class PeliculaController {
     }
  }
 
+def listarpeliculas(){
+  if(session.loggedUserRol == "ADMIN"){
+   
+   [peliculas: Pelicula.list(sort:"nombre"), generosPelicula: Pelicula.generos]
+   
+   }else{
+    render(view:"denegado")
+   }
+}
 
-def uploadPic = {
+def eliminarpelicula(){
+   def pelicula = Pelicula.get(params.id)
+   pelicula.comentarios.each{
+        pelicula.eliminarComentario(it)
+        it.delete()
+   }
+
+   pelicula.delete()
+
+   redirect(action:"listarpeliculas")
+}
+
+
+def uploadPic(){
     def movie = Pelicula.get(params.id)
     def error = false
     if (params.submit){
