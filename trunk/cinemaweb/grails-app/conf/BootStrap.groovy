@@ -20,6 +20,13 @@ class BootStrap {
 		    new Usuario(userId:"admin01", password:"12345", passwordV:"12345", rol:"ADMIN", perfil: perfil).save(failOnError:true)
 		}
 
+		if(!Promocion.count()){
+			new Promocion(nombre:"Promoción CITI - Entradas a Precio de día Miércoles", foto:"promo-citi.jpg", descripcion: "Comprando las entradas en Hoyts con Tarjetas del Banco CITI + DNI, se obtienen las mismas a precio de día miércoles.").save(failOnError: true)
+    		new Promocion(nombre:"Claro Club", foto:"promo-claro.jpg", descripcion: "Beneficio 2x1 en entradas de cine CINEMARK de lunes a domingos. ").save(failOnError: true)
+    		new Promocion(nombre:"Peli de la semana", foto:"promo-cinemark.png", descripcion: "Entrada a 34 pesos todos los días a las 17hs, una peli diferente cada semana.").save(failOnError: true)
+			new Promocion(nombre:"Banco Patagonia", foto:"promo-pata.jpg", descripcion: "2x1 en entradas todos los días. Todos los cines Showcase habilitados.").save(failOnError: true)
+		}
+
 		if(!Cine.count()) {
 		    new Cine(nombre: "Hoyts Unicenter",ubicacion: "Parana 1234, Martinez", precioBase: 12.0, apertura: "08:00", cierre: "23:00", foto:"hoyts.png").save(failOnError:true)
 		    new Cine(nombre: "Showcase Norte",ubicacion: "Esteban Echeberría 456, Martinez", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"showcase.png").save(failOnError:true)
@@ -32,6 +39,15 @@ class BootStrap {
 		    //new Cine(nombre: "Arte Cinema",ubicacion: "Salta 1620, CABA", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"default.png").save(failOnError:true)
 		    new Cine(nombre: "Cinemark Palermo",ubicacion: "Beruti 3399, Palermo", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"cinemark.png").save(failOnError:true)
 			new Cine(nombre: "Arteplex Belgrano",ubicacion: "Av. Cabildo 2829, Belgrano", precioBase: 65, apertura: "08:00", cierre: "23:00", foto:"arteplex.png").save(failOnError:true)
+		
+			Cine.get(1).agregarPromocion(Promocion.get(1))
+			Cine.get(3).agregarPromocion(Promocion.get(1))
+
+			Cine.get(9).agregarPromocion(Promocion.get(2))
+			Cine.get(9).agregarPromocion(Promocion.get(3))
+
+			Cine.get(2).agregarPromocion(Promocion.get(4))
+			Cine.get(7).agregarPromocion(Promocion.get(4))
 		}
 
 		if(!Pelicula.count()) {
@@ -78,19 +94,18 @@ class BootStrap {
 			user.addToCirculos(circ)
 		}
 
-		if(!Promocion.count()){
-			new Promocion(nombre:"Promoción CITI - Entradas a Precio de día Miércoles", foto:"promo-citi.jpg", descripcion: "Comprando las entradas en Hoyts con Tarjetas del Banco CITI + DNI, se obtienen las mismas a precio de día miércoles.").save(failOnError: true)
-    		new Promocion(nombre:"Claro Club", foto:"promo-claro.jpg", descripcion: "Beneficio 2x1 en entradas de cine CINEMARK de lunes a domingos. ").save(failOnError: true)
-    		new Promocion(nombre:"Peli de la semana", foto:"promo-cinemark.png", descripcion: "Entrada a 34 pesos todos los días a las 17hs, una peli diferente cada semana.").save(failOnError: true)
-			new Promocion(nombre:"Banco Patagonia", foto:"promo-pata.jpg", descripcion: "2x1 en entradas todos los días. Todos los cines Showcase habilitados.").save(failOnError: true)
-		}
-
 		if(!Comentario.count()){
 			def user = Usuario.get(1)
 			def peli = Pelicula.get(21)
 			def cine = Cine.get(1)
 			user.comentar(peli, "Excelente pelicula, te mantiene atrapado todo el tiempo")
 			user.comentar(cine, "Buenos asientos y el sonido aceptable")
+
+			user = Usuario.get(3)
+			peli = Pelicula.get(23)
+			cine = Cine.get(2)
+			user.comentar(peli, "Un plomo. Demasiado 3hs, parecía 3 pelis juntas")
+			user.comentar(cine, "Asientos incómodos pero buen de sonido")
 		}
 
 		if(!Sala.count()){

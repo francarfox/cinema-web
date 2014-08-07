@@ -8,4 +8,8 @@ class PromocionService {
     def list() {
     	return Promocion.list()
     }
+
+    def get(id) {
+    	return Promocion.get(id)
+    }
 }
