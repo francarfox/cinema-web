@@ -83,5 +83,19 @@ class UsuarioService extends DomainService {
 	public def getListadoUsuarios() {
 		return Usuario.list()
 	}
-		
+
+	@Transactional
+	public def get(id) {
+		return getDomainInstance(id)
+	}
+
+	@Transactional
+	public def getUsuarioPorNombre(nombre) {
+		return Usuario.findByUserId(nombre)
+	}
+	
+	@Transactional
+	public def buscarUsuarioYPass(user, pass) {
+		return Usuario.findByUserIdAndPassword(user, pass)
+	}	
 }

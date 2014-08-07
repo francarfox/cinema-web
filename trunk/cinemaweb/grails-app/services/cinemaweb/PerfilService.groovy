@@ -27,4 +27,8 @@ class PerfilService extends DomainService {
 		}
 	}
 
+	@Transactional
+	public def getPerfil(id) {
+		return getDomainInstance(id)
+	}
 }
