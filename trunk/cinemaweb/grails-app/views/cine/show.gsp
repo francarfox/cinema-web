@@ -104,6 +104,7 @@
 
 </div>
 <div class="col-md-4">
+	<g:if test="${isAdminUser}">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well" id="actions">
@@ -128,6 +129,8 @@
 		</div>
 	</div>
 	<br />
+	</g:if>
+	
 	<g:if test="${cine.foto}">
 		<div class="row">
 			<div class="col-md-12">

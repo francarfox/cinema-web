@@ -118,6 +118,12 @@ class BootStrap {
 			user.comentar(peli, "Un plomo. Demasiado 3hs, parecía 3 pelis juntas")
 			user.comentar(cine, "Asientos incómodos pero buen de sonido")
 
+			user = Usuario.get(4)
+			peli = Pelicula.get(23)
+			cine = Cine.get(8)
+			user.comentar(peli, "Excelente pelicula! muy entretenida!. No entendio nada @FranCarFox")
+			user.comentar(cine, "Habia pochoclos en mi asiento. Muy descuidado.")
+
 			/*user = Usuario.get(1)
 			def circ = Circulo.get(3)
 			user.comentar(circ, "Bienvenidos a mi circulo!! Cuando quieran hacemos una encuesta ;)")*/

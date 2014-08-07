@@ -6,46 +6,66 @@ class SalaController extends BaseController{
 	static scaffold = true
     def salaService
     def debugService
+    def cineService
 
     def index(){
-        [salas: this.salaService.getSalas()]
+        if (!this.isAdminUser()){
+            render(view:"access_denied")
+        }else{
+            [salas: this.salaService.getSalas()]
+        }
     }
 
-	def create = {
-		def errors = null
-        def data = this.dataToDisplay(params, null)
-        if (params.submit > 0) {
-			/*JSON.use('deep')
-        	render params as JSON
-        	return*/
-            errors = this.salaService.create(params)
-        	if(!errors){
-                redirect(action: "index")    
+	def create(){
+        if(!this.isAdminUser()){
+            render(view:"access_denied")
+        }else{
+           def errors = null
+            def data = this.dataToDisplay(params, null)
+            if (params.submit > 0) {
+                /*JSON.use('deep')
+                render params as JSON
+                return*/
+                errors = this.salaService.create(params)
+                if(!errors){
+                    redirect(action: "index")    
+                }
             }
+
+            [data: data, cines: cineService.getListadoCines(), errors: errors] 
+        }
+		
+    }
+
+    def edit(){
+        if(!this.isAdminUser()){
+            render(view: "access_denied")
+        }else{
+            def errors = null
+            def salaData = this.dataToDisplay(params,this.salaService.getSala(params.id))
+
+            if(params.submit > 0){
+                errors = this.salaService.edit(params.id,params)
+                if(!errors){
+                    redirect(action: "show", id: params.id)    
+                }
+            }
+
+            [data: salaData, cines: cineService.getListadoCines(), errors:errors, salaID: params.id]
         }
 
-        [data: data, cines: Cine.list(), errors: errors]
-    }
-
-    def edit = {
-        def errors = null
-        def salaData = this.dataToDisplay(params,this.salaService.getSala(params.id))
-
-    	if(params.submit > 0){
-            errors = this.salaService.edit(params.id,params)
-            if(!errors){
-                redirect(action: "show", id: params.id)    
-            }
-    	}
-
-    	[data: salaData, cines: Cine.list(), errors:errors, salaID: params.id]
     }
 
 
-    def show = {
-    	def sala = this.salaService.getSala(params.id)
+    def show(){
+        if(!this.isAdminUser()){
+            render(view: "access_denied")
+        }else{
+            def sala = this.salaService.getSala(params.id)
 
-    	[sala: sala, asientosOcupados: sala.getAsientosOcupados()]
+            [sala: sala, asientosOcupados: sala.getAsientosOcupados()]
+        }
+    	
     }
 
 
