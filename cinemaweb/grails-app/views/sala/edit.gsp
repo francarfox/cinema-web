@@ -31,7 +31,7 @@
 				<div class="form-group">
 					<label for="cine" class="col-md-2 col-sm-2 control-label">Cine:</label>
 					<div class="col-md-4">
-						<g:select name="cine" from="${cines}" value="${data.cine}" optionKey="id" optionValue="nombre" class="form-control"/>
+						<g:select name="cine" from="${cines}" value="${data.cine.id}" optionKey="id" optionValue="nombre" class="form-control"/>
 					</div>
 				</div>
 				<div class="form-group">

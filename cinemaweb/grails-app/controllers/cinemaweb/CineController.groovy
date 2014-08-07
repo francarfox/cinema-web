@@ -38,7 +38,7 @@ class CineController extends BaseController{
     	def cine = this.cineService.getCine(params.id)
         def promos = this.cineService.getPromociones(cine)
 
-        [cine: cine, promos: promos]
+        [cine: cine, promos: promos, isAdminUser: this.isAdminUser()]
     }
 
     def index(){
