@@ -127,7 +127,7 @@
 		   		 <li class='has-sub'><a href='/cinemaweb/usuario/paneladministrador'><span>Administrador</span></a>
 		   		 	<ul>
 		         		<li><a href='/cinemaweb/usuario/index'>Manejo de Usuarios</a></li>
-						<li><a href='#'>Manejo de Cines</a></li>
+						<li><a href='/cinemaweb/cine/listarcines'>Manejo de Cines</a></li>
 						<li><a href='#'>Manejo de Peliculas</a></li>
 						<li><a href='/cinemaweb/usuario/listarcomentarios'>Manejo de Comentarios</a></li>
 						<li><a href='#'>Manejo de Reservas</a></li>

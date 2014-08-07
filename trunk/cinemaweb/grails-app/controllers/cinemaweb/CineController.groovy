@@ -3,7 +3,7 @@ package cinemaweb
 class CineController extends BaseController{
     def cineService
 
-    def create = {
+    def create(){
         def data = this.dataToDisplay(params,null)
         def errors = null
         if(params.submit > 0){
@@ -17,7 +17,7 @@ class CineController extends BaseController{
     }
 
 
-    def edit = {
+    def edit(){
         def data =  this.dataToDisplay(params, this.cineService.getCine(params.id))
         //def data =  dataToDisplay(params,null)
         def errors = null
@@ -33,24 +33,24 @@ class CineController extends BaseController{
     }
 
     
-    def show = {
+    def show(){
     	def cine = this.cineService.getCine(params.id)
 
         [cine: cine]
     }
 
-    def index = {
+    def index(){
         def cines = this.cineService.getListadoCines()
 
         [cines: cines]
     }
 
-    def delete = {
+    def delete(){
         this.cineService.delete(params.id)
         redirect(action:"index")
     }
 
-    def comentar = {
+    def comentar(){
     	def usuario = Usuario.get(session.loggedUser)
     	def cine = Cine.get(params.id)
 
@@ -62,7 +62,7 @@ class CineController extends BaseController{
         }
     }
 
-    def uploadPic = {
+    def uploadPic(){
         def error = false
         if (params.submit) {
             error = this.cineService.subirFoto(params.id, "foto",request.getFile("foto"), "/cines-pics/")
@@ -90,6 +90,19 @@ class CineController extends BaseController{
 
     }
 
+    def listarcines(){
+        if(session.loggedUserRol == "ADMIN"){
+            def cines = this.cineService.getListadoCines()
+            [cines: cines]
+        }else{
+            render(view:"denegado")
+        }
+    }
+
+    def eliminarcine(){
+       this.cineService.eliminarCine(params.id)
+       redirect(action:"listarcines")
+    }
 
 /** metodos heredados **/
 

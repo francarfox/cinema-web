@@ -31,4 +31,17 @@ class CineService extends DomainService{
 		return Cine.list(sort:"nombre")
 	}
 
+	@Transactional
+	public def eliminarCine(cineID){
+		def cine = Cine.get(cineID)
+		
+		//borro comentarios
+		cine.comentarios.each{
+			cine.eliminarComentario(it)
+			it.delete()
+		}
+		
+		cine.delete()
+	}
+
 }
