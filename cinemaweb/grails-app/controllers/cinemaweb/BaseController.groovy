@@ -15,4 +15,10 @@ abstract class BaseController{
 
 	abstract def getAtributosPorDefecto()
 
+
+    def isAdminUser(){
+        return (session.loggedUser && Usuario.get(session.loggedUser).rol == "ADMIN")
+    }
+
+
 }
