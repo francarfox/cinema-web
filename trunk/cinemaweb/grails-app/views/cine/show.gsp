@@ -121,7 +121,7 @@
 							<g:link action="index"><i class="fa fa-list"></i> Cines</g:link>
 					</div>
 					<div class="col-md-12">
-							<g:link controller="promocion" action="index" id="${cine.id}"><i class="fa fa-list"></i> Promociones</g:link>
+							<g:link controller="promocion" action="mostrarPromosCine" id="${cine.id}"><i class="fa fa-list"></i> Promociones</g:link>
 					</div>
 				</div>
 			</div>
