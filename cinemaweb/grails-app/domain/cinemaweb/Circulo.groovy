@@ -34,6 +34,7 @@ class Circulo extends Comentable {
 
     def agregarUsuario(usuario) {
         usuario.addToCirculos(this)
+        this.sumarCantidadUsuarios()
     }
 
     def expulsarUsuario(usuario) {
@@ -46,11 +47,14 @@ class Circulo extends Comentable {
     }
 
     def eliminarCirculo() {
+        this.eliminarUsuarios()
+        this.eliminarComentarios()
+        this.eliminarEncuesta()
         this.delete()
     }
 
     def eliminarUsuarios() {
-        this.usuarios.toList().each{ this.removeFromUsuarios(it) }
+        this.usuarios.toList().each{ this.expulsarUsuario(it) }
     }
 
     def eliminarEncuesta() {

@@ -40,7 +40,6 @@ class Usuario {
     	def comentario = new Comentario(autor:this, mensaje: mensaje, comentable:comentable)
     	comentable.agregarComentario(comentario)
         this.addToComentarios(comentario)
-        comentable.sumarCantidadComentarios()
     }
 
     def puntuar(puntuable, puntos) {
@@ -51,17 +50,10 @@ class Usuario {
         return this.comentarios.sort{a, b -> a.id <=> b.id }.reverse()
     }
 
-    /*
-    def unirseCirculo(circulo) {
-    	circulo.agregarUsuario(this)
-    }
-
-    def dejarCirculo(circulo) {
-    	circulo.expulsarUsuario(this)
-    }*/
-
     def eliminarUsuario() {
+        this.eliminarComentarios()
     	this.delete(flush: true)
+        //eliminar reservas
     }
 
     def buscarUsuario(nombre) {
@@ -70,6 +62,11 @@ class Usuario {
 
     def eliminarComentario(comentario) {
         this.removeFromComentarios(comentario)
+        comentario.delete()
+    }
+
+    def eliminarComentarios() {
+        this.comentarios.toList().each{ this.eliminarComentario(it) }
     }
 
 }

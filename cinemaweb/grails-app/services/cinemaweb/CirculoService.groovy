@@ -44,7 +44,6 @@ class CirculoService extends DomainService {
 	@Transactional
 	public def delete(def attributes){
 		def circulo = Circulo.get(attributes.id)
-		circulo.eliminarUsuarios()
 		circulo.eliminarCirculo()
 	}
 

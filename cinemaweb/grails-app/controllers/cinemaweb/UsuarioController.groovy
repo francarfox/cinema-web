@@ -154,7 +154,6 @@ class UsuarioController {
 		}
 		else {
 			def circulo = Circulo.get(params.id)
-			circulo.eliminarUsuarios()
 			circulo.eliminarCirculo()
 			redirect(action: "listarcirculos")
 		}
