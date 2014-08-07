@@ -3,10 +3,12 @@ import grails.converters.JSON
 
 class PeliculaController {
 	static scaffold = true
+  def peliculaService
+  def comentarioService
   def fileService
 
   def index = {
-     def movies = Pelicula.list(sort:"nombre")
+     def movies = peliculaService.listPorNombre()
      [movies: movies]
   }
 
@@ -21,7 +23,7 @@ class PeliculaController {
       }
     }
 
-    [movie: movie, generos: Pelicula.generos]
+    [movie: movie, generos: peliculaService.getGeneros()]
   }
 
 
@@ -33,10 +35,10 @@ class PeliculaController {
           redirect(action:"show",id: movie.id)
         }
       }else{
-        movie = Pelicula.get(params.id)
+        movie = peliculaService.get(params.id)
       }
 
-      [movie:movie, generos: Pelicula.generos]
+      [movie:movie, generos: peliculaService.getGeneros()]
   }
 
 
@@ -48,13 +50,13 @@ class PeliculaController {
  }*/
 
  def show(){
-    def movie = Pelicula.get(params.id)
-    [movie: movie, listaGeneros: Pelicula.generos]
+    def movie = peliculaService.get(params.id)
+    [movie: movie, listaGeneros: peliculaService.getGeneros()]
  }
 
  def comentar(){
   def usuario = Usuario.get(session.loggedUser)
-  def pelicula = Pelicula.get(params.id)
+  def pelicula = peliculaService.get(params.id)
 
   if(usuario == null)
     redirect(controller: "Usuario", action: "login")
@@ -66,7 +68,7 @@ class PeliculaController {
 
  def puntuar(){
    def usuario = Usuario.get(session.loggedUser)
-   def pelicula = Pelicula.get(params.id)
+   def pelicula = peliculaService.get(params.id)
 
    if(usuario == null)
     redirect(controller: "Usuario", action: "login")
@@ -79,7 +81,7 @@ class PeliculaController {
 def listarpeliculas(){
   if(session.loggedUserRol == "ADMIN"){
    
-   [peliculas: Pelicula.list(sort:"nombre"), generosPelicula: Pelicula.generos]
+   [peliculas: peliculaService.listPorNombre(), generosPelicula: peliculaService.getGeneros()]
    
    }else{
     render(view:"denegado")
@@ -87,7 +89,7 @@ def listarpeliculas(){
 }
 
 def eliminarpelicula(){
-   def pelicula = Pelicula.get(params.id)
+   def pelicula = peliculaService.get(params.id)
    pelicula.comentarios.each{
         pelicula.eliminarComentario(it)
         it.delete()
@@ -100,7 +102,7 @@ def eliminarpelicula(){
 
 
 def uploadPic(){
-    def movie = Pelicula.get(params.id)
+    def movie = peliculaService.get(params.id)
     def error = false
     if (params.submit){
          String fileName = params.id + "-pelicula.jpg"
@@ -118,8 +120,8 @@ def uploadPic(){
 }
 
     def eliminarcomentario() {
-        def comentario = Comentario.get(params.comentarioid)
-        def pelicula = Pelicula.get(params.id)
+        def comentario = comentarioService.get(params.comentarioid)
+        def pelicula = peliculaService.get(params.id)
         def usuario = Usuario.get(session.loggedUser)
 
         if(session.loggedUserRol != "ADMIN"){
@@ -140,7 +142,7 @@ def uploadPic(){
       def movie = null
 
       if(params.id){
-        movie = Pelicula.get(params.id)
+        movie = peliculaService.get(params.id)
         }else{
           movie = new Pelicula()
         }
