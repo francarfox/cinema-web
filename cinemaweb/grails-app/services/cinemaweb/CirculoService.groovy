@@ -57,4 +57,8 @@ class CirculoService extends DomainService {
 		return Circulo.list()
 	}
 		
+	@Transactional
+	public def getCirculo(id) {
+		return getDomainInstance(id)
+	}
 }

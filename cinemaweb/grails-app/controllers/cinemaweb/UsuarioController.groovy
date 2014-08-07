@@ -6,6 +6,9 @@ class UsuarioController {
 	static scaffold = true
 	def usuarioService
 	def circuloService
+	def peliculaService
+	def cineService
+	def perfilService
 
 	def index() {
 		if (session.loggedUser == null) {
@@ -38,7 +41,7 @@ class UsuarioController {
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		} else {
-			def usuario = Usuario.get(session.loggedUser)	
+			def usuario = usuarioService.get(session.loggedUser)	
 			[usuario:usuario]
 		}
 	}
@@ -47,8 +50,8 @@ class UsuarioController {
 		if (session.loggedUser == null) {
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		} else {
-			def usuario = Usuario.get(session.loggedUser)
-			def perfil = Perfil.get(params.id)
+			def usuario = usuarioService.get(session.loggedUser)
+			def perfil = perfilService.getPerfil(params.id)
 			def errors = null
         	if (params.submit) {
             	errors =  this.usuarioService.edit(params.id,params)
@@ -65,8 +68,8 @@ class UsuarioController {
 		if (session.loggedUser == null){
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		} else {
-			def usuario = Usuario.get(params.id)
-			def perfil = Perfil.get(params.id)
+			def usuario = usuarioService.get(params.id)
+			def perfil = perfilService.getPerfil(params.id)
 			[usuario:usuario, perfil:perfil]
 		}
 	}
@@ -88,7 +91,7 @@ class UsuarioController {
 	}
 
 	def validar() {
-		def usuario = Usuario.findByUserIdAndPassword(params.userId,params.password) 
+		def usuario = usuarioService.buscarUsuarioYPass(params.userId,params.password) 
 
 		if (usuario != null){
 			this.usuarioService.login(session,usuario)
@@ -109,7 +112,7 @@ class UsuarioController {
 	///////////////////// Metodos para admin ///////////////////////////
 
 	def cambiarrol() {
-    	def usuario = Usuario.get(params.id)
+    	def usuario = usuarioService.get(params.id)
 
     	if (usuario.rol == "USER") {
     		usuario.rol = "ADMIN"
@@ -153,7 +156,7 @@ class UsuarioController {
 			render(view: "login", model: [message: "ERROR: Debe loguearse para realizar esta acción."])
 		}
 		else {
-			def circulo = Circulo.get(params.id)
+			def circulo = circuloService.getCirculo(params.id)
 			circulo.eliminarCirculo()
 			redirect(action: "listarcirculos")
 		}
@@ -165,7 +168,7 @@ class UsuarioController {
 			redirect(controller:'usuario' , action:'login')
 		}
 		else {
-    		def circulos = Circulo.list()
+    		def circulos = circuloService.getlistadoCirculos()
     		[circulos:circulos]
     	}
 	}
@@ -175,16 +178,16 @@ class UsuarioController {
 			redirect(controller:'usuario' , action:'login')
 		}
 		else {
-    		def circulos = Circulo.list()
-    		def peliculas = Pelicula.list()
-    		def cines = Cine.list()
+    		def circulos = circuloService.getlistadoCirculos()
+    		def peliculas = peliculaService.getListaPeliculas()
+    		def cines = cineService.getListadoCines()
     		[circulos:circulos,peliculas:peliculas,cines:cines]
     	}
 	}
 
 	def verusuario() { //Ver un usuario a partir de un string nombre
-		def usuario = Usuario.findByUserId(params.nombre)
-		def perfil = Perfil.get(usuario.id)
+		def usuario = usuarioService.getUsuarioPorNombre(params.nombre)
+		def perfil = perfilService.getPerfil(usuario.id)
 		render(view:"show", model:[usuario:usuario,perfil:perfil]) //redirect(action: "show", id:usuario.id)
 	}
 }
